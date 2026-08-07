@@ -82,7 +82,7 @@
       "unsupported": 9
     },
     "disclaimer": "This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.",
-    "generated_at": "2026-08-07T00:23:58.514Z",
+    "generated_at": "2026-08-07T10:47:33.669Z",
     "production_ready": false,
     "results": [
       {
@@ -1988,7 +1988,7 @@
       }
     ],
     "fixture_ratio": 1.0,
-    "generated_at": "2026-08-07T00:23:58.515Z",
+    "generated_at": "2026-08-07T10:47:33.670Z",
     "level_counts": {
       "critical": 3,
       "high": 23,
@@ -2090,7 +2090,7 @@
     "manifest_used": true,
     "sequence_count": 30
   },
-  "generated_at": "2026-08-07T00:23:58.520Z",
+  "generated_at": "2026-08-07T10:47:33.675Z",
   "metadata": {
     "failure_count": 0,
     "failures": [],
@@ -2359,7 +2359,7 @@
         "passed": true
       }
     ],
-    "generated_at": "2026-08-07T00:23:58.519Z",
+    "generated_at": "2026-08-07T10:47:33.675Z",
     "passed": true,
     "rules_examined": 56
   },
@@ -2374,14 +2374,14 @@
     "errored": 0,
     "evaluator": "sdel-lab-matcher-v1",
     "failed": 0,
-    "generated_at": "2026-08-07T00:23:58.191Z",
+    "generated_at": "2026-08-07T10:47:33.342Z",
     "passed": 283,
     "results": [
       {
         "actual_match": true,
         "case_id": "SDEL-COR-001::positive::failures_then_success_same_account",
         "catalog_id": "SDEL-COR-001",
-        "duration_seconds": 0.000167,
+        "duration_seconds": 0.00016,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2400,7 +2400,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-001::positive::failures_then_success_admin_account",
         "catalog_id": "SDEL-COR-001",
-        "duration_seconds": 6.7e-05,
+        "duration_seconds": 6.2e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2419,7 +2419,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-001::negative::success_then_failures",
         "catalog_id": "SDEL-COR-001",
-        "duration_seconds": 6.6e-05,
+        "duration_seconds": 5.4e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2438,7 +2438,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-001::negative::failures_and_success_different_accounts",
         "catalog_id": "SDEL-COR-001",
-        "duration_seconds": 5.7e-05,
+        "duration_seconds": 5.5e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2458,7 +2458,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-001::negative::success_outside_window",
         "catalog_id": "SDEL-COR-001",
-        "duration_seconds": 5.3e-05,
+        "duration_seconds": 5.4e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2477,7 +2477,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-002::positive::five_distinct_accounts_one_source",
         "catalog_id": "SDEL-COR-002",
-        "duration_seconds": 6.2e-05,
+        "duration_seconds": 6e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: value_count",
@@ -2496,7 +2496,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-002::positive::six_distinct_accounts_one_source",
         "catalog_id": "SDEL-COR-002",
-        "duration_seconds": 6e-05,
+        "duration_seconds": 5.9e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: value_count",
@@ -2515,7 +2515,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-002::negative::repeated_failures_single_account",
         "catalog_id": "SDEL-COR-002",
-        "duration_seconds": 6.4e-05,
+        "duration_seconds": 6.5e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: value_count",
@@ -2534,7 +2534,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-002::negative::distinct_accounts_split_across_sources",
         "catalog_id": "SDEL-COR-002",
-        "duration_seconds": 6.6e-05,
+        "duration_seconds": 6.2e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: value_count",
@@ -2554,7 +2554,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-002::negative::four_distinct_accounts_below_threshold",
         "catalog_id": "SDEL-COR-002",
-        "duration_seconds": 4.4e-05,
+        "duration_seconds": 4.3e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: value_count",
@@ -2573,7 +2573,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-003::positive::twelve_failures_one_account",
         "catalog_id": "SDEL-COR-003",
-        "duration_seconds": 0.000106,
+        "duration_seconds": 0.000109,
         "expected_match": true,
         "explanation": [
           "correlation type: event_count",
@@ -2592,7 +2592,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-003::positive::ten_failures_admin_account",
         "catalog_id": "SDEL-COR-003",
-        "duration_seconds": 8.5e-05,
+        "duration_seconds": 7.9e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: event_count",
@@ -2611,7 +2611,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-003::negative::five_failures_below_threshold",
         "catalog_id": "SDEL-COR-003",
-        "duration_seconds": 4.8e-05,
+        "duration_seconds": 4.7e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: event_count",
@@ -2630,7 +2630,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-003::negative::failures_spread_across_accounts",
         "catalog_id": "SDEL-COR-003",
-        "duration_seconds": 0.000191,
+        "duration_seconds": 9.9e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: event_count",
@@ -2652,7 +2652,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-003::negative::failures_spread_beyond_window",
         "catalog_id": "SDEL-COR-003",
-        "duration_seconds": 0.000131,
+        "duration_seconds": 9.3e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: event_count",
@@ -2671,7 +2671,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-004::positive::four_additions_one_subject",
         "catalog_id": "SDEL-COR-004",
-        "duration_seconds": 0.000128,
+        "duration_seconds": 8.6e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: event_count",
@@ -2690,7 +2690,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-004::positive::five_additions_mixed_groups",
         "catalog_id": "SDEL-COR-004",
-        "duration_seconds": 8.6e-05,
+        "duration_seconds": 8.1e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: event_count",
@@ -2750,7 +2750,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-004::negative::additions_to_non_privileged_group",
         "catalog_id": "SDEL-COR-004",
-        "duration_seconds": 7.1e-05,
+        "duration_seconds": 7e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: event_count",
@@ -2768,7 +2768,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-005::positive::service_installed_then_executed",
         "catalog_id": "SDEL-COR-005",
-        "duration_seconds": 4.9e-05,
+        "duration_seconds": 4.5e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2787,7 +2787,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-005::positive::public_path_service_then_execution",
         "catalog_id": "SDEL-COR-005",
-        "duration_seconds": 3.9e-05,
+        "duration_seconds": 3.8e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2825,7 +2825,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-005::negative::different_binary_paths",
         "catalog_id": "SDEL-COR-005",
-        "duration_seconds": 3.9e-05,
+        "duration_seconds": 3.8e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2845,7 +2845,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-005::negative::different_hosts",
         "catalog_id": "SDEL-COR-005",
-        "duration_seconds": 3.7e-05,
+        "duration_seconds": 3.6e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2865,7 +2865,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-006::positive::write_then_execute_user_temp",
         "catalog_id": "SDEL-COR-006",
-        "duration_seconds": 5e-05,
+        "duration_seconds": 4.9e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2884,7 +2884,7 @@
         "actual_match": true,
         "case_id": "SDEL-COR-006::positive::write_then_execute_public",
         "catalog_id": "SDEL-COR-006",
-        "duration_seconds": 4.6e-05,
+        "duration_seconds": 4.5e-05,
         "expected_match": true,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2903,7 +2903,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-006::negative::execute_then_write",
         "catalog_id": "SDEL-COR-006",
-        "duration_seconds": 4.3e-05,
+        "duration_seconds": 4.2e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2922,7 +2922,7 @@
         "actual_match": false,
         "case_id": "SDEL-COR-006::negative::write_then_execute_different_file",
         "catalog_id": "SDEL-COR-006",
-        "duration_seconds": 4.5e-05,
+        "duration_seconds": 4.3e-05,
         "expected_match": false,
         "explanation": [
           "correlation type: temporal_ordered",
@@ -2961,7 +2961,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-001::positive::created_by_admin",
         "catalog_id": "SDEL-ID-001",
-        "duration_seconds": 2.1e-05,
+        "duration_seconds": 2e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_provisioning_service: no match",
@@ -2976,7 +2976,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-001::positive::created_by_helpdesk",
         "catalog_id": "SDEL-ID-001",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_provisioning_service: no match",
@@ -3048,7 +3048,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-002::positive::service_account_enabled",
         "catalog_id": "SDEL-ID-002",
-        "duration_seconds": 6e-06,
+        "duration_seconds": 7e-06,
         "expected_match": true,
         "explanation": [
           "selection selection_account_enabled: match",
@@ -3163,7 +3163,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-003::negative::security_group_created",
         "catalog_id": "SDEL-ID-003",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 8e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_member_added: no match",
@@ -3177,7 +3177,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-004::positive::domain_group_removal_by_admin",
         "catalog_id": "SDEL-ID-004",
-        "duration_seconds": 2.5e-05,
+        "duration_seconds": 2.4e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_governance_service: no match",
@@ -3225,7 +3225,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-004::negative::application_group_removal",
         "catalog_id": "SDEL-ID-004",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_member_removed: match",
@@ -3254,7 +3254,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-005::positive::admin_account_reset",
         "catalog_id": "SDEL-ID-005",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_admin_reset: match",
@@ -3299,7 +3299,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-005::negative::self_service_password_change",
         "catalog_id": "SDEL-ID-005",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 8e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_admin_reset: no match",
@@ -3343,7 +3343,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-006::positive::spn_added_to_admin",
         "catalog_id": "SDEL-ID-006",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_directory_change: match",
@@ -3390,7 +3390,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-006::negative::user_account_changed_event",
         "catalog_id": "SDEL-ID-006",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 9e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_directory_change: no match",
@@ -3434,7 +3434,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-007::negative::display_name_changed",
         "catalog_id": "SDEL-ID-007",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_delegation_attribute: no match",
@@ -3601,7 +3601,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-009::negative::policy_value_deleted",
         "catalog_id": "SDEL-ID-009",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_directory_change: match",
@@ -3659,7 +3659,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-010::negative::group_membership_change",
         "catalog_id": "SDEL-ID-010",
-        "duration_seconds": 6e-06,
+        "duration_seconds": 7e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_trust_lifecycle: no match",
@@ -3789,7 +3789,7 @@
         "actual_match": true,
         "case_id": "SDEL-ID-012::positive::current_attribute_read",
         "catalog_id": "SDEL-ID-012",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_object_access: match",
@@ -3804,7 +3804,7 @@
         "actual_match": false,
         "case_id": "SDEL-ID-012::negative::computer_description_read",
         "catalog_id": "SDEL-ID-012",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_object_access: match",
@@ -3892,7 +3892,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-001::negative::usermod_changes_shell",
         "catalog_id": "SDEL-LX-001",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_account_tool: no match",
@@ -3920,7 +3920,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-002::positive::main_sudoers_written",
         "catalog_id": "SDEL-LX-002",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_package_manager: no match",
@@ -3935,7 +3935,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-002::positive::include_fragment_written",
         "catalog_id": "SDEL-LX-002",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_package_manager: no match",
@@ -3964,7 +3964,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-002::negative::package_manager_fragment",
         "catalog_id": "SDEL-LX-002",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection filter_package_manager: match",
@@ -3979,7 +3979,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-002::negative::backup_copy_outside_directory",
         "catalog_id": "SDEL-LX-002",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_sudoers_path: no match",
@@ -4008,7 +4008,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-003::positive::user_crontab_written",
         "catalog_id": "SDEL-LX-003",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_package_manager: no match",
@@ -4052,7 +4052,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-003::negative::job_documentation_written",
         "catalog_id": "SDEL-LX-003",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_cron_path: no match",
@@ -4096,7 +4096,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-004::negative::unit_in_managed_directory",
         "catalog_id": "SDEL-LX-004",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_unit_file: match",
@@ -4125,7 +4125,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-004::negative::service_notes_document",
         "catalog_id": "SDEL-LX-004",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 8e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_unit_file: no match",
@@ -4169,7 +4169,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-005::negative::configuration_agent_distribution",
         "catalog_id": "SDEL-LX-005",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection filter_configuration_agent: match",
@@ -4184,7 +4184,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-005::negative::client_configuration_written",
         "catalog_id": "SDEL-LX-005",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 9e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_authorized_keys: no match",
@@ -4198,7 +4198,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-005::negative::known_hosts_updated",
         "catalog_id": "SDEL-LX-005",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 1.5e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_authorized_keys: no match",
@@ -4212,7 +4212,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-006::positive::php_worker_spawns_shell",
         "catalog_id": "SDEL-LX-006",
-        "duration_seconds": 1.7e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_shell_child: match",
@@ -4227,7 +4227,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-006::positive::web_server_spawns_bash",
         "catalog_id": "SDEL-LX-006",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_shell_child: match",
@@ -4285,7 +4285,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-007::positive::curl_piped_to_shell",
         "catalog_id": "SDEL-LX-007",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_pipe_to_shell: match",
@@ -4315,7 +4315,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-007::negative::curl_to_file",
         "catalog_id": "SDEL-LX-007",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_pipe_to_shell: no match",
@@ -4373,7 +4373,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-008::positive::world_writable_mode",
         "catalog_id": "SDEL-LX-008",
-        "duration_seconds": 2.4e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_broad_mode: match",
@@ -4431,7 +4431,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-009::positive::authentication_log_removed",
         "catalog_id": "SDEL-LX-009",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_destructive_tool: match",
@@ -4461,7 +4461,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-009::negative::log_read_for_review",
         "catalog_id": "SDEL-LX-009",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_destructive_tool: no match",
@@ -4592,7 +4592,7 @@
         "actual_match": true,
         "case_id": "SDEL-LX-011::positive::binary_in_shared_memory",
         "catalog_id": "SDEL-LX-011",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_approved_build_output: no match",
@@ -4607,7 +4607,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-011::negative::binary_in_usr_bin",
         "catalog_id": "SDEL-LX-011",
-        "duration_seconds": 1.1e-05,
+        "duration_seconds": 1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_writable_directory: no match",
@@ -4695,7 +4695,7 @@
         "actual_match": false,
         "case_id": "SDEL-LX-012::negative::session_closed",
         "catalog_id": "SDEL-LX-012",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.2e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_failure_message: no match",
@@ -4769,7 +4769,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-001::negative::script_file_execution",
         "catalog_id": "SDEL-PS-001",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_encoded_option: no match",
@@ -4798,7 +4798,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-002::positive::hidden_with_policy_bypass",
         "catalog_id": "SDEL-PS-002",
-        "duration_seconds": 2.1e-05,
+        "duration_seconds": 1.9e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_bypass_options: match",
@@ -4830,7 +4830,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-002::negative::hidden_only",
         "catalog_id": "SDEL-PS-002",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_bypass_options: no match",
@@ -4846,7 +4846,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-002::negative::bypass_only",
         "catalog_id": "SDEL-PS-002",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_hidden_window: no match",
@@ -4919,7 +4919,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-003::negative::download_method_local_path",
         "catalog_id": "SDEL-PS-003",
-        "duration_seconds": 1.7e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_download_method: match",
@@ -4948,7 +4948,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-004::positive::assembly_load_from_bytes",
         "catalog_id": "SDEL-PS-004",
-        "duration_seconds": 8e-06,
+        "duration_seconds": 9e-06,
         "expected_match": true,
         "explanation": [
           "selection selection_reflection_terms: match",
@@ -5018,7 +5018,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-005::positive::field_lookup_and_set",
         "catalog_id": "SDEL-PS-005",
-        "duration_seconds": 2e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_modification_verbs: match",
@@ -5048,7 +5048,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-005::negative::compliance_state_read",
         "catalog_id": "SDEL-PS-005",
-        "duration_seconds": 2.3e-05,
+        "duration_seconds": 2.2e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_modification_verbs: no match",
@@ -5063,7 +5063,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-005::negative::generic_reflection_helper",
         "catalog_id": "SDEL-PS-005",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.2e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_scanner_internals: no match",
@@ -5077,7 +5077,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-005::negative::inventory_report",
         "catalog_id": "SDEL-PS-005",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_scanner_internals: no match",
@@ -5178,7 +5178,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-007::positive::local_administrators_added",
         "catalog_id": "SDEL-PS-007",
-        "duration_seconds": 1.9e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_membership_command: match",
@@ -5236,7 +5236,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-008::positive::register_with_action_object",
         "catalog_id": "SDEL-PS-008",
-        "duration_seconds": 1.7e-05,
+        "duration_seconds": 1.9e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_task_action: match",
@@ -5310,7 +5310,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-009::positive::decode_then_invoke_expression",
         "catalog_id": "SDEL-PS-009",
-        "duration_seconds": 2.5e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_base64_decode: match",
@@ -5325,7 +5325,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-009::positive::decode_then_create_scriptblock",
         "catalog_id": "SDEL-PS-009",
-        "duration_seconds": 2.4e-05,
+        "duration_seconds": 2e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_base64_decode: match",
@@ -5340,7 +5340,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-009::negative::decode_to_file",
         "catalog_id": "SDEL-PS-009",
-        "duration_seconds": 7.9e-05,
+        "duration_seconds": 6.7e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_base64_decode: match",
@@ -5355,7 +5355,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-009::negative::invoke_literal_command",
         "catalog_id": "SDEL-PS-009",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_base64_decode: no match",
@@ -5369,7 +5369,7 @@
         "actual_match": false,
         "case_id": "SDEL-PS-009::negative::base64_encoding_only",
         "catalog_id": "SDEL-PS-009",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.2e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_base64_decode: no match",
@@ -5383,7 +5383,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-010::positive::spreadsheet_parent",
         "catalog_id": "SDEL-PS-010",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_office_parent: match",
@@ -5398,7 +5398,7 @@
         "actual_match": true,
         "case_id": "SDEL-PS-010::positive::mail_client_parent",
         "catalog_id": "SDEL-PS-010",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_office_parent: match",
@@ -5457,7 +5457,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-001::positive::user_temp_directory",
         "catalog_id": "SDEL-WIN-001",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_approved_installer: no match",
@@ -5502,7 +5502,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-001::negative::managed_program_files",
         "catalog_id": "SDEL-WIN-001",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_writable_path: no match",
@@ -5559,7 +5559,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-002::positive::word_like_parent_spawns_cmd",
         "catalog_id": "SDEL-WIN-002",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_interpreter_child: match",
@@ -5574,7 +5574,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-002::positive::excel_like_parent_spawns_powershell",
         "catalog_id": "SDEL-WIN-002",
-        "duration_seconds": 1.8e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_interpreter_child: match",
@@ -5618,7 +5618,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-002::negative::office_parent_spawns_printer_helper",
         "catalog_id": "SDEL-WIN-002",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_interpreter_child: no match",
@@ -5662,7 +5662,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-003::positive::vbscript_protocol",
         "catalog_id": "SDEL-WIN-003",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_script_host: match",
@@ -5677,7 +5677,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-003::negative::local_hta_file",
         "catalog_id": "SDEL-WIN-003",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_script_host: match",
@@ -5706,7 +5706,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-003::negative::unrelated_system_binary",
         "catalog_id": "SDEL-WIN-003",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 8e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_script_host: no match",
@@ -5720,7 +5720,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-004::positive::component_registration_remote",
         "catalog_id": "SDEL-WIN-004",
-        "duration_seconds": 1.9e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_remote_scheme: match",
@@ -5735,7 +5735,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-004::positive::script_host_remote",
         "catalog_id": "SDEL-WIN-004",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.7e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_remote_scheme: match",
@@ -5750,7 +5750,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-004::negative::local_component_registration",
         "catalog_id": "SDEL-WIN-004",
-        "duration_seconds": 1.5e-05,
+        "duration_seconds": 1.6e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_remote_scheme: no match",
@@ -5779,7 +5779,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-004::negative::script_host_local_file",
         "catalog_id": "SDEL-WIN-004",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_remote_scheme: no match",
@@ -5809,7 +5809,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-005::positive::base64_decode",
         "catalog_id": "SDEL-WIN-005",
-        "duration_seconds": 1.4e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_certificate_utility: match",
@@ -5853,7 +5853,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-005::negative::certificate_template_query",
         "catalog_id": "SDEL-WIN-005",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_certificate_utility: match",
@@ -5971,7 +5971,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-007::negative::task_action_managed_path",
         "catalog_id": "SDEL-WIN-007",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.2e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_task_registered: match",
@@ -6000,7 +6000,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-007::negative::task_description_mentions_temp",
         "catalog_id": "SDEL-WIN-007",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.3e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_task_registered: match",
@@ -6015,7 +6015,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-008::positive::run_value_user_temp",
         "catalog_id": "SDEL-WIN-008",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_autostart_key: match",
@@ -6045,7 +6045,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-008::negative::run_value_managed_path",
         "catalog_id": "SDEL-WIN-008",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_autostart_key: match",
@@ -6060,7 +6060,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-008::negative::application_setting_temp_path",
         "catalog_id": "SDEL-WIN-008",
-        "duration_seconds": 9e-06,
+        "duration_seconds": 1.5e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_autostart_key: no match",
@@ -6088,7 +6088,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-009::positive::filter_created",
         "catalog_id": "SDEL-WIN-009",
-        "duration_seconds": 1.1e-05,
+        "duration_seconds": 1e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_subscription_component: match",
@@ -6116,7 +6116,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-009::negative::filter_deleted",
         "catalog_id": "SDEL-WIN-009",
-        "duration_seconds": 7e-06,
+        "duration_seconds": 8e-06,
         "expected_match": false,
         "explanation": [
           "selection selection_subscription_component: no match",
@@ -6158,7 +6158,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-010::positive::cleared_by_admin",
         "catalog_id": "SDEL-WIN-010",
-        "duration_seconds": 1e-05,
+        "duration_seconds": 9e-06,
         "expected_match": true,
         "explanation": [
           "selection selection_log_cleared: match",
@@ -6243,7 +6243,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-011::positive::policy_registry_write",
         "catalog_id": "SDEL-WIN-011",
-        "duration_seconds": 2.2e-05,
+        "duration_seconds": 2e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_config_tool: match",
@@ -6288,7 +6288,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-011::negative::documentation_tool_mentions_setting",
         "catalog_id": "SDEL-WIN-011",
-        "duration_seconds": 1.2e-05,
+        "duration_seconds": 1.1e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_config_tool: no match",
@@ -6302,7 +6302,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-012::positive::read_access_from_temp_binary",
         "catalog_id": "SDEL-WIN-012",
-        "duration_seconds": 2.2e-05,
+        "duration_seconds": 2.1e-05,
         "expected_match": true,
         "explanation": [
           "selection filter_known_security_agent: no match",
@@ -6334,7 +6334,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-012::negative::query_limited_information",
         "catalog_id": "SDEL-WIN-012",
-        "duration_seconds": 1.6e-05,
+        "duration_seconds": 1.5e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_memory_access: no match",
@@ -6413,7 +6413,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-013::negative::scoped_allow_rule",
         "catalog_id": "SDEL-WIN-013",
-        "duration_seconds": 2.5e-05,
+        "duration_seconds": 2.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_add_rule: match",
@@ -6430,7 +6430,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-013::negative::block_rule_any_remote",
         "catalog_id": "SDEL-WIN-013",
-        "duration_seconds": 1.7e-05,
+        "duration_seconds": 1.8e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_add_rule: match",
@@ -6446,7 +6446,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-013::negative::firewall_rule_listing",
         "catalog_id": "SDEL-WIN-013",
-        "duration_seconds": 1.3e-05,
+        "duration_seconds": 1.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_add_rule: no match",
@@ -6612,7 +6612,7 @@
         "actual_match": true,
         "case_id": "SDEL-WIN-016::positive::background_transfer_job",
         "catalog_id": "SDEL-WIN-016",
-        "duration_seconds": 2.8e-05,
+        "duration_seconds": 2.6e-05,
         "expected_match": true,
         "explanation": [
           "selection selection_remote_scheme: match",
@@ -6642,7 +6642,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-016::negative::local_package_install",
         "catalog_id": "SDEL-WIN-016",
-        "duration_seconds": 2.1e-05,
+        "duration_seconds": 2.4e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_remote_scheme: no match",
@@ -6672,7 +6672,7 @@
         "actual_match": false,
         "case_id": "SDEL-WIN-016::negative::transfer_utility_job_listing",
         "catalog_id": "SDEL-WIN-016",
-        "duration_seconds": 2e-05,
+        "duration_seconds": 1.9e-05,
         "expected_match": false,
         "explanation": [
           "selection selection_remote_scheme: no match",
@@ -6702,7 +6702,7 @@
     "counts_by_severity": {},
     "error_count": 0,
     "findings": [],
-    "generated_at": "2026-08-07T00:23:58.520Z",
+    "generated_at": "2026-08-07T10:47:33.675Z",
     "passed": true,
     "rules_examined": 56,
     "warning_count": 0

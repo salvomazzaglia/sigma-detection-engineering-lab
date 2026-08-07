@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY -->
-<testsuites name="sigma-detection-engineering-lab" tests="283" failures="0" errors="0" skipped="0" time="0.005564">
-  <testsuite name="SDEL-COR-001" tests="5" failures="0" errors="0" skipped="0" time="0.000410">
+<testsuites name="sigma-detection-engineering-lab" tests="283" failures="0" errors="0" skipped="0" time="0.005281">
+  <testsuite name="SDEL-COR-001" tests="5" failures="0" errors="0" skipped="0" time="0.000386">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-001::positive::failures_then_success_same_account" classname="SDEL-COR-001" time="0.000167">
+    <testcase name="SDEL-COR-001::positive::failures_then_success_same_account" classname="SDEL-COR-001" time="0.000160">
       <system-out>correlation type: temporal_ordered
 timespan: 15m (900s)
 referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success
@@ -15,7 +15,7 @@ events considered: 5, skipped: 0
 groups: 1
 group synthetic-user: best ordered prefix 2/2 rules in sequence -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-001::positive::failures_then_success_admin_account" classname="SDEL-COR-001" time="0.000067">
+    <testcase name="SDEL-COR-001::positive::failures_then_success_admin_account" classname="SDEL-COR-001" time="0.000062">
       <system-out>correlation type: temporal_ordered
 timespan: 15m (900s)
 referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success
@@ -24,7 +24,7 @@ events considered: 3, skipped: 0
 groups: 1
 group synthetic-admin: best ordered prefix 2/2 rules in sequence -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-001::negative::success_then_failures" classname="SDEL-COR-001" time="0.000066">
+    <testcase name="SDEL-COR-001::negative::success_then_failures" classname="SDEL-COR-001" time="0.000054">
       <system-out>correlation type: temporal_ordered
 timespan: 15m (900s)
 referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success
@@ -33,7 +33,7 @@ events considered: 3, skipped: 0
 groups: 1
 group synthetic-user: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-001::negative::failures_and_success_different_accounts" classname="SDEL-COR-001" time="0.000057">
+    <testcase name="SDEL-COR-001::negative::failures_and_success_different_accounts" classname="SDEL-COR-001" time="0.000055">
       <system-out>correlation type: temporal_ordered
 timespan: 15m (900s)
 referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success
@@ -43,7 +43,7 @@ groups: 2
 group synthetic-admin: best ordered prefix 0/2 rules in sequence -&gt; not satisfied
 group synthetic-user: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-001::negative::success_outside_window" classname="SDEL-COR-001" time="0.000053">
+    <testcase name="SDEL-COR-001::negative::success_outside_window" classname="SDEL-COR-001" time="0.000054">
       <system-out>correlation type: temporal_ordered
 timespan: 15m (900s)
 referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success
@@ -53,12 +53,12 @@ groups: 1
 group synthetic-user: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-COR-002" tests="5" failures="0" errors="0" skipped="0" time="0.000297">
+  <testsuite name="SDEL-COR-002" tests="5" failures="0" errors="0" skipped="0" time="0.000289">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-002::positive::five_distinct_accounts_one_source" classname="SDEL-COR-002" time="0.000062">
+    <testcase name="SDEL-COR-002::positive::five_distinct_accounts_one_source" classname="SDEL-COR-002" time="0.000060">
       <system-out>correlation type: value_count
 timespan: 15m (900s)
 referenced rules: sdel_cor_002_windows_logon_failure
@@ -67,7 +67,7 @@ events considered: 5, skipped: 0
 groups: 1
 group 192.0.2.77: best distinct 'TargetUserName' count 5 vs count &gt;= 5 -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-002::positive::six_distinct_accounts_one_source" classname="SDEL-COR-002" time="0.000060">
+    <testcase name="SDEL-COR-002::positive::six_distinct_accounts_one_source" classname="SDEL-COR-002" time="0.000059">
       <system-out>correlation type: value_count
 timespan: 15m (900s)
 referenced rules: sdel_cor_002_windows_logon_failure
@@ -76,7 +76,7 @@ events considered: 6, skipped: 0
 groups: 1
 group 192.0.2.10: best distinct 'TargetUserName' count 6 vs count &gt;= 5 -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-002::negative::repeated_failures_single_account" classname="SDEL-COR-002" time="0.000064">
+    <testcase name="SDEL-COR-002::negative::repeated_failures_single_account" classname="SDEL-COR-002" time="0.000065">
       <system-out>correlation type: value_count
 timespan: 15m (900s)
 referenced rules: sdel_cor_002_windows_logon_failure
@@ -85,7 +85,7 @@ events considered: 6, skipped: 0
 groups: 1
 group 192.0.2.77: best distinct 'TargetUserName' count 1 vs count &gt;= 5 -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-002::negative::distinct_accounts_split_across_sources" classname="SDEL-COR-002" time="0.000066">
+    <testcase name="SDEL-COR-002::negative::distinct_accounts_split_across_sources" classname="SDEL-COR-002" time="0.000062">
       <system-out>correlation type: value_count
 timespan: 15m (900s)
 referenced rules: sdel_cor_002_windows_logon_failure
@@ -95,7 +95,7 @@ groups: 2
 group 192.0.2.10: best distinct 'TargetUserName' count 3 vs count &gt;= 5 -&gt; not satisfied
 group 192.0.2.77: best distinct 'TargetUserName' count 3 vs count &gt;= 5 -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-002::negative::four_distinct_accounts_below_threshold" classname="SDEL-COR-002" time="0.000044">
+    <testcase name="SDEL-COR-002::negative::four_distinct_accounts_below_threshold" classname="SDEL-COR-002" time="0.000043">
       <system-out>correlation type: value_count
 timespan: 15m (900s)
 referenced rules: sdel_cor_002_windows_logon_failure
@@ -105,12 +105,12 @@ groups: 1
 group 192.0.2.77: best distinct 'TargetUserName' count 4 vs count &gt;= 5 -&gt; not satisfied</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-COR-003" tests="5" failures="0" errors="0" skipped="0" time="0.000561">
+  <testsuite name="SDEL-COR-003" tests="5" failures="0" errors="0" skipped="0" time="0.000427">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-003::positive::twelve_failures_one_account" classname="SDEL-COR-003" time="0.000106">
+    <testcase name="SDEL-COR-003::positive::twelve_failures_one_account" classname="SDEL-COR-003" time="0.000109">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_003_kerberos_preauth_failure
@@ -119,7 +119,7 @@ events considered: 12, skipped: 0
 groups: 1
 group synthetic-user: best event count 12 vs count &gt;= 10 -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-003::positive::ten_failures_admin_account" classname="SDEL-COR-003" time="0.000085">
+    <testcase name="SDEL-COR-003::positive::ten_failures_admin_account" classname="SDEL-COR-003" time="0.000079">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_003_kerberos_preauth_failure
@@ -128,7 +128,7 @@ events considered: 10, skipped: 0
 groups: 1
 group synthetic-admin: best event count 10 vs count &gt;= 10 -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-003::negative::five_failures_below_threshold" classname="SDEL-COR-003" time="0.000048">
+    <testcase name="SDEL-COR-003::negative::five_failures_below_threshold" classname="SDEL-COR-003" time="0.000047">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_003_kerberos_preauth_failure
@@ -137,7 +137,7 @@ events considered: 5, skipped: 0
 groups: 1
 group synthetic-user: best event count 5 vs count &gt;= 10 -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-003::negative::failures_spread_across_accounts" classname="SDEL-COR-003" time="0.000191">
+    <testcase name="SDEL-COR-003::negative::failures_spread_across_accounts" classname="SDEL-COR-003" time="0.000099">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_003_kerberos_preauth_failure
@@ -149,7 +149,7 @@ group synthetic-user-b: best event count 3 vs count &gt;= 10 -&gt; not satisfied
 group synthetic-user-c: best event count 3 vs count &gt;= 10 -&gt; not satisfied
 group synthetic-user-d: best event count 3 vs count &gt;= 10 -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-003::negative::failures_spread_beyond_window" classname="SDEL-COR-003" time="0.000131">
+    <testcase name="SDEL-COR-003::negative::failures_spread_beyond_window" classname="SDEL-COR-003" time="0.000093">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_003_kerberos_preauth_failure
@@ -159,12 +159,12 @@ groups: 1
 group synthetic-user: best event count 2 vs count &gt;= 10 -&gt; not satisfied</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-COR-004" tests="5" failures="0" errors="0" skipped="0" time="0.000398">
+  <testsuite name="SDEL-COR-004" tests="5" failures="0" errors="0" skipped="0" time="0.000350">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-004::positive::four_additions_one_subject" classname="SDEL-COR-004" time="0.000128">
+    <testcase name="SDEL-COR-004::positive::four_additions_one_subject" classname="SDEL-COR-004" time="0.000086">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_004_privileged_group_addition
@@ -173,7 +173,7 @@ events considered: 4, skipped: 0
 groups: 1
 group synthetic-operator: best event count 4 vs count &gt;= 4 -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-004::positive::five_additions_mixed_groups" classname="SDEL-COR-004" time="0.000086">
+    <testcase name="SDEL-COR-004::positive::five_additions_mixed_groups" classname="SDEL-COR-004" time="0.000081">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_004_privileged_group_addition
@@ -203,7 +203,7 @@ group synthetic-operator-b: best event count 1 vs count &gt;= 4 -&gt; not satisf
 group synthetic-operator-c: best event count 1 vs count &gt;= 4 -&gt; not satisfied
 group synthetic-operator-d: best event count 1 vs count &gt;= 4 -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-004::negative::additions_to_non_privileged_group" classname="SDEL-COR-004" time="0.000071">
+    <testcase name="SDEL-COR-004::negative::additions_to_non_privileged_group" classname="SDEL-COR-004" time="0.000070">
       <system-out>correlation type: event_count
 timespan: 10m (600s)
 referenced rules: sdel_cor_004_privileged_group_addition
@@ -212,12 +212,12 @@ events considered: 0, skipped: 0
 groups: 0</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-COR-005" tests="5" failures="0" errors="0" skipped="0" time="0.000200">
+  <testsuite name="SDEL-COR-005" tests="5" failures="0" errors="0" skipped="0" time="0.000192">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-005::positive::service_installed_then_executed" classname="SDEL-COR-005" time="0.000049">
+    <testcase name="SDEL-COR-005::positive::service_installed_then_executed" classname="SDEL-COR-005" time="0.000045">
       <system-out>correlation type: temporal_ordered
 timespan: 10m (600s)
 referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started
@@ -226,7 +226,7 @@ events considered: 2, skipped: 0
 groups: 1
 group synthetic-host-01|c:\synthetic\windows\temp\synthetic_service.exe: best ordered prefix 2/2 rules in sequence -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-005::positive::public_path_service_then_execution" classname="SDEL-COR-005" time="0.000039">
+    <testcase name="SDEL-COR-005::positive::public_path_service_then_execution" classname="SDEL-COR-005" time="0.000038">
       <system-out>correlation type: temporal_ordered
 timespan: 10m (600s)
 referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started
@@ -244,7 +244,7 @@ events considered: 2, skipped: 0
 groups: 1
 group synthetic-host-01|c:\synthetic\windows\temp\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-005::negative::different_binary_paths" classname="SDEL-COR-005" time="0.000039">
+    <testcase name="SDEL-COR-005::negative::different_binary_paths" classname="SDEL-COR-005" time="0.000038">
       <system-out>correlation type: temporal_ordered
 timespan: 10m (600s)
 referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started
@@ -254,7 +254,7 @@ groups: 2
 group synthetic-host-01|c:\synthetic\windows\system32\notepad.exe: best ordered prefix 0/2 rules in sequence -&gt; not satisfied
 group synthetic-host-01|c:\synthetic\windows\temp\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-005::negative::different_hosts" classname="SDEL-COR-005" time="0.000037">
+    <testcase name="SDEL-COR-005::negative::different_hosts" classname="SDEL-COR-005" time="0.000036">
       <system-out>correlation type: temporal_ordered
 timespan: 10m (600s)
 referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started
@@ -265,12 +265,12 @@ group synthetic-dc01|c:\synthetic\windows\temp\synthetic_service.exe: best order
 group synthetic-host-01|c:\synthetic\windows\temp\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-COR-006" tests="5" failures="0" errors="0" skipped="0" time="0.000225">
+  <testsuite name="SDEL-COR-006" tests="5" failures="0" errors="0" skipped="0" time="0.000220">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-COR-006::positive::write_then_execute_user_temp" classname="SDEL-COR-006" time="0.000050">
+    <testcase name="SDEL-COR-006::positive::write_then_execute_user_temp" classname="SDEL-COR-006" time="0.000049">
       <system-out>correlation type: temporal_ordered
 timespan: 5m (300s)
 referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched
@@ -279,7 +279,7 @@ events considered: 2, skipped: 0
 groups: 1
 group synthetic-host-01|c:\synthetic\users\synthetic-user\appdata\local\temp\synthetic_tool.exe: best ordered prefix 2/2 rules in sequence -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-006::positive::write_then_execute_public" classname="SDEL-COR-006" time="0.000046">
+    <testcase name="SDEL-COR-006::positive::write_then_execute_public" classname="SDEL-COR-006" time="0.000045">
       <system-out>correlation type: temporal_ordered
 timespan: 5m (300s)
 referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched
@@ -288,7 +288,7 @@ events considered: 2, skipped: 0
 groups: 1
 group synthetic-host-01|c:\synthetic\users\public\synthetic_helper.exe: best ordered prefix 2/2 rules in sequence -&gt; satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-006::negative::execute_then_write" classname="SDEL-COR-006" time="0.000043">
+    <testcase name="SDEL-COR-006::negative::execute_then_write" classname="SDEL-COR-006" time="0.000042">
       <system-out>correlation type: temporal_ordered
 timespan: 5m (300s)
 referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched
@@ -297,7 +297,7 @@ events considered: 2, skipped: 0
 groups: 1
 group synthetic-host-01|c:\synthetic\users\synthetic-user\appdata\local\temp\synthetic_tool.exe: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
-    <testcase name="SDEL-COR-006::negative::write_then_execute_different_file" classname="SDEL-COR-006" time="0.000045">
+    <testcase name="SDEL-COR-006::negative::write_then_execute_different_file" classname="SDEL-COR-006" time="0.000043">
       <system-out>correlation type: temporal_ordered
 timespan: 5m (300s)
 referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched
@@ -317,17 +317,17 @@ groups: 1
 group synthetic-host-01|c:\synthetic\users\synthetic-user\appdata\local\temp\synthetic_tool.exe: best ordered prefix 1/2 rules in sequence -&gt; not satisfied</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-001" tests="5" failures="0" errors="0" skipped="0" time="0.000069">
+  <testsuite name="SDEL-ID-001" tests="5" failures="0" errors="0" skipped="0" time="0.000068">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-ID-001::positive::created_by_admin" classname="SDEL-ID-001" time="0.000021">
+    <testcase name="SDEL-ID-001::positive::created_by_admin" classname="SDEL-ID-001" time="0.000020">
       <system-out>selection filter_provisioning_service: no match
 selection selection_account_created: match
 condition selection_account_created and not filter_provisioning_service -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-001::positive::created_by_helpdesk" classname="SDEL-ID-001" time="0.000014">
+    <testcase name="SDEL-ID-001::positive::created_by_helpdesk" classname="SDEL-ID-001" time="0.000015">
       <system-out>selection filter_provisioning_service: no match
 selection selection_account_created: match
 condition selection_account_created and not filter_provisioning_service -&gt; True</system-out>
@@ -346,7 +346,7 @@ condition selection_account_created and not filter_provisioning_service -&gt; Fa
 condition selection_account_created and not filter_provisioning_service -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-002" tests="5" failures="0" errors="0" skipped="0" time="0.000030">
+  <testsuite name="SDEL-ID-002" tests="5" failures="0" errors="0" skipped="0" time="0.000031">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -355,7 +355,7 @@ condition selection_account_created and not filter_provisioning_service -&gt; Fa
       <system-out>selection selection_account_enabled: match
 condition selection_account_enabled -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-002::positive::service_account_enabled" classname="SDEL-ID-002" time="0.000006">
+    <testcase name="SDEL-ID-002::positive::service_account_enabled" classname="SDEL-ID-002" time="0.000007">
       <system-out>selection selection_account_enabled: match
 condition selection_account_enabled -&gt; True</system-out>
     </testcase>
@@ -372,7 +372,7 @@ condition selection_account_enabled -&gt; False</system-out>
 condition selection_account_enabled -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-003" tests="5" failures="0" errors="0" skipped="0" time="0.000061">
+  <testsuite name="SDEL-ID-003" tests="5" failures="0" errors="0" skipped="0" time="0.000060">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -396,17 +396,17 @@ condition selection_member_added and selection_privileged_group -&gt; False</sys
       <system-out>selection selection_member_added: no match
 condition selection_member_added and selection_privileged_group -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-ID-003::negative::security_group_created" classname="SDEL-ID-003" time="0.000009">
+    <testcase name="SDEL-ID-003::negative::security_group_created" classname="SDEL-ID-003" time="0.000008">
       <system-out>selection selection_member_added: no match
 condition selection_member_added and selection_privileged_group -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-004" tests="5" failures="0" errors="0" skipped="0" time="0.000086">
+  <testsuite name="SDEL-ID-004" tests="5" failures="0" errors="0" skipped="0" time="0.000085">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-ID-004::positive::domain_group_removal_by_admin" classname="SDEL-ID-004" time="0.000025">
+    <testcase name="SDEL-ID-004::positive::domain_group_removal_by_admin" classname="SDEL-ID-004" time="0.000024">
       <system-out>selection filter_governance_service: no match
 selection selection_member_removed: match
 selection selection_privileged_group: match
@@ -424,7 +424,7 @@ selection selection_member_removed: match
 selection selection_privileged_group: match
 condition selection_member_removed and selection_privileged_group and not filter_governance_service -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-ID-004::negative::application_group_removal" classname="SDEL-ID-004" time="0.000014">
+    <testcase name="SDEL-ID-004::negative::application_group_removal" classname="SDEL-ID-004" time="0.000015">
       <system-out>selection selection_member_removed: match
 selection selection_privileged_group: no match
 condition selection_member_removed and selection_privileged_group and not filter_governance_service -&gt; False</system-out>
@@ -434,12 +434,12 @@ condition selection_member_removed and selection_privileged_group and not filter
 condition selection_member_removed and selection_privileged_group and not filter_governance_service -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-005" tests="5" failures="0" errors="0" skipped="0" time="0.000059">
+  <testsuite name="SDEL-ID-005" tests="5" failures="0" errors="0" skipped="0" time="0.000058">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-ID-005::positive::admin_account_reset" classname="SDEL-ID-005" time="0.000016">
+    <testcase name="SDEL-ID-005::positive::admin_account_reset" classname="SDEL-ID-005" time="0.000015">
       <system-out>selection selection_admin_reset: match
 selection selection_privileged_target: match
 condition selection_admin_reset and selection_privileged_target -&gt; True</system-out>
@@ -454,7 +454,7 @@ condition selection_admin_reset and selection_privileged_target -&gt; True</syst
 selection selection_privileged_target: no match
 condition selection_admin_reset and selection_privileged_target -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-ID-005::negative::self_service_password_change" classname="SDEL-ID-005" time="0.000009">
+    <testcase name="SDEL-ID-005::negative::self_service_password_change" classname="SDEL-ID-005" time="0.000008">
       <system-out>selection selection_admin_reset: no match
 condition selection_admin_reset and selection_privileged_target -&gt; False</system-out>
     </testcase>
@@ -463,7 +463,7 @@ condition selection_admin_reset and selection_privileged_target -&gt; False</sys
 condition selection_admin_reset and selection_privileged_target -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-006" tests="5" failures="0" errors="0" skipped="0" time="0.000074">
+  <testsuite name="SDEL-ID-006" tests="5" failures="0" errors="0" skipped="0" time="0.000073">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -474,7 +474,7 @@ selection selection_spn_attribute: match
 selection selection_value_written: match
 condition selection_directory_change and selection_spn_attribute and selection_value_written -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-006::positive::spn_added_to_admin" classname="SDEL-ID-006" time="0.000016">
+    <testcase name="SDEL-ID-006::positive::spn_added_to_admin" classname="SDEL-ID-006" time="0.000017">
       <system-out>selection selection_directory_change: match
 selection selection_spn_attribute: match
 selection selection_value_written: match
@@ -491,12 +491,12 @@ condition selection_directory_change and selection_spn_attribute and selection_v
 selection selection_spn_attribute: no match
 condition selection_directory_change and selection_spn_attribute and selection_value_written -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-ID-006::negative::user_account_changed_event" classname="SDEL-ID-006" time="0.000010">
+    <testcase name="SDEL-ID-006::negative::user_account_changed_event" classname="SDEL-ID-006" time="0.000009">
       <system-out>selection selection_directory_change: no match
 condition selection_directory_change and selection_spn_attribute and selection_value_written -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-007" tests="5" failures="0" errors="0" skipped="0" time="0.000057">
+  <testsuite name="SDEL-ID-007" tests="5" failures="0" errors="0" skipped="0" time="0.000058">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -511,7 +511,7 @@ condition selection_directory_change and selection_delegation_attribute -&gt; Tr
 selection selection_directory_change: match
 condition selection_directory_change and selection_delegation_attribute -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-007::negative::display_name_changed" classname="SDEL-ID-007" time="0.000012">
+    <testcase name="SDEL-ID-007::negative::display_name_changed" classname="SDEL-ID-007" time="0.000013">
       <system-out>selection selection_delegation_attribute: no match
 selection selection_directory_change: match
 condition selection_directory_change and selection_delegation_attribute -&gt; False</system-out>
@@ -525,7 +525,7 @@ condition selection_directory_change and selection_delegation_attribute -&gt; Fa
 condition selection_directory_change and selection_delegation_attribute -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-008" tests="5" failures="0" errors="0" skipped="0" time="0.000076">
+  <testsuite name="SDEL-ID-008" tests="5" failures="0" errors="0" skipped="0" time="0.000075">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -558,7 +558,7 @@ condition selection_directory_change and selection_security_descriptor and selec
 condition selection_directory_change and selection_security_descriptor and selection_replication_right -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-009" tests="5" failures="0" errors="0" skipped="0" time="0.000077">
+  <testsuite name="SDEL-ID-009" tests="5" failures="0" errors="0" skipped="0" time="0.000074">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -580,7 +580,7 @@ condition selection_directory_change and selection_policy_container and selectio
 selection selection_policy_container: no match
 condition selection_directory_change and selection_policy_container and selection_value_written -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-ID-009::negative::policy_value_deleted" classname="SDEL-ID-009" time="0.000018">
+    <testcase name="SDEL-ID-009::negative::policy_value_deleted" classname="SDEL-ID-009" time="0.000016">
       <system-out>selection selection_directory_change: match
 selection selection_policy_container: match
 selection selection_value_written: no match
@@ -591,7 +591,7 @@ condition selection_directory_change and selection_policy_container and selectio
 condition selection_directory_change and selection_policy_container and selection_value_written -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-010" tests="5" failures="0" errors="0" skipped="0" time="0.000033">
+  <testsuite name="SDEL-ID-010" tests="5" failures="0" errors="0" skipped="0" time="0.000034">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -604,7 +604,7 @@ condition selection_trust_lifecycle -&gt; True</system-out>
       <system-out>selection selection_trust_lifecycle: match
 condition selection_trust_lifecycle -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-010::negative::group_membership_change" classname="SDEL-ID-010" time="0.000006">
+    <testcase name="SDEL-ID-010::negative::group_membership_change" classname="SDEL-ID-010" time="0.000007">
       <system-out>selection selection_trust_lifecycle: no match
 condition selection_trust_lifecycle -&gt; False</system-out>
     </testcase>
@@ -617,7 +617,7 @@ condition selection_trust_lifecycle -&gt; False</system-out>
 condition selection_trust_lifecycle -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-ID-011" tests="5" failures="0" errors="0" skipped="0" time="0.000058">
+  <testsuite name="SDEL-ID-011" tests="5" failures="0" errors="0" skipped="0" time="0.000059">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -656,12 +656,12 @@ condition selection_audit_policy_change and selection_auditing_removed -&gt; Fal
 selection selection_password_attribute: match
 condition selection_object_access and selection_password_attribute -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-012::positive::current_attribute_read" classname="SDEL-ID-012" time="0.000014">
+    <testcase name="SDEL-ID-012::positive::current_attribute_read" classname="SDEL-ID-012" time="0.000013">
       <system-out>selection selection_object_access: match
 selection selection_password_attribute: match
 condition selection_object_access and selection_password_attribute -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-ID-012::negative::computer_description_read" classname="SDEL-ID-012" time="0.000012">
+    <testcase name="SDEL-ID-012::negative::computer_description_read" classname="SDEL-ID-012" time="0.000013">
       <system-out>selection selection_object_access: match
 selection selection_password_attribute: no match
 condition selection_object_access and selection_password_attribute -&gt; False</system-out>
@@ -695,7 +695,7 @@ condition selection_account_tool and selection_creation_message -&gt; True</syst
       <system-out>selection selection_account_tool: no match
 condition selection_account_tool and selection_creation_message -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-001::negative::usermod_changes_shell" classname="SDEL-LX-001" time="0.000010">
+    <testcase name="SDEL-LX-001::negative::usermod_changes_shell" classname="SDEL-LX-001" time="0.000011">
       <system-out>selection selection_account_tool: no match
 condition selection_account_tool and selection_creation_message -&gt; False</system-out>
     </testcase>
@@ -709,12 +709,12 @@ condition selection_account_tool and selection_creation_message -&gt; False</sys
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-LX-002::positive::main_sudoers_written" classname="SDEL-LX-002" time="0.000018">
+    <testcase name="SDEL-LX-002::positive::main_sudoers_written" classname="SDEL-LX-002" time="0.000017">
       <system-out>selection filter_package_manager: no match
 selection selection_sudoers_path: match
 condition selection_sudoers_path and not filter_package_manager -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-002::positive::include_fragment_written" classname="SDEL-LX-002" time="0.000015">
+    <testcase name="SDEL-LX-002::positive::include_fragment_written" classname="SDEL-LX-002" time="0.000014">
       <system-out>selection filter_package_manager: no match
 selection selection_sudoers_path: match
 condition selection_sudoers_path and not filter_package_manager -&gt; True</system-out>
@@ -723,12 +723,12 @@ condition selection_sudoers_path and not filter_package_manager -&gt; True</syst
       <system-out>selection selection_sudoers_path: no match
 condition selection_sudoers_path and not filter_package_manager -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-002::negative::package_manager_fragment" classname="SDEL-LX-002" time="0.000013">
+    <testcase name="SDEL-LX-002::negative::package_manager_fragment" classname="SDEL-LX-002" time="0.000014">
       <system-out>selection filter_package_manager: match
 selection selection_sudoers_path: match
 condition selection_sudoers_path and not filter_package_manager -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-002::negative::backup_copy_outside_directory" classname="SDEL-LX-002" time="0.000009">
+    <testcase name="SDEL-LX-002::negative::backup_copy_outside_directory" classname="SDEL-LX-002" time="0.000010">
       <system-out>selection selection_sudoers_path: no match
 condition selection_sudoers_path and not filter_package_manager -&gt; False</system-out>
     </testcase>
@@ -743,7 +743,7 @@ condition selection_sudoers_path and not filter_package_manager -&gt; False</sys
 selection selection_cron_path: match
 condition selection_cron_path and not filter_package_manager -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-003::positive::user_crontab_written" classname="SDEL-LX-003" time="0.000014">
+    <testcase name="SDEL-LX-003::positive::user_crontab_written" classname="SDEL-LX-003" time="0.000015">
       <system-out>selection filter_package_manager: no match
 selection selection_cron_path: match
 condition selection_cron_path and not filter_package_manager -&gt; True</system-out>
@@ -757,7 +757,7 @@ condition selection_cron_path and not filter_package_manager -&gt; False</system
 selection selection_cron_path: match
 condition selection_cron_path and not filter_package_manager -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-003::negative::job_documentation_written" classname="SDEL-LX-003" time="0.000010">
+    <testcase name="SDEL-LX-003::negative::job_documentation_written" classname="SDEL-LX-003" time="0.000011">
       <system-out>selection selection_cron_path: no match
 condition selection_cron_path and not filter_package_manager -&gt; False</system-out>
     </testcase>
@@ -777,7 +777,7 @@ condition selection_unit_file and selection_unusual_location -&gt; True</system-
 selection selection_unusual_location: match
 condition selection_unit_file and selection_unusual_location -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-004::negative::unit_in_managed_directory" classname="SDEL-LX-004" time="0.000013">
+    <testcase name="SDEL-LX-004::negative::unit_in_managed_directory" classname="SDEL-LX-004" time="0.000014">
       <system-out>selection selection_unit_file: match
 selection selection_unusual_location: no match
 condition selection_unit_file and selection_unusual_location -&gt; False</system-out>
@@ -786,12 +786,12 @@ condition selection_unit_file and selection_unusual_location -&gt; False</system
       <system-out>selection selection_unit_file: no match
 condition selection_unit_file and selection_unusual_location -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-004::negative::service_notes_document" classname="SDEL-LX-004" time="0.000009">
+    <testcase name="SDEL-LX-004::negative::service_notes_document" classname="SDEL-LX-004" time="0.000008">
       <system-out>selection selection_unit_file: no match
 condition selection_unit_file and selection_unusual_location -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-005" tests="5" failures="0" errors="0" skipped="0" time="0.000062">
+  <testsuite name="SDEL-LX-005" tests="5" failures="0" errors="0" skipped="0" time="0.000067">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -806,31 +806,31 @@ condition selection_authorized_keys and not filter_configuration_agent -&gt; Tru
 selection selection_authorized_keys: match
 condition selection_authorized_keys and not filter_configuration_agent -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-005::negative::configuration_agent_distribution" classname="SDEL-LX-005" time="0.000013">
+    <testcase name="SDEL-LX-005::negative::configuration_agent_distribution" classname="SDEL-LX-005" time="0.000014">
       <system-out>selection filter_configuration_agent: match
 selection selection_authorized_keys: match
 condition selection_authorized_keys and not filter_configuration_agent -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-005::negative::client_configuration_written" classname="SDEL-LX-005" time="0.000010">
+    <testcase name="SDEL-LX-005::negative::client_configuration_written" classname="SDEL-LX-005" time="0.000009">
       <system-out>selection selection_authorized_keys: no match
 condition selection_authorized_keys and not filter_configuration_agent -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-005::negative::known_hosts_updated" classname="SDEL-LX-005" time="0.000009">
+    <testcase name="SDEL-LX-005::negative::known_hosts_updated" classname="SDEL-LX-005" time="0.000015">
       <system-out>selection selection_authorized_keys: no match
 condition selection_authorized_keys and not filter_configuration_agent -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-006" tests="5" failures="0" errors="0" skipped="0" time="0.000063">
+  <testsuite name="SDEL-LX-006" tests="5" failures="0" errors="0" skipped="0" time="0.000065">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-LX-006::positive::php_worker_spawns_shell" classname="SDEL-LX-006" time="0.000017">
+    <testcase name="SDEL-LX-006::positive::php_worker_spawns_shell" classname="SDEL-LX-006" time="0.000018">
       <system-out>selection selection_shell_child: match
 selection selection_web_parent: match
 condition selection_web_parent and selection_shell_child -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-006::positive::web_server_spawns_bash" classname="SDEL-LX-006" time="0.000012">
+    <testcase name="SDEL-LX-006::positive::web_server_spawns_bash" classname="SDEL-LX-006" time="0.000013">
       <system-out>selection selection_shell_child: match
 selection selection_web_parent: match
 condition selection_web_parent and selection_shell_child -&gt; True</system-out>
@@ -849,12 +849,12 @@ condition selection_web_parent and selection_shell_child -&gt; False</system-out
 condition selection_web_parent and selection_shell_child -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-007" tests="5" failures="0" errors="0" skipped="0" time="0.000067">
+  <testsuite name="SDEL-LX-007" tests="5" failures="0" errors="0" skipped="0" time="0.000065">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-LX-007::positive::curl_piped_to_shell" classname="SDEL-LX-007" time="0.000016">
+    <testcase name="SDEL-LX-007::positive::curl_piped_to_shell" classname="SDEL-LX-007" time="0.000015">
       <system-out>selection selection_pipe_to_shell: match
 selection selection_retrieval_tool: match
 condition selection_retrieval_tool and selection_pipe_to_shell -&gt; True</system-out>
@@ -864,7 +864,7 @@ condition selection_retrieval_tool and selection_pipe_to_shell -&gt; True</syste
 selection selection_retrieval_tool: match
 condition selection_retrieval_tool and selection_pipe_to_shell -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-007::negative::curl_to_file" classname="SDEL-LX-007" time="0.000015">
+    <testcase name="SDEL-LX-007::negative::curl_to_file" classname="SDEL-LX-007" time="0.000014">
       <system-out>selection selection_pipe_to_shell: no match
 selection selection_retrieval_tool: match
 condition selection_retrieval_tool and selection_pipe_to_shell -&gt; False</system-out>
@@ -878,7 +878,7 @@ condition selection_retrieval_tool and selection_pipe_to_shell -&gt; False</syst
 condition selection_retrieval_tool and selection_pipe_to_shell -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-008" tests="5" failures="0" errors="0" skipped="0" time="0.000073">
+  <testsuite name="SDEL-LX-008" tests="5" failures="0" errors="0" skipped="0" time="0.000067">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -888,7 +888,7 @@ condition selection_retrieval_tool and selection_pipe_to_shell -&gt; False</syst
 selection selection_permission_tool: match
 condition selection_permission_tool and selection_broad_mode -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-008::positive::world_writable_mode" classname="SDEL-LX-008" time="0.000024">
+    <testcase name="SDEL-LX-008::positive::world_writable_mode" classname="SDEL-LX-008" time="0.000018">
       <system-out>selection selection_broad_mode: match
 selection selection_permission_tool: match
 condition selection_permission_tool and selection_broad_mode -&gt; True</system-out>
@@ -907,12 +907,12 @@ condition selection_permission_tool and selection_broad_mode -&gt; False</system
 condition selection_permission_tool and selection_broad_mode -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-009" tests="5" failures="0" errors="0" skipped="0" time="0.000064">
+  <testsuite name="SDEL-LX-009" tests="5" failures="0" errors="0" skipped="0" time="0.000066">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-LX-009::positive::authentication_log_removed" classname="SDEL-LX-009" time="0.000015">
+    <testcase name="SDEL-LX-009::positive::authentication_log_removed" classname="SDEL-LX-009" time="0.000016">
       <system-out>selection selection_destructive_tool: match
 selection selection_log_path: match
 condition selection_destructive_tool and selection_log_path -&gt; True</system-out>
@@ -922,7 +922,7 @@ condition selection_destructive_tool and selection_log_path -&gt; True</system-o
 selection selection_log_path: match
 condition selection_destructive_tool and selection_log_path -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-009::negative::log_read_for_review" classname="SDEL-LX-009" time="0.000010">
+    <testcase name="SDEL-LX-009::negative::log_read_for_review" classname="SDEL-LX-009" time="0.000011">
       <system-out>selection selection_destructive_tool: no match
 condition selection_destructive_tool and selection_log_path -&gt; False</system-out>
     </testcase>
@@ -975,12 +975,12 @@ condition selection_module_tool and selection_unusual_path -&gt; False</system-o
 selection selection_writable_directory: match
 condition selection_writable_directory and not filter_approved_build_output -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-011::positive::binary_in_shared_memory" classname="SDEL-LX-011" time="0.000014">
+    <testcase name="SDEL-LX-011::positive::binary_in_shared_memory" classname="SDEL-LX-011" time="0.000015">
       <system-out>selection filter_approved_build_output: no match
 selection selection_writable_directory: match
 condition selection_writable_directory and not filter_approved_build_output -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-LX-011::negative::binary_in_usr_bin" classname="SDEL-LX-011" time="0.000011">
+    <testcase name="SDEL-LX-011::negative::binary_in_usr_bin" classname="SDEL-LX-011" time="0.000010">
       <system-out>selection selection_writable_directory: no match
 condition selection_writable_directory and not filter_approved_build_output -&gt; False</system-out>
     </testcase>
@@ -994,7 +994,7 @@ condition selection_writable_directory and not filter_approved_build_output -&gt
 condition selection_writable_directory and not filter_approved_build_output -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-LX-012" tests="5" failures="0" errors="0" skipped="0" time="0.000063">
+  <testsuite name="SDEL-LX-012" tests="5" failures="0" errors="0" skipped="0" time="0.000062">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1014,7 +1014,7 @@ condition selection_ssh_daemon and selection_failure_message -&gt; True</system-
 selection selection_ssh_daemon: match
 condition selection_ssh_daemon and selection_failure_message -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-LX-012::negative::session_closed" classname="SDEL-LX-012" time="0.000013">
+    <testcase name="SDEL-LX-012::negative::session_closed" classname="SDEL-LX-012" time="0.000012">
       <system-out>selection selection_failure_message: no match
 selection selection_ssh_daemon: match
 condition selection_ssh_daemon and selection_failure_message -&gt; False</system-out>
@@ -1044,7 +1044,7 @@ condition selection_powershell and selection_encoded_option -&gt; True</system-o
 selection selection_powershell: match
 condition selection_powershell and selection_encoded_option -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-001::negative::script_file_execution" classname="SDEL-PS-001" time="0.000014">
+    <testcase name="SDEL-PS-001::negative::script_file_execution" classname="SDEL-PS-001" time="0.000013">
       <system-out>selection selection_encoded_option: no match
 selection selection_powershell: match
 condition selection_powershell and selection_encoded_option -&gt; False</system-out>
@@ -1054,12 +1054,12 @@ condition selection_powershell and selection_encoded_option -&gt; False</system-
 condition selection_powershell and selection_encoded_option -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-002" tests="5" failures="0" errors="0" skipped="0" time="0.000081">
+  <testsuite name="SDEL-PS-002" tests="5" failures="0" errors="0" skipped="0" time="0.000078">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-002::positive::hidden_with_policy_bypass" classname="SDEL-PS-002" time="0.000021">
+    <testcase name="SDEL-PS-002::positive::hidden_with_policy_bypass" classname="SDEL-PS-002" time="0.000019">
       <system-out>selection selection_bypass_options: match
 selection selection_hidden_window: match
 selection selection_powershell: match
@@ -1071,13 +1071,13 @@ selection selection_hidden_window: match
 selection selection_powershell: match
 condition selection_powershell and selection_hidden_window and selection_bypass_options -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-002::negative::hidden_only" classname="SDEL-PS-002" time="0.000018">
+    <testcase name="SDEL-PS-002::negative::hidden_only" classname="SDEL-PS-002" time="0.000017">
       <system-out>selection selection_bypass_options: no match
 selection selection_hidden_window: match
 selection selection_powershell: match
 condition selection_powershell and selection_hidden_window and selection_bypass_options -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-002::negative::bypass_only" classname="SDEL-PS-002" time="0.000013">
+    <testcase name="SDEL-PS-002::negative::bypass_only" classname="SDEL-PS-002" time="0.000014">
       <system-out>selection selection_hidden_window: no match
 selection selection_powershell: match
 condition selection_powershell and selection_hidden_window and selection_bypass_options -&gt; False</system-out>
@@ -1087,7 +1087,7 @@ condition selection_powershell and selection_hidden_window and selection_bypass_
 condition selection_powershell and selection_hidden_window and selection_bypass_options -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-003" tests="5" failures="0" errors="0" skipped="0" time="0.000083">
+  <testsuite name="SDEL-PS-003" tests="5" failures="0" errors="0" skipped="0" time="0.000082">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1106,7 +1106,7 @@ condition selection_download_method and selection_remote_scheme -&gt; True</syst
       <system-out>selection selection_download_method: no match
 condition selection_download_method and selection_remote_scheme -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-003::negative::download_method_local_path" classname="SDEL-PS-003" time="0.000017">
+    <testcase name="SDEL-PS-003::negative::download_method_local_path" classname="SDEL-PS-003" time="0.000016">
       <system-out>selection selection_download_method: match
 selection selection_remote_scheme: no match
 condition selection_download_method and selection_remote_scheme -&gt; False</system-out>
@@ -1121,7 +1121,7 @@ condition selection_download_method and selection_remote_scheme -&gt; False</sys
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-004::positive::assembly_load_from_bytes" classname="SDEL-PS-004" time="0.000008">
+    <testcase name="SDEL-PS-004::positive::assembly_load_from_bytes" classname="SDEL-PS-004" time="0.000009">
       <system-out>selection selection_reflection_terms: match
 condition selection_reflection_terms -&gt; True</system-out>
     </testcase>
@@ -1142,12 +1142,12 @@ condition selection_reflection_terms -&gt; False</system-out>
 condition selection_reflection_terms -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-005" tests="5" failures="0" errors="0" skipped="0" time="0.000083">
+  <testsuite name="SDEL-PS-005" tests="5" failures="0" errors="0" skipped="0" time="0.000080">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-005::positive::field_lookup_and_set" classname="SDEL-PS-005" time="0.000020">
+    <testcase name="SDEL-PS-005::positive::field_lookup_and_set" classname="SDEL-PS-005" time="0.000018">
       <system-out>selection selection_modification_verbs: match
 selection selection_scanner_internals: match
 condition selection_scanner_internals and selection_modification_verbs -&gt; True</system-out>
@@ -1157,21 +1157,21 @@ condition selection_scanner_internals and selection_modification_verbs -&gt; Tru
 selection selection_scanner_internals: match
 condition selection_scanner_internals and selection_modification_verbs -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-005::negative::compliance_state_read" classname="SDEL-PS-005" time="0.000023">
+    <testcase name="SDEL-PS-005::negative::compliance_state_read" classname="SDEL-PS-005" time="0.000022">
       <system-out>selection selection_modification_verbs: no match
 selection selection_scanner_internals: match
 condition selection_scanner_internals and selection_modification_verbs -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-005::negative::generic_reflection_helper" classname="SDEL-PS-005" time="0.000013">
+    <testcase name="SDEL-PS-005::negative::generic_reflection_helper" classname="SDEL-PS-005" time="0.000012">
       <system-out>selection selection_scanner_internals: no match
 condition selection_scanner_internals and selection_modification_verbs -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-005::negative::inventory_report" classname="SDEL-PS-005" time="0.000012">
+    <testcase name="SDEL-PS-005::negative::inventory_report" classname="SDEL-PS-005" time="0.000011">
       <system-out>selection selection_scanner_internals: no match
 condition selection_scanner_internals and selection_modification_verbs -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-006" tests="5" failures="0" errors="0" skipped="0" time="0.000062">
+  <testsuite name="SDEL-PS-006" tests="5" failures="0" errors="0" skipped="0" time="0.000060">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1199,7 +1199,7 @@ condition selection_preference_cmdlet and selection_exclusion_parameter -&gt; Fa
 condition selection_preference_cmdlet and selection_exclusion_parameter -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-007" tests="5" failures="0" errors="0" skipped="0" time="0.000078">
+  <testsuite name="SDEL-PS-007" tests="5" failures="0" errors="0" skipped="0" time="0.000076">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1209,7 +1209,7 @@ condition selection_preference_cmdlet and selection_exclusion_parameter -&gt; Fa
 selection selection_privileged_group: match
 condition selection_membership_command and selection_privileged_group -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-007::positive::local_administrators_added" classname="SDEL-PS-007" time="0.000019">
+    <testcase name="SDEL-PS-007::positive::local_administrators_added" classname="SDEL-PS-007" time="0.000018">
       <system-out>selection selection_membership_command: match
 selection selection_privileged_group: match
 condition selection_membership_command and selection_privileged_group -&gt; True</system-out>
@@ -1228,12 +1228,12 @@ condition selection_membership_command and selection_privileged_group -&gt; Fals
 condition selection_membership_command and selection_privileged_group -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-008" tests="5" failures="0" errors="0" skipped="0" time="0.000069">
+  <testsuite name="SDEL-PS-008" tests="5" failures="0" errors="0" skipped="0" time="0.000070">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-008::positive::register_with_action_object" classname="SDEL-PS-008" time="0.000017">
+    <testcase name="SDEL-PS-008::positive::register_with_action_object" classname="SDEL-PS-008" time="0.000019">
       <system-out>selection selection_task_action: match
 selection selection_task_cmdlet: match
 condition selection_task_cmdlet and selection_task_action -&gt; True</system-out>
@@ -1258,46 +1258,46 @@ selection selection_task_cmdlet: match
 condition selection_task_cmdlet and selection_task_action -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-009" tests="5" failures="0" errors="0" skipped="0" time="0.000155">
+  <testsuite name="SDEL-PS-009" tests="5" failures="0" errors="0" skipped="0" time="0.000125">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-009::positive::decode_then_invoke_expression" classname="SDEL-PS-009" time="0.000025">
+    <testcase name="SDEL-PS-009::positive::decode_then_invoke_expression" classname="SDEL-PS-009" time="0.000016">
       <system-out>selection selection_base64_decode: match
 selection selection_dynamic_execution: match
 condition selection_base64_decode and selection_dynamic_execution -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-009::positive::decode_then_create_scriptblock" classname="SDEL-PS-009" time="0.000024">
+    <testcase name="SDEL-PS-009::positive::decode_then_create_scriptblock" classname="SDEL-PS-009" time="0.000020">
       <system-out>selection selection_base64_decode: match
 selection selection_dynamic_execution: match
 condition selection_base64_decode and selection_dynamic_execution -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-009::negative::decode_to_file" classname="SDEL-PS-009" time="0.000079">
+    <testcase name="SDEL-PS-009::negative::decode_to_file" classname="SDEL-PS-009" time="0.000067">
       <system-out>selection selection_base64_decode: match
 selection selection_dynamic_execution: no match
 condition selection_base64_decode and selection_dynamic_execution -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-009::negative::invoke_literal_command" classname="SDEL-PS-009" time="0.000013">
+    <testcase name="SDEL-PS-009::negative::invoke_literal_command" classname="SDEL-PS-009" time="0.000011">
       <system-out>selection selection_base64_decode: no match
 condition selection_base64_decode and selection_dynamic_execution -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-PS-009::negative::base64_encoding_only" classname="SDEL-PS-009" time="0.000013">
+    <testcase name="SDEL-PS-009::negative::base64_encoding_only" classname="SDEL-PS-009" time="0.000012">
       <system-out>selection selection_base64_decode: no match
 condition selection_base64_decode and selection_dynamic_execution -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-PS-010" tests="5" failures="0" errors="0" skipped="0" time="0.000069">
+  <testsuite name="SDEL-PS-010" tests="5" failures="0" errors="0" skipped="0" time="0.000068">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-PS-010::positive::spreadsheet_parent" classname="SDEL-PS-010" time="0.000018">
+    <testcase name="SDEL-PS-010::positive::spreadsheet_parent" classname="SDEL-PS-010" time="0.000017">
       <system-out>selection selection_office_parent: match
 selection selection_powershell_child: match
 condition selection_office_parent and selection_powershell_child -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-PS-010::positive::mail_client_parent" classname="SDEL-PS-010" time="0.000015">
+    <testcase name="SDEL-PS-010::positive::mail_client_parent" classname="SDEL-PS-010" time="0.000016">
       <system-out>selection selection_office_parent: match
 selection selection_powershell_child: match
 condition selection_office_parent and selection_powershell_child -&gt; True</system-out>
@@ -1317,12 +1317,12 @@ selection selection_powershell_child: no match
 condition selection_office_parent and selection_powershell_child -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-001" tests="7" failures="0" errors="0" skipped="0" time="0.000094">
+  <testsuite name="SDEL-WIN-001" tests="7" failures="0" errors="0" skipped="0" time="0.000090">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-001::positive::user_temp_directory" classname="SDEL-WIN-001" time="0.000018">
+    <testcase name="SDEL-WIN-001::positive::user_temp_directory" classname="SDEL-WIN-001" time="0.000017">
       <system-out>selection filter_approved_installer: no match
 selection selection_writable_path: match
 condition selection_writable_path and not filter_approved_installer -&gt; True</system-out>
@@ -1337,7 +1337,7 @@ condition selection_writable_path and not filter_approved_installer -&gt; True</
 selection selection_writable_path: match
 condition selection_writable_path and not filter_approved_installer -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-001::negative::managed_program_files" classname="SDEL-WIN-001" time="0.000012">
+    <testcase name="SDEL-WIN-001::negative::managed_program_files" classname="SDEL-WIN-001" time="0.000010">
       <system-out>selection selection_writable_path: no match
 condition selection_writable_path and not filter_approved_installer -&gt; False</system-out>
     </testcase>
@@ -1355,17 +1355,17 @@ condition selection_writable_path and not filter_approved_installer -&gt; False<
 condition selection_writable_path and not filter_approved_installer -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-002" tests="6" failures="0" errors="0" skipped="0" time="0.000085">
+  <testsuite name="SDEL-WIN-002" tests="6" failures="0" errors="0" skipped="0" time="0.000083">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-002::positive::word_like_parent_spawns_cmd" classname="SDEL-WIN-002" time="0.000016">
+    <testcase name="SDEL-WIN-002::positive::word_like_parent_spawns_cmd" classname="SDEL-WIN-002" time="0.000015">
       <system-out>selection selection_interpreter_child: match
 selection selection_office_parent: match
 condition selection_office_parent and selection_interpreter_child -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-002::positive::excel_like_parent_spawns_powershell" classname="SDEL-WIN-002" time="0.000018">
+    <testcase name="SDEL-WIN-002::positive::excel_like_parent_spawns_powershell" classname="SDEL-WIN-002" time="0.000017">
       <system-out>selection selection_interpreter_child: match
 selection selection_office_parent: match
 condition selection_office_parent and selection_interpreter_child -&gt; True</system-out>
@@ -1379,7 +1379,7 @@ condition selection_office_parent and selection_interpreter_child -&gt; False</s
       <system-out>selection selection_office_parent: no match
 condition selection_office_parent and selection_interpreter_child -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-002::negative::office_parent_spawns_printer_helper" classname="SDEL-WIN-002" time="0.000015">
+    <testcase name="SDEL-WIN-002::negative::office_parent_spawns_printer_helper" classname="SDEL-WIN-002" time="0.000016">
       <system-out>selection selection_interpreter_child: no match
 selection selection_office_parent: match
 condition selection_office_parent and selection_interpreter_child -&gt; False</system-out>
@@ -1389,7 +1389,7 @@ condition selection_office_parent and selection_interpreter_child -&gt; False</s
 condition selection_office_parent and selection_interpreter_child -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-003" tests="5" failures="0" errors="0" skipped="0" time="0.000063">
+  <testsuite name="SDEL-WIN-003" tests="5" failures="0" errors="0" skipped="0" time="0.000062">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1399,12 +1399,12 @@ condition selection_office_parent and selection_interpreter_child -&gt; False</s
 selection selection_script_protocol: match
 condition selection_script_host and selection_script_protocol -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-003::positive::vbscript_protocol" classname="SDEL-WIN-003" time="0.000014">
+    <testcase name="SDEL-WIN-003::positive::vbscript_protocol" classname="SDEL-WIN-003" time="0.000015">
       <system-out>selection selection_script_host: match
 selection selection_script_protocol: match
 condition selection_script_host and selection_script_protocol -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-003::negative::local_hta_file" classname="SDEL-WIN-003" time="0.000015">
+    <testcase name="SDEL-WIN-003::negative::local_hta_file" classname="SDEL-WIN-003" time="0.000014">
       <system-out>selection selection_script_host: match
 selection selection_script_protocol: no match
 condition selection_script_host and selection_script_protocol -&gt; False</system-out>
@@ -1413,27 +1413,27 @@ condition selection_script_host and selection_script_protocol -&gt; False</syste
       <system-out>selection selection_script_host: no match
 condition selection_script_host and selection_script_protocol -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-003::negative::unrelated_system_binary" classname="SDEL-WIN-003" time="0.000009">
+    <testcase name="SDEL-WIN-003::negative::unrelated_system_binary" classname="SDEL-WIN-003" time="0.000008">
       <system-out>selection selection_script_host: no match
 condition selection_script_host and selection_script_protocol -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-004" tests="5" failures="0" errors="0" skipped="0" time="0.000074">
+  <testsuite name="SDEL-WIN-004" tests="5" failures="0" errors="0" skipped="0" time="0.000077">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-004::positive::component_registration_remote" classname="SDEL-WIN-004" time="0.000019">
+    <testcase name="SDEL-WIN-004::positive::component_registration_remote" classname="SDEL-WIN-004" time="0.000018">
       <system-out>selection selection_remote_scheme: match
 selection selection_script_utility: match
 condition selection_script_utility and selection_remote_scheme -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-004::positive::script_host_remote" classname="SDEL-WIN-004" time="0.000015">
+    <testcase name="SDEL-WIN-004::positive::script_host_remote" classname="SDEL-WIN-004" time="0.000017">
       <system-out>selection selection_remote_scheme: match
 selection selection_script_utility: match
 condition selection_script_utility and selection_remote_scheme -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-004::negative::local_component_registration" classname="SDEL-WIN-004" time="0.000015">
+    <testcase name="SDEL-WIN-004::negative::local_component_registration" classname="SDEL-WIN-004" time="0.000016">
       <system-out>selection selection_remote_scheme: no match
 selection selection_script_utility: match
 condition selection_script_utility and selection_remote_scheme -&gt; False</system-out>
@@ -1442,7 +1442,7 @@ condition selection_script_utility and selection_remote_scheme -&gt; False</syst
       <system-out>selection selection_script_utility: no match
 condition selection_script_utility and selection_remote_scheme -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-004::negative::script_host_local_file" classname="SDEL-WIN-004" time="0.000014">
+    <testcase name="SDEL-WIN-004::negative::script_host_local_file" classname="SDEL-WIN-004" time="0.000015">
       <system-out>selection selection_remote_scheme: no match
 selection selection_script_utility: match
 condition selection_script_utility and selection_remote_scheme -&gt; False</system-out>
@@ -1458,7 +1458,7 @@ condition selection_script_utility and selection_remote_scheme -&gt; False</syst
 selection selection_transfer_or_decode: match
 condition selection_certificate_utility and selection_transfer_or_decode -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-005::positive::base64_decode" classname="SDEL-WIN-005" time="0.000014">
+    <testcase name="SDEL-WIN-005::positive::base64_decode" classname="SDEL-WIN-005" time="0.000013">
       <system-out>selection selection_certificate_utility: match
 selection selection_transfer_or_decode: match
 condition selection_certificate_utility and selection_transfer_or_decode -&gt; True</system-out>
@@ -1472,13 +1472,13 @@ condition selection_certificate_utility and selection_transfer_or_decode -&gt; F
       <system-out>selection selection_certificate_utility: no match
 condition selection_certificate_utility and selection_transfer_or_decode -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-005::negative::certificate_template_query" classname="SDEL-WIN-005" time="0.000012">
+    <testcase name="SDEL-WIN-005::negative::certificate_template_query" classname="SDEL-WIN-005" time="0.000013">
       <system-out>selection selection_certificate_utility: match
 selection selection_transfer_or_decode: no match
 condition selection_certificate_utility and selection_transfer_or_decode -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-006" tests="5" failures="0" errors="0" skipped="0" time="0.000067">
+  <testsuite name="SDEL-WIN-006" tests="5" failures="0" errors="0" skipped="0" time="0.000066">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1507,7 +1507,7 @@ condition selection_service_installed and selection_writable_image_path -&gt; Fa
 condition selection_service_installed and selection_writable_image_path -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-007" tests="5" failures="0" errors="0" skipped="0" time="0.000062">
+  <testsuite name="SDEL-WIN-007" tests="5" failures="0" errors="0" skipped="0" time="0.000061">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1522,7 +1522,7 @@ condition selection_task_registered and selection_temp_action -&gt; True</system
 selection selection_temp_action: match
 condition selection_task_registered and selection_temp_action -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-007::negative::task_action_managed_path" classname="SDEL-WIN-007" time="0.000013">
+    <testcase name="SDEL-WIN-007::negative::task_action_managed_path" classname="SDEL-WIN-007" time="0.000012">
       <system-out>selection selection_task_registered: match
 selection selection_temp_action: no match
 condition selection_task_registered and selection_temp_action -&gt; False</system-out>
@@ -1531,18 +1531,18 @@ condition selection_task_registered and selection_temp_action -&gt; False</syste
       <system-out>selection selection_task_registered: no match
 condition selection_task_registered and selection_temp_action -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-007::negative::task_description_mentions_temp" classname="SDEL-WIN-007" time="0.000012">
+    <testcase name="SDEL-WIN-007::negative::task_description_mentions_temp" classname="SDEL-WIN-007" time="0.000013">
       <system-out>selection selection_task_registered: match
 selection selection_temp_action: no match
 condition selection_task_registered and selection_temp_action -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-008" tests="5" failures="0" errors="0" skipped="0" time="0.000063">
+  <testsuite name="SDEL-WIN-008" tests="5" failures="0" errors="0" skipped="0" time="0.000068">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-008::positive::run_value_user_temp" classname="SDEL-WIN-008" time="0.000016">
+    <testcase name="SDEL-WIN-008::positive::run_value_user_temp" classname="SDEL-WIN-008" time="0.000015">
       <system-out>selection selection_autostart_key: match
 selection selection_writable_value: match
 condition selection_autostart_key and selection_writable_value -&gt; True</system-out>
@@ -1552,12 +1552,12 @@ condition selection_autostart_key and selection_writable_value -&gt; True</syste
 selection selection_writable_value: match
 condition selection_autostart_key and selection_writable_value -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-008::negative::run_value_managed_path" classname="SDEL-WIN-008" time="0.000013">
+    <testcase name="SDEL-WIN-008::negative::run_value_managed_path" classname="SDEL-WIN-008" time="0.000014">
       <system-out>selection selection_autostart_key: match
 selection selection_writable_value: no match
 condition selection_autostart_key and selection_writable_value -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-008::negative::application_setting_temp_path" classname="SDEL-WIN-008" time="0.000009">
+    <testcase name="SDEL-WIN-008::negative::application_setting_temp_path" classname="SDEL-WIN-008" time="0.000015">
       <system-out>selection selection_autostart_key: no match
 condition selection_autostart_key and selection_writable_value -&gt; False</system-out>
     </testcase>
@@ -1566,12 +1566,12 @@ condition selection_autostart_key and selection_writable_value -&gt; False</syst
 condition selection_autostart_key and selection_writable_value -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-009" tests="5" failures="0" errors="0" skipped="0" time="0.000041">
+  <testsuite name="SDEL-WIN-009" tests="5" failures="0" errors="0" skipped="0" time="0.000042">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-009::positive::filter_created" classname="SDEL-WIN-009" time="0.000011">
+    <testcase name="SDEL-WIN-009::positive::filter_created" classname="SDEL-WIN-009" time="0.000010">
       <system-out>selection selection_subscription_component: match
 condition selection_subscription_component -&gt; True</system-out>
     </testcase>
@@ -1579,7 +1579,7 @@ condition selection_subscription_component -&gt; True</system-out>
       <system-out>selection selection_subscription_component: match
 condition selection_subscription_component -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-009::negative::filter_deleted" classname="SDEL-WIN-009" time="0.000007">
+    <testcase name="SDEL-WIN-009::negative::filter_deleted" classname="SDEL-WIN-009" time="0.000008">
       <system-out>selection selection_subscription_component: no match
 condition selection_subscription_component -&gt; False</system-out>
     </testcase>
@@ -1592,12 +1592,12 @@ condition selection_subscription_component -&gt; False</system-out>
 condition selection_subscription_component -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-010" tests="5" failures="0" errors="0" skipped="0" time="0.000033">
+  <testsuite name="SDEL-WIN-010" tests="5" failures="0" errors="0" skipped="0" time="0.000032">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-010::positive::cleared_by_admin" classname="SDEL-WIN-010" time="0.000010">
+    <testcase name="SDEL-WIN-010::positive::cleared_by_admin" classname="SDEL-WIN-010" time="0.000009">
       <system-out>selection selection_log_cleared: match
 condition selection_log_cleared -&gt; True</system-out>
     </testcase>
@@ -1618,7 +1618,7 @@ condition selection_log_cleared -&gt; False</system-out>
 condition selection_log_cleared -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-011" tests="5" failures="0" errors="0" skipped="0" time="0.000083">
+  <testsuite name="SDEL-WIN-011" tests="5" failures="0" errors="0" skipped="0" time="0.000080">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1628,7 +1628,7 @@ condition selection_log_cleared -&gt; False</system-out>
 selection selection_weakening_option: match
 condition selection_config_tool and selection_weakening_option -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-011::positive::policy_registry_write" classname="SDEL-WIN-011" time="0.000022">
+    <testcase name="SDEL-WIN-011::positive::policy_registry_write" classname="SDEL-WIN-011" time="0.000020">
       <system-out>selection selection_config_tool: match
 selection selection_weakening_option: match
 condition selection_config_tool and selection_weakening_option -&gt; True</system-out>
@@ -1643,17 +1643,17 @@ condition selection_config_tool and selection_weakening_option -&gt; False</syst
 selection selection_weakening_option: no match
 condition selection_config_tool and selection_weakening_option -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-011::negative::documentation_tool_mentions_setting" classname="SDEL-WIN-011" time="0.000012">
+    <testcase name="SDEL-WIN-011::negative::documentation_tool_mentions_setting" classname="SDEL-WIN-011" time="0.000011">
       <system-out>selection selection_config_tool: no match
 condition selection_config_tool and selection_weakening_option -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-012" tests="5" failures="0" errors="0" skipped="0" time="0.000084">
+  <testsuite name="SDEL-WIN-012" tests="5" failures="0" errors="0" skipped="0" time="0.000082">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-012::positive::read_access_from_temp_binary" classname="SDEL-WIN-012" time="0.000022">
+    <testcase name="SDEL-WIN-012::positive::read_access_from_temp_binary" classname="SDEL-WIN-012" time="0.000021">
       <system-out>selection filter_known_security_agent: no match
 selection selection_memory_access: match
 selection selection_target_process: match
@@ -1665,7 +1665,7 @@ selection selection_memory_access: match
 selection selection_target_process: match
 condition selection_target_process and selection_memory_access and not filter_known_security_agent -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-012::negative::query_limited_information" classname="SDEL-WIN-012" time="0.000016">
+    <testcase name="SDEL-WIN-012::negative::query_limited_information" classname="SDEL-WIN-012" time="0.000015">
       <system-out>selection selection_memory_access: no match
 selection selection_target_process: match
 condition selection_target_process and selection_memory_access and not filter_known_security_agent -&gt; False</system-out>
@@ -1681,7 +1681,7 @@ condition selection_target_process and selection_memory_access and not filter_kn
 condition selection_target_process and selection_memory_access and not filter_known_security_agent -&gt; False</system-out>
     </testcase>
   </testsuite>
-  <testsuite name="SDEL-WIN-013" tests="5" failures="0" errors="0" skipped="0" time="0.000103">
+  <testsuite name="SDEL-WIN-013" tests="5" failures="0" errors="0" skipped="0" time="0.000104">
     <properties>
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
@@ -1700,20 +1700,20 @@ selection selection_broad_scope: match
 selection selection_firewall_tool: match
 condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-013::negative::scoped_allow_rule" classname="SDEL-WIN-013" time="0.000025">
+    <testcase name="SDEL-WIN-013::negative::scoped_allow_rule" classname="SDEL-WIN-013" time="0.000024">
       <system-out>selection selection_add_rule: match
 selection selection_allow_action: match
 selection selection_broad_scope: no match
 selection selection_firewall_tool: match
 condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-013::negative::block_rule_any_remote" classname="SDEL-WIN-013" time="0.000017">
+    <testcase name="SDEL-WIN-013::negative::block_rule_any_remote" classname="SDEL-WIN-013" time="0.000018">
       <system-out>selection selection_add_rule: match
 selection selection_allow_action: no match
 selection selection_firewall_tool: match
 condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-013::negative::firewall_rule_listing" classname="SDEL-WIN-013" time="0.000013">
+    <testcase name="SDEL-WIN-013::negative::firewall_rule_listing" classname="SDEL-WIN-013" time="0.000014">
       <system-out>selection selection_add_rule: no match
 selection selection_firewall_tool: match
 condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -&gt; False</system-out>
@@ -1787,7 +1787,7 @@ condition selection_viewer_parent and selection_suspicious_child -&gt; False</sy
       <property name="evaluator" value="sdel-lab-matcher-v1"/>
       <property name="data-source" value="SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"/>
     </properties>
-    <testcase name="SDEL-WIN-016::positive::background_transfer_job" classname="SDEL-WIN-016" time="0.000028">
+    <testcase name="SDEL-WIN-016::positive::background_transfer_job" classname="SDEL-WIN-016" time="0.000026">
       <system-out>selection selection_remote_scheme: match
 selection selection_transfer_utility: match
 condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -&gt; True</system-out>
@@ -1797,7 +1797,7 @@ condition selection_transfer_utility and (selection_remote_scheme or selection_t
 selection selection_transfer_utility: match
 condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -&gt; True</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-016::negative::local_package_install" classname="SDEL-WIN-016" time="0.000021">
+    <testcase name="SDEL-WIN-016::negative::local_package_install" classname="SDEL-WIN-016" time="0.000024">
       <system-out>selection selection_remote_scheme: no match
 selection selection_transfer_switch: no match
 selection selection_transfer_utility: match
@@ -1807,7 +1807,7 @@ condition selection_transfer_utility and (selection_remote_scheme or selection_t
       <system-out>selection selection_transfer_utility: no match
 condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -&gt; False</system-out>
     </testcase>
-    <testcase name="SDEL-WIN-016::negative::transfer_utility_job_listing" classname="SDEL-WIN-016" time="0.000020">
+    <testcase name="SDEL-WIN-016::negative::transfer_utility_job_listing" classname="SDEL-WIN-016" time="0.000019">
       <system-out>selection selection_remote_scheme: no match
 selection selection_transfer_switch: no match
 selection selection_transfer_utility: match
