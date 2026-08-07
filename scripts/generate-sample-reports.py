@@ -170,36 +170,22 @@ def main() -> int:
     expand_conversions("elasticsearch-lucene", elastic)
     write_catalog_csv()
 
-    (EXAMPLES / "README.md").write_text(
-        """# Examples
-
-SYNTHETIC DEMONSTRATION DATA
-
-This directory contains synthetic detection rules, events, telemetry
-requirements, and test results created exclusively for demonstration,
-testing, and documentation purposes.
-
-No real organization, host, user, account, domain, log, alert, incident,
-credential, SIEM, or infrastructure data is included.
-
-Converted queries require environment-specific field mappings, indexes,
-pipelines, tuning, permissions, and validation before deployment.
-""",
-        encoding="utf-8",
-        newline="\n",
-    )
-    (EXAMPLES / "sample-conversions" / "README.md").write_text(
-        """# Sample conversions
+    # Preserve the curated examples/README.md; only refresh the conversions note.
+    conversions_readme = EXAMPLES / "sample-conversions" / "README.md"
+    if not conversions_readme.exists():
+        conversions_readme.write_text(
+            """# Sample conversions
 
 DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
 
 Offline pySigma backend conversions only. Not production-ready.
 """,
-        encoding="utf-8",
-        newline="\n",
-    )
+            encoding="utf-8",
+            newline="\n",
+        )
 
     for path in (
+        EXAMPLES / "README.md",
         EXAMPLES / "sample-quality-report.html",
         EXAMPLES / "sample-quality-report.json",
         EXAMPLES / "sample-coverage-report.html",

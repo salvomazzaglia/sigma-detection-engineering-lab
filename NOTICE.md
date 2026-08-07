@@ -20,20 +20,27 @@ project and are not copies of SigmaHQ community rules.
 
 Runtime conversion demonstrations use official SigmaHQ packages:
 
-- pySigma
-- pySigma-backend-splunk
-- pySigma-backend-elasticsearch
+- pySigma (`LGPL-2.1-only` per PyPI / upstream LICENSE)
+- pysigma-backend-splunk (`LGPL-2.1-only` per PyPI / upstream LICENSE)
+- pysigma-backend-elasticsearch (LGPL family per upstream package metadata)
 
-Those packages retain their upstream licenses (typically LGPL family). See the
-installed package metadata and upstream repositories for exact terms.
+Those packages retain their upstream licenses. The MIT license of this
+repository applies to original project content only and does not replace
+upstream license terms for third-party dependencies.
 
-## MITRE ATT&CK
+## MITRE ATT&CK®
 
-ATT&CK® is a registered trademark of The MITRE Corporation.
+MITRE ATT&CK® is a registered trademark of The MITRE Corporation.
 
 This project vendors a minimal subset of ATT&CK Enterprise identifiers and names
 for offline validation of analytical metadata. Inclusion of ATT&CK identifiers
 does not imply MITRE certification, endorsement, or complete coverage.
+
+Any redistributed ATT&CK content in `data/attack/` is reproduced under the
+MITRE ATT&CK Terms of Use. Required attribution:
+
+© 2026 The MITRE Corporation. This work is reproduced and distributed with the
+permission of The MITRE Corporation.
 
 Legacy ATT&CK Data Sources are deprecated in the current defensive model.
 This project prefers Detection Strategies, Analytics, and Data Components where
@@ -49,4 +56,5 @@ This project does not claim official Navigator endorsement.
 Original project code, original Sigma rules authored for this repository,
 synthetic fixtures, and project documentation are licensed under the MIT License
 (see `LICENSE`), except where upstream package licenses apply to third-party
-dependencies.
+dependencies and where ATT&CK redistributed content remains under the MITRE
+Terms of Use reproduced above.

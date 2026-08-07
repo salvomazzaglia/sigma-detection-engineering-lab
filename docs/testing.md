@@ -26,6 +26,24 @@ sigma-detection-lab validate --strict
 python scripts/run-ci.py
 ```
 
+## Inventory (v1.0.0 packaging)
+
+| Metric | Value |
+|---|---|
+| `tests/test_*.py` files | 29 |
+| `test_*` functions/methods defined | 2348 |
+| Functions using `@pytest.mark.parametrize` | 68 |
+| Cases collected by `pytest --collect-only` | **2789** (includes parametrized expansion) |
+| Typical full run | 2783 passed / 0 failed / 6 skipped |
+
+
+The collected count is larger than the number of written functions because parametrization
+expands validation matrices (YAML limits, modifiers, path cases, report schemas, and
+similar). That expansion is intentional coverage, not duplicated empty assertions.
+
+Skipped cases are environmental or optional (for example Windows symlink privilege
+requirements and an optional re-export guard), not silenced failures.
+
 ## pytest configuration
 
 ```toml

@@ -69,6 +69,31 @@ A copy-paste accident cannot produce a request to a real host.
 
 **Objective:** confirm no rule is a copy or derivative of a SigmaHQ community rule.
 
+### Methodology (originality audit, 2026-08-07)
+
+1. Confirm local uniqueness of all 56 catalog IDs, UUIDs, and titles.
+2. Sparse-clone the official community rule repository
+   [`SigmaHQ/sigma`](https://github.com/SigmaHQ/sigma) (rules tree only).
+3. Index every upstream YAML rule `id:` and `title:` field offline.
+4. Compare all 56 local UUIDs and exact titles against that index.
+5. Review structural authorship markers (synthetic environment, sidecars, fixtures).
+6. Do **not** copy any upstream rule content during the check.
+
+| Check | Result |
+|---|---|
+| Rules controlled | **56 / 56** |
+| Upstream rule files indexed | **3131** unique UUID-bearing YAML files |
+| Local UUID uniqueness | **Pass** |
+| Local title uniqueness | **Pass** |
+| UUID collisions vs SigmaHQ | **0** |
+| Exact title collisions vs SigmaHQ | **0** |
+| Corrections required | **None** |
+| Conclusion | Rules are original to this project |
+
+Partial GitHub code-search probes earlier the same day also returned `0` hits for the
+first 10 UUIDs before the authenticated code-search rate limit was exhausted; the
+authoritative result is the offline full-index comparison above.
+
 ### Structural evidence
 
 | Property | Observation |
@@ -98,7 +123,8 @@ assert str(uuid.uuid5(uuid.NAMESPACE_URL,
     == "a58d909c-bd70-51cc-8190-c6a67744b6bf"
 ```
 
-**Finding:** none. All rules are original.
+**Finding:** none. All rules are original. No UUID or exact-title collision against
+SigmaHQ/sigma required a rewrite.
 
 ## A3 — Unsafe YAML
 
@@ -293,22 +319,22 @@ Security-relevant gates, all passing: `safe_yaml_load`, `no_secrets`,
 `verified_attack_technique_ids`, `block_stable_status`, `maturity_allowed`,
 `conversion_status_recorded`.
 
-## Open items
-
-Recorded for transparency. None is a security defect; all affect release completeness.
-
-| # | Item | Impact | Action |
-|---|---|---|---|
-| 1 | The `tests/` directory contains no test files, so the `pytest` step in CI has nothing to execute. The laboratory's own correctness claims are therefore not defended by automated tests. | Medium — behavioral and gate evidence is unaffected, but the unit layer described in [testing](testing.md) is not yet present | Implement the suite described in [testing](testing.md) before the next release |
 ## Open items resolved before local release packaging
 
-- The `tests/` suite is present and green (2782 passed, 6 skipped).
+- The `tests/` suite is present and green at packaging time (**2789** pytest cases
+  collected on Python 3.11; full local run **2783 passed / 0 failed / 6 skipped**).
 - `.github/workflows/ci.yml` was aligned to the CLI surface (`validate`,
   `coverage --tests`, `convert --backend`, offline upstream check, build).
   Unsupported legacy flags (`--include-correlation`, `--format all`,
   `--output-directory`) are no longer used.
+- Originality audit against `SigmaHQ/sigma` completed offline (0 UUID / 0 title
+  collisions; 56/56 checked).
 
-| 3 | Correlation conversion is unsupported for 9 of 12 backend/rule combinations | Low — documented, reported, and gated | Track upstream backend support; see [conversion-limitations](conversion-limitations.md) |
+## Remaining open items
+
+| # | Item | Impact | Action |
+|---|---|---|---|
+| 1 | Correlation conversion is unsupported for 9 of 12 backend/rule combinations | Low — documented, reported, and gated | Track upstream backend support; see [conversion-limitations](conversion-limitations.md) |
 
 ## Re-audit triggers
 

@@ -646,12 +646,16 @@ workflow level.
 
 Two independent layers:
 
-- **Behavioral tests** assert rule semantics against synthetic fixtures. 283 results in
-  1.0.0: 113 positive expectations and 170 negative expectations, all passing, with zero
-  unsupported.
+- **Behavioral tests** assert rule semantics against synthetic fixtures. **283** unique
+  behavioral cases in 1.0.0: **101** standard positives + **152** standard negatives +
+  **12** correlation positive sequences + **18** correlation negative sequences
+  (= **113** positive + **170** negative). The 30 correlation sequences are already
+  included in those totals — they are not an extra set on top of 283.
 - **Unit tests** (`pytest`) assert the laboratory's own behaviour: the YAML loader's
   limits, the condition parser's rejections, matcher semantics, correlation windows,
-  redaction patterns, report determinism, and CLI exit codes.
+  redaction patterns, report determinism, and CLI exit codes. On Python 3.11 the suite
+  collects **2789 pytest cases** (29 files, 2348 `test_*` functions, including
+  parametrized validation cases). Do not read that number as 2789 hand-written tests.
 
 Full detail: [`docs/behavioral-testing.md`](docs/behavioral-testing.md) and
 [`docs/testing.md`](docs/testing.md).
