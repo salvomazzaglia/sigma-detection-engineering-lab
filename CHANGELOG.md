@@ -129,7 +129,7 @@ detection rules against deterministic synthetic telemetry.
 | MITRE ATT&CK Enterprise | 19.1, STIX `ATT&CK-v19.1` |
 | ATT&CK Navigator layer format | 4.5 |
 | actions/checkout | v7.0.1 (`3d3c42e5aac5ba805825da76410c181273ba90b1`) |
-| actions/setup-python | v5.6.0 (`a26af69be951a213d495a4c3e4e4022e16d87065`) |
+| actions/setup-python | v7.0.0 (`5fda3b95a4ea91299a34e894583c3862153e4b97`) |
 
 ### Security
 

@@ -24,7 +24,7 @@ sigma-detection-lab version --format json
 - [x] ATT&CK Enterprise 19.1, STIX `ATT&CK-v19.1`
 - [x] Navigator layer format 4.5
 - [x] `actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1` # v7.0.1
-- [x] `actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065` # v5.6.0
+- [x] `actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97` # v7.0.0
 - [x] `verification_date` current in `config/upstream-versions.json`
 - [x] Pins in `pyproject.toml` match `config/upstream-versions.json`
 
