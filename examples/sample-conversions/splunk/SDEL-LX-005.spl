@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-005
+status=converted
+
+TargetFilename="*/.ssh/authorized_keys" NOT Image="/usr/bin/synthetic-config-agent"

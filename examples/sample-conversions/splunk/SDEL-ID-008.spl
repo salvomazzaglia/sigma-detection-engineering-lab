@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-008
+status=converted
+
+EventID=5136 AttributeLDAPDisplayName="nTSecurityDescriptor" AttributeValue IN ("*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*", "*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*", "*DS-Replication-Get-Changes*")

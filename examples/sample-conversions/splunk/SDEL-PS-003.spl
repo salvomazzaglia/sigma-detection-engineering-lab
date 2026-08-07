@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-003
+status=converted
+
+ScriptBlockText IN ("*DownloadString*", "*DownloadFile*", "*Invoke-WebRequest*", "*Invoke-RestMethod*", "*Start-BitsTransfer*") ScriptBlockText IN ("*http://*", "*https://*")

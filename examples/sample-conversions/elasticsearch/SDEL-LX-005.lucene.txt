@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-005
+status=converted
+
+TargetFilename:*\/.ssh\/authorized_keys AND (NOT Image:\/usr\/bin\/synthetic\-config\-agent)

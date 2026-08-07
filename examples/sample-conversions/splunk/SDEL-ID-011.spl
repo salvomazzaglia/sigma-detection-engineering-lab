@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-011
+status=converted
+
+EventID=4719 AuditPolicyChanges IN ("*Success removed*", "*Failure removed*", "*%%8448*", "*%%8450*")

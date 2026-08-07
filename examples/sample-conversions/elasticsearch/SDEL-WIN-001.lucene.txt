@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-001
+status=converted
+
+(Image:(C\:\\Synthetic\\Users\\synthetic\-user\\AppData\\Local\\Temp\\* OR C\:\\Synthetic\\Windows\\Temp\\* OR C\:\\Synthetic\\Users\\Public\\*)) AND (NOT Image:*\\synthetic_patch_installer.exe)

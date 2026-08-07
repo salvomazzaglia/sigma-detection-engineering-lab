@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-ID-012
+status=converted
+
+EventID:4662 AND (Properties:(*ms\-Mcs\-AdmPwd* OR *msLAPS\-Password* OR *msLAPS\-EncryptedPassword*))

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-002
+status=converted
+
+TargetFilename IN ("/etc/sudoers*", "/etc/sudoers.d/*") NOT (Image IN ("/usr/bin/dpkg", "/usr/bin/rpm"))

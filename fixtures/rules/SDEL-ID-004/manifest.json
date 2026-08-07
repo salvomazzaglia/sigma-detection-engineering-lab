@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-004",
+  "sigma_rule_id": "f33cdb9a-15f7-5da7-a825-918283fd0dbd",
+  "rule_file": "rules/identity/active_directory/privileged_group_member_removed_unexpectedly.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "domain_group_removal_by_admin",
+      "file": "positive/case_01_domain_group_removal_by_admin.jsonl",
+      "expected": "match",
+      "scenario": "Administrator removes a member from a privileged domain group.",
+      "rationale": "Removal and privileged group selections match, and the filter does not apply."
+    },
+    {
+      "name": "local_group_removal_by_admin",
+      "file": "positive/case_02_local_group_removal_by_admin.jsonl",
+      "expected": "match",
+      "scenario": "Administrator removes a member from the local administrators group.",
+      "rationale": "Removal and privileged group selections match, and the filter does not apply."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "governance_service_removal",
+      "file": "negative/case_01_governance_service_removal.jsonl",
+      "expected": "no_match",
+      "scenario": "Governance automation expires a time-bound grant.",
+      "rationale": "Selections match but the governance service filter removes the event."
+    },
+    {
+      "name": "application_group_removal",
+      "file": "negative/case_02_application_group_removal.jsonl",
+      "expected": "no_match",
+      "scenario": "Member removed from an application access group.",
+      "rationale": "The privileged group selection does not match."
+    },
+    {
+      "name": "privileged_group_addition",
+      "file": "negative/case_03_privileged_group_addition.jsonl",
+      "expected": "no_match",
+      "scenario": "Member added to a privileged group.",
+      "rationale": "The event identifier selection covers removals only."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "domain": "enterprise-attack",
+  "attack_version": "19.1",
+  "dataset_date": "2026-04-28",
+  "stix_source": "https://github.com/mitre-attack/attack-stix-data",
+  "stix_release_identifier": "ATT&CK-v19.1",
+  "subset_policy": "Only objects referenced by this project are vendored, plus the parent tactics required to interpret them.",
+  "remapped_identifier_notes": [
+    "Clearing Windows event logs is mapped to T1685.005, superseding the earlier T1070.001 identifier.",
+    "Clearing Linux or macOS system logs is mapped to T1685.006.",
+    "Defensive tool impairment is mapped to T1685.",
+    "Host firewall modification is mapped to T1686."
+  ],
+  "defensive_object_policy": "Detection Strategy, Analytic, and Data Component identifiers are recorded only when they were present in the pinned extraction. Official object names are vendored only where the extraction supplied them; otherwise the name field is null and no name is invented.",
+  "legacy_data_sources": {
+    "status": "deprecated",
+    "usage": "Not used as a primary mapping anywhere in this project."
+  }
+}

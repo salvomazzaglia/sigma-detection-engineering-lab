@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-007
+status=converted
+
+(CommandLine:(*curl\ * OR *wget\ * OR *fetch\ *)) AND (CommandLine:(*\|\ sh* OR *\|sh* OR *\|\ bash* OR *\|bash* OR *\|\ zsh*))

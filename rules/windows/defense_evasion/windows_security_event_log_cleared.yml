@@ -1,0 +1,32 @@
+title: 'Windows Security Event Log Cleared'
+id: a199c7a5-5180-57eb-a2aa-d4e438960195
+status: experimental
+description: >-
+    Detects the audit log clear record raised when the Windows Security event log is purged.
+    Clearing the Security log destroys the primary source of identity and process evidence
+    on the host.
+references:
+    - 'https://attack.mitre.org/techniques/T1685/005/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-1102'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1685.005
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_log_cleared:
+        EventID: 1102
+        Channel: Security
+    condition: selection_log_cleared
+falsepositives:
+    - >-
+        Golden image preparation and sysprep runs that clear event logs before a machine
+        template is captured.
+    - >-
+        Forensic or support procedures that intentionally clear logs after an approved
+        evidence export on a rebuilt host.
+level: high
+license: MIT

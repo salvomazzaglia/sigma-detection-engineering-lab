@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-010",
+  "sigma_rule_id": "fb90cf45-01de-5e3f-b180-9a817ae4e8a4",
+  "rule_file": "rules/identity/active_directory/domain_trust_created_or_modified.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "trust_created",
+      "file": "positive/case_01_trust_created.jsonl",
+      "expected": "match",
+      "scenario": "New domain trust created.",
+      "rationale": "The trust lifecycle selection matches."
+    },
+    {
+      "name": "trust_modified",
+      "file": "positive/case_02_trust_modified.jsonl",
+      "expected": "match",
+      "scenario": "Existing trust information modified.",
+      "rationale": "The trust lifecycle selection matches."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "group_membership_change",
+      "file": "negative/case_01_group_membership_change.jsonl",
+      "expected": "no_match",
+      "scenario": "Group membership change on the same controller.",
+      "rationale": "The event identifier selection does not match."
+    },
+    {
+      "name": "successful_logon",
+      "file": "negative/case_02_successful_logon.jsonl",
+      "expected": "no_match",
+      "scenario": "Ordinary network logon on the controller.",
+      "rationale": "The event identifier selection does not match."
+    },
+    {
+      "name": "audit_policy_change",
+      "file": "negative/case_03_audit_policy_change.jsonl",
+      "expected": "no_match",
+      "scenario": "Audit policy change on the controller.",
+      "rationale": "The event identifier selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

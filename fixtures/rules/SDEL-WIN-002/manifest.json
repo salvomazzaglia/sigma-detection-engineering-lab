@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-002",
+  "sigma_rule_id": "e20f88a0-26ab-508e-90a0-2adefc415c67",
+  "rule_file": "rules/windows/process_creation/office_like_parent_spawning_command_interpreter.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "word_like_parent_spawns_cmd",
+      "file": "positive/case_01_word_like_parent_spawns_cmd.jsonl",
+      "expected": "match",
+      "scenario": "Synthetic word processor launches the command interpreter.",
+      "rationale": "Both selections match: office parent and cmd child."
+    },
+    {
+      "name": "excel_like_parent_spawns_powershell",
+      "file": "positive/case_02_excel_like_parent_spawns_powershell.jsonl",
+      "expected": "match",
+      "scenario": "Synthetic spreadsheet application launches PowerShell.",
+      "rationale": "Both selections match: office parent and powershell child."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "office_parent_spawns_updater",
+      "file": "negative/case_01_office_parent_spawns_updater.jsonl",
+      "expected": "no_match",
+      "scenario": "Office application launches its own updater process.",
+      "rationale": "Parent matches but the child is not an interpreter."
+    },
+    {
+      "name": "explorer_parent_spawns_cmd",
+      "file": "negative/case_02_explorer_parent_spawns_cmd.jsonl",
+      "expected": "no_match",
+      "scenario": "Interactive user launches the command interpreter from the shell.",
+      "rationale": "Child matches but the parent is not an office-like application."
+    },
+    {
+      "name": "office_parent_spawns_printer_helper",
+      "file": "negative/case_03_office_parent_spawns_printer_helper.jsonl",
+      "expected": "no_match",
+      "scenario": "Office application launches a printing helper.",
+      "rationale": "Neither the child image nor its command line matches the interpreter selection."
+    },
+    {
+      "name": "service_host_spawns_cscript",
+      "file": "negative/case_04_service_host_spawns_cscript.jsonl",
+      "expected": "no_match",
+      "scenario": "Scheduled maintenance service launches a script host.",
+      "rationale": "Child matches but the parent is a service host, not an office application."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-012",
+  "sigma_rule_id": "7cc062a2-81b9-50fb-b588-0676ca7a3f08",
+  "rule_file": "rules/windows/system/sensitive_authentication_process_access.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_access",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "read_access_from_temp_binary",
+      "file": "positive/case_01_read_access_from_temp_binary.jsonl",
+      "expected": "match",
+      "scenario": "Unmanaged binary in a temporary directory requests memory read access.",
+      "rationale": "Target, access mask, and absence of the agent filter all hold."
+    },
+    {
+      "name": "extended_access_from_script_host",
+      "file": "positive/case_02_extended_access_from_script_host.jsonl",
+      "expected": "match",
+      "scenario": "Script host requests an extended access mask against the authentication process.",
+      "rationale": "Target, access mask, and absence of the agent filter all hold."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "query_limited_information",
+      "file": "negative/case_01_query_limited_information.jsonl",
+      "expected": "no_match",
+      "scenario": "Monitoring tool opens the authentication process for limited query rights.",
+      "rationale": "Target matches but the access mask is not in the selection."
+    },
+    {
+      "name": "known_security_agent",
+      "file": "negative/case_02_known_security_agent.jsonl",
+      "expected": "no_match",
+      "scenario": "Endpoint security agent inspects the authentication process.",
+      "rationale": "Target and mask match but the source image filter removes the event."
+    },
+    {
+      "name": "access_to_service_host",
+      "file": "negative/case_03_access_to_service_host.jsonl",
+      "expected": "no_match",
+      "scenario": "Diagnostic tool opens a service host process with a read mask.",
+      "rationale": "Access mask matches but the target process is not the authentication process."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

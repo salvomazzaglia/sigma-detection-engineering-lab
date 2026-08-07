@@ -1,0 +1,30 @@
+name: False positive
+description: Document a false-positive consideration for a synthetic rule
+title: "[false-positive] "
+labels: ["false-positive"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide synthetic or generic environment context only. No real usernames, hosts, or logs.
+  - type: input
+    id: catalog_id
+    attributes:
+      label: Catalog ID
+      placeholder: SDEL-WIN-001
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Benign scenario
+      description: Roles, software, maintenance behavior
+    validations:
+      required: true
+  - type: textarea
+    id: tuning
+    attributes:
+      label: Safer tuning guidance
+      description: Fields useful for tuning and exclusion risks
+    validations:
+      required: true

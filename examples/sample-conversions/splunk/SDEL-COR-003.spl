@@ -1,0 +1,11 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-COR-003
+status=converted
+
+EventID=4771
+
+| bin _time span=10m
+| stats count as event_count by _time TargetUserName
+
+| search event_count >= 10

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-016
+status=converted
+
+(Image:(*\\bitsadmin.exe OR *\\msiexec.exe OR *\\odbcconf.exe OR *\\installutil.exe)) AND ((CommandLine:(*http\:\/\/* OR *https\:\/\/*)) OR (CommandLine:(*\/transfer\ * OR *\/download\ * OR *\-transfer\ *)))

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/schemas/config.schema.json",
+  "title": "LabConfig",
+  "type": "object",
+  "required": ["schema_version", "paths", "limits"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "project_name": { "type": "string" },
+    "paths": { "type": "object" },
+    "limits": { "type": "object" }
+  }
+}

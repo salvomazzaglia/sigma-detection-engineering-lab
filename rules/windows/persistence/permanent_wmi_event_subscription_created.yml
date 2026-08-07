@@ -1,0 +1,37 @@
+title: 'Permanent WMI Event Subscription Component Created'
+id: fc1e2daf-8ce2-5915-aec2-4f4cc05f60ee
+status: experimental
+description: >-
+    Detects creation of a permanent WMI event subscription component, that is an event
+    filter, a consumer, or the binding that links them. Permanent subscriptions survive
+    reboot and execute without a scheduled task or service entry.
+references:
+    - 'https://attack.mitre.org/techniques/T1546/003/'
+    - 'https://learn.microsoft.com/en-us/windows/win32/wmisdk/receiving-a-wmi-event'
+    - 'https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1546.003
+logsource:
+    category: wmi_event
+    product: windows
+detection:
+    selection_subscription_component:
+        EventType:
+            - WmiFilterEvent
+            - WmiConsumerEvent
+            - WmiBindingEvent
+        Operation: Created
+    condition: selection_subscription_component
+falsepositives:
+    - >-
+        Systems management platforms that register inventory subscriptions on agent
+        installation and re-register them after an agent upgrade.
+    - >-
+        Hardware monitoring suites that create consumer bindings for thermal and disk health
+        events on server builds.
+level: medium
+license: MIT

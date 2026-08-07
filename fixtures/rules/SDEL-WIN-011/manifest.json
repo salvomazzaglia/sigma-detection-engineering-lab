@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-011",
+  "sigma_rule_id": "6a181ee8-8db3-5c0d-9f2d-7e747bacacf2",
+  "rule_file": "rules/windows/defense_evasion/security_product_configuration_weakening.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "disable_realtime_monitoring",
+      "file": "positive/case_01_disable_realtime_monitoring.jsonl",
+      "expected": "match",
+      "scenario": "Management module invoked to disable real-time monitoring.",
+      "rationale": "Tool image and weakening option selections both match."
+    },
+    {
+      "name": "policy_registry_write",
+      "file": "positive/case_02_policy_registry_write.jsonl",
+      "expected": "match",
+      "scenario": "Registry utility used to write a protection-disabling policy value.",
+      "rationale": "Tool image and weakening option selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "enable_realtime_monitoring",
+      "file": "negative/case_01_enable_realtime_monitoring.jsonl",
+      "expected": "no_match",
+      "scenario": "Protection re-enabled after a maintenance window.",
+      "rationale": "The switch value differs and the weakening keyword is absent."
+    },
+    {
+      "name": "query_protection_status",
+      "file": "negative/case_02_query_protection_status.jsonl",
+      "expected": "no_match",
+      "scenario": "Protection status queried for reporting.",
+      "rationale": "Tool matches but the command line contains no weakening keyword."
+    },
+    {
+      "name": "documentation_tool_mentions_setting",
+      "file": "negative/case_03_documentation_tool_mentions_setting.jsonl",
+      "expected": "no_match",
+      "scenario": "Documentation generator referencing the setting name in a report path.",
+      "rationale": "The keyword appears but the image is not one of the configuration tools."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

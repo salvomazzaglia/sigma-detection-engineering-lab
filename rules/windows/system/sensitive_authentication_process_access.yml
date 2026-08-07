@@ -1,0 +1,44 @@
+title: 'Process Access Request Against The Sensitive Authentication Process'
+id: 7cc062a2-81b9-50fb-b588-0676ca7a3f08
+status: experimental
+description: >-
+    Detects a process opening a handle to the local authentication subsystem process with
+    access rights that permit memory reading. This rule is rated critical because a
+    successful match is an immediate precursor to credential theft, the benign population is
+    small and enumerable, and the required response is host isolation rather than routine
+    triage.
+references:
+    - 'https://attack.mitre.org/techniques/T1003/001/'
+    - 'https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1003.001
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection_target_process:
+        TargetImage|endswith: '\lsass.exe'
+    selection_memory_access:
+        GrantedAccess:
+            - '0x1010'
+            - '0x1410'
+            - '0x1438'
+            - '0x143a'
+            - '0x1fffff'
+    filter_known_security_agent:
+        SourceImage|endswith:
+            - '\synthetic_edr_agent.exe'
+            - '\synthetic_backup_agent.exe'
+    condition: 'selection_target_process and selection_memory_access and not filter_known_security_agent'
+falsepositives:
+    - >-
+        Endpoint detection agents and backup agents that legitimately inspect the
+        authentication process, which are excluded by the source image filter.
+    - >-
+        Crash reporting and memory diagnostic tooling launched by support engineers when
+        investigating an authentication subsystem hang.
+level: critical
+license: MIT

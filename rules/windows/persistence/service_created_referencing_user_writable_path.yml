@@ -1,0 +1,39 @@
+title: 'Windows Service Created Referencing A User-Writable Path'
+id: 41555143-60c1-50f1-b395-227cdcb164cc
+status: experimental
+description: >-
+    Detects a service installation whose image path points into a user-writable temporary or
+    public directory. Services normally run from managed program directories, so a
+    user-writable service binary is both a persistence mechanism and a privilege escalation
+    opportunity.
+references:
+    - 'https://attack.mitre.org/techniques/T1543/003/'
+    - 'https://learn.microsoft.com/en-us/windows/win32/services/service-control-manager'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1543.003
+logsource:
+    product: windows
+    service: system
+detection:
+    selection_service_installed:
+        EventID: 7045
+        Provider_Name: 'Service Control Manager'
+    selection_writable_image_path:
+        ImagePath|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+            - '\Users\Public\'
+    condition: 'selection_service_installed and selection_writable_image_path'
+falsepositives:
+    - >-
+        Vendor installers that register a temporary bootstrap service from the extraction
+        directory and remove it at the end of the installation.
+    - >-
+        Endpoint management remediation packages that install a short-lived service from the
+        Windows temporary directory during a maintenance window.
+level: high
+license: MIT

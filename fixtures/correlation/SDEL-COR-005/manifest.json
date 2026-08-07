@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-005",
+  "sigma_rule_id": "f525f1d0-6aae-5b68-b3ba-6542da9cfe5f",
+  "rule_file": "rules/correlation/service_creation_followed_by_matching_process.yml",
+  "rule_type": "correlation",
+  "correlation_type": "temporal_ordered",
+  "timespan": "10m",
+  "group_by": [
+    "Computer",
+    "service_binary"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "service_installed_then_executed",
+      "file": "positive/sequence_01_service_installed_then_executed.jsonl",
+      "expected": "match",
+      "event_count": 2,
+      "scenario": "Service installed from a temporary path and then executed on the same host.",
+      "rationale": "Both stages share the host and the binary path alias inside the window."
+    },
+    {
+      "name": "public_path_service_then_execution",
+      "file": "positive/sequence_02_public_path_service_then_execution.jsonl",
+      "expected": "match",
+      "event_count": 2,
+      "scenario": "Service installed from the public directory and executed shortly afterwards.",
+      "rationale": "Both stages share the host and the binary path alias inside the window."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "execution_before_installation",
+      "file": "negative/sequence_01_execution_before_installation.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "The binary executes before the service is installed.",
+      "rationale": "The ordered requirement is not satisfied."
+    },
+    {
+      "name": "different_binary_paths",
+      "file": "negative/sequence_02_different_binary_paths.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "A service is installed and a different binary executes.",
+      "rationale": "The binary path alias differs, so no group key contains both stages."
+    },
+    {
+      "name": "different_hosts",
+      "file": "negative/sequence_03_different_hosts.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "A service is installed on one host and the binary executes on another.",
+      "rationale": "The host component of the group key differs between the two stages."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

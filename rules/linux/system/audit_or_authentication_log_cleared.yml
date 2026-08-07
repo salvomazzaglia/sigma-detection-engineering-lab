@@ -1,0 +1,41 @@
+title: 'Audit Or Authentication Log Clearing Attempt'
+id: aba24a11-1713-521c-ba1d-7a65159b7ee4
+status: experimental
+description: >-
+    Detects commands that remove or truncate the audit and authentication logs. Destroying
+    these files removes the record of both the intrusion and the clearing action itself from
+    the host.
+references:
+    - 'https://attack.mitre.org/techniques/T1685/006/'
+    - 'https://man7.org/linux/man-pages/man8/auditd.8.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1685.006
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_destructive_tool:
+        Image|endswith:
+            - '/rm'
+            - '/shred'
+            - '/truncate'
+            - '/unlink'
+    selection_log_path:
+        CommandLine|contains:
+            - '/var/log/auth.log'
+            - '/var/log/secure'
+            - '/var/log/audit/audit.log'
+            - '/var/log/wtmp'
+    condition: 'selection_destructive_tool and selection_log_path'
+falsepositives:
+    - >-
+        Disk space remediation on a host where the audit log filled the filesystem and an
+        operator removed a rotated copy under an incident ticket.
+    - >-
+        Image preparation scripts that clear logs before a virtual machine template is
+        captured.
+level: high
+license: MIT

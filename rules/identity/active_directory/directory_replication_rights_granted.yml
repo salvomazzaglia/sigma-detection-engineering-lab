@@ -1,0 +1,41 @@
+title: 'Directory Replication Rights Granted On The Domain Object'
+id: 227fce09-9019-5b3c-9c0e-37a1dafab68a
+status: experimental
+description: >-
+    Detects a security descriptor change on the domain object that grants directory
+    replication rights. This rule is rated critical because those rights allow a principal
+    to request the replication of secret attributes for every account in the domain, the
+    benign population is essentially limited to domain controller promotion, and the
+    required response is immediate containment of the granted principal.
+references:
+    - 'https://attack.mitre.org/techniques/T1003/006/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-5136'
+    - 'https://learn.microsoft.com/en-us/windows/win32/adschema/r-ds-replication-get-changes'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1003.006
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_directory_change:
+        EventID: 5136
+    selection_security_descriptor:
+        AttributeLDAPDisplayName: nTSecurityDescriptor
+    selection_replication_right:
+        AttributeValue|contains:
+            - 1131f6aa-9c07-11d1-f79f-00c04fc2dcd2
+            - 1131f6ad-9c07-11d1-f79f-00c04fc2dcd2
+            - DS-Replication-Get-Changes
+    condition: 'selection_directory_change and selection_security_descriptor and selection_replication_right'
+falsepositives:
+    - >-
+        Domain controller promotion, which legitimately grants replication rights to the new
+        controller computer object during the promotion sequence.
+    - >-
+        Directory synchronisation connector installation for an approved identity
+        synchronisation product, performed once per connector server.
+level: critical
+license: MIT

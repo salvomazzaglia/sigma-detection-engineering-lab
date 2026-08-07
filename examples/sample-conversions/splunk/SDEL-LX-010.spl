@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-010
+status=converted
+
+Image IN ("*/insmod", "*/modprobe") CommandLine IN ("*/tmp/*", "*/var/tmp/*", "*/dev/shm/*", "*/home/*")

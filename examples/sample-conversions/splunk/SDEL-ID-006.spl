@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-006
+status=converted
+
+EventID=5136 AttributeLDAPDisplayName="servicePrincipalName" OperationType IN ("Value Added", "%%14674")

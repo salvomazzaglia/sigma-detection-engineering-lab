@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-011
+status=converted
+
+(Image:(\/tmp\/* OR \/var\/tmp\/* OR \/dev\/shm\/*)) AND (NOT Image:\/tmp\/synthetic\-example\/approved\-build\/*)

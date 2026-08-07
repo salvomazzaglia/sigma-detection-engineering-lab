@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-004",
+  "sigma_rule_id": "a5816635-5d16-58ee-a32d-86aca9cec68f",
+  "rule_file": "rules/linux/persistence/systemd_unit_created_in_unusual_location.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "file_event",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "unit_in_tmp",
+      "file": "positive/case_01_unit_in_tmp.jsonl",
+      "expected": "match",
+      "scenario": "Service unit created in the temporary directory.",
+      "rationale": "Both extension and location selections match."
+    },
+    {
+      "name": "timer_in_home",
+      "file": "positive/case_02_timer_in_home.jsonl",
+      "expected": "match",
+      "scenario": "Timer unit created in a home directory.",
+      "rationale": "Both extension and location selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "unit_in_managed_directory",
+      "file": "negative/case_01_unit_in_managed_directory.jsonl",
+      "expected": "no_match",
+      "scenario": "Service unit created in the managed unit directory.",
+      "rationale": "The location selection does not match."
+    },
+    {
+      "name": "log_file_in_tmp",
+      "file": "negative/case_02_log_file_in_tmp.jsonl",
+      "expected": "no_match",
+      "scenario": "Log file created in the temporary directory.",
+      "rationale": "The extension selection does not match."
+    },
+    {
+      "name": "service_notes_document",
+      "file": "negative/case_03_service_notes_document.jsonl",
+      "expected": "no_match",
+      "scenario": "Notes document about services created in a home directory.",
+      "rationale": "The extension selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-006
+status=converted
+
+(ParentImage:(*\/nginx OR *\/httpd OR *\/apache2 OR *\/php\-fpm OR *\/synthetic\-appserver)) AND (Image:(*\/bash OR *\/sh OR *\/dash OR *\/zsh OR *\/ksh))

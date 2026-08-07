@@ -1,0 +1,41 @@
+title: 'PowerShell Invoked With An Encoded Command Option'
+id: 268dffb9-a796-5282-a024-9242475c744a
+status: experimental
+description: >-
+    Detects PowerShell being started with the encoded command option. Encoding hides the
+    executed statement from casual command-line review and is common in both automation and
+    intrusion activity.
+references:
+    - 'https://attack.mitre.org/techniques/T1059/001/'
+    - 'https://attack.mitre.org/techniques/T1027/'
+    - 'https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.execution
+    - attack.t1059.001
+    - attack.t1027
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_powershell:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    selection_encoded_option:
+        CommandLine|contains:
+            - '-EncodedCommand'
+            - '-enc '
+            - '-ec '
+            - '/EncodedCommand'
+    condition: 'selection_powershell and selection_encoded_option'
+falsepositives:
+    - >-
+        Configuration management platforms that wrap remediation scripts in an encoded
+        command to avoid quoting problems in their agent transport.
+    - >-
+        Software packaging systems that generate encoded install and uninstall commands when
+        publishing applications.
+level: medium
+license: MIT

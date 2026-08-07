@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-006",
+  "sigma_rule_id": "f5b39ef4-4574-5740-821f-1659abfa1049",
+  "rule_file": "rules/powershell/powershell_security_product_exclusion_modification.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "add_path_exclusion",
+      "file": "positive/case_01_add_path_exclusion.jsonl",
+      "expected": "match",
+      "scenario": "Path exclusion added for a user-writable directory.",
+      "rationale": "Cmdlet and exclusion parameter selections both match."
+    },
+    {
+      "name": "add_process_exclusion",
+      "file": "positive/case_02_add_process_exclusion.jsonl",
+      "expected": "match",
+      "scenario": "Process exclusion added for a synthetic binary.",
+      "rationale": "Cmdlet and exclusion parameter selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "remove_exclusion",
+      "file": "negative/case_01_remove_exclusion.jsonl",
+      "expected": "no_match",
+      "scenario": "Existing exclusion removed during cleanup.",
+      "rationale": "The preference cmdlet selection does not match the removal cmdlet."
+    },
+    {
+      "name": "list_preferences",
+      "file": "negative/case_02_list_preferences.jsonl",
+      "expected": "no_match",
+      "scenario": "Current preferences listed for a compliance report.",
+      "rationale": "The exclusion parameter selection does not match."
+    },
+    {
+      "name": "unrelated_cmdlet",
+      "file": "negative/case_03_unrelated_cmdlet.jsonl",
+      "expected": "no_match",
+      "scenario": "Scheduled inventory collection.",
+      "rationale": "Neither selection matches."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

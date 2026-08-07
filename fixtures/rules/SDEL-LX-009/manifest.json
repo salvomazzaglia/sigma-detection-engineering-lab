@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-009",
+  "sigma_rule_id": "aba24a11-1713-521c-ba1d-7a65159b7ee4",
+  "rule_file": "rules/linux/system/audit_or_authentication_log_cleared.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "authentication_log_removed",
+      "file": "positive/case_01_authentication_log_removed.jsonl",
+      "expected": "match",
+      "scenario": "Authentication log removed.",
+      "rationale": "Tool and log path selections both match."
+    },
+    {
+      "name": "audit_log_truncated",
+      "file": "positive/case_02_audit_log_truncated.jsonl",
+      "expected": "match",
+      "scenario": "Audit log truncated to zero length.",
+      "rationale": "Tool and log path selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "log_read_for_review",
+      "file": "negative/case_01_log_read_for_review.jsonl",
+      "expected": "no_match",
+      "scenario": "Authentication log read during an investigation.",
+      "rationale": "The destructive tool selection does not match."
+    },
+    {
+      "name": "log_rotation",
+      "file": "negative/case_02_log_rotation.jsonl",
+      "expected": "no_match",
+      "scenario": "Logs rotated by the rotation utility.",
+      "rationale": "The destructive tool selection does not match."
+    },
+    {
+      "name": "temporary_file_removed",
+      "file": "negative/case_03_temporary_file_removed.jsonl",
+      "expected": "no_match",
+      "scenario": "Unrelated temporary file removed during cleanup.",
+      "rationale": "The log path selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

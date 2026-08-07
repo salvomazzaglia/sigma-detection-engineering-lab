@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-002",
+  "sigma_rule_id": "a5cd1895-7830-5d02-af6f-a884bfe55602",
+  "rule_file": "rules/identity/windows_security/user_account_enabled.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "dormant_user_enabled",
+      "file": "positive/case_01_dormant_user_enabled.jsonl",
+      "expected": "match",
+      "scenario": "Dormant standard account enabled by an administrator.",
+      "rationale": "The account enabled selection matches."
+    },
+    {
+      "name": "service_account_enabled",
+      "file": "positive/case_02_service_account_enabled.jsonl",
+      "expected": "match",
+      "scenario": "Service account enabled after a change window.",
+      "rationale": "The account enabled selection matches."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "account_disabled",
+      "file": "negative/case_01_account_disabled.jsonl",
+      "expected": "no_match",
+      "scenario": "Account disabled during a leaver process.",
+      "rationale": "The event identifier is a disable, not an enable."
+    },
+    {
+      "name": "account_unlocked",
+      "file": "negative/case_02_account_unlocked.jsonl",
+      "expected": "no_match",
+      "scenario": "Locked account unlocked by the help desk.",
+      "rationale": "The event identifier does not match."
+    },
+    {
+      "name": "account_created",
+      "file": "negative/case_03_account_created.jsonl",
+      "expected": "no_match",
+      "scenario": "New account created.",
+      "rationale": "The event identifier does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

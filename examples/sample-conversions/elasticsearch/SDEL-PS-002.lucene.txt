@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-PS-002
+status=converted
+
+(Image:(*\\powershell.exe OR *\\pwsh.exe)) AND (CommandLine:(*\-WindowStyle\ Hidden* OR *\-w\ hidden* OR *\-windowstyle\ hidden*)) AND (CommandLine:(*\-ExecutionPolicy\ Bypass* OR *\-ep\ bypass* OR *\-NoProfile* OR *\-nop\ *))

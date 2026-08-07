@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-002
+status=converted
+
+Image IN ("*\\powershell.exe", "*\\pwsh.exe") CommandLine IN ("*-WindowStyle Hidden*", "*-w hidden*", "*-windowstyle hidden*") CommandLine IN ("*-ExecutionPolicy Bypass*", "*-ep bypass*", "*-NoProfile*", "*-nop *")

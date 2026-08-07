@@ -1,0 +1,117 @@
+title: 'Executable Written To A Writable Directory (Correlation Input)'
+id: 12eb1201-94b2-56c0-b7f8-20a8f79e23a3
+name: sdel_cor_006_executable_written
+status: experimental
+description: >-
+    Base rule that selects executable file creation in user-writable directories for use by
+    the staging correlation rule.
+references:
+    - 'https://attack.mitre.org/techniques/T1105/'
+    - 'https://attack.mitre.org/techniques/T1204/002/'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.command-and-control
+    - attack.t1105
+    - attack.t1204.002
+logsource:
+    category: file_event
+    product: windows
+detection:
+    selection_writable_directory:
+        TargetFilename|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+            - '\Users\Public\'
+    selection_executable_extension:
+        TargetFilename|endswith:
+            - '.exe'
+            - '.dll'
+    condition: 'selection_writable_directory and selection_executable_extension'
+falsepositives:
+    - >-
+        Installer packages extracting their payload binaries into the per-user temporary
+        directory before running setup.
+    - >-
+        Compilers and packaging tools writing build output into a temporary workspace on
+        developer and build hosts.
+level: informational
+license: MIT
+---
+title: 'Process Launched From A Writable Directory (Correlation Input)'
+id: 0d23f62b-4522-54ef-998d-9ae0e74736b4
+name: sdel_cor_006_executable_launched
+status: experimental
+description: >-
+    Base rule that selects process creation from user-writable directories for use by the
+    staging correlation rule.
+references:
+    - 'https://attack.mitre.org/techniques/T1105/'
+    - 'https://attack.mitre.org/techniques/T1204/002/'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.command-and-control
+    - attack.t1105
+    - attack.t1204.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_writable_directory:
+        Image|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+            - '\Users\Public\'
+    condition: selection_writable_directory
+falsepositives:
+    - >-
+        Installer setup binaries running from the temporary directory immediately after
+        extraction.
+    - >-
+        Test harnesses executed from a build workspace by continuous integration jobs on
+        build agents.
+level: informational
+license: MIT
+---
+title: 'Executable Written To A Temporary Path And Then Executed'
+id: c162ff7a-b81d-5a1f-847d-1690a4412562
+status: experimental
+description: >-
+    Correlates the creation of an executable in a user-writable directory with the execution
+    of that same file on the same host within five minutes. The pair is far more specific
+    than either half alone, which is why the file creation rule on its own is rated low.
+references:
+    - 'https://attack.mitre.org/techniques/T1105/'
+    - 'https://attack.mitre.org/techniques/T1204/002/'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.command-and-control
+    - attack.t1105
+    - attack.t1204.002
+correlation:
+    type: temporal_ordered
+    rules:
+        - sdel_cor_006_executable_written
+        - sdel_cor_006_executable_launched
+    aliases:
+        artifact_path:
+            sdel_cor_006_executable_written: TargetFilename
+            sdel_cor_006_executable_launched: Image
+    group-by:
+        - Computer
+        - artifact_path
+    timespan: 5m
+falsepositives:
+    - >-
+        Installer packages that extract a setup executable into the temporary directory and
+        immediately run it.
+    - >-
+        Build pipelines that compile a binary into a temporary workspace and execute the
+        resulting test harness.
+level: high
+license: MIT

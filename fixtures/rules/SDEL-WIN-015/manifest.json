@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-015",
+  "sigma_rule_id": "d0b9890d-9eb2-53c0-92e2-5d9c1c4fae22",
+  "rule_file": "rules/windows/process_creation/document_viewer_spawning_suspicious_child.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "pdf_viewer_spawns_powershell",
+      "file": "positive/case_01_pdf_viewer_spawns_powershell.jsonl",
+      "expected": "match",
+      "scenario": "Document viewer launches PowerShell.",
+      "rationale": "Parent and child selections both match."
+    },
+    {
+      "name": "docviewer_spawns_library_host",
+      "file": "positive/case_02_docviewer_spawns_library_host.jsonl",
+      "expected": "match",
+      "scenario": "Document viewer launches the library host utility.",
+      "rationale": "Parent and child selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "viewer_spawns_print_helper",
+      "file": "negative/case_01_viewer_spawns_print_helper.jsonl",
+      "expected": "no_match",
+      "scenario": "Document viewer launches its printing helper.",
+      "rationale": "Parent matches but the child is not in the suspicious list."
+    },
+    {
+      "name": "shell_spawns_library_host",
+      "file": "negative/case_02_shell_spawns_library_host.jsonl",
+      "expected": "no_match",
+      "scenario": "Interactive shell launches the library host utility.",
+      "rationale": "Child matches but the parent is not a document viewer."
+    },
+    {
+      "name": "viewer_spawns_updater",
+      "file": "negative/case_03_viewer_spawns_updater.jsonl",
+      "expected": "no_match",
+      "scenario": "Document viewer launches its own updater.",
+      "rationale": "Parent matches but the child is a vendor updater."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,38 @@
+title: 'PowerShell Command Adding An Endpoint Protection Exclusion'
+id: f5b39ef4-4574-5740-821f-1659abfa1049
+status: experimental
+description: >-
+    Detects the endpoint protection preference cmdlets being used to add a scanning
+    exclusion. Adding an exclusion creates a blind spot that persists long after the command
+    itself has finished.
+references:
+    - 'https://attack.mitre.org/techniques/T1685/'
+    - 'https://learn.microsoft.com/en-us/powershell/module/defender/add-mppreference'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1685
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_preference_cmdlet:
+        CommandLine|contains:
+            - Add-MpPreference
+            - Set-MpPreference
+    selection_exclusion_parameter:
+        CommandLine|contains:
+            - '-ExclusionPath'
+            - '-ExclusionProcess'
+            - '-ExclusionExtension'
+    condition: 'selection_preference_cmdlet and selection_exclusion_parameter'
+falsepositives:
+    - >-
+        Database and virtualisation platform installers that add vendor-recommended
+        exclusions for data directories during initial server setup.
+    - >-
+        Build agent provisioning that excludes the compiler output directory to keep
+        continuous integration times predictable.
+level: medium
+license: MIT

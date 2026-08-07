@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "project_name": "sigma-detection-engineering-lab",
+  "project_root_marker": "pyproject.toml",
+  "paths": {
+    "rules": "rules",
+    "metadata": "metadata/rules",
+    "fixtures": "fixtures",
+    "attack_data": "data/attack",
+    "examples": "examples",
+    "schemas": "schemas",
+    "temp_output": "temp"
+  },
+  "limits": {
+    "max_file_bytes": 1048576,
+    "max_yaml_depth": 32,
+    "max_yaml_nodes": 5000,
+    "max_yaml_aliases": 0,
+    "max_scalar_length": 8192,
+    "max_mapping_size": 512,
+    "max_sequence_length": 512,
+    "max_path_length": 4096,
+    "max_regex_length": 256,
+    "max_events_per_fixture": 200,
+    "max_correlation_sequence_events": 100,
+    "allow_symlinks": false
+  },
+  "authors": {
+    "required": ["Salvatore Mazzaglia"]
+  },
+  "license": "MIT",
+  "allowed_sigma_statuses": ["experimental", "test"],
+  "blocked_sigma_statuses_main_catalog": ["stable"],
+  "allowed_maturity": ["experimental", "tested-synthetic"],
+  "synthetic_hosts": [
+    "SYNTHETIC-HOST-01",
+    "SYNTHETIC-DC01",
+    "SYNTHETIC-LINUX-01"
+  ],
+  "synthetic_users": [
+    "synthetic-user",
+    "synthetic-admin",
+    "synthetic-service"
+  ]
+}

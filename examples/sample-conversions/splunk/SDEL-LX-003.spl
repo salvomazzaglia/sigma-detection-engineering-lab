@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-003
+status=converted
+
+TargetFilename IN ("/etc/cron.d/*", "/var/spool/cron/*", "/etc/crontab*", "/etc/cron.daily/*") NOT (Image IN ("/usr/bin/dpkg", "/usr/bin/rpm"))

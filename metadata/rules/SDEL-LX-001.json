@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-001",
+  "sigma_rule_id": "9547416f-4dd6-5c1c-8dea-d12502262b16",
+  "title": "Local User Account Created On A Linux Host",
+  "detection_hypothesis": "If a local foothold identity is created, the authentication log will contain a user creation message from the account management utility.",
+  "platform": "linux",
+  "rule_family": "linux",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Linux authentication log"
+  ],
+  "required_channels": [
+    "/var/log/auth.log",
+    "/var/log/secure"
+  ],
+  "required_fields": [
+    "ProcessName",
+    "Message"
+  ],
+  "optional_fields": [
+    "SourceIp",
+    "SourcePort",
+    "User"
+  ],
+  "field_semantics": {
+    "ProcessName": "Program name recorded by the system logger.",
+    "Message": "Free-text message body recorded by the system logger."
+  },
+  "collection_prerequisites": [
+    "The authentication facility is forwarded from the host to the collector.",
+    "The syslog message body is preserved rather than truncated."
+  ],
+  "expected_collection_gaps": [
+    "Hosts using journald without syslog forwarding require a different collector.",
+    "Rate-limited syslog can drop bursts of failures."
+  ],
+  "normalization_assumptions": [
+    "ProcessName holds the syslog program name and Message holds the free-text body.",
+    "SourceIp is populated only for network authentication attempts."
+  ],
+  "ingestion_differences": [
+    "Distribution-specific message wording differs between sshd builds.",
+    "Some pipelines pre-parse the message into structured fields."
+  ],
+  "retention_considerations": "Authentication logs are low volume; 365 days of retention is common.",
+  "expected_volume": "Low.",
+  "false_positive_strategy": "Provisioning dominates the benign population. Tune by correlating with the configuration management run identifier and by treating accounts with a login shell and a home directory as higher interest.",
+  "tuning_guidance": "Do not exclude the account management utility. Prefer enrichment with the created shell and the parent process so that interactive accounts stand out.",
+  "test_strategy": "Positive cases create a user through each utility name. Negative cases delete a user, modify a user, and record an ordinary session open.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1136.001",
+      "name": "Create Account: Local Account"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0447",
+      "technique_id": "T1136.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1235",
+      "technique_id": "T1136.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0014",
+      "technique_id": "T1136.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-LX-002"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/linux/authentication/local_user_account_created.yml",
+  "fixture_directory": "fixtures/rules/SDEL-LX-001"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/schemas/comparison-report.schema.json",
+  "title": "ComparisonReport",
+  "type": "object",
+  "required": ["synthetic"],
+  "properties": {
+    "synthetic": { "const": true },
+    "added_rules": { "type": "array" },
+    "removed_rules": { "type": "array" },
+    "modified_rules": { "type": "array" },
+    "regressions": { "type": "array" }
+  },
+  "additionalProperties": true
+}

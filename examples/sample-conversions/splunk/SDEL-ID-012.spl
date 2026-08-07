@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-012
+status=converted
+
+EventID=4662 Properties IN ("*ms-Mcs-AdmPwd*", "*msLAPS-Password*", "*msLAPS-EncryptedPassword*")

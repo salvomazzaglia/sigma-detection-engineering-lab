@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-005",
+  "sigma_rule_id": "f525f1d0-6aae-5b68-b3ba-6542da9cfe5f",
+  "title": "Service Creation Followed By Execution Of The Same Binary",
+  "detection_hypothesis": "If service-based persistence is established and used, a service installation record will be followed by a process creation record for the identical binary path on the same host.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows System event log",
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security",
+    "System"
+  ],
+  "required_fields": [
+    "Computer",
+    "EventID",
+    "Image",
+    "ImagePath",
+    "Provider_Name"
+  ],
+  "optional_fields": [
+    "AccountName",
+    "CurrentDirectory",
+    "Hashes",
+    "IntegrityLevel",
+    "OriginalFileName",
+    "ServiceType",
+    "StartType"
+  ],
+  "field_semantics": {
+    "Computer": "Host on which the event was produced.",
+    "EventID": "Numeric identifier of the Windows event record.",
+    "Image": "Absolute path of the executable backing the created process.",
+    "ImagePath": "Executable path configured for the service, including arguments.",
+    "Provider_Name": "Name of the event provider that raised the record."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source.",
+    "Service Control Manager events are not filtered out by the forwarder subscription.",
+    "The System event log is collected from endpoints and servers."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Servers with aggressive System log filters may drop Event ID 7045.",
+    "Service installation performed by driver loading is not represented here.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "CommandLine retains the original argument order and spacing.",
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "ImagePath contains the full service binary path including any arguments.",
+    "Provider_Name identifies Service Control Manager."
+  ],
+  "ingestion_differences": [
+    "Quoted service paths may or may not retain surrounding quotation marks.",
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Some pipelines rename ImagePath to service.executable.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical. System log volume is low; 365 days of retention is generally affordable.",
+  "expected_volume": "Moderate before path filtering; low afterwards.",
+  "false_positive_strategy": "Every managed agent installation produces this shape. The discriminator is the binary path, so combine this correlation with the user-writable service path rule and alert only on paths outside managed directories.",
+  "tuning_guidance": "Filter the base service rule to user-writable image paths in noisy environments rather than raising the correlation timespan.",
+  "test_strategy": "Positive sequences install and then execute the same path on one host. Negative sequences reverse the order, use different paths, and use different hosts.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1543.003",
+      "name": "Create or Modify System Process: Windows Service"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0552",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1527",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0060",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-WIN-006",
+    "SDEL-COR-006"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/service_creation_followed_by_matching_process.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-005",
+  "correlation": {
+    "type": "temporal_ordered",
+    "timespan": "10m",
+    "group_by": [
+      "Computer",
+      "service_binary"
+    ],
+    "base_rules": [
+      "sdel_cor_005_service_created",
+      "sdel_cor_005_process_started"
+    ],
+    "aliases": {
+      "service_binary": {
+        "sdel_cor_005_service_created": "ImagePath",
+        "sdel_cor_005_process_started": "Image"
+      }
+    },
+    "threshold": null,
+    "count_field": null,
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

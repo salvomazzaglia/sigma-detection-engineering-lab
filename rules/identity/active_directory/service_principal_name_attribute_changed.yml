@@ -1,0 +1,41 @@
+title: 'Service Principal Name Attribute Changed On A Directory Object'
+id: 45d034fb-0b98-56f8-84bc-61cc1270e8e2
+status: experimental
+description: >-
+    Detects modification of the service principal name attribute on a directory object.
+    Adding a service principal name to an ordinary user account makes that account's
+    credential material requestable by any authenticated principal.
+references:
+    - 'https://attack.mitre.org/techniques/T1098/'
+    - 'https://attack.mitre.org/techniques/T1558/003/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-5136'
+    - 'https://learn.microsoft.com/en-us/windows/win32/ad/service-principal-names'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098
+    - attack.t1558.003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_directory_change:
+        EventID: 5136
+    selection_spn_attribute:
+        AttributeLDAPDisplayName: servicePrincipalName
+    selection_value_written:
+        OperationType:
+            - 'Value Added'
+            - '%%14674'
+    condition: 'selection_directory_change and selection_spn_attribute and selection_value_written'
+falsepositives:
+    - >-
+        Application onboarding that registers service principal names for a newly created
+        service account during a documented deployment.
+    - >-
+        Database cluster failover procedures that re-register service principal names for
+        the listener account.
+level: medium
+license: MIT

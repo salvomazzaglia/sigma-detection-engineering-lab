@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "verification_date": "2026-08-07",
+  "sigma_specification": {
+    "version": "2.1.0",
+    "release_date": "2025-08-02",
+    "source": "https://github.com/SigmaHQ/sigma-specification",
+    "tag": "v2.1.0",
+    "commit": "0c857d07da0e71eaaab2d667b3cce6f2c8469578",
+    "notes": "Official Sigma Rules Specification v2.1.0 verified from SigmaHQ/sigma-specification releases."
+  },
+  "sigma_correlation_specification": {
+    "version": "2.1.0",
+    "source": "https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html",
+    "supported_subset_in_lab": [
+      "event_count",
+      "value_count",
+      "temporal",
+      "temporal_ordered"
+    ],
+    "notes": "Lab correlation evaluator implements a documented subset only; full Sigma correlation semantics are out of scope for v1.0."
+  },
+  "pysigma": {
+    "package": "pysigma",
+    "version": "1.5.0",
+    "source": "https://pypi.org/project/pySigma/1.5.0/",
+    "security_notes": "PyPI advisory list empty for 1.5.0 at verification date. Runtime network use by this lab is disabled; pySigma may declare transitive dependencies not invoked by lab offline paths."
+  },
+  "sigma_cli": {
+    "package": "sigma-cli",
+    "version": "3.1.0",
+    "used_in_lab": false,
+    "notes": "Recorded for upstream awareness; the lab CLI uses the local package API, not sigma-cli."
+  },
+  "backends": {
+    "splunk": {
+      "package": "pysigma-backend-splunk",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/pysigma-backend-splunk/2.1.0/",
+      "query_dialect": "spl"
+    },
+    "elasticsearch_lucene": {
+      "package": "pysigma-backend-elasticsearch",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/pySigma-backend-elasticsearch/2.1.0/",
+      "query_dialect": "lucene"
+    }
+  },
+  "mitre_attack": {
+    "enterprise_version": "19.1",
+    "dataset_date": "2026-04-28",
+    "stix_source": "https://github.com/mitre-attack/attack-stix-data",
+    "stix_release_identifier": "ATT&CK-v19.1",
+    "domain": "enterprise-attack",
+    "notes": "Vendored subset only. Detection Strategies, Analytics, and Data Components validated against official ATT&CK objects referenced by this project. Legacy Data Sources are deprecated and not used as primary mappings."
+  },
+  "attack_navigator": {
+    "layer_format_version": "4.5",
+    "navigator_version_minimum": "4.9.0",
+    "navigator_version_documented": "5.1.0",
+    "domain": "enterprise-attack",
+    "source": "https://github.com/mitre-attack/attack-navigator/blob/master/layers/spec/v4.5/layerformat.md"
+  },
+  "github_actions": {
+    "actions_checkout": {
+      "ref": "v7.0.1",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    "actions_setup_python": {
+      "ref": "v5.6.0",
+      "commit": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    }
+  },
+  "update_process": [
+    "Review official SigmaHQ specification releases and update sigma_specification fields.",
+    "Review PyPI and advisory databases for pysigma and backend packages; pin compatible ranges in pyproject.toml.",
+    "Review MITRE ATT&CK release notes; refresh the vendored subset and version.json without inventing IDs.",
+    "Resolve GitHub Action tags to full commit SHAs via the official repositories before updating CI.",
+    "Bump verification_date and document changes in CHANGELOG.md."
+  ]
+}

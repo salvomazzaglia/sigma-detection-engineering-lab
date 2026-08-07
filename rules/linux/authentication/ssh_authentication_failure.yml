@@ -1,0 +1,35 @@
+title: 'SSH Password Authentication Failure'
+id: 2d481fd4-d45b-5c9e-a733-e6e70628baa6
+status: experimental
+description: >-
+    Detects an individual password authentication failure reported by the secure shell
+    daemon. A single failure is expected noise, so the rule is rated low and exists
+    primarily to feed the brute force correlation rules.
+references:
+    - 'https://attack.mitre.org/techniques/T1110/001/'
+    - 'https://man7.org/linux/man-pages/man8/sshd.8.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1110.001
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection_ssh_daemon:
+        ProcessName: sshd
+    selection_failure_message:
+        Message|contains:
+            - 'Failed password for'
+            - 'Failed publickey for'
+    condition: 'selection_ssh_daemon and selection_failure_message'
+falsepositives:
+    - >-
+        Users mistyping a password after a rotation, which typically produces one or two
+        failures followed by a success from the same address.
+    - >-
+        Monitoring probes configured with an expired credential that fail on every polling
+        interval from a known management address.
+level: low
+license: MIT

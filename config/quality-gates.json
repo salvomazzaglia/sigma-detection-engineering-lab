@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "gates": {
+    "safe_yaml_load": true,
+    "pysigma_parse": true,
+    "unique_uuid": true,
+    "unique_catalog_id": true,
+    "valid_filename": true,
+    "required_metadata": true,
+    "non_empty_references": true,
+    "non_empty_falsepositives": true,
+    "specific_falsepositives": true,
+    "valid_date": true,
+    "valid_level": true,
+    "status_experimental_or_test": true,
+    "block_stable_status": true,
+    "valid_logsource": true,
+    "valid_attack_tags": true,
+    "verified_attack_technique_ids": true,
+    "sidecar_exists": true,
+    "telemetry_requirements_exist": true,
+    "detection_hypothesis_exists": true,
+    "minimum_positive_fixtures_standard": 2,
+    "minimum_negative_fixtures_standard": 3,
+    "minimum_positive_sequences_correlation": 2,
+    "minimum_negative_sequences_correlation": 2,
+    "all_positive_must_match": true,
+    "all_negative_must_reject": true,
+    "synthetic_marker_required": true,
+    "no_real_data_patterns": true,
+    "conversion_status_recorded": true,
+    "no_secrets": true,
+    "unsupported_not_counted_as_pass": true,
+    "maturity_allowed": ["experimental", "tested-synthetic"]
+  },
+  "falsepositive_banned_exact": [
+    "Unknown",
+    "Legitimate activity",
+    "Administrator activity"
+  ],
+  "notes": "Quality gates apply to the main rule catalog. Malformed fixtures under fixtures/malformed are validation examples only."
+}

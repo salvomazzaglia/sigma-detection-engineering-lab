@@ -1,0 +1,4974 @@
+{
+  "attack_catalog": {
+    "attack_version": "19.1",
+    "available": true,
+    "counts": {
+      "analytics": 20,
+      "data_components": 18,
+      "detection_strategies": 20,
+      "tactics": 6,
+      "techniques": 36
+    },
+    "domain": "enterprise-attack",
+    "load_errors": [],
+    "object_count": 100,
+    "sources": [
+      "data/attack/analytics-subset.json",
+      "data/attack/data-components-subset.json",
+      "data/attack/detection-strategies-subset.json",
+      "data/attack/enterprise-attack-subset.json",
+      "data/attack/version.json"
+    ]
+  },
+  "banners": {
+    "all": [
+      "SYNTHETIC DEMONSTRATION DATA",
+      "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY",
+      "COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE"
+    ],
+    "conversion": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+    "coverage": "COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+    "synthetic_data": "SYNTHETIC DEMONSTRATION DATA",
+    "synthetic_testing": "SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY"
+  },
+  "catalog": {
+    "by_level": {
+      "critical": 3,
+      "high": 23,
+      "informational": 1,
+      "low": 6,
+      "medium": 23
+    },
+    "by_status": {
+      "experimental": 56
+    },
+    "correlation": 6,
+    "duplicate_catalog_ids": 0,
+    "duplicate_uuids": 0,
+    "logsources": 12,
+    "standard": 50,
+    "total": 56
+  },
+  "command": "sigma-detection-lab coverage",
+  "coverage": {
+    "attack_catalog_available": true,
+    "attack_mapping_ratio": 1.0,
+    "attack_version": "19.1",
+    "banner": "COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+    "excluded_metrics": [
+      "precision",
+      "recall",
+      "false_positive_rate",
+      "accuracy"
+    ],
+    "excluded_metrics_note": "Precision, recall, and false-positive rate are intentionally not reported: they cannot be derived from synthetic fixtures.",
+    "fixture_balance": [
+      {
+        "catalog_id": "SDEL-COR-001",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-COR-002",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-COR-003",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-COR-004",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-COR-005",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-COR-006",
+        "is_correlation": true,
+        "negative_events": 0,
+        "negative_sequences": 3,
+        "positive_events": 0,
+        "positive_sequences": 2
+      },
+      {
+        "catalog_id": "SDEL-ID-001",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-002",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-003",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-004",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-005",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-006",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-007",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-008",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-009",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-010",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-011",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-ID-012",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-001",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-002",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-003",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-004",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-005",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-006",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-007",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-008",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-009",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-010",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-011",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-LX-012",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-001",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-002",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-003",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-004",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-005",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-006",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-007",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-008",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-009",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-PS-010",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-001",
+        "is_correlation": false,
+        "negative_events": 4,
+        "negative_sequences": 0,
+        "positive_events": 3,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-002",
+        "is_correlation": false,
+        "negative_events": 4,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-003",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-004",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-005",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-006",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-007",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-008",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-009",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-010",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-011",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-012",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-013",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-014",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-015",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      },
+      {
+        "catalog_id": "SDEL-WIN-016",
+        "is_correlation": false,
+        "negative_events": 3,
+        "negative_sequences": 0,
+        "positive_events": 2,
+        "positive_sequences": 0
+      }
+    ],
+    "fixture_ratio": 1.0,
+    "generated_at": "2026-08-07T00:23:59.201Z",
+    "level_counts": {
+      "critical": 3,
+      "high": 23,
+      "informational": 1,
+      "low": 6,
+      "medium": 23
+    },
+    "logsource_counts": {
+      "*/*/*": 6,
+      "linux/*/auth": 2,
+      "linux/file_event/*": 4,
+      "linux/process_creation/*": 6,
+      "windows/*/security": 14,
+      "windows/*/system": 1,
+      "windows/file_event/*": 1,
+      "windows/process_access/*": 1,
+      "windows/process_creation/*": 14,
+      "windows/ps_script/*": 5,
+      "windows/registry_set/*": 1,
+      "windows/wmi_event/*": 1
+    },
+    "maturity_counts": {
+      "tested-synthetic": 56
+    },
+    "rules_fully_tested": 56,
+    "rules_with_attack_mapping": 56,
+    "rules_with_fixtures": 56,
+    "rules_with_sidecar": 56,
+    "sidecar_ratio": 1.0,
+    "status_counts": {
+      "experimental": 56
+    },
+    "tactic_counts": {
+      "ta0002": 17,
+      "ta0003": 21,
+      "ta0004": 21,
+      "ta0005": 18,
+      "ta0006": 8,
+      "ta0011": 7
+    },
+    "technique_counts": {
+      "T1003.001": 1,
+      "T1003.006": 1,
+      "T1027": 2,
+      "T1053.003": 1,
+      "T1053.005": 2,
+      "T1059.001": 7,
+      "T1059.003": 2,
+      "T1059.004": 3,
+      "T1098": 8,
+      "T1098.004": 1,
+      "T1105": 7,
+      "T1110.001": 3,
+      "T1110.003": 1,
+      "T1112": 1,
+      "T1136.001": 2,
+      "T1140": 2,
+      "T1204.002": 5,
+      "T1218.005": 1,
+      "T1218.010": 1,
+      "T1222.002": 1,
+      "T1484.001": 1,
+      "T1484.002": 1,
+      "T1505.003": 1,
+      "T1543.002": 1,
+      "T1543.003": 2,
+      "T1546.003": 1,
+      "T1547.001": 1,
+      "T1547.006": 1,
+      "T1548.003": 1,
+      "T1555": 1,
+      "T1558.003": 1,
+      "T1620": 1,
+      "T1685": 4,
+      "T1685.005": 1,
+      "T1685.006": 1,
+      "T1686": 1
+    },
+    "tested_ratio": 1.0,
+    "total_rules": 56,
+    "unique_tactics": 6,
+    "unique_techniques": 36,
+    "unmapped_catalog_techniques": [],
+    "unmapped_rules": [],
+    "untested_rules": []
+  },
+  "disclaimer": "This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.",
+  "environment": {
+    "pysigma_available": true,
+    "pysigma_error": null,
+    "pysigma_version": "1.5.0",
+    "tool_version": "1.0.0"
+  },
+  "fixtures": {
+    "banner": "SYNTHETIC DEMONSTRATION DATA",
+    "case_count": 253,
+    "error_count": 0,
+    "errors": [],
+    "manifest_used": true,
+    "sequence_count": 30
+  },
+  "generated_at": "2026-08-07T00:23:59.203Z",
+  "metadata": {
+    "failure_count": 0,
+    "failures": [],
+    "sidecar_count": 56
+  },
+  "passed": true,
+  "production_ready": false,
+  "project": {
+    "authors": [
+      "Salvatore Mazzaglia"
+    ],
+    "license": "MIT",
+    "name": "sigma-detection-engineering-lab",
+    "profile": "default"
+  },
+  "schema": "sigma-detection-engineering-lab/report/1.0.0",
+  "tests": {
+    "banner": "SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY",
+    "errored": 0,
+    "evaluator": "sdel-lab-matcher-v1",
+    "failed": 0,
+    "generated_at": "2026-08-07T00:23:59.200Z",
+    "passed": 283,
+    "results": [
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-001::positive::failures_then_success_same_account",
+        "catalog_id": "SDEL-COR-001",
+        "duration_seconds": 0.000164,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success",
+          "group-by: TargetUserName",
+          "events considered: 5, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-001::positive::failures_then_success_admin_account",
+        "catalog_id": "SDEL-COR-001",
+        "duration_seconds": 6.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success",
+          "group-by: TargetUserName",
+          "events considered: 3, skipped: 0",
+          "groups: 1",
+          "group synthetic-admin: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-001::negative::success_then_failures",
+        "catalog_id": "SDEL-COR-001",
+        "duration_seconds": 6.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success",
+          "group-by: TargetUserName",
+          "events considered: 3, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-001::negative::failures_and_success_different_accounts",
+        "catalog_id": "SDEL-COR-001",
+        "duration_seconds": 6.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success",
+          "group-by: TargetUserName",
+          "events considered: 3, skipped: 0",
+          "groups: 2",
+          "group synthetic-admin: best ordered prefix 0/2 rules in sequence -> not satisfied",
+          "group synthetic-user: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-001::negative::success_outside_window",
+        "catalog_id": "SDEL-COR-001",
+        "duration_seconds": 5.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_001_windows_logon_failure, sdel_cor_001_windows_logon_success",
+          "group-by: TargetUserName",
+          "events considered: 3, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-002::positive::five_distinct_accounts_one_source",
+        "catalog_id": "SDEL-COR-002",
+        "duration_seconds": 7.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: value_count",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_002_windows_logon_failure",
+          "group-by: IpAddress",
+          "events considered: 5, skipped: 0",
+          "groups: 1",
+          "group 192.0.2.77: best distinct 'TargetUserName' count 5 vs count >= 5 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-002::positive::six_distinct_accounts_one_source",
+        "catalog_id": "SDEL-COR-002",
+        "duration_seconds": 6.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: value_count",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_002_windows_logon_failure",
+          "group-by: IpAddress",
+          "events considered: 6, skipped: 0",
+          "groups: 1",
+          "group 192.0.2.10: best distinct 'TargetUserName' count 6 vs count >= 5 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-002::negative::repeated_failures_single_account",
+        "catalog_id": "SDEL-COR-002",
+        "duration_seconds": 7.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: value_count",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_002_windows_logon_failure",
+          "group-by: IpAddress",
+          "events considered: 6, skipped: 0",
+          "groups: 1",
+          "group 192.0.2.77: best distinct 'TargetUserName' count 1 vs count >= 5 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-002::negative::distinct_accounts_split_across_sources",
+        "catalog_id": "SDEL-COR-002",
+        "duration_seconds": 7e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: value_count",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_002_windows_logon_failure",
+          "group-by: IpAddress",
+          "events considered: 6, skipped: 0",
+          "groups: 2",
+          "group 192.0.2.10: best distinct 'TargetUserName' count 3 vs count >= 5 -> not satisfied",
+          "group 192.0.2.77: best distinct 'TargetUserName' count 3 vs count >= 5 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-002::negative::four_distinct_accounts_below_threshold",
+        "catalog_id": "SDEL-COR-002",
+        "duration_seconds": 4.9e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: value_count",
+          "timespan: 15m (900s)",
+          "referenced rules: sdel_cor_002_windows_logon_failure",
+          "group-by: IpAddress",
+          "events considered: 4, skipped: 0",
+          "groups: 1",
+          "group 192.0.2.77: best distinct 'TargetUserName' count 4 vs count >= 5 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-003::positive::twelve_failures_one_account",
+        "catalog_id": "SDEL-COR-003",
+        "duration_seconds": 0.000112,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_003_kerberos_preauth_failure",
+          "group-by: TargetUserName",
+          "events considered: 12, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best event count 12 vs count >= 10 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-003::positive::ten_failures_admin_account",
+        "catalog_id": "SDEL-COR-003",
+        "duration_seconds": 9e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_003_kerberos_preauth_failure",
+          "group-by: TargetUserName",
+          "events considered: 10, skipped: 0",
+          "groups: 1",
+          "group synthetic-admin: best event count 10 vs count >= 10 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-003::negative::five_failures_below_threshold",
+        "catalog_id": "SDEL-COR-003",
+        "duration_seconds": 5.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_003_kerberos_preauth_failure",
+          "group-by: TargetUserName",
+          "events considered: 5, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best event count 5 vs count >= 10 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-003::negative::failures_spread_across_accounts",
+        "catalog_id": "SDEL-COR-003",
+        "duration_seconds": 0.00011,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_003_kerberos_preauth_failure",
+          "group-by: TargetUserName",
+          "events considered: 12, skipped: 0",
+          "groups: 4",
+          "group synthetic-user-a: best event count 3 vs count >= 10 -> not satisfied",
+          "group synthetic-user-b: best event count 3 vs count >= 10 -> not satisfied",
+          "group synthetic-user-c: best event count 3 vs count >= 10 -> not satisfied",
+          "group synthetic-user-d: best event count 3 vs count >= 10 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-003::negative::failures_spread_beyond_window",
+        "catalog_id": "SDEL-COR-003",
+        "duration_seconds": 0.000112,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_003_kerberos_preauth_failure",
+          "group-by: TargetUserName",
+          "events considered: 12, skipped: 0",
+          "groups: 1",
+          "group synthetic-user: best event count 2 vs count >= 10 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-004::positive::four_additions_one_subject",
+        "catalog_id": "SDEL-COR-004",
+        "duration_seconds": 0.000102,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_004_privileged_group_addition",
+          "group-by: SubjectUserName",
+          "events considered: 4, skipped: 0",
+          "groups: 1",
+          "group synthetic-operator: best event count 4 vs count >= 4 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-004::positive::five_additions_mixed_groups",
+        "catalog_id": "SDEL-COR-004",
+        "duration_seconds": 9.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_004_privileged_group_addition",
+          "group-by: SubjectUserName",
+          "events considered: 5, skipped: 0",
+          "groups: 1",
+          "group synthetic-admin: best event count 5 vs count >= 4 -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-004::negative::two_additions_below_threshold",
+        "catalog_id": "SDEL-COR-004",
+        "duration_seconds": 4.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_004_privileged_group_addition",
+          "group-by: SubjectUserName",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-operator: best event count 2 vs count >= 4 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-004::negative::additions_spread_across_subjects",
+        "catalog_id": "SDEL-COR-004",
+        "duration_seconds": 7.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_004_privileged_group_addition",
+          "group-by: SubjectUserName",
+          "events considered: 4, skipped: 0",
+          "groups: 4",
+          "group synthetic-operator-a: best event count 1 vs count >= 4 -> not satisfied",
+          "group synthetic-operator-b: best event count 1 vs count >= 4 -> not satisfied",
+          "group synthetic-operator-c: best event count 1 vs count >= 4 -> not satisfied",
+          "group synthetic-operator-d: best event count 1 vs count >= 4 -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-004::negative::additions_to_non_privileged_group",
+        "catalog_id": "SDEL-COR-004",
+        "duration_seconds": 7.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: event_count",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_004_privileged_group_addition",
+          "group-by: SubjectUserName",
+          "events considered: 0, skipped: 0",
+          "groups: 0"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-005::positive::service_installed_then_executed",
+        "catalog_id": "SDEL-COR-005",
+        "duration_seconds": 5.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started",
+          "group-by: Computer, service_binary",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\windows\\temp\\synthetic_service.exe: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-005::positive::public_path_service_then_execution",
+        "catalog_id": "SDEL-COR-005",
+        "duration_seconds": 3.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started",
+          "group-by: Computer, service_binary",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\users\\public\\synthetic_service.exe: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-005::negative::execution_before_installation",
+        "catalog_id": "SDEL-COR-005",
+        "duration_seconds": 4e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started",
+          "group-by: Computer, service_binary",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\windows\\temp\\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-005::negative::different_binary_paths",
+        "catalog_id": "SDEL-COR-005",
+        "duration_seconds": 4.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started",
+          "group-by: Computer, service_binary",
+          "events considered: 2, skipped: 0",
+          "groups: 2",
+          "group synthetic-host-01|c:\\synthetic\\windows\\system32\\notepad.exe: best ordered prefix 0/2 rules in sequence -> not satisfied",
+          "group synthetic-host-01|c:\\synthetic\\windows\\temp\\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-005::negative::different_hosts",
+        "catalog_id": "SDEL-COR-005",
+        "duration_seconds": 4e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 10m (600s)",
+          "referenced rules: sdel_cor_005_service_created, sdel_cor_005_process_started",
+          "group-by: Computer, service_binary",
+          "events considered: 2, skipped: 0",
+          "groups: 2",
+          "group synthetic-dc01|c:\\synthetic\\windows\\temp\\synthetic_service.exe: best ordered prefix 0/2 rules in sequence -> not satisfied",
+          "group synthetic-host-01|c:\\synthetic\\windows\\temp\\synthetic_service.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-006::positive::write_then_execute_user_temp",
+        "catalog_id": "SDEL-COR-006",
+        "duration_seconds": 5.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 5m (300s)",
+          "referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched",
+          "group-by: Computer, artifact_path",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\users\\synthetic-user\\appdata\\local\\temp\\synthetic_tool.exe: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-COR-006::positive::write_then_execute_public",
+        "catalog_id": "SDEL-COR-006",
+        "duration_seconds": 4.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 5m (300s)",
+          "referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched",
+          "group-by: Computer, artifact_path",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\users\\public\\synthetic_helper.exe: best ordered prefix 2/2 rules in sequence -> satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-006::negative::execute_then_write",
+        "catalog_id": "SDEL-COR-006",
+        "duration_seconds": 4.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 5m (300s)",
+          "referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched",
+          "group-by: Computer, artifact_path",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\users\\synthetic-user\\appdata\\local\\temp\\synthetic_tool.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-006::negative::write_then_execute_different_file",
+        "catalog_id": "SDEL-COR-006",
+        "duration_seconds": 4.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 5m (300s)",
+          "referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched",
+          "group-by: Computer, artifact_path",
+          "events considered: 2, skipped: 0",
+          "groups: 2",
+          "group synthetic-host-01|c:\\synthetic\\users\\synthetic-user\\appdata\\local\\temp\\synthetic_other.exe: best ordered prefix 0/2 rules in sequence -> not satisfied",
+          "group synthetic-host-01|c:\\synthetic\\users\\synthetic-user\\appdata\\local\\temp\\synthetic_tool.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-COR-006::negative::execution_outside_window",
+        "catalog_id": "SDEL-COR-006",
+        "duration_seconds": 4.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "correlation type: temporal_ordered",
+          "timespan: 5m (300s)",
+          "referenced rules: sdel_cor_006_executable_written, sdel_cor_006_executable_launched",
+          "group-by: Computer, artifact_path",
+          "events considered: 2, skipped: 0",
+          "groups: 1",
+          "group synthetic-host-01|c:\\synthetic\\users\\synthetic-user\\appdata\\local\\temp\\synthetic_tool.exe: best ordered prefix 1/2 rules in sequence -> not satisfied"
+        ],
+        "kind": "sequence",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-001::positive::created_by_admin",
+        "catalog_id": "SDEL-ID-001",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_provisioning_service: no match",
+          "selection selection_account_created: match",
+          "condition selection_account_created and not filter_provisioning_service -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-001::positive::created_by_helpdesk",
+        "catalog_id": "SDEL-ID-001",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_provisioning_service: no match",
+          "selection selection_account_created: match",
+          "condition selection_account_created and not filter_provisioning_service -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-001::negative::created_by_provisioning_service",
+        "catalog_id": "SDEL-ID-001",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_provisioning_service: match",
+          "selection selection_account_created: match",
+          "condition selection_account_created and not filter_provisioning_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-001::negative::account_deleted",
+        "catalog_id": "SDEL-ID-001",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_created: no match",
+          "condition selection_account_created and not filter_provisioning_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-001::negative::password_changed",
+        "catalog_id": "SDEL-ID-001",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_created: no match",
+          "condition selection_account_created and not filter_provisioning_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-002::positive::dormant_user_enabled",
+        "catalog_id": "SDEL-ID-002",
+        "duration_seconds": 9e-06,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_account_enabled: match",
+          "condition selection_account_enabled -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-002::positive::service_account_enabled",
+        "catalog_id": "SDEL-ID-002",
+        "duration_seconds": 7e-06,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_account_enabled: match",
+          "condition selection_account_enabled -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-002::negative::account_disabled",
+        "catalog_id": "SDEL-ID-002",
+        "duration_seconds": 7e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_enabled: no match",
+          "condition selection_account_enabled -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-002::negative::account_unlocked",
+        "catalog_id": "SDEL-ID-002",
+        "duration_seconds": 6e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_enabled: no match",
+          "condition selection_account_enabled -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-002::negative::account_created",
+        "catalog_id": "SDEL-ID-002",
+        "duration_seconds": 5e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_enabled: no match",
+          "condition selection_account_enabled -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-003::positive::domain_admins_addition",
+        "catalog_id": "SDEL-ID-003",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_member_added: match",
+          "selection selection_privileged_group: match",
+          "condition selection_member_added and selection_privileged_group -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-003::positive::local_administrators_addition",
+        "catalog_id": "SDEL-ID-003",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_member_added: match",
+          "selection selection_privileged_group: match",
+          "condition selection_member_added and selection_privileged_group -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-003::negative::application_group_addition",
+        "catalog_id": "SDEL-ID-003",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_member_added: match",
+          "selection selection_privileged_group: no match",
+          "condition selection_member_added and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-003::negative::privileged_group_removal",
+        "catalog_id": "SDEL-ID-003",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_member_added: no match",
+          "condition selection_member_added and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-003::negative::security_group_created",
+        "catalog_id": "SDEL-ID-003",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_member_added: no match",
+          "condition selection_member_added and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-004::positive::domain_group_removal_by_admin",
+        "catalog_id": "SDEL-ID-004",
+        "duration_seconds": 2.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_governance_service: no match",
+          "selection selection_member_removed: match",
+          "selection selection_privileged_group: match",
+          "condition selection_member_removed and selection_privileged_group and not filter_governance_service -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-004::positive::local_group_removal_by_admin",
+        "catalog_id": "SDEL-ID-004",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_governance_service: no match",
+          "selection selection_member_removed: match",
+          "selection selection_privileged_group: match",
+          "condition selection_member_removed and selection_privileged_group and not filter_governance_service -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-004::negative::governance_service_removal",
+        "catalog_id": "SDEL-ID-004",
+        "duration_seconds": 2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_governance_service: match",
+          "selection selection_member_removed: match",
+          "selection selection_privileged_group: match",
+          "condition selection_member_removed and selection_privileged_group and not filter_governance_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-004::negative::application_group_removal",
+        "catalog_id": "SDEL-ID-004",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_member_removed: match",
+          "selection selection_privileged_group: no match",
+          "condition selection_member_removed and selection_privileged_group and not filter_governance_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-004::negative::privileged_group_addition",
+        "catalog_id": "SDEL-ID-004",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_member_removed: no match",
+          "condition selection_member_removed and selection_privileged_group and not filter_governance_service -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-005::positive::admin_account_reset",
+        "catalog_id": "SDEL-ID-005",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_admin_reset: match",
+          "selection selection_privileged_target: match",
+          "condition selection_admin_reset and selection_privileged_target -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-005::positive::breakglass_account_reset",
+        "catalog_id": "SDEL-ID-005",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_admin_reset: match",
+          "selection selection_privileged_target: match",
+          "condition selection_admin_reset and selection_privileged_target -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-005::negative::standard_account_reset",
+        "catalog_id": "SDEL-ID-005",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_admin_reset: match",
+          "selection selection_privileged_target: no match",
+          "condition selection_admin_reset and selection_privileged_target -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-005::negative::self_service_password_change",
+        "catalog_id": "SDEL-ID-005",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_admin_reset: no match",
+          "condition selection_admin_reset and selection_privileged_target -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-005::negative::account_unlocked",
+        "catalog_id": "SDEL-ID-005",
+        "duration_seconds": 8e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_admin_reset: no match",
+          "condition selection_admin_reset and selection_privileged_target -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-006::positive::spn_added_to_user",
+        "catalog_id": "SDEL-ID-006",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_spn_attribute: match",
+          "selection selection_value_written: match",
+          "condition selection_directory_change and selection_spn_attribute and selection_value_written -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-006::positive::spn_added_to_admin",
+        "catalog_id": "SDEL-ID-006",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_spn_attribute: match",
+          "selection selection_value_written: match",
+          "condition selection_directory_change and selection_spn_attribute and selection_value_written -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-006::negative::spn_value_deleted",
+        "catalog_id": "SDEL-ID-006",
+        "duration_seconds": 1.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_spn_attribute: match",
+          "selection selection_value_written: no match",
+          "condition selection_directory_change and selection_spn_attribute and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-006::negative::description_attribute_changed",
+        "catalog_id": "SDEL-ID-006",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_spn_attribute: no match",
+          "condition selection_directory_change and selection_spn_attribute and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-006::negative::user_account_changed_event",
+        "catalog_id": "SDEL-ID-006",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: no match",
+          "condition selection_directory_change and selection_spn_attribute and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-007::positive::constrained_delegation_set",
+        "catalog_id": "SDEL-ID-007",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_delegation_attribute: match",
+          "selection selection_directory_change: match",
+          "condition selection_directory_change and selection_delegation_attribute -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-007::positive::resource_based_delegation_set",
+        "catalog_id": "SDEL-ID-007",
+        "duration_seconds": 1.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_delegation_attribute: match",
+          "selection selection_directory_change: match",
+          "condition selection_directory_change and selection_delegation_attribute -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-007::negative::display_name_changed",
+        "catalog_id": "SDEL-ID-007",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_delegation_attribute: no match",
+          "selection selection_directory_change: match",
+          "condition selection_directory_change and selection_delegation_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-007::negative::computer_account_changed_summary",
+        "catalog_id": "SDEL-ID-007",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: no match",
+          "condition selection_directory_change and selection_delegation_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-007::negative::directory_object_read",
+        "catalog_id": "SDEL-ID-007",
+        "duration_seconds": 8e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: no match",
+          "condition selection_directory_change and selection_delegation_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-008::positive::get_changes_granted",
+        "catalog_id": "SDEL-ID-008",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_replication_right: match",
+          "selection selection_security_descriptor: match",
+          "condition selection_directory_change and selection_security_descriptor and selection_replication_right -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-008::positive::get_changes_all_granted",
+        "catalog_id": "SDEL-ID-008",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_replication_right: match",
+          "selection selection_security_descriptor: match",
+          "condition selection_directory_change and selection_security_descriptor and selection_replication_right -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-008::negative::descriptor_change_without_replication_right",
+        "catalog_id": "SDEL-ID-008",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_replication_right: no match",
+          "selection selection_security_descriptor: match",
+          "condition selection_directory_change and selection_security_descriptor and selection_replication_right -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-008::negative::organisational_unit_attribute_change",
+        "catalog_id": "SDEL-ID-008",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_security_descriptor: no match",
+          "condition selection_directory_change and selection_security_descriptor and selection_replication_right -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-008::negative::descriptor_read",
+        "catalog_id": "SDEL-ID-008",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: no match",
+          "condition selection_directory_change and selection_security_descriptor and selection_replication_right -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-009::positive::policy_version_updated",
+        "catalog_id": "SDEL-ID-009",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_policy_container: match",
+          "selection selection_value_written: match",
+          "condition selection_directory_change and selection_policy_container and selection_value_written -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-009::positive::policy_file_path_updated",
+        "catalog_id": "SDEL-ID-009",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_policy_container: match",
+          "selection selection_value_written: match",
+          "condition selection_directory_change and selection_policy_container and selection_value_written -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-009::negative::user_object_modified",
+        "catalog_id": "SDEL-ID-009",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_policy_container: no match",
+          "condition selection_directory_change and selection_policy_container and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-009::negative::policy_value_deleted",
+        "catalog_id": "SDEL-ID-009",
+        "duration_seconds": 1.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: match",
+          "selection selection_policy_container: match",
+          "selection selection_value_written: no match",
+          "condition selection_directory_change and selection_policy_container and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-009::negative::policy_object_read",
+        "catalog_id": "SDEL-ID-009",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_directory_change: no match",
+          "condition selection_directory_change and selection_policy_container and selection_value_written -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-010::positive::trust_created",
+        "catalog_id": "SDEL-ID-010",
+        "duration_seconds": 1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_trust_lifecycle: match",
+          "condition selection_trust_lifecycle -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-010::positive::trust_modified",
+        "catalog_id": "SDEL-ID-010",
+        "duration_seconds": 8e-06,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_trust_lifecycle: match",
+          "condition selection_trust_lifecycle -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-010::negative::group_membership_change",
+        "catalog_id": "SDEL-ID-010",
+        "duration_seconds": 7e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_trust_lifecycle: no match",
+          "condition selection_trust_lifecycle -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-010::negative::successful_logon",
+        "catalog_id": "SDEL-ID-010",
+        "duration_seconds": 7e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_trust_lifecycle: no match",
+          "condition selection_trust_lifecycle -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-010::negative::audit_policy_change",
+        "catalog_id": "SDEL-ID-010",
+        "duration_seconds": 6e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_trust_lifecycle: no match",
+          "condition selection_trust_lifecycle -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-011::positive::success_auditing_removed",
+        "catalog_id": "SDEL-ID-011",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_audit_policy_change: match",
+          "selection selection_auditing_removed: match",
+          "condition selection_audit_policy_change and selection_auditing_removed -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-011::positive::failure_auditing_removed",
+        "catalog_id": "SDEL-ID-011",
+        "duration_seconds": 1.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_audit_policy_change: match",
+          "selection selection_auditing_removed: match",
+          "condition selection_audit_policy_change and selection_auditing_removed -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-011::negative::success_auditing_added",
+        "catalog_id": "SDEL-ID-011",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_audit_policy_change: match",
+          "selection selection_auditing_removed: no match",
+          "condition selection_audit_policy_change and selection_auditing_removed -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-011::negative::security_log_cleared",
+        "catalog_id": "SDEL-ID-011",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_audit_policy_change: no match",
+          "condition selection_audit_policy_change and selection_auditing_removed -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-011::negative::system_time_changed",
+        "catalog_id": "SDEL-ID-011",
+        "duration_seconds": 8e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_audit_policy_change: no match",
+          "condition selection_audit_policy_change and selection_auditing_removed -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-012::positive::legacy_attribute_read",
+        "catalog_id": "SDEL-ID-012",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_object_access: match",
+          "selection selection_password_attribute: match",
+          "condition selection_object_access and selection_password_attribute -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-ID-012::positive::current_attribute_read",
+        "catalog_id": "SDEL-ID-012",
+        "duration_seconds": 1.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_object_access: match",
+          "selection selection_password_attribute: match",
+          "condition selection_object_access and selection_password_attribute -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-012::negative::computer_description_read",
+        "catalog_id": "SDEL-ID-012",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_object_access: match",
+          "selection selection_password_attribute: no match",
+          "condition selection_object_access and selection_password_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-012::negative::password_attribute_written",
+        "catalog_id": "SDEL-ID-012",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_object_access: no match",
+          "condition selection_object_access and selection_password_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-ID-012::negative::group_object_read",
+        "catalog_id": "SDEL-ID-012",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_object_access: match",
+          "selection selection_password_attribute: no match",
+          "condition selection_object_access and selection_password_attribute -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-001::positive::useradd_new_user",
+        "catalog_id": "SDEL-LX-001",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_account_tool: match",
+          "selection selection_creation_message: match",
+          "condition selection_account_tool and selection_creation_message -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-001::positive::adduser_new_user",
+        "catalog_id": "SDEL-LX-001",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_account_tool: match",
+          "selection selection_creation_message: match",
+          "condition selection_account_tool and selection_creation_message -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-001::negative::userdel_removes_user",
+        "catalog_id": "SDEL-LX-001",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_tool: no match",
+          "condition selection_account_tool and selection_creation_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-001::negative::usermod_changes_shell",
+        "catalog_id": "SDEL-LX-001",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_tool: no match",
+          "condition selection_account_tool and selection_creation_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-001::negative::session_opened",
+        "catalog_id": "SDEL-LX-001",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_account_tool: no match",
+          "condition selection_account_tool and selection_creation_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-002::positive::main_sudoers_written",
+        "catalog_id": "SDEL-LX-002",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_package_manager: no match",
+          "selection selection_sudoers_path: match",
+          "condition selection_sudoers_path and not filter_package_manager -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-002::positive::include_fragment_written",
+        "catalog_id": "SDEL-LX-002",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_package_manager: no match",
+          "selection selection_sudoers_path: match",
+          "condition selection_sudoers_path and not filter_package_manager -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-002::negative::unrelated_configuration_file",
+        "catalog_id": "SDEL-LX-002",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_sudoers_path: no match",
+          "condition selection_sudoers_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-002::negative::package_manager_fragment",
+        "catalog_id": "SDEL-LX-002",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_package_manager: match",
+          "selection selection_sudoers_path: match",
+          "condition selection_sudoers_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-002::negative::backup_copy_outside_directory",
+        "catalog_id": "SDEL-LX-002",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_sudoers_path: no match",
+          "condition selection_sudoers_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-003::positive::system_cron_job_written",
+        "catalog_id": "SDEL-LX-003",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_package_manager: no match",
+          "selection selection_cron_path: match",
+          "condition selection_cron_path and not filter_package_manager -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-003::positive::user_crontab_written",
+        "catalog_id": "SDEL-LX-003",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_package_manager: no match",
+          "selection selection_cron_path: match",
+          "condition selection_cron_path and not filter_package_manager -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-003::negative::unrelated_etc_file",
+        "catalog_id": "SDEL-LX-003",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_cron_path: no match",
+          "condition selection_cron_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-003::negative::package_manager_job",
+        "catalog_id": "SDEL-LX-003",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_package_manager: match",
+          "selection selection_cron_path: match",
+          "condition selection_cron_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-003::negative::job_documentation_written",
+        "catalog_id": "SDEL-LX-003",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_cron_path: no match",
+          "condition selection_cron_path and not filter_package_manager -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-004::positive::unit_in_tmp",
+        "catalog_id": "SDEL-LX-004",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_unit_file: match",
+          "selection selection_unusual_location: match",
+          "condition selection_unit_file and selection_unusual_location -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-004::positive::timer_in_home",
+        "catalog_id": "SDEL-LX-004",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_unit_file: match",
+          "selection selection_unusual_location: match",
+          "condition selection_unit_file and selection_unusual_location -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-004::negative::unit_in_managed_directory",
+        "catalog_id": "SDEL-LX-004",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_unit_file: match",
+          "selection selection_unusual_location: no match",
+          "condition selection_unit_file and selection_unusual_location -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-004::negative::log_file_in_tmp",
+        "catalog_id": "SDEL-LX-004",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_unit_file: no match",
+          "condition selection_unit_file and selection_unusual_location -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-004::negative::service_notes_document",
+        "catalog_id": "SDEL-LX-004",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_unit_file: no match",
+          "condition selection_unit_file and selection_unusual_location -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-005::positive::user_key_file_written",
+        "catalog_id": "SDEL-LX-005",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_configuration_agent: no match",
+          "selection selection_authorized_keys: match",
+          "condition selection_authorized_keys and not filter_configuration_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-005::positive::service_key_file_written",
+        "catalog_id": "SDEL-LX-005",
+        "duration_seconds": 1.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_configuration_agent: no match",
+          "selection selection_authorized_keys: match",
+          "condition selection_authorized_keys and not filter_configuration_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-005::negative::configuration_agent_distribution",
+        "catalog_id": "SDEL-LX-005",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_configuration_agent: match",
+          "selection selection_authorized_keys: match",
+          "condition selection_authorized_keys and not filter_configuration_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-005::negative::client_configuration_written",
+        "catalog_id": "SDEL-LX-005",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_authorized_keys: no match",
+          "condition selection_authorized_keys and not filter_configuration_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-005::negative::known_hosts_updated",
+        "catalog_id": "SDEL-LX-005",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_authorized_keys: no match",
+          "condition selection_authorized_keys and not filter_configuration_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-006::positive::php_worker_spawns_shell",
+        "catalog_id": "SDEL-LX-006",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_shell_child: match",
+          "selection selection_web_parent: match",
+          "condition selection_web_parent and selection_shell_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-006::positive::web_server_spawns_bash",
+        "catalog_id": "SDEL-LX-006",
+        "duration_seconds": 1.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_shell_child: match",
+          "selection selection_web_parent: match",
+          "condition selection_web_parent and selection_shell_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-006::negative::web_server_spawns_logrotate",
+        "catalog_id": "SDEL-LX-006",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_shell_child: no match",
+          "selection selection_web_parent: match",
+          "condition selection_web_parent and selection_shell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-006::negative::session_shell",
+        "catalog_id": "SDEL-LX-006",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_web_parent: no match",
+          "condition selection_web_parent and selection_shell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-006::negative::cron_spawns_shell",
+        "catalog_id": "SDEL-LX-006",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_web_parent: no match",
+          "condition selection_web_parent and selection_shell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-007::positive::curl_piped_to_shell",
+        "catalog_id": "SDEL-LX-007",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_pipe_to_shell: match",
+          "selection selection_retrieval_tool: match",
+          "condition selection_retrieval_tool and selection_pipe_to_shell -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-007::positive::wget_piped_to_shell",
+        "catalog_id": "SDEL-LX-007",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_pipe_to_shell: match",
+          "selection selection_retrieval_tool: match",
+          "condition selection_retrieval_tool and selection_pipe_to_shell -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-007::negative::curl_to_file",
+        "catalog_id": "SDEL-LX-007",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_pipe_to_shell: no match",
+          "selection selection_retrieval_tool: match",
+          "condition selection_retrieval_tool and selection_pipe_to_shell -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-007::negative::local_script_piped",
+        "catalog_id": "SDEL-LX-007",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_retrieval_tool: no match",
+          "condition selection_retrieval_tool and selection_pipe_to_shell -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-007::negative::documentation_grep",
+        "catalog_id": "SDEL-LX-007",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_retrieval_tool: no match",
+          "condition selection_retrieval_tool and selection_pipe_to_shell -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-008::positive::setuid_bit_set",
+        "catalog_id": "SDEL-LX-008",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_broad_mode: match",
+          "selection selection_permission_tool: match",
+          "condition selection_permission_tool and selection_broad_mode -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-008::positive::world_writable_mode",
+        "catalog_id": "SDEL-LX-008",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_broad_mode: match",
+          "selection selection_permission_tool: match",
+          "condition selection_permission_tool and selection_broad_mode -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-008::negative::restrictive_mode",
+        "catalog_id": "SDEL-LX-008",
+        "duration_seconds": 1.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_broad_mode: no match",
+          "selection selection_permission_tool: match",
+          "condition selection_permission_tool and selection_broad_mode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-008::negative::ownership_change",
+        "catalog_id": "SDEL-LX-008",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_permission_tool: no match",
+          "condition selection_permission_tool and selection_broad_mode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-008::negative::permission_listing",
+        "catalog_id": "SDEL-LX-008",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_permission_tool: no match",
+          "condition selection_permission_tool and selection_broad_mode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-009::positive::authentication_log_removed",
+        "catalog_id": "SDEL-LX-009",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_destructive_tool: match",
+          "selection selection_log_path: match",
+          "condition selection_destructive_tool and selection_log_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-009::positive::audit_log_truncated",
+        "catalog_id": "SDEL-LX-009",
+        "duration_seconds": 5.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_destructive_tool: match",
+          "selection selection_log_path: match",
+          "condition selection_destructive_tool and selection_log_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-009::negative::log_read_for_review",
+        "catalog_id": "SDEL-LX-009",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_destructive_tool: no match",
+          "condition selection_destructive_tool and selection_log_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-009::negative::log_rotation",
+        "catalog_id": "SDEL-LX-009",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_destructive_tool: no match",
+          "condition selection_destructive_tool and selection_log_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-009::negative::temporary_file_removed",
+        "catalog_id": "SDEL-LX-009",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_destructive_tool: match",
+          "selection selection_log_path: no match",
+          "condition selection_destructive_tool and selection_log_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-010::positive::module_from_tmp",
+        "catalog_id": "SDEL-LX-010",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_module_tool: match",
+          "selection selection_unusual_path: match",
+          "condition selection_module_tool and selection_unusual_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-010::positive::module_from_home",
+        "catalog_id": "SDEL-LX-010",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_module_tool: match",
+          "selection selection_unusual_path: match",
+          "condition selection_module_tool and selection_unusual_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-010::negative::module_from_managed_tree",
+        "catalog_id": "SDEL-LX-010",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_module_tool: match",
+          "selection selection_unusual_path: no match",
+          "condition selection_module_tool and selection_unusual_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-010::negative::module_removed",
+        "catalog_id": "SDEL-LX-010",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_module_tool: no match",
+          "condition selection_module_tool and selection_unusual_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-010::negative::module_listing",
+        "catalog_id": "SDEL-LX-010",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_module_tool: no match",
+          "condition selection_module_tool and selection_unusual_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-011::positive::binary_in_tmp",
+        "catalog_id": "SDEL-LX-011",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_approved_build_output: no match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and not filter_approved_build_output -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-011::positive::binary_in_shared_memory",
+        "catalog_id": "SDEL-LX-011",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_approved_build_output: no match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and not filter_approved_build_output -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-011::negative::binary_in_usr_bin",
+        "catalog_id": "SDEL-LX-011",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_directory: no match",
+          "condition selection_writable_directory and not filter_approved_build_output -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-011::negative::approved_build_output",
+        "catalog_id": "SDEL-LX-011",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_approved_build_output: match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and not filter_approved_build_output -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-011::negative::binary_in_opt",
+        "catalog_id": "SDEL-LX-011",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_directory: no match",
+          "condition selection_writable_directory and not filter_approved_build_output -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-012::positive::password_failure",
+        "catalog_id": "SDEL-LX-012",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_failure_message: match",
+          "selection selection_ssh_daemon: match",
+          "condition selection_ssh_daemon and selection_failure_message -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-LX-012::positive::invalid_user_failure",
+        "catalog_id": "SDEL-LX-012",
+        "duration_seconds": 1.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_failure_message: match",
+          "selection selection_ssh_daemon: match",
+          "condition selection_ssh_daemon and selection_failure_message -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-012::negative::successful_key_authentication",
+        "catalog_id": "SDEL-LX-012",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_failure_message: no match",
+          "selection selection_ssh_daemon: match",
+          "condition selection_ssh_daemon and selection_failure_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-012::negative::session_closed",
+        "catalog_id": "SDEL-LX-012",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_failure_message: no match",
+          "selection selection_ssh_daemon: match",
+          "condition selection_ssh_daemon and selection_failure_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-LX-012::negative::sudo_authentication_failure",
+        "catalog_id": "SDEL-LX-012",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_ssh_daemon: no match",
+          "condition selection_ssh_daemon and selection_failure_message -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-001::positive::long_form_encoded_switch",
+        "catalog_id": "SDEL-PS-001",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_encoded_option: match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_encoded_option -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-001::positive::short_form_encoded_switch",
+        "catalog_id": "SDEL-PS-001",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_encoded_option: match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_encoded_option -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-001::negative::plain_command",
+        "catalog_id": "SDEL-PS-001",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_encoded_option: no match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_encoded_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-001::negative::script_file_execution",
+        "catalog_id": "SDEL-PS-001",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_encoded_option: no match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_encoded_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-001::negative::other_tool_encoded_argument",
+        "catalog_id": "SDEL-PS-001",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_powershell: no match",
+          "condition selection_powershell and selection_encoded_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-002::positive::hidden_with_policy_bypass",
+        "catalog_id": "SDEL-PS-002",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_bypass_options: match",
+          "selection selection_hidden_window: match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_hidden_window and selection_bypass_options -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-002::positive::hidden_with_profile_suppression",
+        "catalog_id": "SDEL-PS-002",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_bypass_options: match",
+          "selection selection_hidden_window: match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_hidden_window and selection_bypass_options -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-002::negative::hidden_only",
+        "catalog_id": "SDEL-PS-002",
+        "duration_seconds": 1.9e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_bypass_options: no match",
+          "selection selection_hidden_window: match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_hidden_window and selection_bypass_options -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-002::negative::bypass_only",
+        "catalog_id": "SDEL-PS-002",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_hidden_window: no match",
+          "selection selection_powershell: match",
+          "condition selection_powershell and selection_hidden_window and selection_bypass_options -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-002::negative::other_shell_hidden",
+        "catalog_id": "SDEL-PS-002",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_powershell: no match",
+          "condition selection_powershell and selection_hidden_window and selection_bypass_options -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-003::positive::webclient_download_string",
+        "catalog_id": "SDEL-PS-003",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_download_method: match",
+          "selection selection_remote_scheme: match",
+          "condition selection_download_method and selection_remote_scheme -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-003::positive::invoke_web_request",
+        "catalog_id": "SDEL-PS-003",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_download_method: match",
+          "selection selection_remote_scheme: match",
+          "condition selection_download_method and selection_remote_scheme -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-003::negative::local_file_read",
+        "catalog_id": "SDEL-PS-003",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_download_method: no match",
+          "condition selection_download_method and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-003::negative::download_method_local_path",
+        "catalog_id": "SDEL-PS-003",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_download_method: match",
+          "selection selection_remote_scheme: no match",
+          "condition selection_download_method and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-003::negative::url_in_comment",
+        "catalog_id": "SDEL-PS-003",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_download_method: no match",
+          "condition selection_download_method and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-004::positive::assembly_load_from_bytes",
+        "catalog_id": "SDEL-PS-004",
+        "duration_seconds": 1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_reflection_terms: match",
+          "condition selection_reflection_terms -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-004::positive::dynamic_delegate_creation",
+        "catalog_id": "SDEL-PS-004",
+        "duration_seconds": 1.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_reflection_terms: match",
+          "condition selection_reflection_terms -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-004::negative::ordinary_type_usage",
+        "catalog_id": "SDEL-PS-004",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_reflection_terms: no match",
+          "condition selection_reflection_terms -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-004::negative::module_import",
+        "catalog_id": "SDEL-PS-004",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_reflection_terms: no match",
+          "condition selection_reflection_terms -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-004::negative::comment_mentions_reflection",
+        "catalog_id": "SDEL-PS-004",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_reflection_terms: no match",
+          "condition selection_reflection_terms -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-005::positive::field_lookup_and_set",
+        "catalog_id": "SDEL-PS-005",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_modification_verbs: match",
+          "selection selection_scanner_internals: match",
+          "condition selection_scanner_internals and selection_modification_verbs -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-005::positive::context_field_write",
+        "catalog_id": "SDEL-PS-005",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_modification_verbs: match",
+          "selection selection_scanner_internals: match",
+          "condition selection_scanner_internals and selection_modification_verbs -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-005::negative::compliance_state_read",
+        "catalog_id": "SDEL-PS-005",
+        "duration_seconds": 2.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_modification_verbs: no match",
+          "selection selection_scanner_internals: match",
+          "condition selection_scanner_internals and selection_modification_verbs -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-005::negative::generic_reflection_helper",
+        "catalog_id": "SDEL-PS-005",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_scanner_internals: no match",
+          "condition selection_scanner_internals and selection_modification_verbs -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-005::negative::inventory_report",
+        "catalog_id": "SDEL-PS-005",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_scanner_internals: no match",
+          "condition selection_scanner_internals and selection_modification_verbs -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-006::positive::add_path_exclusion",
+        "catalog_id": "SDEL-PS-006",
+        "duration_seconds": 2.4e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_exclusion_parameter: match",
+          "selection selection_preference_cmdlet: match",
+          "condition selection_preference_cmdlet and selection_exclusion_parameter -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-006::positive::add_process_exclusion",
+        "catalog_id": "SDEL-PS-006",
+        "duration_seconds": 2.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_exclusion_parameter: match",
+          "selection selection_preference_cmdlet: match",
+          "condition selection_preference_cmdlet and selection_exclusion_parameter -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-006::negative::remove_exclusion",
+        "catalog_id": "SDEL-PS-006",
+        "duration_seconds": 1.9e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_preference_cmdlet: no match",
+          "condition selection_preference_cmdlet and selection_exclusion_parameter -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-006::negative::list_preferences",
+        "catalog_id": "SDEL-PS-006",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_preference_cmdlet: no match",
+          "condition selection_preference_cmdlet and selection_exclusion_parameter -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-006::negative::unrelated_cmdlet",
+        "catalog_id": "SDEL-PS-006",
+        "duration_seconds": 2.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_preference_cmdlet: no match",
+          "condition selection_preference_cmdlet and selection_exclusion_parameter -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-007::positive::ad_group_member_added",
+        "catalog_id": "SDEL-PS-007",
+        "duration_seconds": 2.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_membership_command: match",
+          "selection selection_privileged_group: match",
+          "condition selection_membership_command and selection_privileged_group -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-007::positive::local_administrators_added",
+        "catalog_id": "SDEL-PS-007",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_membership_command: match",
+          "selection selection_privileged_group: match",
+          "condition selection_membership_command and selection_privileged_group -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-007::negative::non_privileged_group_added",
+        "catalog_id": "SDEL-PS-007",
+        "duration_seconds": 2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_membership_command: match",
+          "selection selection_privileged_group: no match",
+          "condition selection_membership_command and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-007::negative::group_membership_query",
+        "catalog_id": "SDEL-PS-007",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_membership_command: no match",
+          "condition selection_membership_command and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-007::negative::member_removed",
+        "catalog_id": "SDEL-PS-007",
+        "duration_seconds": 1.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_membership_command: no match",
+          "condition selection_membership_command and selection_privileged_group -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-008::positive::register_with_action_object",
+        "catalog_id": "SDEL-PS-008",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_task_action: match",
+          "selection selection_task_cmdlet: match",
+          "condition selection_task_cmdlet and selection_task_action -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-008::positive::register_with_inline_action",
+        "catalog_id": "SDEL-PS-008",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_task_action: match",
+          "selection selection_task_cmdlet: match",
+          "condition selection_task_cmdlet and selection_task_action -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-008::negative::list_scheduled_tasks",
+        "catalog_id": "SDEL-PS-008",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_cmdlet: no match",
+          "condition selection_task_cmdlet and selection_task_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-008::negative::unregister_task",
+        "catalog_id": "SDEL-PS-008",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_action: no match",
+          "selection selection_task_cmdlet: match",
+          "condition selection_task_cmdlet and selection_task_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-008::negative::comment_mentions_cmdlet",
+        "catalog_id": "SDEL-PS-008",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_action: no match",
+          "selection selection_task_cmdlet: match",
+          "condition selection_task_cmdlet and selection_task_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-009::positive::decode_then_invoke_expression",
+        "catalog_id": "SDEL-PS-009",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_base64_decode: match",
+          "selection selection_dynamic_execution: match",
+          "condition selection_base64_decode and selection_dynamic_execution -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-009::positive::decode_then_create_scriptblock",
+        "catalog_id": "SDEL-PS-009",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_base64_decode: match",
+          "selection selection_dynamic_execution: match",
+          "condition selection_base64_decode and selection_dynamic_execution -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-009::negative::decode_to_file",
+        "catalog_id": "SDEL-PS-009",
+        "duration_seconds": 2.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_base64_decode: match",
+          "selection selection_dynamic_execution: no match",
+          "condition selection_base64_decode and selection_dynamic_execution -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-009::negative::invoke_literal_command",
+        "catalog_id": "SDEL-PS-009",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_base64_decode: no match",
+          "condition selection_base64_decode and selection_dynamic_execution -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-009::negative::base64_encoding_only",
+        "catalog_id": "SDEL-PS-009",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_base64_decode: no match",
+          "condition selection_base64_decode and selection_dynamic_execution -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-010::positive::spreadsheet_parent",
+        "catalog_id": "SDEL-PS-010",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_office_parent: match",
+          "selection selection_powershell_child: match",
+          "condition selection_office_parent and selection_powershell_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-PS-010::positive::mail_client_parent",
+        "catalog_id": "SDEL-PS-010",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_office_parent: match",
+          "selection selection_powershell_child: match",
+          "condition selection_office_parent and selection_powershell_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-010::negative::office_parent_spawns_helper",
+        "catalog_id": "SDEL-PS-010",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_office_parent: match",
+          "selection selection_powershell_child: no match",
+          "condition selection_office_parent and selection_powershell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-010::negative::scheduler_parent_spawns_powershell",
+        "catalog_id": "SDEL-PS-010",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_office_parent: no match",
+          "condition selection_office_parent and selection_powershell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-PS-010::negative::office_parent_spawns_script_host",
+        "catalog_id": "SDEL-PS-010",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_office_parent: match",
+          "selection selection_powershell_child: no match",
+          "condition selection_office_parent and selection_powershell_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-001::positive::user_temp_directory",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_approved_installer: no match",
+          "selection selection_writable_path: match",
+          "condition selection_writable_path and not filter_approved_installer -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-001::positive::machine_temp_directory",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_approved_installer: no match",
+          "selection selection_writable_path: match",
+          "condition selection_writable_path and not filter_approved_installer -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-001::positive::public_directory",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_approved_installer: no match",
+          "selection selection_writable_path: match",
+          "condition selection_writable_path and not filter_approved_installer -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-001::negative::managed_program_files",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_path: no match",
+          "condition selection_writable_path and not filter_approved_installer -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-001::negative::allowed_patch_installer",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_approved_installer: match",
+          "selection selection_writable_path: match",
+          "condition selection_writable_path and not filter_approved_installer -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-001::negative::system_directory_binary",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_path: no match",
+          "condition selection_writable_path and not filter_approved_installer -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-001::negative::temp_named_subdirectory_elsewhere",
+        "catalog_id": "SDEL-WIN-001",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_path: no match",
+          "condition selection_writable_path and not filter_approved_installer -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-002::positive::word_like_parent_spawns_cmd",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_interpreter_child: match",
+          "selection selection_office_parent: match",
+          "condition selection_office_parent and selection_interpreter_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-002::positive::excel_like_parent_spawns_powershell",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_interpreter_child: match",
+          "selection selection_office_parent: match",
+          "condition selection_office_parent and selection_interpreter_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-002::negative::office_parent_spawns_updater",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_interpreter_child: no match",
+          "selection selection_office_parent: match",
+          "condition selection_office_parent and selection_interpreter_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-002::negative::explorer_parent_spawns_cmd",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_office_parent: no match",
+          "condition selection_office_parent and selection_interpreter_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-002::negative::office_parent_spawns_printer_helper",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_interpreter_child: no match",
+          "selection selection_office_parent: match",
+          "condition selection_office_parent and selection_interpreter_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-002::negative::service_host_spawns_cscript",
+        "catalog_id": "SDEL-WIN-002",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_office_parent: no match",
+          "condition selection_office_parent and selection_interpreter_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-003::positive::javascript_protocol",
+        "catalog_id": "SDEL-WIN-003",
+        "duration_seconds": 1.7e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_script_host: match",
+          "selection selection_script_protocol: match",
+          "condition selection_script_host and selection_script_protocol -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-003::positive::vbscript_protocol",
+        "catalog_id": "SDEL-WIN-003",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_script_host: match",
+          "selection selection_script_protocol: match",
+          "condition selection_script_host and selection_script_protocol -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-003::negative::local_hta_file",
+        "catalog_id": "SDEL-WIN-003",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_script_host: match",
+          "selection selection_script_protocol: no match",
+          "condition selection_script_host and selection_script_protocol -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-003::negative::browser_protocol_argument",
+        "catalog_id": "SDEL-WIN-003",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_script_host: no match",
+          "condition selection_script_host and selection_script_protocol -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-003::negative::unrelated_system_binary",
+        "catalog_id": "SDEL-WIN-003",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_script_host: no match",
+          "condition selection_script_host and selection_script_protocol -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-004::positive::component_registration_remote",
+        "catalog_id": "SDEL-WIN-004",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_remote_scheme: match",
+          "selection selection_script_utility: match",
+          "condition selection_script_utility and selection_remote_scheme -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-004::positive::script_host_remote",
+        "catalog_id": "SDEL-WIN-004",
+        "duration_seconds": 1.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_remote_scheme: match",
+          "selection selection_script_utility: match",
+          "condition selection_script_utility and selection_remote_scheme -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-004::negative::local_component_registration",
+        "catalog_id": "SDEL-WIN-004",
+        "duration_seconds": 1.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_remote_scheme: no match",
+          "selection selection_script_utility: match",
+          "condition selection_script_utility and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-004::negative::browser_opens_url",
+        "catalog_id": "SDEL-WIN-004",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_script_utility: no match",
+          "condition selection_script_utility and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-004::negative::script_host_local_file",
+        "catalog_id": "SDEL-WIN-004",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_remote_scheme: no match",
+          "selection selection_script_utility: match",
+          "condition selection_script_utility and selection_remote_scheme -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-005::positive::url_cache_transfer",
+        "catalog_id": "SDEL-WIN-005",
+        "duration_seconds": 2.3e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_certificate_utility: match",
+          "selection selection_transfer_or_decode: match",
+          "condition selection_certificate_utility and selection_transfer_or_decode -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-005::positive::base64_decode",
+        "catalog_id": "SDEL-WIN-005",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_certificate_utility: match",
+          "selection selection_transfer_or_decode: match",
+          "condition selection_certificate_utility and selection_transfer_or_decode -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-005::negative::certificate_store_listing",
+        "catalog_id": "SDEL-WIN-005",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_certificate_utility: match",
+          "selection selection_transfer_or_decode: no match",
+          "condition selection_certificate_utility and selection_transfer_or_decode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-005::negative::other_tool_decode_switch",
+        "catalog_id": "SDEL-WIN-005",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_certificate_utility: no match",
+          "condition selection_certificate_utility and selection_transfer_or_decode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-005::negative::certificate_template_query",
+        "catalog_id": "SDEL-WIN-005",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_certificate_utility: match",
+          "selection selection_transfer_or_decode: no match",
+          "condition selection_certificate_utility and selection_transfer_or_decode -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-006::positive::service_from_windows_temp",
+        "catalog_id": "SDEL-WIN-006",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_service_installed: match",
+          "selection selection_writable_image_path: match",
+          "condition selection_service_installed and selection_writable_image_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-006::positive::service_from_public_directory",
+        "catalog_id": "SDEL-WIN-006",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_service_installed: match",
+          "selection selection_writable_image_path: match",
+          "condition selection_service_installed and selection_writable_image_path -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-006::negative::managed_service_path",
+        "catalog_id": "SDEL-WIN-006",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_service_installed: match",
+          "selection selection_writable_image_path: no match",
+          "condition selection_service_installed and selection_writable_image_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-006::negative::service_start_failure_event",
+        "catalog_id": "SDEL-WIN-006",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_service_installed: no match",
+          "condition selection_service_installed and selection_writable_image_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-006::negative::driver_load_other_provider",
+        "catalog_id": "SDEL-WIN-006",
+        "duration_seconds": 1.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_service_installed: no match",
+          "condition selection_service_installed and selection_writable_image_path -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-007::positive::task_action_user_temp",
+        "catalog_id": "SDEL-WIN-007",
+        "duration_seconds": 1.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_task_registered: match",
+          "selection selection_temp_action: match",
+          "condition selection_task_registered and selection_temp_action -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-007::positive::task_action_windows_temp",
+        "catalog_id": "SDEL-WIN-007",
+        "duration_seconds": 1.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_task_registered: match",
+          "selection selection_temp_action: match",
+          "condition selection_task_registered and selection_temp_action -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-007::negative::task_action_managed_path",
+        "catalog_id": "SDEL-WIN-007",
+        "duration_seconds": 2.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_registered: match",
+          "selection selection_temp_action: no match",
+          "condition selection_task_registered and selection_temp_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-007::negative::task_deleted_event",
+        "catalog_id": "SDEL-WIN-007",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_registered: no match",
+          "condition selection_task_registered and selection_temp_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-007::negative::task_description_mentions_temp",
+        "catalog_id": "SDEL-WIN-007",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_task_registered: match",
+          "selection selection_temp_action: no match",
+          "condition selection_task_registered and selection_temp_action -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-008::positive::run_value_user_temp",
+        "catalog_id": "SDEL-WIN-008",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_autostart_key: match",
+          "selection selection_writable_value: match",
+          "condition selection_autostart_key and selection_writable_value -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-008::positive::runonce_value_public",
+        "catalog_id": "SDEL-WIN-008",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_autostart_key: match",
+          "selection selection_writable_value: match",
+          "condition selection_autostart_key and selection_writable_value -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-008::negative::run_value_managed_path",
+        "catalog_id": "SDEL-WIN-008",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_autostart_key: match",
+          "selection selection_writable_value: no match",
+          "condition selection_autostart_key and selection_writable_value -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-008::negative::application_setting_temp_path",
+        "catalog_id": "SDEL-WIN-008",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_autostart_key: no match",
+          "condition selection_autostart_key and selection_writable_value -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-008::negative::run_key_read_only_theme",
+        "catalog_id": "SDEL-WIN-008",
+        "duration_seconds": 9e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_autostart_key: no match",
+          "condition selection_autostart_key and selection_writable_value -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-009::positive::filter_created",
+        "catalog_id": "SDEL-WIN-009",
+        "duration_seconds": 1.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_subscription_component: match",
+          "condition selection_subscription_component -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-009::positive::binding_created",
+        "catalog_id": "SDEL-WIN-009",
+        "duration_seconds": 1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_subscription_component: match",
+          "condition selection_subscription_component -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-009::negative::filter_deleted",
+        "catalog_id": "SDEL-WIN-009",
+        "duration_seconds": 8e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_subscription_component: no match",
+          "condition selection_subscription_component -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-009::negative::wmi_query_only",
+        "catalog_id": "SDEL-WIN-009",
+        "duration_seconds": 7e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_subscription_component: no match",
+          "condition selection_subscription_component -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-009::negative::consumer_deleted",
+        "catalog_id": "SDEL-WIN-009",
+        "duration_seconds": 8e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_subscription_component: no match",
+          "condition selection_subscription_component -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-010::positive::cleared_by_admin",
+        "catalog_id": "SDEL-WIN-010",
+        "duration_seconds": 1.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_log_cleared: match",
+          "condition selection_log_cleared -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-010::positive::cleared_on_domain_controller",
+        "catalog_id": "SDEL-WIN-010",
+        "duration_seconds": 9e-06,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_log_cleared: match",
+          "condition selection_log_cleared -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-010::negative::system_log_cleared",
+        "catalog_id": "SDEL-WIN-010",
+        "duration_seconds": 6e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_log_cleared: no match",
+          "condition selection_log_cleared -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-010::negative::audit_policy_changed",
+        "catalog_id": "SDEL-WIN-010",
+        "duration_seconds": 6e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_log_cleared: no match",
+          "condition selection_log_cleared -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-010::negative::successful_logon",
+        "catalog_id": "SDEL-WIN-010",
+        "duration_seconds": 5e-06,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_log_cleared: no match",
+          "condition selection_log_cleared -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-011::positive::disable_realtime_monitoring",
+        "catalog_id": "SDEL-WIN-011",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_config_tool: match",
+          "selection selection_weakening_option: match",
+          "condition selection_config_tool and selection_weakening_option -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-011::positive::policy_registry_write",
+        "catalog_id": "SDEL-WIN-011",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_config_tool: match",
+          "selection selection_weakening_option: match",
+          "condition selection_config_tool and selection_weakening_option -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-011::negative::enable_realtime_monitoring",
+        "catalog_id": "SDEL-WIN-011",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_config_tool: match",
+          "selection selection_weakening_option: no match",
+          "condition selection_config_tool and selection_weakening_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-011::negative::query_protection_status",
+        "catalog_id": "SDEL-WIN-011",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_config_tool: match",
+          "selection selection_weakening_option: no match",
+          "condition selection_config_tool and selection_weakening_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-011::negative::documentation_tool_mentions_setting",
+        "catalog_id": "SDEL-WIN-011",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_config_tool: no match",
+          "condition selection_config_tool and selection_weakening_option -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-012::positive::read_access_from_temp_binary",
+        "catalog_id": "SDEL-WIN-012",
+        "duration_seconds": 2.5e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_known_security_agent: no match",
+          "selection selection_memory_access: match",
+          "selection selection_target_process: match",
+          "condition selection_target_process and selection_memory_access and not filter_known_security_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-012::positive::extended_access_from_script_host",
+        "catalog_id": "SDEL-WIN-012",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_known_security_agent: no match",
+          "selection selection_memory_access: match",
+          "selection selection_target_process: match",
+          "condition selection_target_process and selection_memory_access and not filter_known_security_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-012::negative::query_limited_information",
+        "catalog_id": "SDEL-WIN-012",
+        "duration_seconds": 5.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_memory_access: no match",
+          "selection selection_target_process: match",
+          "condition selection_target_process and selection_memory_access and not filter_known_security_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-012::negative::known_security_agent",
+        "catalog_id": "SDEL-WIN-012",
+        "duration_seconds": 3.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_known_security_agent: match",
+          "selection selection_memory_access: match",
+          "selection selection_target_process: match",
+          "condition selection_target_process and selection_memory_access and not filter_known_security_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-012::negative::access_to_service_host",
+        "catalog_id": "SDEL-WIN-012",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_target_process: no match",
+          "condition selection_target_process and selection_memory_access and not filter_known_security_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-013::positive::inbound_any_remote_address",
+        "catalog_id": "SDEL-WIN-013",
+        "duration_seconds": 2.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_add_rule: match",
+          "selection selection_allow_action: match",
+          "selection selection_broad_scope: match",
+          "selection selection_firewall_tool: match",
+          "condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-013::positive::all_profiles_allow_rule",
+        "catalog_id": "SDEL-WIN-013",
+        "duration_seconds": 2.6e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_add_rule: match",
+          "selection selection_allow_action: match",
+          "selection selection_broad_scope: match",
+          "selection selection_firewall_tool: match",
+          "condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-013::negative::scoped_allow_rule",
+        "catalog_id": "SDEL-WIN-013",
+        "duration_seconds": 2.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_add_rule: match",
+          "selection selection_allow_action: match",
+          "selection selection_broad_scope: no match",
+          "selection selection_firewall_tool: match",
+          "condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-013::negative::block_rule_any_remote",
+        "catalog_id": "SDEL-WIN-013",
+        "duration_seconds": 1.9e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_add_rule: match",
+          "selection selection_allow_action: no match",
+          "selection selection_firewall_tool: match",
+          "condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-013::negative::firewall_rule_listing",
+        "catalog_id": "SDEL-WIN-013",
+        "duration_seconds": 1.5e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_add_rule: no match",
+          "selection selection_firewall_tool: match",
+          "condition selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-014::positive::executable_in_user_temp",
+        "catalog_id": "SDEL-WIN-014",
+        "duration_seconds": 2.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_managed_update_agent: no match",
+          "selection selection_executable_extension: match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and selection_executable_extension and not filter_managed_update_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-014::positive::library_in_public_directory",
+        "catalog_id": "SDEL-WIN-014",
+        "duration_seconds": 5.2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection filter_managed_update_agent: no match",
+          "selection selection_executable_extension: match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and selection_executable_extension and not filter_managed_update_agent -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-014::negative::document_in_user_temp",
+        "catalog_id": "SDEL-WIN-014",
+        "duration_seconds": 1.6e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_executable_extension: no match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and selection_executable_extension and not filter_managed_update_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-014::negative::executable_in_program_files",
+        "catalog_id": "SDEL-WIN-014",
+        "duration_seconds": 1.2e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_writable_directory: no match",
+          "condition selection_writable_directory and selection_executable_extension and not filter_managed_update_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-014::negative::managed_update_agent_staging",
+        "catalog_id": "SDEL-WIN-014",
+        "duration_seconds": 1.8e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection filter_managed_update_agent: match",
+          "selection selection_executable_extension: match",
+          "selection selection_writable_directory: match",
+          "condition selection_writable_directory and selection_executable_extension and not filter_managed_update_agent -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-015::positive::pdf_viewer_spawns_powershell",
+        "catalog_id": "SDEL-WIN-015",
+        "duration_seconds": 2e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_suspicious_child: match",
+          "selection selection_viewer_parent: match",
+          "condition selection_viewer_parent and selection_suspicious_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-015::positive::docviewer_spawns_library_host",
+        "catalog_id": "SDEL-WIN-015",
+        "duration_seconds": 1.9e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_suspicious_child: match",
+          "selection selection_viewer_parent: match",
+          "condition selection_viewer_parent and selection_suspicious_child -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-015::negative::viewer_spawns_print_helper",
+        "catalog_id": "SDEL-WIN-015",
+        "duration_seconds": 1.7e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_suspicious_child: no match",
+          "selection selection_viewer_parent: match",
+          "condition selection_viewer_parent and selection_suspicious_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-015::negative::shell_spawns_library_host",
+        "catalog_id": "SDEL-WIN-015",
+        "duration_seconds": 1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_viewer_parent: no match",
+          "condition selection_viewer_parent and selection_suspicious_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-015::negative::viewer_spawns_updater",
+        "catalog_id": "SDEL-WIN-015",
+        "duration_seconds": 3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_suspicious_child: no match",
+          "selection selection_viewer_parent: match",
+          "condition selection_viewer_parent and selection_suspicious_child -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-016::positive::background_transfer_job",
+        "catalog_id": "SDEL-WIN-016",
+        "duration_seconds": 2.8e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_remote_scheme: match",
+          "selection selection_transfer_utility: match",
+          "condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": true,
+        "case_id": "SDEL-WIN-016::positive::installer_remote_package",
+        "catalog_id": "SDEL-WIN-016",
+        "duration_seconds": 2.1e-05,
+        "expected_match": true,
+        "explanation": [
+          "selection selection_remote_scheme: match",
+          "selection selection_transfer_utility: match",
+          "condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -> True"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-016::negative::local_package_install",
+        "catalog_id": "SDEL-WIN-016",
+        "duration_seconds": 2.3e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_remote_scheme: no match",
+          "selection selection_transfer_switch: no match",
+          "selection selection_transfer_utility: match",
+          "condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-016::negative::download_manager_with_url",
+        "catalog_id": "SDEL-WIN-016",
+        "duration_seconds": 1.4e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_transfer_utility: no match",
+          "condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      },
+      {
+        "actual_match": false,
+        "case_id": "SDEL-WIN-016::negative::transfer_utility_job_listing",
+        "catalog_id": "SDEL-WIN-016",
+        "duration_seconds": 2.1e-05,
+        "expected_match": false,
+        "explanation": [
+          "selection selection_remote_scheme: no match",
+          "selection selection_transfer_switch: no match",
+          "selection selection_transfer_utility: match",
+          "condition selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch) -> False"
+        ],
+        "kind": "event",
+        "message": "",
+        "outcome": "passed"
+      }
+    ],
+    "skipped": 0,
+    "successful": true,
+    "total": 283,
+    "totals": {
+      "errored": 0,
+      "failed": 0,
+      "passed": 283,
+      "skipped": 0,
+      "total": 283,
+      "unsupported": 0
+    },
+    "unsupported": 0
+  },
+  "validation": {
+    "counts_by_severity": {},
+    "error_count": 0,
+    "findings": [],
+    "generated_at": "2026-08-07T00:23:59.203Z",
+    "passed": true,
+    "rules_examined": 56,
+    "warning_count": 0
+  }
+}

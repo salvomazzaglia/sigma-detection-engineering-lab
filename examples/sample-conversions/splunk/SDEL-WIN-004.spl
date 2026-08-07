@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-004
+status=converted
+
+Image IN ("*\\mshta.exe", "*\\wscript.exe", "*\\cscript.exe", "*\\regsvr32.exe", "*\\rundll32.exe") CommandLine IN ("*http://*", "*https://*")

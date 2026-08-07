@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-005
+status=converted
+
+Image="*\\certutil.exe" CommandLine IN ("*-urlcache*", "*-decode*", "*-encode*", "*-verifyctl*")

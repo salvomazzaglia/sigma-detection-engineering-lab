@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-001",
+  "sigma_rule_id": "268dffb9-a796-5282-a024-9242475c744a",
+  "title": "PowerShell Invoked With An Encoded Command Option",
+  "detection_hypothesis": "If a caller wants to hide the executed statement, the PowerShell command line will contain an encoded command switch followed by an opaque string.",
+  "platform": "windows",
+  "rule_family": "powershell",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "Image",
+    "CommandLine"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process.",
+    "CommandLine": "Full command line including arguments as supplied to the process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Moderate where configuration management is heavily used.",
+  "false_positive_strategy": "Benign encoded commands originate from a handful of management agents and always have the same parent process. Tune on ParentImage plus the invoking account, not on the encoded switch.",
+  "tuning_guidance": "Exclude the management agent parent image on managed endpoints. Do not exclude the encoded command switch, and prefer decoding the command in the pipeline for review.",
+  "test_strategy": "Positive cases use the long and short forms of the switch with a synthetic placeholder string. Negative cases cover an ordinary command, a file-based script, and a different binary.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1059.001",
+      "name": "Command and Scripting Interpreter: PowerShell"
+    },
+    {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    },
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0455",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1252",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0032",
+      "technique_id": "T1059.001"
+    },
+    {
+      "id": "DC0064",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1027.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-PS-009",
+    "SDEL-PS-002"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/powershell/powershell_encoded_command_option.yml",
+  "fixture_directory": "fixtures/rules/SDEL-PS-001"
+}

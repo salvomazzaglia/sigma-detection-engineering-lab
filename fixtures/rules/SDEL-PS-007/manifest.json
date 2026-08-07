@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-007",
+  "sigma_rule_id": "7daee763-200c-5c3f-b0c5-71873e19f969",
+  "rule_file": "rules/powershell/powershell_privileged_group_membership_modification.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "ad_group_member_added",
+      "file": "positive/case_01_ad_group_member_added.jsonl",
+      "expected": "match",
+      "scenario": "Directory cmdlet adds a member to a privileged directory group.",
+      "rationale": "Membership command and privileged group selections both match."
+    },
+    {
+      "name": "local_administrators_added",
+      "file": "positive/case_02_local_administrators_added.jsonl",
+      "expected": "match",
+      "scenario": "Legacy command adds a member to the local administrators group.",
+      "rationale": "Membership command and privileged group selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "non_privileged_group_added",
+      "file": "negative/case_01_non_privileged_group_added.jsonl",
+      "expected": "no_match",
+      "scenario": "Member added to an ordinary application group.",
+      "rationale": "The privileged group selection does not match."
+    },
+    {
+      "name": "group_membership_query",
+      "file": "negative/case_02_group_membership_query.jsonl",
+      "expected": "no_match",
+      "scenario": "Privileged group membership listed for an access review.",
+      "rationale": "The membership command selection does not match a query cmdlet."
+    },
+    {
+      "name": "member_removed",
+      "file": "negative/case_03_member_removed.jsonl",
+      "expected": "no_match",
+      "scenario": "Member removed from a privileged group.",
+      "rationale": "The membership command selection matches only addition verbs."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-010",
+  "sigma_rule_id": "a199c7a5-5180-57eb-a2aa-d4e438960195",
+  "rule_file": "rules/windows/defense_evasion/windows_security_event_log_cleared.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "cleared_by_admin",
+      "file": "positive/case_01_cleared_by_admin.jsonl",
+      "expected": "match",
+      "scenario": "Security log cleared by a synthetic administrator.",
+      "rationale": "Event identifier and channel selections both match."
+    },
+    {
+      "name": "cleared_on_domain_controller",
+      "file": "positive/case_02_cleared_on_domain_controller.jsonl",
+      "expected": "match",
+      "scenario": "Security log cleared on the synthetic domain controller.",
+      "rationale": "Event identifier and channel selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "system_log_cleared",
+      "file": "negative/case_01_system_log_cleared.jsonl",
+      "expected": "no_match",
+      "scenario": "System log cleared, recorded on the System channel.",
+      "rationale": "Channel does not match the Security selection."
+    },
+    {
+      "name": "audit_policy_changed",
+      "file": "negative/case_02_audit_policy_changed.jsonl",
+      "expected": "no_match",
+      "scenario": "Audit policy changed on the same host.",
+      "rationale": "Event identifier does not match."
+    },
+    {
+      "name": "successful_logon",
+      "file": "negative/case_03_successful_logon.jsonl",
+      "expected": "no_match",
+      "scenario": "Ordinary interactive logon.",
+      "rationale": "Neither the identifier nor the semantics match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

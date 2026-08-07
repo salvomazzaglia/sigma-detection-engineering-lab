@@ -1,0 +1,41 @@
+title: 'Broad Or Setuid Permission Change Applied To A File'
+id: 07d8d224-48da-5bc3-979c-87e4101a6962
+status: experimental
+description: >-
+    Detects permission changes that set the setuid bit or grant world-writable access. Both
+    outcomes create privilege escalation opportunities that persist until the permissions
+    are corrected.
+references:
+    - 'https://attack.mitre.org/techniques/T1222/002/'
+    - 'https://man7.org/linux/man-pages/man1/chmod.1.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1222.002
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_permission_tool:
+        Image|endswith:
+            - '/chmod'
+            - '/setfacl'
+    selection_broad_mode:
+        CommandLine|contains:
+            - 'u+s'
+            - 'g+s'
+            - ' 4755'
+            - ' 2755'
+            - ' 777'
+            - 'a+rwx'
+    condition: 'selection_permission_tool and selection_broad_mode'
+falsepositives:
+    - >-
+        Legacy application installers that set the setuid bit on a helper binary that needs
+        elevated privileges by design.
+    - >-
+        Shared build directories where an engineer temporarily relaxes permissions to
+        resolve a group ownership problem.
+level: medium
+license: MIT

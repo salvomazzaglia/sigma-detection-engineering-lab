@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-001",
+  "sigma_rule_id": "16e551df-c267-5b7e-af52-e3c5666bcf43",
+  "rule_file": "rules/identity/windows_security/user_account_created.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "created_by_admin",
+      "file": "positive/case_01_created_by_admin.jsonl",
+      "expected": "match",
+      "scenario": "Account created by a synthetic administrator.",
+      "rationale": "Creation event matches and no filter applies."
+    },
+    {
+      "name": "created_by_helpdesk",
+      "file": "positive/case_02_created_by_helpdesk.jsonl",
+      "expected": "match",
+      "scenario": "Account created by a synthetic help desk operator.",
+      "rationale": "Creation event matches and no filter applies."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "created_by_provisioning_service",
+      "file": "negative/case_01_created_by_provisioning_service.jsonl",
+      "expected": "no_match",
+      "scenario": "Account created by the joiner provisioning service.",
+      "rationale": "Creation event matches but the provisioning filter removes it."
+    },
+    {
+      "name": "account_deleted",
+      "file": "negative/case_02_account_deleted.jsonl",
+      "expected": "no_match",
+      "scenario": "Account deleted during a leaver process.",
+      "rationale": "The event identifier is a deletion, not a creation."
+    },
+    {
+      "name": "password_changed",
+      "file": "negative/case_03_password_changed.jsonl",
+      "expected": "no_match",
+      "scenario": "User changed their own password.",
+      "rationale": "The event identifier does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

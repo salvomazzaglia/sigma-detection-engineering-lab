@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-006",
+  "sigma_rule_id": "c162ff7a-b81d-5a1f-847d-1690a4412562",
+  "rule_file": "rules/correlation/temporary_file_creation_followed_by_execution.yml",
+  "rule_type": "correlation",
+  "correlation_type": "temporal_ordered",
+  "timespan": "5m",
+  "group_by": [
+    "Computer",
+    "artifact_path"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "write_then_execute_user_temp",
+      "file": "positive/sequence_01_write_then_execute_user_temp.jsonl",
+      "expected": "match",
+      "event_count": 2,
+      "scenario": "Executable written to the per-user temporary directory and then executed.",
+      "rationale": "Both stages share the host and the artefact path alias inside the window."
+    },
+    {
+      "name": "write_then_execute_public",
+      "file": "positive/sequence_02_write_then_execute_public.jsonl",
+      "expected": "match",
+      "event_count": 2,
+      "scenario": "Executable written to the public directory and then executed.",
+      "rationale": "Both stages share the host and the artefact path alias inside the window."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "execute_then_write",
+      "file": "negative/sequence_01_execute_then_write.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "A binary executes before an executable of the same name is written.",
+      "rationale": "The ordered requirement is not satisfied."
+    },
+    {
+      "name": "write_then_execute_different_file",
+      "file": "negative/sequence_02_write_then_execute_different_file.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "An executable is written and a different temporary binary executes.",
+      "rationale": "The artefact path alias differs between the two stages."
+    },
+    {
+      "name": "execution_outside_window",
+      "file": "negative/sequence_03_execution_outside_window.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "An executable is written and executed thirty minutes later.",
+      "rationale": "The sequence exceeds the five minute timespan."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

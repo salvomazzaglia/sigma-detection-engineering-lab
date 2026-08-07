@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-012",
+  "sigma_rule_id": "2d481fd4-d45b-5c9e-a733-e6e70628baa6",
+  "rule_file": "rules/linux/authentication/ssh_authentication_failure.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "product": "linux",
+    "service": "auth"
+  },
+  "channels": [
+    "/var/log/auth.log",
+    "/var/log/secure"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "password_failure",
+      "file": "positive/case_01_password_failure.jsonl",
+      "expected": "match",
+      "scenario": "Password authentication failure for a standard user.",
+      "rationale": "Daemon and failure message selections both match."
+    },
+    {
+      "name": "invalid_user_failure",
+      "file": "positive/case_02_invalid_user_failure.jsonl",
+      "expected": "match",
+      "scenario": "Password authentication failure for an unknown account.",
+      "rationale": "Daemon and failure message selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "successful_key_authentication",
+      "file": "negative/case_01_successful_key_authentication.jsonl",
+      "expected": "no_match",
+      "scenario": "Successful key-based authentication.",
+      "rationale": "The failure message selection does not match."
+    },
+    {
+      "name": "session_closed",
+      "file": "negative/case_02_session_closed.jsonl",
+      "expected": "no_match",
+      "scenario": "Session closed normally.",
+      "rationale": "The failure message selection does not match."
+    },
+    {
+      "name": "sudo_authentication_failure",
+      "file": "negative/case_03_sudo_authentication_failure.jsonl",
+      "expected": "no_match",
+      "scenario": "Privilege escalation authentication failure reported by another program.",
+      "rationale": "The daemon selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

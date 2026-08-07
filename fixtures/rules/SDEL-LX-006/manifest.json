@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-006",
+  "sigma_rule_id": "f6a911f9-dfb2-5dfa-b2af-d42a23fc1bb1",
+  "rule_file": "rules/linux/process/shell_spawned_by_web_service_process.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "php_worker_spawns_shell",
+      "file": "positive/case_01_php_worker_spawns_shell.jsonl",
+      "expected": "match",
+      "scenario": "Application worker process spawns a shell.",
+      "rationale": "Parent and child selections both match."
+    },
+    {
+      "name": "web_server_spawns_bash",
+      "file": "positive/case_02_web_server_spawns_bash.jsonl",
+      "expected": "match",
+      "scenario": "Web server process spawns an interactive shell.",
+      "rationale": "Parent and child selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "web_server_spawns_logrotate",
+      "file": "negative/case_01_web_server_spawns_logrotate.jsonl",
+      "expected": "no_match",
+      "scenario": "Web server invokes its log rotation helper.",
+      "rationale": "Parent matches but the child is not a shell."
+    },
+    {
+      "name": "session_shell",
+      "file": "negative/case_02_session_shell.jsonl",
+      "expected": "no_match",
+      "scenario": "Interactive login shell started by the session manager.",
+      "rationale": "Child matches but the parent is not a web service."
+    },
+    {
+      "name": "cron_spawns_shell",
+      "file": "negative/case_03_cron_spawns_shell.jsonl",
+      "expected": "no_match",
+      "scenario": "Scheduler runs a maintenance shell script.",
+      "rationale": "Child matches but the parent is the scheduler, covered by another rule."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-011
+status=converted
+
+Image IN ("*\\powershell.exe", "*\\pwsh.exe", "*\\cmd.exe", "*\\reg.exe", "*\\sc.exe") CommandLine IN ("*DisableRealtimeMonitoring*", "*DisableBehaviorMonitoring*", "*DisableIOAVProtection*", "*DisableScriptScanning*", "*DisableAntiSpyware*")

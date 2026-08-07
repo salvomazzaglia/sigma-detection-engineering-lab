@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-005",
+  "sigma_rule_id": "20ce2978-8a1f-5689-9ff6-a10725dbc9c5",
+  "rule_file": "rules/identity/windows_security/password_reset_targeting_privileged_account.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "admin_account_reset",
+      "file": "positive/case_01_admin_account_reset.jsonl",
+      "expected": "match",
+      "scenario": "Administrative reset of the synthetic administrator account.",
+      "rationale": "Reset event and privileged target selections both match."
+    },
+    {
+      "name": "breakglass_account_reset",
+      "file": "positive/case_02_breakglass_account_reset.jsonl",
+      "expected": "match",
+      "scenario": "Administrative reset of the synthetic break-glass account.",
+      "rationale": "Reset event and privileged target selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "standard_account_reset",
+      "file": "negative/case_01_standard_account_reset.jsonl",
+      "expected": "no_match",
+      "scenario": "Administrative reset of a standard account.",
+      "rationale": "The privileged target selection does not match."
+    },
+    {
+      "name": "self_service_password_change",
+      "file": "negative/case_02_self_service_password_change.jsonl",
+      "expected": "no_match",
+      "scenario": "Administrator changes their own password.",
+      "rationale": "The event identifier is a self-service change, not an administrative reset."
+    },
+    {
+      "name": "account_unlocked",
+      "file": "negative/case_03_account_unlocked.jsonl",
+      "expected": "no_match",
+      "scenario": "Administrator account unlocked.",
+      "rationale": "The event identifier does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

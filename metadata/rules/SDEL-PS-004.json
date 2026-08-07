@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-004",
+  "sigma_rule_id": "5edcf133-b8ab-5525-a437-6f73dfcaa113",
+  "title": "PowerShell Script Block Containing Reflective Loading Terminology",
+  "detection_hypothesis": "If code is loaded reflectively to avoid writing a file to disk, the logged script block will contain assembly loading and dynamic invocation terminology.",
+  "platform": "windows",
+  "rule_family": "powershell",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows PowerShell script block logging"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-PowerShell/Operational"
+  ],
+  "required_fields": [
+    "ScriptBlockText"
+  ],
+  "optional_fields": [
+    "Path",
+    "ScriptBlockId",
+    "MessageNumber",
+    "MessageTotal"
+  ],
+  "field_semantics": {
+    "ScriptBlockText": "Decoded PowerShell script block text as executed."
+  },
+  "collection_prerequisites": [
+    "Script block logging is enabled through Group Policy or registry configuration.",
+    "PowerShell operational log collection is enabled on the endpoint."
+  ],
+  "expected_collection_gaps": [
+    "PowerShell version 2 engines do not emit script block logs.",
+    "Very large script blocks are split across multiple events."
+  ],
+  "normalization_assumptions": [
+    "ScriptBlockText contains the decoded script text as executed.",
+    "EventID 4104 identifies script block execution."
+  ],
+  "ingestion_differences": [
+    "Multi-part script blocks may need reassembly before matching.",
+    "Some pipelines strip newlines from ScriptBlockText."
+  ],
+  "retention_considerations": "Script block logging is moderate to high volume; 90 days is a common target.",
+  "expected_volume": "Low; concentrated on engineering workstations.",
+  "false_positive_strategy": "Benign matches come from a small number of engineering and vendor modules with stable script paths. Tune on the Path field and the executing host role.",
+  "tuning_guidance": "Exclude the specific module path on build hosts only. Excluding the assembly load terminology globally removes the entire detection.",
+  "test_strategy": "Positive cases include assembly loading and dynamic delegate creation. Negative cases use ordinary type usage, module import, and a comment that mentions reflection.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1620",
+      "name": "Reflective Code Loading"
+    },
+    {
+      "id": "T1059.001",
+      "name": "Command and Scripting Interpreter: PowerShell"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    },
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0455",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1252",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0032",
+      "technique_id": "T1059.001"
+    },
+    {
+      "id": "DC0064",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1620.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-PS-005",
+    "SDEL-PS-009"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/powershell/powershell_reflective_loading_terminology.yml",
+  "fixture_directory": "fixtures/rules/SDEL-PS-004"
+}

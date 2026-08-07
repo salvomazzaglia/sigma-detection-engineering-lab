@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-013
+status=converted
+
+Image="*\\netsh.exe" CommandLine="*advfirewall firewall add rule*" CommandLine="*action=allow*" CommandLine IN ("*remoteip=any*", "*localip=any*", "*profile=any*")

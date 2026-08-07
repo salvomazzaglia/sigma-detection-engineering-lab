@@ -1,0 +1,40 @@
+title: 'Host Firewall Rule Created With A Broad Allow Scope'
+id: 91583148-1958-5122-a3f2-5a60d3c33155
+status: experimental
+description: >-
+    Detects host firewall rule creation that allows traffic from any remote address. Broad
+    allow rules remove a network control that would otherwise constrain lateral movement and
+    remote access.
+references:
+    - 'https://attack.mitre.org/techniques/T1686/'
+    - 'https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/netsh-advfirewall-firewall-control-firewall-behavior'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1686
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_firewall_tool:
+        Image|endswith: '\netsh.exe'
+    selection_add_rule:
+        CommandLine|contains: 'advfirewall firewall add rule'
+    selection_allow_action:
+        CommandLine|contains: 'action=allow'
+    selection_broad_scope:
+        CommandLine|contains:
+            - 'remoteip=any'
+            - 'localip=any'
+            - 'profile=any'
+    condition: 'selection_firewall_tool and selection_add_rule and selection_allow_action and selection_broad_scope'
+falsepositives:
+    - >-
+        Server build automation that opens an application listening port to any remote
+        address before a network access control list is applied at the perimeter.
+    - >-
+        Clustered database or file server roles whose installer creates broad intra-cluster
+        allow rules during initial configuration.
+level: medium
+license: MIT

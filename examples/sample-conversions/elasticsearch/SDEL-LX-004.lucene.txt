@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-004
+status=converted
+
+(TargetFilename:(*.service OR *.timer)) AND (TargetFilename:(\/tmp\/* OR \/var\/tmp\/* OR \/dev\/shm\/* OR \/home\/*))

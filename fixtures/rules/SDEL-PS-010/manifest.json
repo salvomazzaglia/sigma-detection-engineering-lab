@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-010",
+  "sigma_rule_id": "2ecd1048-dfa2-5cd9-8485-688defae0198",
+  "rule_file": "rules/powershell/powershell_launched_by_office_like_application.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "spreadsheet_parent",
+      "file": "positive/case_01_spreadsheet_parent.jsonl",
+      "expected": "match",
+      "scenario": "Synthetic spreadsheet application launches PowerShell.",
+      "rationale": "Parent and child selections both match."
+    },
+    {
+      "name": "mail_client_parent",
+      "file": "positive/case_02_mail_client_parent.jsonl",
+      "expected": "match",
+      "scenario": "Synthetic mail client launches PowerShell.",
+      "rationale": "Parent and child selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "office_parent_spawns_helper",
+      "file": "negative/case_01_office_parent_spawns_helper.jsonl",
+      "expected": "no_match",
+      "scenario": "Office application launches its own signed helper.",
+      "rationale": "Parent matches but the child is not PowerShell."
+    },
+    {
+      "name": "scheduler_parent_spawns_powershell",
+      "file": "negative/case_02_scheduler_parent_spawns_powershell.jsonl",
+      "expected": "no_match",
+      "scenario": "Task scheduler launches PowerShell for a maintenance job.",
+      "rationale": "Child matches but the parent is not an office application."
+    },
+    {
+      "name": "office_parent_spawns_script_host",
+      "file": "negative/case_03_office_parent_spawns_script_host.jsonl",
+      "expected": "no_match",
+      "scenario": "Office application launches the legacy script host.",
+      "rationale": "Parent matches but the child is a script host, covered by another rule."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

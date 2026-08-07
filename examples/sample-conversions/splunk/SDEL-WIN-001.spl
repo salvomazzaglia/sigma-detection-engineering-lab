@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-001
+status=converted
+
+Image IN ("C:\\Synthetic\\Users\\synthetic-user\\AppData\\Local\\Temp\\*", "C:\\Synthetic\\Windows\\Temp\\*", "C:\\Synthetic\\Users\\Public\\*") NOT Image="*\\synthetic_patch_installer.exe"

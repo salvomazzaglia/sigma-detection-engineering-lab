@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-008",
+  "sigma_rule_id": "2854095f-8a13-5914-ab66-405fc0f40aec",
+  "rule_file": "rules/powershell/powershell_scheduled_task_creation.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "category": "ps_script"
+  },
+  "channels": [
+    "Microsoft-Windows-PowerShell/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "register_with_action_object",
+      "file": "positive/case_01_register_with_action_object.jsonl",
+      "expected": "match",
+      "scenario": "Script block registering a task built from an action object.",
+      "rationale": "Both cmdlet and action selections match."
+    },
+    {
+      "name": "register_with_inline_action",
+      "file": "positive/case_02_register_with_inline_action.jsonl",
+      "expected": "match",
+      "scenario": "Script block registering a task with an inline action parameter.",
+      "rationale": "Both cmdlet and action selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "list_scheduled_tasks",
+      "file": "negative/case_01_list_scheduled_tasks.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block listing existing scheduled tasks.",
+      "rationale": "Neither selection matches."
+    },
+    {
+      "name": "unregister_task",
+      "file": "negative/case_02_unregister_task.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block removing a scheduled task.",
+      "rationale": "The registration cmdlet selection does not match a removal cmdlet."
+    },
+    {
+      "name": "comment_mentions_cmdlet",
+      "file": "negative/case_03_comment_mentions_cmdlet.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block whose comment names the registration cmdlet.",
+      "rationale": "The action selection does not match, so the condition fails."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

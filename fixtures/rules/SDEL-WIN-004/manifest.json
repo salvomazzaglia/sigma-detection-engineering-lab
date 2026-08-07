@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-004",
+  "sigma_rule_id": "b39d0736-cd9f-533f-be89-f7946124699a",
+  "rule_file": "rules/windows/defense_evasion/script_capable_utility_remote_content_reference.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "component_registration_remote",
+      "file": "positive/case_01_component_registration_remote.jsonl",
+      "expected": "match",
+      "scenario": "Component registration utility pointed at a synthetic remote location.",
+      "rationale": "Utility image and remote scheme selections both match."
+    },
+    {
+      "name": "script_host_remote",
+      "file": "positive/case_02_script_host_remote.jsonl",
+      "expected": "match",
+      "scenario": "Script host pointed at a synthetic remote location.",
+      "rationale": "Utility image and remote scheme selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "local_component_registration",
+      "file": "negative/case_01_local_component_registration.jsonl",
+      "expected": "no_match",
+      "scenario": "Component registration utility used against a local library.",
+      "rationale": "Utility matches but there is no remote scheme."
+    },
+    {
+      "name": "browser_opens_url",
+      "file": "negative/case_02_browser_opens_url.jsonl",
+      "expected": "no_match",
+      "scenario": "Browser opens a synthetic URL.",
+      "rationale": "Remote scheme matches but the image is not a script-capable utility."
+    },
+    {
+      "name": "script_host_local_file",
+      "file": "negative/case_03_script_host_local_file.jsonl",
+      "expected": "no_match",
+      "scenario": "Script host executes an approved local inventory script.",
+      "rationale": "Utility matches but the argument is a local path."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

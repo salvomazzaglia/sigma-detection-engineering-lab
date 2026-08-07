@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-001
+status=converted
+
+ProcessName IN ("useradd", "adduser") Message IN ("*new user:*", "*new group:*")

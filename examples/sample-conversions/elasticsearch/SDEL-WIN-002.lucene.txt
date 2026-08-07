@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-002
+status=converted
+
+(ParentImage:(*\\synthetic_word.exe OR *\\synthetic_excel.exe OR *\\synthetic_powerpoint.exe OR *\\synthetic_outlook.exe)) AND (Image:(*\\cmd.exe OR *\\powershell.exe OR *\\pwsh.exe OR *\\wscript.exe OR *\\cscript.exe OR *\\mshta.exe))

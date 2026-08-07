@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-004",
+  "sigma_rule_id": "ae231f02-7a3b-5623-901f-780b32202ee5",
+  "title": "Burst Of Privileged Group Membership Changes By One Subject",
+  "detection_hypothesis": "If an adversary consolidates privileges after obtaining administrative access, one subject will add several members to privileged groups in a short burst.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "SubjectUserName",
+    "TargetUserName"
+  ],
+  "optional_fields": [
+    "IpAddress",
+    "LogonType",
+    "SubjectDomainName",
+    "TargetDomainName"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "SubjectUserName": "Account that performed the audited action.",
+    "TargetUserName": "Account or group that was the object of the audited action."
+  },
+  "collection_prerequisites": [
+    "Domain controller Security logs are forwarded for directory-scoped events.",
+    "The relevant advanced audit policy subcategory is enabled for success events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "Account names are provided without the domain prefix in TargetUserName.",
+    "EventID is an integer and Channel is the literal string Security."
+  ],
+  "ingestion_differences": [
+    "Directory attribute events may arrive with XML-encoded values.",
+    "Some pipelines rename EventID to event.code or similar."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Very low.",
+  "false_positive_strategy": "Benign bursts correspond to a change ticket and are performed by a known administrator. Tune by requiring a change record and by excluding the migration tooling account only during the migration project.",
+  "tuning_guidance": "Prefer time-bounded suppression during migrations over permanent exclusion of administrator accounts.",
+  "test_strategy": "Positive sequences add four or more members within the window. Negative sequences stay under the threshold, spread across subjects, and exceed the window.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1098",
+      "name": "Account Manipulation"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0096",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0265",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0010",
+      "technique_id": "T1098"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-ID-003",
+    "SDEL-PS-007"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/burst_of_privileged_group_membership_changes.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-004",
+  "correlation": {
+    "type": "event_count",
+    "timespan": "10m",
+    "group_by": [
+      "SubjectUserName"
+    ],
+    "base_rules": [
+      "sdel_cor_004_privileged_group_addition"
+    ],
+    "aliases": {},
+    "threshold": 4,
+    "count_field": null,
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-001
+status=converted
+
+Image IN ("*\\powershell.exe", "*\\pwsh.exe") CommandLine IN ("*-EncodedCommand*", "*-enc *", "*-ec *", "*/EncodedCommand*")

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-ID-004
+status=converted
+
+(EventID:(4729 OR 4733 OR 4757)) AND (TargetUserName:(Domain\ Admins OR Enterprise\ Admins OR Schema\ Admins OR Administrators)) AND (NOT SubjectUserName:synthetic\-service\-iam)

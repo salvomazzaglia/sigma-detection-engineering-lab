@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-007",
+  "sigma_rule_id": "ddec2ee5-4b82-5c9b-9e78-77dae29a9f9b",
+  "rule_file": "rules/identity/active_directory/delegation_attribute_modified.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "constrained_delegation_set",
+      "file": "positive/case_01_constrained_delegation_set.jsonl",
+      "expected": "match",
+      "scenario": "Constrained delegation target list modified on a service account.",
+      "rationale": "Directory change and delegation attribute selections both match."
+    },
+    {
+      "name": "resource_based_delegation_set",
+      "file": "positive/case_02_resource_based_delegation_set.jsonl",
+      "expected": "match",
+      "scenario": "Resource-based delegation descriptor written on a computer object.",
+      "rationale": "Directory change and delegation attribute selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "display_name_changed",
+      "file": "negative/case_01_display_name_changed.jsonl",
+      "expected": "no_match",
+      "scenario": "Display name updated on a service account.",
+      "rationale": "The delegation attribute selection does not match."
+    },
+    {
+      "name": "computer_account_changed_summary",
+      "file": "negative/case_02_computer_account_changed_summary.jsonl",
+      "expected": "no_match",
+      "scenario": "Computer account change summary event.",
+      "rationale": "The event identifier selection does not match."
+    },
+    {
+      "name": "directory_object_read",
+      "file": "negative/case_03_directory_object_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Directory object attribute read during an access review.",
+      "rationale": "The event identifier selection does not match a read operation."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

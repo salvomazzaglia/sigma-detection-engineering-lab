@@ -1,0 +1,39 @@
+title: 'Scheduled Task Created With An Action In A Temporary Path'
+id: d21a2313-2e83-5064-b110-b2074e792ec5
+status: experimental
+description: >-
+    Detects scheduled task creation where the task definition references an executable in a
+    user-writable temporary or public directory. Scheduled tasks are a durable persistence
+    mechanism and a task action outside managed directories is unusual.
+references:
+    - 'https://attack.mitre.org/techniques/T1053/005/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4698'
+    - 'https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.execution
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1053.005
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_task_registered:
+        EventID: 4698
+    selection_temp_action:
+        TaskContent|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+            - '\Users\Public\'
+    condition: 'selection_task_registered and selection_temp_action'
+falsepositives:
+    - >-
+        Software installers that register a one-time cleanup task pointing at their own
+        extraction directory under the Windows temporary path.
+    - >-
+        Patch orchestration tooling that schedules a post-reboot verification task from a
+        staging directory in the public profile.
+level: medium
+license: MIT

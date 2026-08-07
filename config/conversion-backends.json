@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "backends": {
+    "splunk": {
+      "enabled": true,
+      "package": "pysigma-backend-splunk",
+      "version": "2.1.0",
+      "backend_class": "sigma.backends.splunk.SplunkBackend",
+      "dialect": "spl",
+      "pipeline": null,
+      "demonstration_banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "network": false,
+      "deployment": false
+    },
+    "elasticsearch-lucene": {
+      "enabled": true,
+      "package": "pysigma-backend-elasticsearch",
+      "version": "2.1.0",
+      "backend_class": "sigma.backends.elasticsearch.LuceneBackend",
+      "dialect": "lucene",
+      "pipeline": null,
+      "demonstration_banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "network": false,
+      "deployment": false
+    }
+  },
+  "correlation_conversion": {
+    "supported_in_v1": false,
+    "notes": "Correlation rules are marked unsupported for conversion in v1.0 unless a backend conversion succeeds; failures must be visible."
+  }
+}

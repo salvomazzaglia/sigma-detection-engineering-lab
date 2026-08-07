@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-009
+status=converted
+
+Image IN ("*/rm", "*/shred", "*/truncate", "*/unlink") CommandLine IN ("*/var/log/auth.log*", "*/var/log/secure*", "*/var/log/audit/audit.log*", "*/var/log/wtmp*")

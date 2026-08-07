@@ -1,0 +1,37 @@
+title: 'PowerShell Script Block Containing Reflective Loading Terminology'
+id: 5edcf133-b8ab-5525-a437-6f73dfcaa113
+status: experimental
+description: >-
+    Detects script block text that references in-memory assembly loading and dynamic
+    invocation constructs. The rule matches terminology in logged script text only and
+    contains no working loader code.
+references:
+    - 'https://attack.mitre.org/techniques/T1620/'
+    - 'https://attack.mitre.org/techniques/T1059/001/'
+    - 'https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1620
+    - attack.t1059.001
+logsource:
+    product: windows
+    category: ps_script
+detection:
+    selection_reflection_terms:
+        ScriptBlockText|contains:
+            - '[Reflection.Assembly]::Load'
+            - 'System.Reflection.Assembly]::Load'
+            - Reflection.Emit
+            - GetDelegateForFunctionPointer
+    condition: selection_reflection_terms
+falsepositives:
+    - >-
+        Internal developer tooling that loads a signed helper assembly from a byte array
+        during unit test bootstrapping.
+    - >-
+        Vendor management modules that dynamically emit interop types when talking to a
+        legacy component.
+level: high
+license: MIT

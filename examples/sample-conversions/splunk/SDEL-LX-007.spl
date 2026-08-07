@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-007
+status=converted
+
+CommandLine IN ("*curl *", "*wget *", "*fetch *") CommandLine IN ("*| sh*", "*|sh*", "*| bash*", "*|bash*", "*| zsh*")

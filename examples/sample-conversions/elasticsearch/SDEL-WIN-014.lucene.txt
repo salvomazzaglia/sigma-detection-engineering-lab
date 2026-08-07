@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-014
+status=converted
+
+(TargetFilename:(*\\AppData\\Local\\Temp\\* OR *\\Windows\\Temp\\* OR *\\Users\\Public\\*)) AND (TargetFilename:(*.exe OR *.dll OR *.scr)) AND (NOT Image:*\\synthetic_update_agent.exe)

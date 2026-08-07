@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-011
+status=converted
+
+Image IN ("/tmp/*", "/var/tmp/*", "/dev/shm/*") NOT Image="/tmp/synthetic-example/approved-build/*"

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-003",
+  "sigma_rule_id": "e830b713-fdc0-5542-9d1a-5e885675473c",
+  "rule_file": "rules/correlation/repeated_kerberos_preauthentication_failures.yml",
+  "rule_type": "correlation",
+  "correlation_type": "event_count",
+  "timespan": "10m",
+  "group_by": [
+    "TargetUserName"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "twelve_failures_one_account",
+      "file": "positive/sequence_01_twelve_failures_one_account.jsonl",
+      "expected": "match",
+      "event_count": 12,
+      "scenario": "Twelve pre-authentication failures for one account.",
+      "rationale": "The event count exceeds the threshold inside the window."
+    },
+    {
+      "name": "ten_failures_admin_account",
+      "file": "positive/sequence_02_ten_failures_admin_account.jsonl",
+      "expected": "match",
+      "event_count": 10,
+      "scenario": "Ten pre-authentication failures for an administrative account.",
+      "rationale": "The event count reaches the threshold inside the window."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "five_failures_below_threshold",
+      "file": "negative/sequence_01_five_failures_below_threshold.jsonl",
+      "expected": "no_match",
+      "event_count": 5,
+      "scenario": "Five pre-authentication failures for one account.",
+      "rationale": "The event count remains below the threshold."
+    },
+    {
+      "name": "failures_spread_across_accounts",
+      "file": "negative/sequence_02_failures_spread_across_accounts.jsonl",
+      "expected": "no_match",
+      "event_count": 12,
+      "scenario": "Twelve failures spread evenly across four accounts.",
+      "rationale": "No single account group reaches the threshold."
+    },
+    {
+      "name": "failures_spread_beyond_window",
+      "file": "negative/sequence_03_failures_spread_beyond_window.jsonl",
+      "expected": "no_match",
+      "event_count": 12,
+      "scenario": "Twelve failures for one account spread over ninety minutes.",
+      "rationale": "No ten minute window contains enough failures to reach the threshold."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

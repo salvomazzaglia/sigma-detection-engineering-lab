@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-009
+status=converted
+
+(Image:(*\/rm OR *\/shred OR *\/truncate OR *\/unlink)) AND (CommandLine:(*\/var\/log\/auth.log* OR *\/var\/log\/secure* OR *\/var\/log\/audit\/audit.log* OR *\/var\/log\/wtmp*))

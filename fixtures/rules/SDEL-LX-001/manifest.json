@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-001",
+  "sigma_rule_id": "9547416f-4dd6-5c1c-8dea-d12502262b16",
+  "rule_file": "rules/linux/authentication/local_user_account_created.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "product": "linux",
+    "service": "auth"
+  },
+  "channels": [
+    "/var/log/auth.log",
+    "/var/log/secure"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "useradd_new_user",
+      "file": "positive/case_01_useradd_new_user.jsonl",
+      "expected": "match",
+      "scenario": "Account management utility creates a new user.",
+      "rationale": "Tool and creation message selections both match."
+    },
+    {
+      "name": "adduser_new_user",
+      "file": "positive/case_02_adduser_new_user.jsonl",
+      "expected": "match",
+      "scenario": "Interactive wrapper creates a new user.",
+      "rationale": "Tool and creation message selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "userdel_removes_user",
+      "file": "negative/case_01_userdel_removes_user.jsonl",
+      "expected": "no_match",
+      "scenario": "Account removed during decommissioning.",
+      "rationale": "The creation message selection does not match."
+    },
+    {
+      "name": "usermod_changes_shell",
+      "file": "negative/case_02_usermod_changes_shell.jsonl",
+      "expected": "no_match",
+      "scenario": "Existing account modified.",
+      "rationale": "Neither selection matches."
+    },
+    {
+      "name": "session_opened",
+      "file": "negative/case_03_session_opened.jsonl",
+      "expected": "no_match",
+      "scenario": "Ordinary session opened for an existing user.",
+      "rationale": "Neither selection matches."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

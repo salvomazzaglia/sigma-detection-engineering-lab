@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-012
+status=converted
+
+ProcessName="sshd" Message IN ("*Failed password for*", "*Failed publickey for*")

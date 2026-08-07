@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "name": "sdel-lab-matcher-v1",
+  "purpose": "Deterministic behavioral unit testing only. Not a SIEM backend substitute.",
+  "supported_modifiers": [
+    "contains",
+    "startswith",
+    "endswith",
+    "re",
+    "cidr",
+    "exists",
+    "all",
+    "cased"
+  ],
+  "supported_condition_ops": [
+    "and",
+    "or",
+    "not",
+    "parentheses",
+    "named_selection",
+    "1_of_prefix_star",
+    "all_of_prefix_star"
+  ],
+  "unsupported": [
+    "unknown_modifiers",
+    "aggregations",
+    "backend_custom_fields",
+    "arbitrary_expressions",
+    "near",
+    "gt",
+    "gte",
+    "lt",
+    "lte",
+    "expand"
+  ],
+  "case_handling": {
+    "default": "case_insensitive",
+    "with_cased_modifier": "case_sensitive",
+    "notes": "Lab semantics are explicit and may differ from vendor backends."
+  },
+  "regex": {
+    "flavor": "python_re",
+    "max_length": 256,
+    "reject_catastrophic_patterns": true
+  },
+  "correlation_supported_types": [
+    "event_count",
+    "value_count",
+    "temporal",
+    "temporal_ordered"
+  ]
+}

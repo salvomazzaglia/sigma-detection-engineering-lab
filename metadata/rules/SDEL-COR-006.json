@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-006",
+  "sigma_rule_id": "c162ff7a-b81d-5a1f-847d-1690a4412562",
+  "title": "Executable Written To A Temporary Path And Then Executed",
+  "detection_hypothesis": "If tooling is staged and then run, a file creation record and a process creation record will reference the identical path on the same host in quick succession.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows file creation telemetry",
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "Computer",
+    "Image",
+    "TargetFilename"
+  ],
+  "optional_fields": [
+    "CreationUtcTime",
+    "CurrentDirectory",
+    "Hashes",
+    "IntegrityLevel",
+    "OriginalFileName",
+    "ProcessGuid",
+    "User"
+  ],
+  "field_semantics": {
+    "Computer": "Host on which the event was produced.",
+    "Image": "Absolute path of the executable backing the created process.",
+    "TargetFilename": "Absolute path of the file that was created or modified."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source.",
+    "File creation auditing is enabled (Sysmon Event ID 11 or equivalent).",
+    "User-writable directories are not globally excluded from collection."
+  ],
+  "expected_collection_gaps": [
+    "Aggressive exclusion lists commonly remove temporary directories.",
+    "File modification without creation may not raise an event.",
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "CommandLine retains the original argument order and spacing.",
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "Image identifies the writing process.",
+    "TargetFilename is an absolute path including the file extension."
+  ],
+  "ingestion_differences": [
+    "Extension casing varies between producers.",
+    "Some agents report short paths or device paths instead of drive letters.",
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "File creation telemetry is high volume; 30 days of hot retention is typical. Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Low to moderate depending on installer activity.",
+  "false_positive_strategy": "Installers and build pipelines dominate. Tune on the writing process image and on the host role, and treat matches on user endpoints with no installer parent as the interesting population.",
+  "tuning_guidance": "Filter the file creation base rule by writing process rather than shortening the timespan, because shortening the window only hides slower staging.",
+  "test_strategy": "Positive sequences write and then execute the same path on one host. Negative sequences reverse the order, use different paths, and exceed the window.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer"
+    },
+    {
+      "id": "T1204.002",
+      "name": "User Execution: Malicious File"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0011",
+      "name": "Command and Control"
+    },
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0060",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0165",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0082",
+      "technique_id": "T1105"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1204.002.",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-WIN-014",
+    "SDEL-WIN-001",
+    "SDEL-COR-005"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/temporary_file_creation_followed_by_execution.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-006",
+  "correlation": {
+    "type": "temporal_ordered",
+    "timespan": "5m",
+    "group_by": [
+      "Computer",
+      "artifact_path"
+    ],
+    "base_rules": [
+      "sdel_cor_006_executable_written",
+      "sdel_cor_006_executable_launched"
+    ],
+    "aliases": {
+      "artifact_path": {
+        "sdel_cor_006_executable_written": "TargetFilename",
+        "sdel_cor_006_executable_launched": "Image"
+      }
+    },
+    "threshold": null,
+    "count_field": null,
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

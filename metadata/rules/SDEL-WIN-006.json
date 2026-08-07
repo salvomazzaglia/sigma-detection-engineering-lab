@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-006",
+  "sigma_rule_id": "41555143-60c1-50f1-b395-227cdcb164cc",
+  "title": "Windows Service Created Referencing A User-Writable Path",
+  "detection_hypothesis": "If persistence is installed as a service, the Service Control Manager installation event will record an image path in a directory writable by non-administrative users.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows System event log"
+  ],
+  "required_channels": [
+    "System"
+  ],
+  "required_fields": [
+    "EventID",
+    "Provider_Name",
+    "ImagePath"
+  ],
+  "optional_fields": [
+    "ServiceType",
+    "StartType",
+    "AccountName"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "Provider_Name": "Name of the event provider that raised the record.",
+    "ImagePath": "Executable path configured for the service, including arguments."
+  },
+  "collection_prerequisites": [
+    "The System event log is collected from endpoints and servers.",
+    "Service Control Manager events are not filtered out by the forwarder subscription."
+  ],
+  "expected_collection_gaps": [
+    "Service installation performed by driver loading is not represented here.",
+    "Servers with aggressive System log filters may drop Event ID 7045."
+  ],
+  "normalization_assumptions": [
+    "ImagePath contains the full service binary path including any arguments.",
+    "Provider_Name identifies Service Control Manager."
+  ],
+  "ingestion_differences": [
+    "Quoted service paths may or may not retain surrounding quotation marks.",
+    "Some pipelines rename ImagePath to service.executable."
+  ],
+  "retention_considerations": "System log volume is low; 365 days of retention is generally affordable.",
+  "expected_volume": "Very low; each match warrants review.",
+  "false_positive_strategy": "Benign matches are short lived, appear during change windows, and use predictable service names. Tune on ServiceName combined with the maintenance window rather than on the path fragment.",
+  "tuning_guidance": "Exclude specific ServiceName values used by approved installers. Do not exclude the temporary directory fragments, because they are the core of the detection.",
+  "test_strategy": "Positive cases install services from the machine temporary directory and the public directory. Negative cases use a managed program directory, a non-service event, and a different provider.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1543.003",
+      "name": "Create or Modify System Process: Windows Service"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0552",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1527",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0060",
+      "technique_id": "T1543.003"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-COR-005",
+    "SDEL-WIN-007"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/persistence/service_created_referencing_user_writable_path.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-006"
+}

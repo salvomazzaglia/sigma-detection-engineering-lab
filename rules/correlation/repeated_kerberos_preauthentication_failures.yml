@@ -1,0 +1,66 @@
+title: 'Kerberos Pre-Authentication Failure (Correlation Input)'
+id: b8dd7a8e-2e04-552d-9777-eae8c950b05c
+name: sdel_cor_003_kerberos_preauth_failure
+status: experimental
+description: >-
+    Base rule that selects Kerberos pre-authentication failure records for use by the
+    guessing correlation rule.
+references:
+    - 'https://attack.mitre.org/techniques/T1110/001/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4771'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1110.001
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_preauth_failure:
+        EventID: 4771
+    condition: selection_preauth_failure
+falsepositives:
+    - >-
+        Cached credentials on mobile devices and mail clients retrying automatically after a
+        directory password rotation.
+    - >-
+        Applications retrying in a tight loop with a stale service credential that was not
+        updated during a change window.
+level: informational
+license: MIT
+---
+title: 'Repeated Kerberos Pre-Authentication Failures For One Account'
+id: e830b713-fdc0-5542-9d1a-5e885675473c
+status: experimental
+description: >-
+    Counts Kerberos pre-authentication failures for a single account within ten minutes. A
+    sustained burst against one account indicates guessing rather than a mistyped password.
+references:
+    - 'https://attack.mitre.org/techniques/T1110/001/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4771'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1110.001
+correlation:
+    type: event_count
+    rules:
+        - sdel_cor_003_kerberos_preauth_failure
+    group-by:
+        - TargetUserName
+    timespan: 10m
+    condition:
+        gte: 10
+falsepositives:
+    - >-
+        A mobile device or mail client caching an old password and retrying automatically
+        every few seconds after a rotation.
+    - >-
+        A service with a hard-coded credential retrying in a tight loop after a directory
+        password change.
+level: medium
+license: MIT

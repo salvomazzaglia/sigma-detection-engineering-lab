@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-008",
+  "sigma_rule_id": "07d8d224-48da-5bc3-979c-87e4101a6962",
+  "rule_file": "rules/linux/system/broad_setuid_permission_change.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "setuid_bit_set",
+      "file": "positive/case_01_setuid_bit_set.jsonl",
+      "expected": "match",
+      "scenario": "Setuid bit applied to a binary in a temporary directory.",
+      "rationale": "Tool and mode selections both match."
+    },
+    {
+      "name": "world_writable_mode",
+      "file": "positive/case_02_world_writable_mode.jsonl",
+      "expected": "match",
+      "scenario": "World-writable mode applied to a shared directory.",
+      "rationale": "Tool and mode selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "restrictive_mode",
+      "file": "negative/case_01_restrictive_mode.jsonl",
+      "expected": "no_match",
+      "scenario": "Restrictive mode applied to a key file.",
+      "rationale": "The mode selection does not match."
+    },
+    {
+      "name": "ownership_change",
+      "file": "negative/case_02_ownership_change.jsonl",
+      "expected": "no_match",
+      "scenario": "Ownership changed on an application directory.",
+      "rationale": "The tool selection does not match."
+    },
+    {
+      "name": "permission_listing",
+      "file": "negative/case_03_permission_listing.jsonl",
+      "expected": "no_match",
+      "scenario": "Permissions listed for review.",
+      "rationale": "Neither selection matches."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

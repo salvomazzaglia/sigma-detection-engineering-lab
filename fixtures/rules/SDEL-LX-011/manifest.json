@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-011",
+  "sigma_rule_id": "749ba788-d06e-5f25-a7d0-8de293c1a545",
+  "rule_file": "rules/linux/process/process_executed_from_world_writable_path.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "binary_in_tmp",
+      "file": "positive/case_01_binary_in_tmp.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the temporary directory.",
+      "rationale": "Writable directory selection matches and the workspace filter does not apply."
+    },
+    {
+      "name": "binary_in_shared_memory",
+      "file": "positive/case_02_binary_in_shared_memory.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the shared memory directory.",
+      "rationale": "Writable directory selection matches and the workspace filter does not apply."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "binary_in_usr_bin",
+      "file": "negative/case_01_binary_in_usr_bin.jsonl",
+      "expected": "no_match",
+      "scenario": "System utility executed from the managed binary directory.",
+      "rationale": "The writable directory selection does not match."
+    },
+    {
+      "name": "approved_build_output",
+      "file": "negative/case_02_approved_build_output.jsonl",
+      "expected": "no_match",
+      "scenario": "Freshly built binary executed from the approved workspace.",
+      "rationale": "Path matches the selection but the workspace filter removes the event."
+    },
+    {
+      "name": "binary_in_opt",
+      "file": "negative/case_03_binary_in_opt.jsonl",
+      "expected": "no_match",
+      "scenario": "Application executed from the optional software directory.",
+      "rationale": "The writable directory selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

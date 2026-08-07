@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-002",
+  "sigma_rule_id": "d4eb081f-70f2-5b5b-b94e-31e2ff355f36",
+  "rule_file": "rules/powershell/powershell_hidden_window_with_suspicious_options.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "hidden_with_policy_bypass",
+      "file": "positive/case_01_hidden_with_policy_bypass.jsonl",
+      "expected": "match",
+      "scenario": "Hidden PowerShell with a relaxed execution policy.",
+      "rationale": "All three selections match."
+    },
+    {
+      "name": "hidden_with_profile_suppression",
+      "file": "positive/case_02_hidden_with_profile_suppression.jsonl",
+      "expected": "match",
+      "scenario": "Hidden PowerShell with the user profile suppressed.",
+      "rationale": "All three selections match through the short option forms."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "hidden_only",
+      "file": "negative/case_01_hidden_only.jsonl",
+      "expected": "no_match",
+      "scenario": "Hidden PowerShell without any bypass option.",
+      "rationale": "The bypass selection does not match."
+    },
+    {
+      "name": "bypass_only",
+      "file": "negative/case_02_bypass_only.jsonl",
+      "expected": "no_match",
+      "scenario": "Visible PowerShell with a relaxed execution policy.",
+      "rationale": "The hidden window selection does not match."
+    },
+    {
+      "name": "other_shell_hidden",
+      "file": "negative/case_03_other_shell_hidden.jsonl",
+      "expected": "no_match",
+      "scenario": "Command interpreter started minimised.",
+      "rationale": "The interpreter selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

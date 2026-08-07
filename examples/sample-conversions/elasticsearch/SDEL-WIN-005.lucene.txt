@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-005
+status=converted
+
+Image:*\\certutil.exe AND (CommandLine:(*\-urlcache* OR *\-decode* OR *\-encode* OR *\-verifyctl*))

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-007",
+  "sigma_rule_id": "b823f46c-f765-50b0-91a9-1f6f9fb9627a",
+  "rule_file": "rules/linux/process/network_retrieval_piped_to_shell.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "curl_piped_to_shell",
+      "file": "positive/case_01_curl_piped_to_shell.jsonl",
+      "expected": "match",
+      "scenario": "Retrieval utility output piped into a shell.",
+      "rationale": "Retrieval and pipe selections both match."
+    },
+    {
+      "name": "wget_piped_to_shell",
+      "file": "positive/case_02_wget_piped_to_shell.jsonl",
+      "expected": "match",
+      "scenario": "Alternate retrieval utility output piped into a shell.",
+      "rationale": "Retrieval and pipe selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "curl_to_file",
+      "file": "negative/case_01_curl_to_file.jsonl",
+      "expected": "no_match",
+      "scenario": "Retrieval utility writing to a file for later review.",
+      "rationale": "The pipe selection does not match."
+    },
+    {
+      "name": "local_script_piped",
+      "file": "negative/case_02_local_script_piped.jsonl",
+      "expected": "no_match",
+      "scenario": "Local file piped into a shell.",
+      "rationale": "The retrieval selection does not match."
+    },
+    {
+      "name": "documentation_grep",
+      "file": "negative/case_03_documentation_grep.jsonl",
+      "expected": "no_match",
+      "scenario": "Documentation searched for the retrieval idiom.",
+      "rationale": "The pipe selection matches a grep pipeline, but no retrieval utility is invoked."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

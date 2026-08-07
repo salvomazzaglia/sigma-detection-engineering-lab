@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/schemas/coverage-report.schema.json",
+  "title": "CoverageReport",
+  "type": "object",
+  "required": ["rules_total", "synthetic"],
+  "properties": {
+    "rules_total": { "type": "integer" },
+    "rules_tested": { "type": "integer" },
+    "standard_rules": { "type": "integer" },
+    "correlation_rules": { "type": "integer" },
+    "synthetic": { "const": true },
+    "explicit_gaps": { "type": "array" }
+  },
+  "additionalProperties": true
+}

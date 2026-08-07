@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/schemas/correlation-fixture.schema.json",
+  "title": "CorrelationSequenceManifest",
+  "type": "object",
+  "required": ["schema_version", "catalog_id", "synthetic"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "catalog_id": { "type": "string" },
+    "synthetic": { "const": true },
+    "positive": { "type": "array", "items": { "type": "string" } },
+    "negative": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

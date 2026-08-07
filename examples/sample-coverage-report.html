@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>sigma-detection-engineering-lab report</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #1b1f24;
+  --muted: #5a6b7c;
+  --line: #d7dde3;
+  --accent: #1f4e79;
+  --warn-bg: #fff4d6;
+  --warn-line: #d9a520;
+  --pass: #2f7d4f;
+  --fail: #a01b2b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0 0 4rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+header.masthead {
+  background: var(--accent);
+  color: #fff;
+  padding: 1.75rem 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+header.masthead h1 { margin: 0 0 .35rem; font-size: 1.6rem; letter-spacing: .01em; }
+header.masthead p { margin: 0; opacity: .9; font-size: .92rem; }
+.banners { margin: 0 0 1.5rem; }
+.banner {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-left-width: 6px;
+  border-radius: 4px;
+  padding: .7rem .9rem;
+  margin-bottom: .55rem;
+  font-weight: 600;
+  font-size: .88rem;
+  letter-spacing: .02em;
+}
+.banner.note { font-weight: 400; background: #eef3f8; border-color: #9db8d2; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+          padding: 1.1rem 1.25rem 1.35rem; margin-bottom: 1.35rem; }
+section > h2 { margin: 0 0 .85rem; font-size: 1.12rem; color: var(--accent);
+               border-bottom: 1px solid var(--line); padding-bottom: .45rem; }
+h3 { font-size: .98rem; margin: 1.1rem 0 .5rem; }
+.cards { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: .5rem; }
+.card { flex: 1 1 150px; border: 1px solid var(--line); border-radius: 5px;
+        padding: .65rem .8rem; background: #fbfcfd; }
+.card .label { display: block; font-size: .74rem; text-transform: uppercase;
+               letter-spacing: .06em; color: var(--muted); }
+.card .value { display: block; font-size: 1.4rem; font-weight: 600; margin-top: .15rem; }
+table { width: 100%; border-collapse: collapse; margin-top: .4rem; font-size: .87rem; }
+th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--line);
+         vertical-align: top; }
+th { background: #eef1f4; font-weight: 600; font-size: .78rem;
+     text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+tbody tr:nth-child(even) { background: #fafbfc; }
+code, pre { font-family: "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace; font-size: .84rem; }
+pre { background: #1b1f24; color: #e6edf3; padding: .75rem .9rem; border-radius: 5px;
+      overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+.pill { display: inline-block; padding: .1rem .5rem; border-radius: 10px; font-size: .74rem;
+        font-weight: 600; color: #fff; letter-spacing: .03em; }
+.verdict { font-size: 1rem; font-weight: 700; }
+.verdict.pass { color: var(--pass); }
+.verdict.fail { color: var(--fail); }
+details { border: 1px solid var(--line); border-radius: 5px; margin-bottom: .5rem;
+          background: #fbfcfd; }
+summary { cursor: pointer; padding: .5rem .75rem; font-weight: 600; font-size: .88rem; }
+details > div { padding: 0 .75rem .75rem; }
+.muted { color: var(--muted); font-size: .84rem; }
+footer.report-footer { border-top: 1px solid var(--line); margin-top: 2rem;
+                       padding-top: 1rem; color: var(--muted); font-size: .82rem; }
+@media print {
+  body { background: #fff; }
+  section { break-inside: avoid; border-color: #999; }
+  .banner { border-color: #666; }
+}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap"><h1>sigma-detection-engineering-lab report</h1><p>Offline Sigma detection-engineering laboratory &middot; version 1.0.0 &middot; generated 2026-08-07T00:23:59.203Z</p></div></header>
+<main class="wrap"><div class="banners"><div class="banner">SYNTHETIC DEMONSTRATION DATA</div><div class="banner">SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY</div><div class="banner">DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED</div><div class="banner">COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE</div><div class="banner note">This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.</div></div><section><h2>Run summary</h2><p class="verdict pass">Overall: PASS</p><div class="cards"><div class="card"><span class="label">Rules</span><span class="value">56</span></div><div class="card"><span class="label">Correlation</span><span class="value">6</span></div><div class="card"><span class="label">Logsources</span><span class="value">12</span></div><div class="card"><span class="label">Findings</span><span class="value">0</span></div><div class="card"><span class="label">Blocking</span><span class="value">0</span></div></div><p class="muted">Generated 2026-08-07T00:23:59.203Z by sigma-detection-engineering-lab 1.0.0 (profile: default).</p></section><section><h2>Environment</h2><table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Tool version</td><td>1.0.0</td></tr><tr><td>pySigma available</td><td>yes</td></tr><tr><td>pySigma version</td><td>1.5.0</td></tr><tr><td>ATT&amp;CK version</td><td>19.1</td></tr><tr><td>ATT&amp;CK objects</td><td>100</td></tr></tbody></table></section><section><h2>Validation findings</h2><p class="muted">No validation findings were raised.</p></section><section><h2>Behavioral testing</h2><div class="banner">SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY</div><p class="muted">Evaluator: sdel-lab-matcher-v1. An unsupported result is never counted as a pass.</p><div class="cards"><div class="card"><span class="label">Total</span><span class="value">283</span></div><div class="card"><span class="label">Passed</span><span class="value">283</span></div><div class="card"><span class="label">Failed</span><span class="value">0</span></div><div class="card"><span class="label">Errored</span><span class="value">0</span></div><div class="card"><span class="label">Skipped</span><span class="value">0</span></div><div class="card"><span class="label">Unsupported</span><span class="value">0</span></div></div><h3>Results needing attention</h3><p class="muted">Every executed case passed.</p></section><section><h2>Coverage</h2><div class="banner">COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE</div><div class="cards"><div class="card"><span class="label">Rules</span><span class="value">56</span></div><div class="card"><span class="label">With sidecar</span><span class="value">56</span></div><div class="card"><span class="label">ATT&amp;CK mapped</span><span class="value">56</span></div><div class="card"><span class="label">With fixtures</span><span class="value">56</span></div><div class="card"><span class="label">Fully tested</span><span class="value">56</span></div><div class="card"><span class="label">Techniques</span><span class="value">36</span></div></div><p class="muted">Precision, recall, and false-positive rate are intentionally not reported: they cannot be derived from synthetic fixtures. Deliberately excluded: precision, recall, false_positive_rate, accuracy.</p><details><summary>Techniques addressed</summary><div><table><thead><tr><th>Technique</th><th>Rules</th></tr></thead><tbody><tr><td>T1003.001</td><td>1</td></tr><tr><td>T1003.006</td><td>1</td></tr><tr><td>T1027</td><td>2</td></tr><tr><td>T1053.003</td><td>1</td></tr><tr><td>T1053.005</td><td>2</td></tr><tr><td>T1059.001</td><td>7</td></tr><tr><td>T1059.003</td><td>2</td></tr><tr><td>T1059.004</td><td>3</td></tr><tr><td>T1098</td><td>8</td></tr><tr><td>T1098.004</td><td>1</td></tr><tr><td>T1105</td><td>7</td></tr><tr><td>T1110.001</td><td>3</td></tr><tr><td>T1110.003</td><td>1</td></tr><tr><td>T1112</td><td>1</td></tr><tr><td>T1136.001</td><td>2</td></tr><tr><td>T1140</td><td>2</td></tr><tr><td>T1204.002</td><td>5</td></tr><tr><td>T1218.005</td><td>1</td></tr><tr><td>T1218.010</td><td>1</td></tr><tr><td>T1222.002</td><td>1</td></tr><tr><td>T1484.001</td><td>1</td></tr><tr><td>T1484.002</td><td>1</td></tr><tr><td>T1505.003</td><td>1</td></tr><tr><td>T1543.002</td><td>1</td></tr><tr><td>T1543.003</td><td>2</td></tr><tr><td>T1546.003</td><td>1</td></tr><tr><td>T1547.001</td><td>1</td></tr><tr><td>T1547.006</td><td>1</td></tr><tr><td>T1548.003</td><td>1</td></tr><tr><td>T1555</td><td>1</td></tr><tr><td>T1558.003</td><td>1</td></tr><tr><td>T1620</td><td>1</td></tr><tr><td>T1685</td><td>4</td></tr><tr><td>T1685.005</td><td>1</td></tr><tr><td>T1685.006</td><td>1</td></tr><tr><td>T1686</td><td>1</td></tr></tbody></table></div></details><details><summary>Logsource distribution</summary><div><table><thead><tr><th>Logsource</th><th>Rules</th></tr></thead><tbody><tr><td>*/*/*</td><td>6</td></tr><tr><td>linux/*/auth</td><td>2</td></tr><tr><td>linux/file_event/*</td><td>4</td></tr><tr><td>linux/process_creation/*</td><td>6</td></tr><tr><td>windows/*/security</td><td>14</td></tr><tr><td>windows/*/system</td><td>1</td></tr><tr><td>windows/file_event/*</td><td>1</td></tr><tr><td>windows/process_access/*</td><td>1</td></tr><tr><td>windows/process_creation/*</td><td>14</td></tr><tr><td>windows/ps_script/*</td><td>5</td></tr><tr><td>windows/registry_set/*</td><td>1</td></tr><tr><td>windows/wmi_event/*</td><td>1</td></tr></tbody></table></div></details></section><footer class="report-footer"><p>This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.</p><ul><li>SYNTHETIC DEMONSTRATION DATA</li><li>SYNTHETIC BEHAVIORAL TESTING — NOT A MEASUREMENT OF PRODUCTION DETECTION EFFICACY</li><li>DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED</li><li>COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE</li></ul><p>This report is generated offline. It contains no external resources, no scripts, and no network references.</p></footer></main>
+</body>
+</html>

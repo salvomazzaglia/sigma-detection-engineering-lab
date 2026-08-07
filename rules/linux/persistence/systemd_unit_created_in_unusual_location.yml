@@ -1,0 +1,40 @@
+title: 'Systemd Service Unit Created In An Unusual Location'
+id: a5816635-5d16-58ee-a32d-86aca9cec68f
+status: experimental
+description: >-
+    Detects creation of a service unit file outside the standard unit directories, for
+    example under a temporary or home directory. Service units placed in writable locations
+    are a persistence and privilege escalation pattern.
+references:
+    - 'https://attack.mitre.org/techniques/T1543/002/'
+    - 'https://man7.org/linux/man-pages/man5/systemd.service.5.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1543.002
+logsource:
+    category: file_event
+    product: linux
+detection:
+    selection_unit_file:
+        TargetFilename|endswith:
+            - '.service'
+            - '.timer'
+    selection_unusual_location:
+        TargetFilename|startswith:
+            - '/tmp/'
+            - '/var/tmp/'
+            - '/dev/shm/'
+            - '/home/'
+    condition: 'selection_unit_file and selection_unusual_location'
+falsepositives:
+    - >-
+        Developer workstations where engineers prototype user-level service units in their
+        home directory before promoting them.
+    - >-
+        Build pipelines that generate unit files into a temporary staging directory before
+        packaging them into an artefact.
+level: medium
+license: MIT

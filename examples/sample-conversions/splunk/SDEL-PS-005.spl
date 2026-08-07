@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-005
+status=converted
+
+ScriptBlockText IN ("*AmsiUtils*", "*amsiInitFailed*", "*amsiContext*", "*EnableScriptBlockLogging*") ScriptBlockText IN ("*SetValue*", "*GetField*", "*NonPublic*", "*::Static*")

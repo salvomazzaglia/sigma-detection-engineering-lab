@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-007",
+  "sigma_rule_id": "d21a2313-2e83-5064-b110-b2074e792ec5",
+  "rule_file": "rules/windows/persistence/scheduled_task_action_referencing_temp_path.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "task_action_user_temp",
+      "file": "positive/case_01_task_action_user_temp.jsonl",
+      "expected": "match",
+      "scenario": "Task registered with an action in the per-user temporary directory.",
+      "rationale": "Registration event and action path selections both match."
+    },
+    {
+      "name": "task_action_windows_temp",
+      "file": "positive/case_02_task_action_windows_temp.jsonl",
+      "expected": "match",
+      "scenario": "Task registered with an action in the machine temporary directory.",
+      "rationale": "Registration event and action path selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "task_action_managed_path",
+      "file": "negative/case_01_task_action_managed_path.jsonl",
+      "expected": "no_match",
+      "scenario": "Task registered with an action in a managed program directory.",
+      "rationale": "Registration event matches but the action path is not user writable."
+    },
+    {
+      "name": "task_deleted_event",
+      "file": "negative/case_02_task_deleted_event.jsonl",
+      "expected": "no_match",
+      "scenario": "Scheduled task deleted.",
+      "rationale": "Path fragment matches but the event identifier is a deletion, not a creation."
+    },
+    {
+      "name": "task_description_mentions_temp",
+      "file": "negative/case_03_task_description_mentions_temp.jsonl",
+      "expected": "no_match",
+      "scenario": "Task registered whose description text mentions temporary files.",
+      "rationale": "The description does not contain a matching path fragment, so no selection hits."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

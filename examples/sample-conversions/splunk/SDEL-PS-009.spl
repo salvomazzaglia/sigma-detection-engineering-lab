@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-009
+status=converted
+
+ScriptBlockText IN ("*FromBase64String*", "*Convert]::FromBase64*", "*System.Convert::FromBase64*") ScriptBlockText IN ("*Invoke-Expression*", "*IEX *", "*IEX(*", "*.Invoke()*", "*ScriptBlock]::Create*")

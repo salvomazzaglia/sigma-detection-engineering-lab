@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-008
+status=converted
+
+(Image:(*\/chmod OR *\/setfacl)) AND (CommandLine:(*u\+s* OR *g\+s* OR *\ 4755* OR *\ 2755* OR *\ 777* OR *a\+rwx*))

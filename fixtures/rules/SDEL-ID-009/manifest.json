@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-009",
+  "sigma_rule_id": "7260ce80-c072-5dcd-982b-9d4954116da6",
+  "rule_file": "rules/identity/active_directory/group_policy_object_modified.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "policy_version_updated",
+      "file": "positive/case_01_policy_version_updated.jsonl",
+      "expected": "match",
+      "scenario": "Policy version attribute updated on a policy object.",
+      "rationale": "All three selections match."
+    },
+    {
+      "name": "policy_file_path_updated",
+      "file": "positive/case_02_policy_file_path_updated.jsonl",
+      "expected": "match",
+      "scenario": "Policy file path attribute updated on a policy object.",
+      "rationale": "All three selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "user_object_modified",
+      "file": "negative/case_01_user_object_modified.jsonl",
+      "expected": "no_match",
+      "scenario": "User object attribute modified outside the policies container.",
+      "rationale": "The policy container selection does not match."
+    },
+    {
+      "name": "policy_value_deleted",
+      "file": "negative/case_02_policy_value_deleted.jsonl",
+      "expected": "no_match",
+      "scenario": "Value removed from a policy object.",
+      "rationale": "The operation type selection does not match a deletion."
+    },
+    {
+      "name": "policy_object_read",
+      "file": "negative/case_03_policy_object_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Policy object read during a configuration report.",
+      "rationale": "The event identifier selection does not match a read operation."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

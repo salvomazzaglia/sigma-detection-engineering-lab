@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/schemas/metadata.schema.json",
+  "title": "RuleSidecarMetadata",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "sigma_rule_id",
+    "title",
+    "detection_hypothesis",
+    "platform",
+    "maturity",
+    "required_logs",
+    "required_fields",
+    "false_positive_strategy",
+    "attack_techniques"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "catalog_id": { "type": "string", "pattern": "^SDEL-[A-Z]+-[0-9]{3}$" },
+    "sigma_rule_id": { "type": "string", "format": "uuid" },
+    "title": { "type": "string", "minLength": 8 },
+    "detection_hypothesis": { "type": "string", "minLength": 40 },
+    "platform": { "type": "string" },
+    "maturity": {
+      "type": "string",
+      "enum": ["draft", "experimental", "tested-synthetic", "validated-lab", "production-observed", "deprecated"]
+    },
+    "required_logs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "required_fields": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "false_positive_strategy": { "type": "string", "minLength": 20 },
+    "attack_techniques": { "type": "array" },
+    "attack_detection_strategies": { "type": "array" },
+    "attack_analytics": { "type": "array" },
+    "attack_data_components": { "type": "array" },
+    "unmapped_defensive_objects_reason": { "type": "string" },
+    "synthetic_only": { "type": "boolean" }
+  }
+}

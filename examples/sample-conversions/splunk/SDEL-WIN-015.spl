@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-015
+status=converted
+
+ParentImage IN ("*\\synthetic_pdf_viewer.exe", "*\\synthetic_docviewer.exe") Image IN ("*\\cmd.exe", "*\\powershell.exe", "*\\pwsh.exe", "*\\mshta.exe", "*\\wscript.exe", "*\\rundll32.exe", "*\\regsvr32.exe")

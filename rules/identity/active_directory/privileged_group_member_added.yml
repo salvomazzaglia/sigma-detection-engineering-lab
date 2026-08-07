@@ -1,0 +1,42 @@
+title: 'Member Added To A Privileged Directory Or Local Group'
+id: 9b418dc1-af43-51ba-be4a-e9957da43053
+status: experimental
+description: >-
+    Detects membership additions to privileged security groups. Privileged group membership
+    is the most direct route to durable administrative control, so each addition needs an
+    approval record.
+references:
+    - 'https://attack.mitre.org/techniques/T1098/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4728'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4732'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_member_added:
+        EventID:
+            - 4728
+            - 4732
+            - 4756
+    selection_privileged_group:
+        TargetUserName:
+            - 'Domain Admins'
+            - 'Enterprise Admins'
+            - 'Schema Admins'
+            - Administrators
+    condition: 'selection_member_added and selection_privileged_group'
+falsepositives:
+    - >-
+        Privileged access management platforms granting just-in-time membership for an
+        approved change window and removing it afterwards.
+    - >-
+        Domain controller promotion and demotion workflows that adjust built-in group
+        membership as part of the process.
+level: high
+license: MIT

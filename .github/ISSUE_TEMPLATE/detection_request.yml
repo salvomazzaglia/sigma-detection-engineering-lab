@@ -1,0 +1,35 @@
+name: Detection request
+description: Propose a new synthetic detection hypothesis
+title: "[detection] "
+labels: ["detection-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Requests must be original. Do not paste SigmaHQ rules. Do not include real telemetry.
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Detection hypothesis
+      description: Observable behavior to detect (synthetic framing)
+    validations:
+      required: true
+  - type: textarea
+    id: logsource
+    attributes:
+      label: Log-source requirement
+    validations:
+      required: true
+  - type: textarea
+    id: attack
+    attributes:
+      label: Candidate ATT&CK mapping
+      description: Verified technique IDs only, or state unknown
+    validations:
+      required: true
+  - type: textarea
+    id: falsepositives
+    attributes:
+      label: False-positive considerations
+    validations:
+      required: true

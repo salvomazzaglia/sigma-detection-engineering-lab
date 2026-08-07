@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-002",
+  "sigma_rule_id": "d4eb081f-70f2-5b5b-b94e-31e2ff355f36",
+  "title": "PowerShell Hidden Window Combined With Policy Or Profile Bypass Options",
+  "detection_hypothesis": "If PowerShell is executed without user awareness, the command line will combine a hidden window style with profile or policy suppression options.",
+  "platform": "windows",
+  "rule_family": "powershell",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "Image",
+    "CommandLine"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process.",
+    "CommandLine": "Full command line including arguments as supplied to the process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Low to moderate depending on logon script design.",
+  "false_positive_strategy": "Benign matches repeat on a fixed schedule with the same parent process and script path. Tune on the script path in the command line and the parent, keeping the hidden window condition intact.",
+  "tuning_guidance": "Exclude the specific logon script path rather than the hidden window option. Removing the hidden option collapses the rule into a generic PowerShell rule.",
+  "test_strategy": "Positive cases combine hidden execution with policy bypass and with profile suppression. Negative cases drop one of the required halves.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1059.001",
+      "name": "Command and Scripting Interpreter: PowerShell"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0455",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1252",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0032",
+      "technique_id": "T1059.001"
+    },
+    {
+      "id": "DC0064",
+      "technique_id": "T1059.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-PS-001"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/powershell/powershell_hidden_window_with_suspicious_options.yml",
+  "fixture_directory": "fixtures/rules/SDEL-PS-002"
+}

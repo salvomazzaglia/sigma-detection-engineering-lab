@@ -1,0 +1,755 @@
+{
+  "description": "Techniques addressed by 56 original Sigma rule(s). Score is the number of rules mapped to a technique, not a measure of detection confidence or environmental coverage. COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+  "domain": "enterprise-attack",
+  "filters": {
+    "platforms": []
+  },
+  "gradient": {
+    "colors": [
+      "#deebf7",
+      "#3182bd"
+    ],
+    "maxValue": 8,
+    "minValue": 0
+  },
+  "hideDisabled": false,
+  "layout": {
+    "aggregateFunction": "average",
+    "countUnscored": false,
+    "layout": "side",
+    "showAggregateScores": false,
+    "showID": true,
+    "showName": true
+  },
+  "legendItems": [
+    {
+      "color": "#deebf7",
+      "label": "1 rule"
+    },
+    {
+      "color": "#9ecae1",
+      "label": "2 rules"
+    },
+    {
+      "color": "#3182bd",
+      "label": "3 or more rules"
+    }
+  ],
+  "links": [],
+  "metadata": [
+    {
+      "name": "generator",
+      "value": "sigma-detection-engineering-lab 1.0.0"
+    },
+    {
+      "name": "generated_at",
+      "value": "2026-08-07T00:23:59.201Z"
+    },
+    {
+      "name": "caveat",
+      "value": "COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE"
+    },
+    {
+      "name": "verified_against",
+      "value": "19.1"
+    }
+  ],
+  "name": "sigma-detection-engineering-lab coverage",
+  "selectSubtechniquesWithParent": false,
+  "selectTechniquesAcrossTactics": true,
+  "selectVisibleTechniques": false,
+  "showTacticRowBackground": false,
+  "sorting": 3,
+  "tacticRowBackground": "#dddddd",
+  "techniques": [
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-012 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-012"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1003.001"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-ID-008 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-008"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1003.006"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-PS-001; SDEL-PS-009 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-PS-001, SDEL-PS-009"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": false,
+      "techniqueID": "T1027"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-003 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-003"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1053.003"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-PS-008; SDEL-WIN-007 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-PS-008, SDEL-WIN-007"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": true,
+      "techniqueID": "T1053.005"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "7 rule(s) in this catalog | SDEL-PS-001; SDEL-PS-002; SDEL-PS-003; SDEL-PS-004; SDEL-PS-005; SDEL-PS-009; SDEL-PS-010 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "7"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-PS-001, SDEL-PS-002, SDEL-PS-003, SDEL-PS-004, SDEL-PS-005, SDEL-PS-009, SDEL-PS-010"
+        }
+      ],
+      "score": 7,
+      "showSubtechniques": true,
+      "techniqueID": "T1059.001"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-WIN-002; SDEL-WIN-015 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-002, SDEL-WIN-015"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": true,
+      "techniqueID": "T1059.003"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "3 rule(s) in this catalog | SDEL-LX-006; SDEL-LX-007; SDEL-LX-011 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "3"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-006, SDEL-LX-007, SDEL-LX-011"
+        }
+      ],
+      "score": 3,
+      "showSubtechniques": true,
+      "techniqueID": "T1059.004"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "8 rule(s) in this catalog | SDEL-COR-004; SDEL-ID-002; SDEL-ID-003; SDEL-ID-004; SDEL-ID-005; SDEL-ID-006; SDEL-ID-007; SDEL-PS-007 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "8"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-004, SDEL-ID-002, SDEL-ID-003, SDEL-ID-004, SDEL-ID-005, SDEL-ID-006, SDEL-ID-007, SDEL-PS-007"
+        }
+      ],
+      "score": 8,
+      "showSubtechniques": false,
+      "techniqueID": "T1098"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-005 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-005"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1098.004"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "7 rule(s) in this catalog | SDEL-COR-006; SDEL-LX-007; SDEL-PS-003; SDEL-WIN-004; SDEL-WIN-005; SDEL-WIN-014; SDEL-WIN-016 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "7"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-006, SDEL-LX-007, SDEL-PS-003, SDEL-WIN-004, SDEL-WIN-005, SDEL-WIN-014, SDEL-WIN-016"
+        }
+      ],
+      "score": 7,
+      "showSubtechniques": false,
+      "techniqueID": "T1105"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "3 rule(s) in this catalog | SDEL-COR-001; SDEL-COR-003; SDEL-LX-012 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "3"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-001, SDEL-COR-003, SDEL-LX-012"
+        }
+      ],
+      "score": 3,
+      "showSubtechniques": true,
+      "techniqueID": "T1110.001"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-COR-002 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-002"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1110.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-008 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-008"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": false,
+      "techniqueID": "T1112"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-ID-001; SDEL-LX-001 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-001, SDEL-LX-001"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": true,
+      "techniqueID": "T1136.001"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-PS-009; SDEL-WIN-005 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-PS-009, SDEL-WIN-005"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": false,
+      "techniqueID": "T1140"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "5 rule(s) in this catalog | SDEL-COR-006; SDEL-PS-010; SDEL-WIN-001; SDEL-WIN-002; SDEL-WIN-015 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "5"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-006, SDEL-PS-010, SDEL-WIN-001, SDEL-WIN-002, SDEL-WIN-015"
+        }
+      ],
+      "score": 5,
+      "showSubtechniques": true,
+      "techniqueID": "T1204.002"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-003 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-003"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1218.005"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-004 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-004"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1218.010"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-008 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-008"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1222.002"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-ID-009 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-009"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1484.001"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-ID-010 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-010"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1484.002"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-006 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-006"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1505.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-004 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-004"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1543.002"
+    },
+    {
+      "color": "#9ecae1",
+      "comment": "2 rule(s) in this catalog | SDEL-COR-005; SDEL-WIN-006 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "2"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-COR-005, SDEL-WIN-006"
+        }
+      ],
+      "score": 2,
+      "showSubtechniques": true,
+      "techniqueID": "T1543.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-009 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-009"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1546.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-008 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-008"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1547.001"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-010 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-010"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1547.006"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-002 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-002"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1548.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-ID-012 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-012"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": false,
+      "techniqueID": "T1555"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-ID-006 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-006"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1558.003"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-PS-004 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-PS-004"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": false,
+      "techniqueID": "T1620"
+    },
+    {
+      "color": "#3182bd",
+      "comment": "4 rule(s) in this catalog | SDEL-ID-011; SDEL-PS-005; SDEL-PS-006; SDEL-WIN-011 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "4"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-ID-011, SDEL-PS-005, SDEL-PS-006, SDEL-WIN-011"
+        }
+      ],
+      "score": 4,
+      "showSubtechniques": false,
+      "techniqueID": "T1685"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-010 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-010"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1685.005"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-LX-009 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-LX-009"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": true,
+      "techniqueID": "T1685.006"
+    },
+    {
+      "color": "#deebf7",
+      "comment": "1 rule(s) in this catalog | SDEL-WIN-013 | COVERAGE REFLECTS AUTHORED RULES AND SYNTHETIC TESTS ONLY — NOT ENVIRONMENTAL DETECTION COVERAGE",
+      "enabled": true,
+      "links": [],
+      "metadata": [
+        {
+          "name": "rule_count",
+          "value": "1"
+        },
+        {
+          "name": "rules",
+          "value": "SDEL-WIN-013"
+        }
+      ],
+      "score": 1,
+      "showSubtechniques": false,
+      "techniqueID": "T1686"
+    }
+  ],
+  "versions": {
+    "attack": "19.1",
+    "layer": "4.5",
+    "navigator": "5.1.0"
+  }
+}

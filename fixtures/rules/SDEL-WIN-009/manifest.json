@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-009",
+  "sigma_rule_id": "fc1e2daf-8ce2-5915-aec2-4f4cc05f60ee",
+  "rule_file": "rules/windows/persistence/permanent_wmi_event_subscription_created.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "wmi_event",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "filter_created",
+      "file": "positive/case_01_filter_created.jsonl",
+      "expected": "match",
+      "scenario": "WMI event filter created.",
+      "rationale": "Event type and creation operation both match."
+    },
+    {
+      "name": "binding_created",
+      "file": "positive/case_02_binding_created.jsonl",
+      "expected": "match",
+      "scenario": "WMI filter to consumer binding created.",
+      "rationale": "Event type and creation operation both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "filter_deleted",
+      "file": "negative/case_01_filter_deleted.jsonl",
+      "expected": "no_match",
+      "scenario": "WMI event filter removed during agent uninstall.",
+      "rationale": "Event type matches but the operation is a deletion."
+    },
+    {
+      "name": "wmi_query_only",
+      "file": "negative/case_02_wmi_query_only.jsonl",
+      "expected": "no_match",
+      "scenario": "Ordinary WMI query executed by an inventory tool.",
+      "rationale": "Event type is not a subscription component."
+    },
+    {
+      "name": "consumer_deleted",
+      "file": "negative/case_03_consumer_deleted.jsonl",
+      "expected": "no_match",
+      "scenario": "WMI consumer removed during cleanup.",
+      "rationale": "Event type matches but the operation is a deletion."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

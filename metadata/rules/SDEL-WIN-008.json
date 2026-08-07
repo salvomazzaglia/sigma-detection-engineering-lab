@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-008",
+  "sigma_rule_id": "1185b733-f53c-50a6-be8f-2cb38e0a0b08",
+  "title": "Run Or RunOnce Value Referencing A User-Writable Path",
+  "detection_hypothesis": "If logon persistence is installed, a Run or RunOnce value will be written whose data references a directory that any interactive user can modify.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows registry value modification telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "required_fields": [
+    "TargetObject",
+    "Details"
+  ],
+  "optional_fields": [
+    "Image",
+    "User",
+    "ProcessGuid"
+  ],
+  "field_semantics": {
+    "TargetObject": "Full registry path of the value that was written.",
+    "Details": "Rendered data written to the registry value."
+  },
+  "collection_prerequisites": [
+    "Registry value-set auditing is enabled (Sysmon Event ID 13 or equivalent).",
+    "The autostart hives of interest are included in the collection filter."
+  ],
+  "expected_collection_gaps": [
+    "Registry auditing is frequently filtered to a small key allowlist.",
+    "Values written by offline hive edits are not observed."
+  ],
+  "normalization_assumptions": [
+    "TargetObject uses the full registry path with HKLM or HKU prefixes.",
+    "Details contains the written value rendered as text."
+  ],
+  "ingestion_differences": [
+    "Some pipelines split TargetObject into key and value name fields.",
+    "REG_BINARY values may be rendered differently between agents."
+  ],
+  "retention_considerations": "Registry value telemetry is moderate volume; 90 days is usually affordable.",
+  "expected_volume": "Low; each match should resolve to an installer or an investigation.",
+  "false_positive_strategy": "Benign matches are almost always RunOnce values written during installation and removed on the next logon. Tune with the writing process image and the value name instead of the path fragment.",
+  "tuning_guidance": "Exclude the specific installer image writing the value, and prefer keeping Run entries unfiltered even when RunOnce entries are tuned.",
+  "test_strategy": "Positive cases write Run and RunOnce values pointing at temporary directories. Negative cases cover a managed autostart target, an unrelated key, and a settings value.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1547.001",
+      "name": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder"
+    },
+    {
+      "id": "T1112",
+      "name": "Modify Registry"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    },
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0365",
+      "technique_id": "T1547.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1032",
+      "technique_id": "T1547.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0063",
+      "technique_id": "T1547.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1112.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-WIN-001",
+    "SDEL-WIN-014"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/persistence/run_key_persistence_user_writable_path.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-008"
+}

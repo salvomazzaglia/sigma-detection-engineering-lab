@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-DEMO-001",
+  "sigma_rule_id": "6f1a2b3c-4d5e-4f60-9a71-2b3c4d5e6f70",
+  "title": "Demonstration Process Launched From Synthetic Staging Path",
+  "detection_hypothesis": "If tooling is staged in a directory no managed installer writes to, the resulting process creation event shows an Image path rooted in that staging directory rather than in a managed installation directory.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "experimental",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "required_fields": [
+    "Image"
+  ],
+  "optional_fields": [
+    "CommandLine",
+    "ParentImage"
+  ],
+  "attack_techniques": [
+    {
+      "id": "T1204.002",
+      "name": "User Execution: Malicious File"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [],
+  "attack_analytics": [],
+  "attack_data_components": [],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab.",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "synthetic_fixtures_only": true,
+  "tuning_guidance": "Prefer per-binary exclusions anchored on Image endswith. Do not exclude the whole staging directory, which would remove the rule's detection value."
+}

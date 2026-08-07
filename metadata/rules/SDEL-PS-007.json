@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-007",
+  "sigma_rule_id": "7daee763-200c-5c3f-b0c5-71873e19f969",
+  "title": "PowerShell Command Modifying Privileged Group Membership",
+  "detection_hypothesis": "If privileges are granted through group membership, the invoking command line will name both a membership cmdlet and a privileged group.",
+  "platform": "windows",
+  "rule_family": "powershell",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "CommandLine"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "CommandLine": "Full command line including arguments as supplied to the process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Low; a few matches per week in a governed environment.",
+  "false_positive_strategy": "Benign matches run under identity automation accounts, reference a governance group rather than an individual, and correlate with an approval record. Tune on the invoking account and the added principal.",
+  "tuning_guidance": "Exclude the privileged access management service account only. Do not exclude the group names, and keep coverage for the local administrators group on endpoints.",
+  "test_strategy": "Positive cases use the directory cmdlet and the legacy net command. Negative cases modify a non-privileged group, query membership, and remove a member.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1098",
+      "name": "Account Manipulation"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0096",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0265",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0010",
+      "technique_id": "T1098"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-ID-003",
+    "SDEL-COR-004"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/powershell/powershell_privileged_group_membership_modification.yml",
+  "fixture_directory": "fixtures/rules/SDEL-PS-007"
+}

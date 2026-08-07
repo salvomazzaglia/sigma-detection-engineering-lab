@@ -1,0 +1,38 @@
+title: 'Audit Policy Subcategory Weakened'
+id: ad5d9a8a-b009-5eea-b9ac-6341f2ef29bd
+status: experimental
+description: >-
+    Detects audit policy changes that remove success or failure auditing from a subcategory.
+    Removing auditing blinds every downstream detection that depends on the affected event
+    family.
+references:
+    - 'https://attack.mitre.org/techniques/T1685/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4719'
+    - 'https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/auditpol'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1685
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_audit_policy_change:
+        EventID: 4719
+    selection_auditing_removed:
+        AuditPolicyChanges|contains:
+            - 'Success removed'
+            - 'Failure removed'
+            - '%%8448'
+            - '%%8450'
+    condition: 'selection_audit_policy_change and selection_auditing_removed'
+falsepositives:
+    - >-
+        Baseline hardening projects that intentionally reduce noisy subcategories such as
+        filtering platform connection auditing.
+    - >-
+        Domain controller performance remediation where a high-volume subcategory is
+        temporarily reduced under a change record.
+level: high
+license: MIT

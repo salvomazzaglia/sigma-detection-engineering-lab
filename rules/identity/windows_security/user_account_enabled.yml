@@ -1,0 +1,33 @@
+title: 'Disabled User Account Enabled'
+id: a5cd1895-7830-5d02-af6f-a884bfe55602
+status: experimental
+description: >-
+    Detects a previously disabled account being enabled. Re-enabling a dormant account is a
+    quiet way to obtain a credentialed identity, but it is also routine during re-hire and
+    leave-return processes, so the rule is informational.
+references:
+    - 'https://attack.mitre.org/techniques/T1098/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4722'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_account_enabled:
+        EventID: 4722
+    condition: selection_account_enabled
+falsepositives:
+    - >-
+        Return-from-leave processing that re-enables accounts on the employee return date.
+    - >-
+        Re-hire workflows that reuse the previous identity instead of creating a new one.
+    - >-
+        Service account maintenance where an account is disabled for a change window and
+        then re-enabled.
+level: informational
+license: MIT

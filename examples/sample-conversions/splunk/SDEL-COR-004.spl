@@ -1,0 +1,11 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-COR-004
+status=converted
+
+EventID IN (4728, 4732, 4756) TargetUserName IN ("Domain Admins", "Enterprise Admins", "Schema Admins", "Administrators")
+
+| bin _time span=10m
+| stats count as event_count by _time SubjectUserName
+
+| search event_count >= 4

@@ -1,0 +1,44 @@
+title: 'System Utility Invoked With An Uncommon Remote Or Transfer Pattern'
+id: aec1db38-0987-5bd7-8b04-ab2dba8f4a94
+status: experimental
+description: >-
+    Detects background transfer and installation utilities being invoked with remote URLs or
+    explicit transfer switches. These utilities are legitimate but are also convenient
+    signed download channels.
+references:
+    - 'https://attack.mitre.org/techniques/T1105/'
+    - 'https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.command-and-control
+    - attack.t1105
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_transfer_utility:
+        Image|endswith:
+            - '\bitsadmin.exe'
+            - '\msiexec.exe'
+            - '\odbcconf.exe'
+            - '\installutil.exe'
+    selection_remote_scheme:
+        CommandLine|contains:
+            - 'http://'
+            - 'https://'
+    selection_transfer_switch:
+        CommandLine|contains:
+            - '/transfer '
+            - '/download '
+            - '-transfer '
+    condition: 'selection_transfer_utility and (selection_remote_scheme or selection_transfer_switch)'
+falsepositives:
+    - >-
+        Software distribution agents that install packages directly from an internal package
+        repository over HTTPS.
+    - >-
+        Background transfer jobs created by the patch management platform to pre-stage
+        update content on slow links.
+level: medium
+license: MIT

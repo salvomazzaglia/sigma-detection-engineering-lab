@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-PS-009
+status=converted
+
+(ScriptBlockText:(*FromBase64String* OR *Convert\]\:\:FromBase64* OR *System.Convert\:\:FromBase64*)) AND (ScriptBlockText:(*Invoke\-Expression* OR *IEX\ * OR *IEX\(* OR *.Invoke\(\)* OR *ScriptBlock\]\:\:Create*))

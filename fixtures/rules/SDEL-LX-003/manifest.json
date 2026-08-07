@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-003",
+  "sigma_rule_id": "009fd073-a1b0-5381-b241-4ed8dafeaf94",
+  "rule_file": "rules/linux/persistence/cron_persistence_entry_created.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "file_event",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "system_cron_job_written",
+      "file": "positive/case_01_system_cron_job_written.jsonl",
+      "expected": "match",
+      "scenario": "System scheduling entry created.",
+      "rationale": "Path selection matches and no filter applies."
+    },
+    {
+      "name": "user_crontab_written",
+      "file": "positive/case_02_user_crontab_written.jsonl",
+      "expected": "match",
+      "scenario": "Per-user crontab written.",
+      "rationale": "Path selection matches and no filter applies."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "unrelated_etc_file",
+      "file": "negative/case_01_unrelated_etc_file.jsonl",
+      "expected": "no_match",
+      "scenario": "Unrelated configuration file written.",
+      "rationale": "The path selection does not match."
+    },
+    {
+      "name": "package_manager_job",
+      "file": "negative/case_02_package_manager_job.jsonl",
+      "expected": "no_match",
+      "scenario": "Package manager installs a maintenance job.",
+      "rationale": "Path matches but the package manager filter removes the event."
+    },
+    {
+      "name": "job_documentation_written",
+      "file": "negative/case_03_job_documentation_written.jsonl",
+      "expected": "no_match",
+      "scenario": "Documentation about scheduled jobs written to a home directory.",
+      "rationale": "The path selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

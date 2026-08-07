@@ -1,0 +1,40 @@
+title: 'Scheduled Task Created Through PowerShell'
+id: 2854095f-8a13-5914-ab66-405fc0f40aec
+status: experimental
+description: >-
+    Detects script block content that registers a scheduled task. Task creation through
+    PowerShell is common in automation, so the rule is rated low and is intended for context
+    enrichment and hunting.
+references:
+    - 'https://attack.mitre.org/techniques/T1053/005/'
+    - 'https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/registerscheduledtask'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.execution
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1053.005
+logsource:
+    product: windows
+    category: ps_script
+detection:
+    selection_task_cmdlet:
+        ScriptBlockText|contains:
+            - Register-ScheduledTask
+            - New-ScheduledTask
+            - Set-ScheduledTask
+    selection_task_action:
+        ScriptBlockText|contains:
+            - New-ScheduledTaskAction
+            - '-Action '
+    condition: 'selection_task_cmdlet and selection_task_action'
+falsepositives:
+    - >-
+        Configuration management modules that register maintenance tasks such as log
+        rotation on every managed server.
+    - >-
+        Application installers written in PowerShell that create their own update check task
+        during setup.
+level: low
+license: MIT

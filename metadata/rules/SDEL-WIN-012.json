@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-012",
+  "sigma_rule_id": "7cc062a2-81b9-50fb-b588-0676ca7a3f08",
+  "title": "Process Access Request Against The Sensitive Authentication Process",
+  "detection_hypothesis": "If credential material is harvested from the authentication process, a process access event will record a handle request that includes memory read rights.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process access telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "required_fields": [
+    "TargetImage",
+    "GrantedAccess",
+    "SourceImage"
+  ],
+  "optional_fields": [
+    "CallTrace",
+    "SourceUser",
+    "TargetUser"
+  ],
+  "field_semantics": {
+    "TargetImage": "Absolute path of the process being accessed.",
+    "GrantedAccess": "Hexadecimal access mask granted for the process handle.",
+    "SourceImage": "Absolute path of the process requesting access."
+  },
+  "collection_prerequisites": [
+    "Process access auditing is enabled (Sysmon Event ID 10 or an EDR equivalent).",
+    "The sensitive authentication process is included in the monitored target list."
+  ],
+  "expected_collection_gaps": [
+    "Process access auditing is often disabled because of its volume.",
+    "Kernel-mode access paths are not represented in this event class."
+  ],
+  "normalization_assumptions": [
+    "GrantedAccess is a hexadecimal string such as 0x1010.",
+    "SourceImage and TargetImage are absolute paths."
+  ],
+  "ingestion_differences": [
+    "Some producers emit GrantedAccess as a decimal integer.",
+    "CallTrace availability depends on symbol resolution settings."
+  ],
+  "retention_considerations": "Process access telemetry is very high volume; scope filters are required.",
+  "expected_volume": "Very low once known agents are filtered.",
+  "false_positive_strategy": "The benign population is a short, enumerable list of security and diagnostic agents. Maintain that list explicitly by source image and review additions, rather than relaxing the access mask selection.",
+  "tuning_guidance": "Add new agents to the source image filter only after verifying their signature and installation path. Never widen the filter to a directory prefix such as the whole program files tree.",
+  "test_strategy": "Positive cases request two distinct memory read masks from unmanaged source images. Negative cases cover a low-privilege mask, a different target, and the filtered security agent.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1003.001",
+      "name": "OS Credential Dumping: LSASS Memory"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0006",
+      "name": "Credential Access"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0363",
+      "technique_id": "T1003.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1030",
+      "technique_id": "T1003.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0035",
+      "technique_id": "T1003.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-ID-008"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/system/sensitive_authentication_process_access.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-012"
+}

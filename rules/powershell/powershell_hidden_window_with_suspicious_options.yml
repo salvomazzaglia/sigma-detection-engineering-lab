@@ -1,0 +1,44 @@
+title: 'PowerShell Hidden Window Combined With Policy Or Profile Bypass Options'
+id: d4eb081f-70f2-5b5b-b94e-31e2ff355f36
+status: experimental
+description: >-
+    Detects PowerShell started with a hidden window together with options that skip the user
+    profile or relax the execution policy. The combination indicates deliberate concealment
+    from the interactive user.
+references:
+    - 'https://attack.mitre.org/techniques/T1059/001/'
+    - 'https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.execution
+    - attack.t1059.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_powershell:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    selection_hidden_window:
+        CommandLine|contains:
+            - '-WindowStyle Hidden'
+            - '-w hidden'
+            - '-windowstyle hidden'
+    selection_bypass_options:
+        CommandLine|contains:
+            - '-ExecutionPolicy Bypass'
+            - '-ep bypass'
+            - '-NoProfile'
+            - '-nop '
+    condition: 'selection_powershell and selection_hidden_window and selection_bypass_options'
+falsepositives:
+    - >-
+        Logon scripts distributed by group policy that intentionally run hidden so that no
+        console window appears for the user.
+    - >-
+        Endpoint agent health checks that run hidden every hour with a bypassed execution
+        policy because the scripts are unsigned by design.
+level: medium
+license: MIT

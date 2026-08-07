@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-002",
+  "sigma_rule_id": "e20f88a0-26ab-508e-90a0-2adefc415c67",
+  "title": "Office-Like Application Spawning A Command Interpreter",
+  "detection_hypothesis": "If macro or template content executes, the interpreter process will retain the document application as its parent image.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "ParentImage",
+    "Image"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "ParentImage": "Absolute path of the executable that created the process.",
+    "Image": "Absolute path of the executable backing the created process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Low in most environments; noticeable in finance teams with macro workflows.",
+  "false_positive_strategy": "Benign matches are usually repeatable, tied to a specific document path or add-in, and executed by a small set of business users. Tune with the child command line and the invoking document rather than removing the parent process.",
+  "tuning_guidance": "Add narrow CommandLine exclusions for the exact automation script path. Never exclude an entire office parent image, because that disables the rule for all documents on the endpoint.",
+  "test_strategy": "Positive cases pair each office-like parent with a different interpreter child. Negative cases keep one half of the pair benign so that both selections are exercised independently.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1059.003",
+      "name": "Command and Scripting Interpreter: Windows Command Shell"
+    },
+    {
+      "id": "T1204.002",
+      "name": "User Execution: Malicious File"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [],
+  "attack_analytics": [],
+  "attack_data_components": [],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1059.003, T1204.002.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-PS-010",
+    "SDEL-WIN-015"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/process_creation/office_like_parent_spawning_command_interpreter.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-002"
+}

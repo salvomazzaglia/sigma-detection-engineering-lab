@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-PS-003
+status=converted
+
+(ScriptBlockText:(*DownloadString* OR *DownloadFile* OR *Invoke\-WebRequest* OR *Invoke\-RestMethod* OR *Start\-BitsTransfer*)) AND (ScriptBlockText:(*http\:\/\/* OR *https\:\/\/*))

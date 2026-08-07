@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-010",
+  "sigma_rule_id": "998af6f0-bc2a-59e1-9d75-e81d45ae37c9",
+  "rule_file": "rules/linux/system/kernel_module_loaded_from_unusual_path.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "process_creation",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "module_from_tmp",
+      "file": "positive/case_01_module_from_tmp.jsonl",
+      "expected": "match",
+      "scenario": "Kernel module inserted from the temporary directory.",
+      "rationale": "Tool and path selections both match."
+    },
+    {
+      "name": "module_from_home",
+      "file": "positive/case_02_module_from_home.jsonl",
+      "expected": "match",
+      "scenario": "Kernel module inserted from a home directory.",
+      "rationale": "Tool and path selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "module_from_managed_tree",
+      "file": "negative/case_01_module_from_managed_tree.jsonl",
+      "expected": "no_match",
+      "scenario": "Kernel module loaded by name from the managed module tree.",
+      "rationale": "The path selection does not match."
+    },
+    {
+      "name": "module_removed",
+      "file": "negative/case_02_module_removed.jsonl",
+      "expected": "no_match",
+      "scenario": "Kernel module removed.",
+      "rationale": "The tool selection does not match."
+    },
+    {
+      "name": "module_listing",
+      "file": "negative/case_03_module_listing.jsonl",
+      "expected": "no_match",
+      "scenario": "Loaded modules listed for inventory.",
+      "rationale": "Neither selection matches."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

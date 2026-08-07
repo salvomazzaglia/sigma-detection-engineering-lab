@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-001",
+  "sigma_rule_id": "a58d909c-bd70-51cc-8190-c6a67744b6bf",
+  "rule_file": "rules/windows/process_creation/process_launched_from_user_writable_temp_path.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "user_temp_directory",
+      "file": "positive/case_01_user_temp_directory.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the per-user temporary directory.",
+      "rationale": "Image prefix matches the per-user temporary directory selection."
+    },
+    {
+      "name": "machine_temp_directory",
+      "file": "positive/case_02_machine_temp_directory.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the machine-wide Windows temporary directory.",
+      "rationale": "Image prefix matches the machine temporary directory selection."
+    },
+    {
+      "name": "public_directory",
+      "file": "positive/case_03_public_directory.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the public profile directory.",
+      "rationale": "Image prefix matches the public directory selection."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "managed_program_files",
+      "file": "negative/case_01_managed_program_files.jsonl",
+      "expected": "no_match",
+      "scenario": "Application executed from a managed installation directory.",
+      "rationale": "Image prefix is outside every user-writable selection."
+    },
+    {
+      "name": "allowed_patch_installer",
+      "file": "negative/case_02_allowed_patch_installer.jsonl",
+      "expected": "no_match",
+      "scenario": "Approved patch installer executed from the temporary directory.",
+      "rationale": "Path matches the selection but the approved installer filter removes it."
+    },
+    {
+      "name": "system_directory_binary",
+      "file": "negative/case_03_system_directory_binary.jsonl",
+      "expected": "no_match",
+      "scenario": "System utility executed from the system directory.",
+      "rationale": "Image prefix is the system directory, which is not user writable."
+    },
+    {
+      "name": "temp_named_subdirectory_elsewhere",
+      "file": "negative/case_04_temp_named_subdirectory_elsewhere.jsonl",
+      "expected": "no_match",
+      "scenario": "Binary executed from a managed directory that merely contains the word Temp.",
+      "rationale": "The selection uses startswith, so a similarly named managed path is excluded."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

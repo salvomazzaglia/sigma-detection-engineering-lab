@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-014",
+  "sigma_rule_id": "94c78e2e-2aab-5c13-8db5-3b538cf592b0",
+  "rule_file": "rules/windows/system/executable_created_in_public_or_temp_directory.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "file_event",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "executable_in_user_temp",
+      "file": "positive/case_01_executable_in_user_temp.jsonl",
+      "expected": "match",
+      "scenario": "Executable written into the per-user temporary directory.",
+      "rationale": "Directory and extension selections match and no filter applies."
+    },
+    {
+      "name": "library_in_public_directory",
+      "file": "positive/case_02_library_in_public_directory.jsonl",
+      "expected": "match",
+      "scenario": "Library written into the public profile directory.",
+      "rationale": "Directory and extension selections match and no filter applies."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "document_in_user_temp",
+      "file": "negative/case_01_document_in_user_temp.jsonl",
+      "expected": "no_match",
+      "scenario": "Document written into the per-user temporary directory.",
+      "rationale": "Directory matches but the extension selection does not."
+    },
+    {
+      "name": "executable_in_program_files",
+      "file": "negative/case_02_executable_in_program_files.jsonl",
+      "expected": "no_match",
+      "scenario": "Executable written into a managed installation directory.",
+      "rationale": "Extension matches but the directory selection does not."
+    },
+    {
+      "name": "managed_update_agent_staging",
+      "file": "negative/case_03_managed_update_agent_staging.jsonl",
+      "expected": "no_match",
+      "scenario": "Managed update agent stages a patch binary.",
+      "rationale": "Both selections match but the update agent filter removes the event."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

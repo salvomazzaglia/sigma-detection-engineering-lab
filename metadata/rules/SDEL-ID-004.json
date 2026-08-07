@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-004",
+  "sigma_rule_id": "f33cdb9a-15f7-5da7-a825-918283fd0dbd",
+  "title": "Member Removed From A Privileged Group Outside Governance Automation",
+  "detection_hypothesis": "If group membership is manipulated to cover tracks or to remove defenders, the removal event will be raised by an interactive administrator rather than by the governance automation account.",
+  "platform": "windows",
+  "rule_family": "identity",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "TargetUserName",
+    "SubjectUserName"
+  ],
+  "optional_fields": [
+    "SubjectDomainName",
+    "TargetDomainName",
+    "IpAddress",
+    "LogonType"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "TargetUserName": "Account or group that was the object of the audited action.",
+    "SubjectUserName": "Account that performed the audited action."
+  },
+  "collection_prerequisites": [
+    "The relevant advanced audit policy subcategory is enabled for success events.",
+    "Domain controller Security logs are forwarded for directory-scoped events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "EventID is an integer and Channel is the literal string Security.",
+    "Account names are provided without the domain prefix in TargetUserName."
+  ],
+  "ingestion_differences": [
+    "Some pipelines rename EventID to event.code or similar.",
+    "Directory attribute events may arrive with XML-encoded values."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low.",
+  "false_positive_strategy": "Benign removals cluster around recertification campaigns and are performed by reviewers. Tune by correlating with the campaign window rather than by excluding individual administrators.",
+  "tuning_guidance": "Keep the governance service filter narrow and named. Avoid excluding human administrator accounts, since those are the accounts most likely to be abused.",
+  "test_strategy": "Positive cases remove members from a domain group and from the local administrators group. Negative cases cover the governance service, a non-privileged group, and an addition event.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1098",
+      "name": "Account Manipulation"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0096",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0265",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0010",
+      "technique_id": "T1098"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-ID-003"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/identity/active_directory/privileged_group_member_removed_unexpectedly.yml",
+  "fixture_directory": "fixtures/rules/SDEL-ID-004"
+}

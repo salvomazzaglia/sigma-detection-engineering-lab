@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-009",
+  "sigma_rule_id": "aba24a11-1713-521c-ba1d-7a65159b7ee4",
+  "title": "Audit Or Authentication Log Clearing Attempt",
+  "detection_hypothesis": "If host evidence is destroyed, a process will be observed invoking a deletion or truncation utility against an audit or authentication log path.",
+  "platform": "linux",
+  "rule_family": "linux",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Linux execve auditing"
+  ],
+  "required_channels": [
+    "auditd"
+  ],
+  "required_fields": [
+    "Image",
+    "CommandLine"
+  ],
+  "optional_fields": [
+    "CurrentDirectory",
+    "ParentCommandLine",
+    "ProcessId"
+  ],
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process.",
+    "CommandLine": "Full command line including arguments as supplied to the process."
+  },
+  "collection_prerequisites": [
+    "An execve audit rule or equivalent process telemetry agent is deployed.",
+    "Audit rules are not limited to a narrow allowlist of binaries."
+  ],
+  "expected_collection_gaps": [
+    "Containers without a shared audit namespace may not report execve records.",
+    "Audit backlog limits can drop records under load."
+  ],
+  "normalization_assumptions": [
+    "Image is the absolute executable path and CommandLine is the joined argument vector.",
+    "ParentImage identifies the parent executable path."
+  ],
+  "ingestion_differences": [
+    "auditd argument vectors may be hex-encoded before normalization.",
+    "Some agents report the argv array instead of a joined string."
+  ],
+  "retention_considerations": "Execve telemetry is high volume; 30 to 60 days of hot retention is typical.",
+  "expected_volume": "Very low.",
+  "false_positive_strategy": "Benign matches occur on template build hosts or under a documented capacity incident. Tune on the host role and require an operator ticket, rather than excluding the log paths.",
+  "tuning_guidance": "Restrict exclusions to template build hosts. On production servers, treat every match as reviewable even when a capacity problem is suspected.",
+  "test_strategy": "Positive cases remove the authentication log and truncate the audit log. Negative cases read the log, rotate it with the rotation utility, and remove an unrelated file.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1685.006",
+      "name": "Impair Defenses: Clear Linux or Mac System Logs"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0520",
+      "technique_id": "T1685.006"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1438",
+      "technique_id": "T1685.006"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0040",
+      "technique_id": "T1685.006"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-WIN-010",
+    "SDEL-LX-012"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/linux/system/audit_or_authentication_log_cleared.yml",
+  "fixture_directory": "fixtures/rules/SDEL-LX-009"
+}

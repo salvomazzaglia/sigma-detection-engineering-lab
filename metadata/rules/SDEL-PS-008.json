@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-008",
+  "sigma_rule_id": "2854095f-8a13-5914-ab66-405fc0f40aec",
+  "title": "Scheduled Task Created Through PowerShell",
+  "detection_hypothesis": "If persistence is created programmatically, the logged script block will contain a scheduled task registration cmdlet together with an action definition.",
+  "platform": "windows",
+  "rule_family": "powershell",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows PowerShell script block logging"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-PowerShell/Operational"
+  ],
+  "required_fields": [
+    "ScriptBlockText"
+  ],
+  "optional_fields": [
+    "Path",
+    "ScriptBlockId",
+    "MessageNumber",
+    "MessageTotal"
+  ],
+  "field_semantics": {
+    "ScriptBlockText": "Decoded PowerShell script block text as executed."
+  },
+  "collection_prerequisites": [
+    "Script block logging is enabled through Group Policy or registry configuration.",
+    "PowerShell operational log collection is enabled on the endpoint."
+  ],
+  "expected_collection_gaps": [
+    "PowerShell version 2 engines do not emit script block logs.",
+    "Very large script blocks are split across multiple events."
+  ],
+  "normalization_assumptions": [
+    "ScriptBlockText contains the decoded script text as executed.",
+    "EventID 4104 identifies script block execution."
+  ],
+  "ingestion_differences": [
+    "Multi-part script blocks may need reassembly before matching.",
+    "Some pipelines strip newlines from ScriptBlockText."
+  ],
+  "retention_considerations": "Script block logging is moderate to high volume; 90 days is a common target.",
+  "expected_volume": "Moderate in automated environments.",
+  "false_positive_strategy": "Benign matches dominate this rule, which is why it is low severity. Tune by enriching with the task action path and by hunting on tasks whose action points at a user-writable directory.",
+  "tuning_guidance": "Combine with the temporary path scheduled task rule instead of excluding configuration management modules, so that unusual task actions remain visible.",
+  "test_strategy": "Positive cases register a task with an action object and with an inline action parameter. Negative cases query tasks, unregister a task, and mention the cmdlet name in a comment.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1053.005",
+      "name": "Scheduled Task/Job: Scheduled Task"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    },
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0441",
+      "technique_id": "T1053.005"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1221",
+      "technique_id": "T1053.005"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0001",
+      "technique_id": "T1053.005"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-WIN-007"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/powershell/powershell_scheduled_task_creation.yml",
+  "fixture_directory": "fixtures/rules/SDEL-PS-008"
+}

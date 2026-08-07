@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-006",
+  "sigma_rule_id": "45d034fb-0b98-56f8-84bc-61cc1270e8e2",
+  "rule_file": "rules/identity/active_directory/service_principal_name_attribute_changed.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "spn_added_to_user",
+      "file": "positive/case_01_spn_added_to_user.jsonl",
+      "expected": "match",
+      "scenario": "Service principal name added to a standard user object.",
+      "rationale": "All three selections match."
+    },
+    {
+      "name": "spn_added_to_admin",
+      "file": "positive/case_02_spn_added_to_admin.jsonl",
+      "expected": "match",
+      "scenario": "Service principal name added to an administrative account.",
+      "rationale": "All three selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "spn_value_deleted",
+      "file": "negative/case_01_spn_value_deleted.jsonl",
+      "expected": "no_match",
+      "scenario": "Service principal name removed during decommissioning.",
+      "rationale": "The operation type selection does not match a deletion."
+    },
+    {
+      "name": "description_attribute_changed",
+      "file": "negative/case_02_description_attribute_changed.jsonl",
+      "expected": "no_match",
+      "scenario": "Description attribute updated on a user object.",
+      "rationale": "The attribute selection does not match."
+    },
+    {
+      "name": "user_account_changed_event",
+      "file": "negative/case_03_user_account_changed_event.jsonl",
+      "expected": "no_match",
+      "scenario": "Account change summary event raised for the same user.",
+      "rationale": "The event identifier selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-004",
+  "sigma_rule_id": "ae231f02-7a3b-5623-901f-780b32202ee5",
+  "rule_file": "rules/correlation/burst_of_privileged_group_membership_changes.yml",
+  "rule_type": "correlation",
+  "correlation_type": "event_count",
+  "timespan": "10m",
+  "group_by": [
+    "SubjectUserName"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "four_additions_one_subject",
+      "file": "positive/sequence_01_four_additions_one_subject.jsonl",
+      "expected": "match",
+      "event_count": 4,
+      "scenario": "One subject adds four members to privileged groups.",
+      "rationale": "The event count reaches the threshold inside the window."
+    },
+    {
+      "name": "five_additions_mixed_groups",
+      "file": "positive/sequence_02_five_additions_mixed_groups.jsonl",
+      "expected": "match",
+      "event_count": 5,
+      "scenario": "One subject adds five members across two privileged groups.",
+      "rationale": "The event count exceeds the threshold inside the window."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "two_additions_below_threshold",
+      "file": "negative/sequence_01_two_additions_below_threshold.jsonl",
+      "expected": "no_match",
+      "event_count": 2,
+      "scenario": "One subject adds two members to a privileged group.",
+      "rationale": "The event count remains below the threshold."
+    },
+    {
+      "name": "additions_spread_across_subjects",
+      "file": "negative/sequence_02_additions_spread_across_subjects.jsonl",
+      "expected": "no_match",
+      "event_count": 4,
+      "scenario": "Four additions performed by four different subjects.",
+      "rationale": "No single subject group reaches the threshold."
+    },
+    {
+      "name": "additions_to_non_privileged_group",
+      "file": "negative/sequence_03_additions_to_non_privileged_group.jsonl",
+      "expected": "no_match",
+      "event_count": 5,
+      "scenario": "Five additions to an ordinary application group.",
+      "rationale": "The base rule does not select these events, so no group key accumulates."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

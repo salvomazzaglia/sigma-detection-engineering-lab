@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-011",
+  "sigma_rule_id": "749ba788-d06e-5f25-a7d0-8de293c1a545",
+  "title": "Process Executed From A World-Writable Directory",
+  "detection_hypothesis": "If tooling is executed after being staged in a writable directory, the process creation record will show an executable path rooted in that directory.",
+  "platform": "linux",
+  "rule_family": "linux",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Linux execve auditing"
+  ],
+  "required_channels": [
+    "auditd"
+  ],
+  "required_fields": [
+    "Image"
+  ],
+  "optional_fields": [
+    "CurrentDirectory",
+    "ParentCommandLine",
+    "ProcessId"
+  ],
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process."
+  },
+  "collection_prerequisites": [
+    "An execve audit rule or equivalent process telemetry agent is deployed.",
+    "Audit rules are not limited to a narrow allowlist of binaries."
+  ],
+  "expected_collection_gaps": [
+    "Containers without a shared audit namespace may not report execve records.",
+    "Audit backlog limits can drop records under load."
+  ],
+  "normalization_assumptions": [
+    "Image is the absolute executable path and CommandLine is the joined argument vector.",
+    "ParentImage identifies the parent executable path."
+  ],
+  "ingestion_differences": [
+    "auditd argument vectors may be hex-encoded before normalization.",
+    "Some agents report the argv array instead of a joined string."
+  ],
+  "retention_considerations": "Execve telemetry is high volume; 30 to 60 days of hot retention is typical.",
+  "expected_volume": "Low on production servers; moderate on build agents.",
+  "false_positive_strategy": "Build hosts generate most of the benign volume. Tune on the host role and on the specific workspace prefix rather than on the temporary directory as a whole.",
+  "tuning_guidance": "Keep the approved build workspace filter as narrow as possible. Do not exclude the shared memory directory, which has very little legitimate execution.",
+  "test_strategy": "Positive cases execute from the temporary directory and from shared memory. Negative cases execute from managed directories and from the approved workspace.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1059.004",
+      "name": "Command and Scripting Interpreter: Unix Shell"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0384",
+      "technique_id": "T1059.004"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1081",
+      "technique_id": "T1059.004"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0032",
+      "technique_id": "T1059.004"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-LX-007",
+    "SDEL-COR-006"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/linux/process/process_executed_from_world_writable_path.yml",
+  "fixture_directory": "fixtures/rules/SDEL-LX-011"
+}

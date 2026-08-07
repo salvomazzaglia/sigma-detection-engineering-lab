@@ -1,0 +1,37 @@
+title: 'Signed Windows Utility Referencing A Script Protocol Handler'
+id: 1cddc525-08c8-50ff-8a43-46c19ee18341
+status: experimental
+description: >-
+    Detects the HTML application host being invoked with an inline script protocol handler.
+    Passing script protocol text directly on the command line lets a signed system binary
+    execute attacker-controlled logic without writing a script file.
+references:
+    - 'https://attack.mitre.org/techniques/T1218/005/'
+    - 'https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.defense-evasion
+    - attack.t1218.005
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_script_host:
+        Image|endswith:
+            - '\mshta.exe'
+    selection_script_protocol:
+        CommandLine|contains:
+            - 'javascript:'
+            - 'vbscript:'
+            - 'about:'
+    condition: 'selection_script_host and selection_script_protocol'
+falsepositives:
+    - >-
+        Legacy internal line-of-business applications that still ship HTML application
+        front-ends and launch them through an inline protocol handler.
+    - >-
+        Vendor diagnostic tooling for older management consoles that renders status pages
+        through the HTML application host.
+level: high
+license: MIT

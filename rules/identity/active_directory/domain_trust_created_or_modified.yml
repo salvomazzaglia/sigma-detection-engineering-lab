@@ -1,0 +1,39 @@
+title: 'Domain Trust Relationship Created Or Modified'
+id: fb90cf45-01de-5e3f-b180-9a817ae4e8a4
+status: experimental
+description: >-
+    Detects creation, modification, or removal of a domain trust relationship. Trusts extend
+    the authentication boundary, so an unexpected trust change can silently widen the set of
+    principals that can authenticate into the domain.
+references:
+    - 'https://attack.mitre.org/techniques/T1484/002/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4706'
+    - 'https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-domain-trusts'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.privilege-escalation
+    - attack.defense-evasion
+    - attack.t1484.002
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_trust_lifecycle:
+        EventID:
+            - 4706
+            - 4707
+            - 4716
+            - 4865
+            - 4866
+            - 4867
+    condition: selection_trust_lifecycle
+falsepositives:
+    - >-
+        Merger and acquisition integration projects that establish a forest trust during a
+        planned migration phase.
+    - >-
+        Test directory rebuilds where a lab trust is torn down and recreated as part of the
+        environment refresh.
+level: high
+license: MIT

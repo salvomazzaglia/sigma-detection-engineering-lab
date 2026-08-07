@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-007
+status=converted
+
+CommandLine IN ("*Add-LocalGroupMember*", "*Add-ADGroupMember*", "*net localgroup*", "*net group*") CommandLine IN ("*Domain Admins*", "*Enterprise Admins*", "*Schema Admins*", "*Administrators*")

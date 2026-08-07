@@ -1,0 +1,749 @@
+{
+  "backends": [
+    {
+      "available": true,
+      "backend_class": "sigma.backends.splunk.SplunkBackend",
+      "dialect": "spl",
+      "error": null,
+      "key": "splunk",
+      "package": "pysigma-backend-splunk",
+      "version": "2.1.0"
+    }
+  ],
+  "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+  "correlation_conversion_supported": false,
+  "counts": {
+    "backend_unavailable": 0,
+    "converted": 53,
+    "error": 0,
+    "skipped": 0,
+    "unsupported": 3
+  },
+  "disclaimer": "This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.",
+  "generated_at": "2026-08-07T00:24:00.031Z",
+  "production_ready": false,
+  "results": [
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-001",
+      "dialect": "spl",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Correlation type 'temporal_ordered' is not supported by backend.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-002",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4625\n\n| bin _time span=15m\n| stats dc(TargetUserName) as value_count by _time IpAddress\n\n| search value_count >= 5"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-003",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4771\n\n| bin _time span=10m\n| stats count as event_count by _time TargetUserName\n\n| search event_count >= 10"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-004",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID IN (4728, 4732, 4756) TargetUserName IN (\"Domain Admins\", \"Enterprise Admins\", \"Schema Admins\", \"Administrators\")\n\n| bin _time span=10m\n| stats count as event_count by _time SubjectUserName\n\n| search event_count >= 4"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-005",
+      "dialect": "spl",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Correlation type 'temporal_ordered' is not supported by backend.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-006",
+      "dialect": "spl",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Correlation type 'temporal_ordered' is not supported by backend.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-001",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4720 NOT SubjectUserName=\"synthetic-service-provisioning\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-002",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4722"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-003",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID IN (4728, 4732, 4756) TargetUserName IN (\"Domain Admins\", \"Enterprise Admins\", \"Schema Admins\", \"Administrators\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-004",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID IN (4729, 4733, 4757) TargetUserName IN (\"Domain Admins\", \"Enterprise Admins\", \"Schema Admins\", \"Administrators\") NOT SubjectUserName=\"synthetic-service-iam\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-005",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4724 TargetUserName IN (\"synthetic-admin\", \"synthetic-da-admin\", \"synthetic-breakglass\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-006",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=5136 AttributeLDAPDisplayName=\"servicePrincipalName\" OperationType IN (\"Value Added\", \"%%14674\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-007",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=5136 AttributeLDAPDisplayName IN (\"msDS-AllowedToDelegateTo\", \"msDS-AllowedToActOnBehalfOfOtherIdentity\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-008",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=5136 AttributeLDAPDisplayName=\"nTSecurityDescriptor\" AttributeValue IN (\"*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*\", \"*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*\", \"*DS-Replication-Get-Changes*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-009",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=5136 ObjectDN=\"*CN=Policies,CN=System*\" OperationType IN (\"Value Added\", \"%%14674\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-010",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID IN (4706, 4707, 4716, 4865, 4866, 4867)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-011",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4719 AuditPolicyChanges IN (\"*Success removed*\", \"*Failure removed*\", \"*%%8448*\", \"*%%8450*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-012",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4662 Properties IN (\"*ms-Mcs-AdmPwd*\", \"*msLAPS-Password*\", \"*msLAPS-EncryptedPassword*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-001",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ProcessName IN (\"useradd\", \"adduser\") Message IN (\"*new user:*\", \"*new group:*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-002",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename IN (\"/etc/sudoers*\", \"/etc/sudoers.d/*\") NOT (Image IN (\"/usr/bin/dpkg\", \"/usr/bin/rpm\"))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-003",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename IN (\"/etc/cron.d/*\", \"/var/spool/cron/*\", \"/etc/crontab*\", \"/etc/cron.daily/*\") NOT (Image IN (\"/usr/bin/dpkg\", \"/usr/bin/rpm\"))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-004",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename IN (\"*.service\", \"*.timer\") TargetFilename IN (\"/tmp/*\", \"/var/tmp/*\", \"/dev/shm/*\", \"/home/*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-005",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename=\"*/.ssh/authorized_keys\" NOT Image=\"/usr/bin/synthetic-config-agent\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-006",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ParentImage IN (\"*/nginx\", \"*/httpd\", \"*/apache2\", \"*/php-fpm\", \"*/synthetic-appserver\") Image IN (\"*/bash\", \"*/sh\", \"*/dash\", \"*/zsh\", \"*/ksh\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-007",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "CommandLine IN (\"*curl *\", \"*wget *\", \"*fetch *\") CommandLine IN (\"*| sh*\", \"*|sh*\", \"*| bash*\", \"*|bash*\", \"*| zsh*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-008",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*/chmod\", \"*/setfacl\") CommandLine IN (\"*u+s*\", \"*g+s*\", \"* 4755*\", \"* 2755*\", \"* 777*\", \"*a+rwx*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-009",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*/rm\", \"*/shred\", \"*/truncate\", \"*/unlink\") CommandLine IN (\"*/var/log/auth.log*\", \"*/var/log/secure*\", \"*/var/log/audit/audit.log*\", \"*/var/log/wtmp*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-010",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*/insmod\", \"*/modprobe\") CommandLine IN (\"*/tmp/*\", \"*/var/tmp/*\", \"*/dev/shm/*\", \"*/home/*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-011",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"/tmp/*\", \"/var/tmp/*\", \"/dev/shm/*\") NOT Image=\"/tmp/synthetic-example/approved-build/*\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-012",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ProcessName=\"sshd\" Message IN (\"*Failed password for*\", \"*Failed publickey for*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-001",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*\\\\powershell.exe\", \"*\\\\pwsh.exe\") CommandLine IN (\"*-EncodedCommand*\", \"*-enc *\", \"*-ec *\", \"*/EncodedCommand*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-002",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*\\\\powershell.exe\", \"*\\\\pwsh.exe\") CommandLine IN (\"*-WindowStyle Hidden*\", \"*-w hidden*\", \"*-windowstyle hidden*\") CommandLine IN (\"*-ExecutionPolicy Bypass*\", \"*-ep bypass*\", \"*-NoProfile*\", \"*-nop *\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-003",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText IN (\"*DownloadString*\", \"*DownloadFile*\", \"*Invoke-WebRequest*\", \"*Invoke-RestMethod*\", \"*Start-BitsTransfer*\") ScriptBlockText IN (\"*http://*\", \"*https://*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-004",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText IN (\"*[Reflection.Assembly]::Load*\", \"*System.Reflection.Assembly]::Load*\", \"*Reflection.Emit*\", \"*GetDelegateForFunctionPointer*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-005",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText IN (\"*AmsiUtils*\", \"*amsiInitFailed*\", \"*amsiContext*\", \"*EnableScriptBlockLogging*\") ScriptBlockText IN (\"*SetValue*\", \"*GetField*\", \"*NonPublic*\", \"*::Static*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-006",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "CommandLine IN (\"*Add-MpPreference*\", \"*Set-MpPreference*\") CommandLine IN (\"*-ExclusionPath*\", \"*-ExclusionProcess*\", \"*-ExclusionExtension*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-007",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "CommandLine IN (\"*Add-LocalGroupMember*\", \"*Add-ADGroupMember*\", \"*net localgroup*\", \"*net group*\") CommandLine IN (\"*Domain Admins*\", \"*Enterprise Admins*\", \"*Schema Admins*\", \"*Administrators*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-008",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText IN (\"*Register-ScheduledTask*\", \"*New-ScheduledTask*\", \"*Set-ScheduledTask*\") ScriptBlockText IN (\"*New-ScheduledTaskAction*\", \"*-Action *\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-009",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText IN (\"*FromBase64String*\", \"*Convert]::FromBase64*\", \"*System.Convert::FromBase64*\") ScriptBlockText IN (\"*Invoke-Expression*\", \"*IEX *\", \"*IEX(*\", \"*.Invoke()*\", \"*ScriptBlock]::Create*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-010",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ParentImage IN (\"*\\\\synthetic_word.exe\", \"*\\\\synthetic_excel.exe\", \"*\\\\synthetic_powerpoint.exe\", \"*\\\\synthetic_outlook.exe\") Image IN (\"*\\\\powershell.exe\", \"*\\\\pwsh.exe\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-001",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"C:\\\\Synthetic\\\\Users\\\\synthetic-user\\\\AppData\\\\Local\\\\Temp\\\\*\", \"C:\\\\Synthetic\\\\Windows\\\\Temp\\\\*\", \"C:\\\\Synthetic\\\\Users\\\\Public\\\\*\") NOT Image=\"*\\\\synthetic_patch_installer.exe\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-002",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ParentImage IN (\"*\\\\synthetic_word.exe\", \"*\\\\synthetic_excel.exe\", \"*\\\\synthetic_powerpoint.exe\", \"*\\\\synthetic_outlook.exe\") Image IN (\"*\\\\cmd.exe\", \"*\\\\powershell.exe\", \"*\\\\pwsh.exe\", \"*\\\\wscript.exe\", \"*\\\\cscript.exe\", \"*\\\\mshta.exe\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-003",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image=\"*\\\\mshta.exe\" CommandLine IN (\"*javascript:*\", \"*vbscript:*\", \"*about:*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-004",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*\\\\mshta.exe\", \"*\\\\wscript.exe\", \"*\\\\cscript.exe\", \"*\\\\regsvr32.exe\", \"*\\\\rundll32.exe\") CommandLine IN (\"*http://*\", \"*https://*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-005",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image=\"*\\\\certutil.exe\" CommandLine IN (\"*-urlcache*\", \"*-decode*\", \"*-encode*\", \"*-verifyctl*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-006",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=7045 Provider_Name=\"Service Control Manager\" ImagePath IN (\"*\\\\AppData\\\\Local\\\\Temp\\\\*\", \"*\\\\Windows\\\\Temp\\\\*\", \"*\\\\Users\\\\Public\\\\*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-007",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=4698 TaskContent IN (\"*\\\\AppData\\\\Local\\\\Temp\\\\*\", \"*\\\\Windows\\\\Temp\\\\*\", \"*\\\\Users\\\\Public\\\\*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-008",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetObject IN (\"*\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\\\\*\", \"*\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\RunOnce\\\\*\") Details IN (\"*\\\\AppData\\\\Local\\\\Temp\\\\*\", \"*\\\\Windows\\\\Temp\\\\*\", \"*\\\\Users\\\\Public\\\\*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-009",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventType IN (\"WmiFilterEvent\", \"WmiConsumerEvent\", \"WmiBindingEvent\") Operation=\"Created\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-010",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID=1102 Channel=\"Security\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-011",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*\\\\powershell.exe\", \"*\\\\pwsh.exe\", \"*\\\\cmd.exe\", \"*\\\\reg.exe\", \"*\\\\sc.exe\") CommandLine IN (\"*DisableRealtimeMonitoring*\", \"*DisableBehaviorMonitoring*\", \"*DisableIOAVProtection*\", \"*DisableScriptScanning*\", \"*DisableAntiSpyware*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-012",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetImage=\"*\\\\lsass.exe\" GrantedAccess IN (\"0x1010\", \"0x1410\", \"0x1438\", \"0x143a\", \"0x1fffff\") NOT (SourceImage IN (\"*\\\\synthetic_edr_agent.exe\", \"*\\\\synthetic_backup_agent.exe\"))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-013",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image=\"*\\\\netsh.exe\" CommandLine=\"*advfirewall firewall add rule*\" CommandLine=\"*action=allow*\" CommandLine IN (\"*remoteip=any*\", \"*localip=any*\", \"*profile=any*\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-014",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename IN (\"*\\\\AppData\\\\Local\\\\Temp\\\\*\", \"*\\\\Windows\\\\Temp\\\\*\", \"*\\\\Users\\\\Public\\\\*\") TargetFilename IN (\"*.exe\", \"*.dll\", \"*.scr\") NOT Image=\"*\\\\synthetic_update_agent.exe\""
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-015",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ParentImage IN (\"*\\\\synthetic_pdf_viewer.exe\", \"*\\\\synthetic_docviewer.exe\") Image IN (\"*\\\\cmd.exe\", \"*\\\\powershell.exe\", \"*\\\\pwsh.exe\", \"*\\\\mshta.exe\", \"*\\\\wscript.exe\", \"*\\\\rundll32.exe\", \"*\\\\regsvr32.exe\")"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "splunk",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-016",
+      "dialect": "spl",
+      "message": "converted by pysigma-backend-splunk==2.1.0 (spl); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image IN (\"*\\\\bitsadmin.exe\", \"*\\\\msiexec.exe\", \"*\\\\odbcconf.exe\", \"*\\\\installutil.exe\") CommandLine IN (\"*http://*\", \"*https://*\") OR CommandLine IN (\"*/transfer *\", \"*/download *\", \"*-transfer *\")"
+      ],
+      "status": "converted"
+    }
+  ]
+}

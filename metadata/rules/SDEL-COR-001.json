@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-001",
+  "sigma_rule_id": "0f097239-cd26-5f9d-b6a5-d091141f6a15",
+  "title": "Authentication Failures Followed By A Successful Logon",
+  "detection_hypothesis": "If credential guessing succeeds, failure records for an account will be followed by a success record for the same account within a short window.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "TargetUserName"
+  ],
+  "optional_fields": [
+    "IpAddress",
+    "LogonType",
+    "SubjectDomainName",
+    "TargetDomainName"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "TargetUserName": "Account or group that was the object of the audited action."
+  },
+  "collection_prerequisites": [
+    "Domain controller Security logs are forwarded for directory-scoped events.",
+    "The relevant advanced audit policy subcategory is enabled for success events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "Account names are provided without the domain prefix in TargetUserName.",
+    "EventID is an integer and Channel is the literal string Security."
+  ],
+  "ingestion_differences": [
+    "Directory attribute events may arrive with XML-encoded values.",
+    "Some pipelines rename EventID to event.code or similar."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low once the failure threshold is applied.",
+  "false_positive_strategy": "Benign sequences involve a single source address and a small number of failures. Tune by requiring a minimum failure count and by comparing the source address of the failures with the source of the success.",
+  "tuning_guidance": "Raise the failure threshold before excluding accounts. Service accounts should be reviewed rather than excluded, since a stale credential is itself a finding.",
+  "test_strategy": "Positive sequences place failures before a success for the same account inside the window. Negative sequences reverse the order, use different accounts, and place the success outside the window.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1110.001",
+      "name": "Brute Force: Password Guessing"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0006",
+      "name": "Credential Access"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0551",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1521",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0002",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-COR-002",
+    "SDEL-LX-012"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/authentication_failures_followed_by_success.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-001",
+  "correlation": {
+    "type": "temporal_ordered",
+    "timespan": "15m",
+    "group_by": [
+      "TargetUserName"
+    ],
+    "base_rules": [
+      "sdel_cor_001_windows_logon_failure",
+      "sdel_cor_001_windows_logon_success"
+    ],
+    "aliases": {},
+    "threshold": null,
+    "count_field": null,
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

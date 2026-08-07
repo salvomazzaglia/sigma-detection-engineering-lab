@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-014",
+  "sigma_rule_id": "94c78e2e-2aab-5c13-8db5-3b538cf592b0",
+  "title": "Executable File Created In A Public Or Temporary Directory",
+  "detection_hypothesis": "If tooling is staged before execution, a file creation event will record an executable extension written into a user-writable directory.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows file creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational"
+  ],
+  "required_fields": [
+    "TargetFilename",
+    "Image"
+  ],
+  "optional_fields": [
+    "CreationUtcTime",
+    "User",
+    "ProcessGuid"
+  ],
+  "field_semantics": {
+    "TargetFilename": "Absolute path of the file that was created or modified.",
+    "Image": "Absolute path of the executable backing the created process."
+  },
+  "collection_prerequisites": [
+    "File creation auditing is enabled (Sysmon Event ID 11 or equivalent).",
+    "User-writable directories are not globally excluded from collection."
+  ],
+  "expected_collection_gaps": [
+    "File modification without creation may not raise an event.",
+    "Aggressive exclusion lists commonly remove temporary directories."
+  ],
+  "normalization_assumptions": [
+    "TargetFilename is an absolute path including the file extension.",
+    "Image identifies the writing process."
+  ],
+  "ingestion_differences": [
+    "Some agents report short paths or device paths instead of drive letters.",
+    "Extension casing varies between producers."
+  ],
+  "retention_considerations": "File creation telemetry is high volume; 30 days of hot retention is typical.",
+  "expected_volume": "Moderate; expected to be triaged through correlation rather than individually.",
+  "false_positive_strategy": "This is a staging signal with a large benign population. Use it as correlation input rather than as a standalone alert, and tune on the writing process image.",
+  "tuning_guidance": "Exclude known installer and packaging images by full path. Do not exclude by file extension, because that removes the only content constraint in the rule.",
+  "test_strategy": "Positive cases write an executable and a library into different writable directories. Negative cases cover a document file, a managed directory, and the filtered update agent.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0011",
+      "name": "Command and Control"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0060",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0165",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0082",
+      "technique_id": "T1105"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-COR-006",
+    "SDEL-WIN-001"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/system/executable_created_in_public_or_temp_directory.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-014"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-001",
+  "sigma_rule_id": "0f097239-cd26-5f9d-b6a5-d091141f6a15",
+  "rule_file": "rules/correlation/authentication_failures_followed_by_success.yml",
+  "rule_type": "correlation",
+  "correlation_type": "temporal_ordered",
+  "timespan": "15m",
+  "group_by": [
+    "TargetUserName"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "failures_then_success_same_account",
+      "file": "positive/sequence_01_failures_then_success_same_account.jsonl",
+      "expected": "match",
+      "event_count": 5,
+      "scenario": "Four failures followed by a success for the same account.",
+      "rationale": "Ordered sequence completes inside the correlation window for one group key."
+    },
+    {
+      "name": "failures_then_success_admin_account",
+      "file": "positive/sequence_02_failures_then_success_admin_account.jsonl",
+      "expected": "match",
+      "event_count": 3,
+      "scenario": "Failures followed by a success for an administrative account.",
+      "rationale": "Ordered sequence completes inside the correlation window for one group key."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "success_then_failures",
+      "file": "negative/sequence_01_success_then_failures.jsonl",
+      "expected": "no_match",
+      "event_count": 3,
+      "scenario": "A success followed by later failures for the same account.",
+      "rationale": "The ordered requirement is not satisfied because the success comes first."
+    },
+    {
+      "name": "failures_and_success_different_accounts",
+      "file": "negative/sequence_02_failures_and_success_different_accounts.jsonl",
+      "expected": "no_match",
+      "event_count": 3,
+      "scenario": "Failures for one account and a success for another.",
+      "rationale": "No single group key contains both stages of the sequence."
+    },
+    {
+      "name": "success_outside_window",
+      "file": "negative/sequence_03_success_outside_window.jsonl",
+      "expected": "no_match",
+      "event_count": 3,
+      "scenario": "Failures followed by a success after the correlation window has elapsed.",
+      "rationale": "The sequence exceeds the fifteen minute timespan."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

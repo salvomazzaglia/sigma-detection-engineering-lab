@@ -1,0 +1,37 @@
+title: 'Kerberos Delegation Attribute Modified On A Directory Object'
+id: ddec2ee5-4b82-5c9b-9e78-77dae29a9f9b
+status: experimental
+description: >-
+    Detects changes to constrained or resource-based delegation attributes. Delegation
+    settings let one principal request service tickets on behalf of another, so an
+    unexpected change is a serious escalation path.
+references:
+    - 'https://attack.mitre.org/techniques/T1098/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-5136'
+    - 'https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-constrained-delegation-overview'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_directory_change:
+        EventID: 5136
+    selection_delegation_attribute:
+        AttributeLDAPDisplayName:
+            - msDS-AllowedToDelegateTo
+            - msDS-AllowedToActOnBehalfOfOtherIdentity
+    condition: 'selection_directory_change and selection_delegation_attribute'
+falsepositives:
+    - >-
+        Application server deployments that configure constrained delegation for a web
+        front-end to reach a back-end database service.
+    - >-
+        Cluster reconfiguration that updates resource-based delegation when a node is
+        replaced.
+level: high
+license: MIT

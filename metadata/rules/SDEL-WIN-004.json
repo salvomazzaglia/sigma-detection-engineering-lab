@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-004",
+  "sigma_rule_id": "b39d0736-cd9f-533f-be89-f7946124699a",
+  "title": "Script-Capable Windows Utility Referencing Remote Content",
+  "detection_hypothesis": "If a signed script-capable utility is used to pull remote content, the command line will contain a URL scheme rather than a local path.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "Image",
+    "CommandLine"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process.",
+    "CommandLine": "Full command line including arguments as supplied to the process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Low; spikes during application deployment campaigns.",
+  "false_positive_strategy": "Benign matches point at internal distribution hosts and repeat on a predictable schedule. Tune on the destination host portion of the command line combined with the parent deployment process.",
+  "tuning_guidance": "Exclude the specific internal distribution hostname rather than the URL scheme. Removing the https prefix from the selection would defeat the rule.",
+  "test_strategy": "Positive cases exercise two different utilities with remote references. Negative cases keep the same utilities on local paths and add a non-matching browser.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer"
+    },
+    {
+      "id": "T1218.010",
+      "name": "System Binary Proxy Execution: Regsvr32"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0011",
+      "name": "Command and Control"
+    },
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0060",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0165",
+      "technique_id": "T1105"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0082",
+      "technique_id": "T1105"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1218.010.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-WIN-003",
+    "SDEL-WIN-005",
+    "SDEL-WIN-016"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/defense_evasion/script_capable_utility_remote_content_reference.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-004"
+}

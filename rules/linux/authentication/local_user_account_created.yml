@@ -1,0 +1,40 @@
+title: 'Local User Account Created On A Linux Host'
+id: 9547416f-4dd6-5c1c-8dea-d12502262b16
+status: experimental
+description: >-
+    Detects local account creation on a Linux host. Server fleets normally use centralised
+    identity, so a local account is worth noticing even though build automation creates them
+    legitimately.
+references:
+    - 'https://attack.mitre.org/techniques/T1136/001/'
+    - 'https://man7.org/linux/man-pages/man8/useradd.8.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.t1136.001
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection_account_tool:
+        ProcessName:
+            - useradd
+            - adduser
+    selection_creation_message:
+        Message|contains:
+            - 'new user:'
+            - 'new group:'
+    condition: 'selection_account_tool and selection_creation_message'
+falsepositives:
+    - >-
+        Configuration management runs that create application service accounts during server
+        provisioning.
+    - >-
+        Container image build steps that create an unprivileged runtime user before dropping
+        privileges.
+    - >-
+        Package installation that creates a dedicated system account for a newly installed
+        daemon.
+level: low
+license: MIT

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-ID-005
+status=converted
+
+EventID:4724 AND (TargetUserName:(synthetic\-admin OR synthetic\-da\-admin OR synthetic\-breakglass))

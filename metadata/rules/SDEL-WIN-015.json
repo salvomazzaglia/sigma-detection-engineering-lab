@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-015",
+  "sigma_rule_id": "d0b9890d-9eb2-53c0-92e2-5d9c1c4fae22",
+  "title": "Document Viewer Spawning A Script Or Command Child Process",
+  "detection_hypothesis": "If embedded content in a document executes, the resulting process will show the document viewer as its parent image.",
+  "platform": "windows",
+  "rule_family": "windows",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows process creation telemetry"
+  ],
+  "required_channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "required_fields": [
+    "ParentImage",
+    "Image"
+  ],
+  "optional_fields": [
+    "OriginalFileName",
+    "IntegrityLevel",
+    "CurrentDirectory",
+    "Hashes"
+  ],
+  "field_semantics": {
+    "ParentImage": "Absolute path of the executable that created the process.",
+    "Image": "Absolute path of the executable backing the created process."
+  },
+  "collection_prerequisites": [
+    "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+    "Command-line auditing is enabled when Security 4688 is the only available source."
+  ],
+  "expected_collection_gaps": [
+    "Security 4688 without command-line auditing provides no CommandLine value.",
+    "Short-lived processes may be lost if the agent is restarted during collection."
+  ],
+  "normalization_assumptions": [
+    "Image and ParentImage are absolute paths using backslash separators.",
+    "CommandLine retains the original argument order and spacing."
+  ],
+  "ingestion_differences": [
+    "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+    "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+  ],
+  "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical.",
+  "expected_volume": "Very low; the viewer population is narrow.",
+  "false_positive_strategy": "Benign matches are limited to a small number of internal forms and always use the same helper path. Tune on the child command line and the document being rendered.",
+  "tuning_guidance": "Exclude the exact helper script path used by the internal forms workflow. Do not exclude the library host image, which is a common proxy execution target.",
+  "test_strategy": "Positive cases pair the two viewer parents with different children. Negative cases keep the viewer with a benign child and place a matching child under another parent.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1204.002",
+      "name": "User Execution: Malicious File"
+    },
+    {
+      "id": "T1059.003",
+      "name": "Command and Scripting Interpreter: Windows Command Shell"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0002",
+      "name": "Execution"
+    }
+  ],
+  "attack_detection_strategies": [],
+  "attack_analytics": [],
+  "attack_data_components": [],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1204.002, T1059.003.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-WIN-002"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/windows/process_creation/document_viewer_spawning_suspicious_child.yml",
+  "fixture_directory": "fixtures/rules/SDEL-WIN-015"
+}

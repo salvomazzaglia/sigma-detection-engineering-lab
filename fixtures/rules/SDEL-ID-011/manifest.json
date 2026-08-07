@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-011",
+  "sigma_rule_id": "ad5d9a8a-b009-5eea-b9ac-6341f2ef29bd",
+  "rule_file": "rules/identity/windows_security/audit_policy_weakened.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "success_auditing_removed",
+      "file": "positive/case_01_success_auditing_removed.jsonl",
+      "expected": "match",
+      "scenario": "Success auditing removed from an account management subcategory.",
+      "rationale": "Audit policy change and removal selections both match."
+    },
+    {
+      "name": "failure_auditing_removed",
+      "file": "positive/case_02_failure_auditing_removed.jsonl",
+      "expected": "match",
+      "scenario": "Failure auditing removed from a logon subcategory.",
+      "rationale": "Audit policy change and removal selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "success_auditing_added",
+      "file": "negative/case_01_success_auditing_added.jsonl",
+      "expected": "no_match",
+      "scenario": "Success auditing added to a subcategory during hardening.",
+      "rationale": "The removal selection does not match."
+    },
+    {
+      "name": "security_log_cleared",
+      "file": "negative/case_02_security_log_cleared.jsonl",
+      "expected": "no_match",
+      "scenario": "Security log cleared on the same host.",
+      "rationale": "The event identifier selection does not match."
+    },
+    {
+      "name": "system_time_changed",
+      "file": "negative/case_03_system_time_changed.jsonl",
+      "expected": "no_match",
+      "scenario": "System time changed on the host.",
+      "rationale": "The event identifier selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-004",
+  "sigma_rule_id": "a5816635-5d16-58ee-a32d-86aca9cec68f",
+  "title": "Systemd Service Unit Created In An Unusual Location",
+  "detection_hypothesis": "If service-based persistence is installed from a writable location, a unit file will be created outside the managed unit directories.",
+  "platform": "linux",
+  "rule_family": "linux",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Linux file integrity auditing"
+  ],
+  "required_channels": [
+    "auditd"
+  ],
+  "required_fields": [
+    "TargetFilename"
+  ],
+  "optional_fields": [
+    "Image",
+    "ProcessId",
+    "Mode"
+  ],
+  "field_semantics": {
+    "TargetFilename": "Absolute path of the file that was created or modified."
+  },
+  "collection_prerequisites": [
+    "Audit watch rules cover the sensitive directories referenced by the rule.",
+    "The audit daemon is running and its rules survive reboot."
+  ],
+  "expected_collection_gaps": [
+    "Directories without an explicit watch rule produce no events.",
+    "Bind-mounted paths inside containers may bypass host watches."
+  ],
+  "normalization_assumptions": [
+    "TargetFilename is an absolute POSIX path.",
+    "Image identifies the writing process where the producer supplies it."
+  ],
+  "ingestion_differences": [
+    "Path reconstruction from auditd PATH records varies between agents.",
+    "Relative paths may appear when the working directory record is missing."
+  ],
+  "retention_considerations": "File watch telemetry is moderate volume; 90 days is a reasonable target.",
+  "expected_volume": "Very low on production servers.",
+  "false_positive_strategy": "Benign matches concentrate on developer and build hosts. Tune on the host role and the writing process rather than on the unit file extension.",
+  "tuning_guidance": "Exclude the build workspace directory on build agents only. Keep temporary directories in scope on production servers.",
+  "test_strategy": "Positive cases create a unit in a temporary directory and in a home directory. Negative cases create a unit in the managed directory, create a non-unit file, and create a unit-named document.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1543.002",
+      "name": "Create or Modify System Process: Systemd Service"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0253",
+      "technique_id": "T1543.002"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0701",
+      "technique_id": "T1543.002"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0039",
+      "technique_id": "T1543.002"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-LX-003",
+    "SDEL-COR-005"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/linux/persistence/systemd_unit_created_in_unusual_location.yml",
+  "fixture_directory": "fixtures/rules/SDEL-LX-004"
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-002
+status=converted
+
+ParentImage IN ("*\\synthetic_word.exe", "*\\synthetic_excel.exe", "*\\synthetic_powerpoint.exe", "*\\synthetic_outlook.exe") Image IN ("*\\cmd.exe", "*\\powershell.exe", "*\\pwsh.exe", "*\\wscript.exe", "*\\cscript.exe", "*\\mshta.exe")

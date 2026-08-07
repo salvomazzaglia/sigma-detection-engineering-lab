@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-013",
+  "sigma_rule_id": "91583148-1958-5122-a3f2-5a60d3c33155",
+  "rule_file": "rules/windows/defense_evasion/firewall_rule_created_with_broad_scope.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "inbound_any_remote_address",
+      "file": "positive/case_01_inbound_any_remote_address.jsonl",
+      "expected": "match",
+      "scenario": "Inbound allow rule created for any remote address.",
+      "rationale": "All four selections match."
+    },
+    {
+      "name": "all_profiles_allow_rule",
+      "file": "positive/case_02_all_profiles_allow_rule.jsonl",
+      "expected": "match",
+      "scenario": "Allow rule created across all firewall profiles.",
+      "rationale": "All four selections match through the profile scope keyword."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "scoped_allow_rule",
+      "file": "negative/case_01_scoped_allow_rule.jsonl",
+      "expected": "no_match",
+      "scenario": "Allow rule restricted to a documentation subnet.",
+      "rationale": "The broad scope selection does not match a specific remote address."
+    },
+    {
+      "name": "block_rule_any_remote",
+      "file": "negative/case_02_block_rule_any_remote.jsonl",
+      "expected": "no_match",
+      "scenario": "Block rule created for any remote address.",
+      "rationale": "The allow action selection does not match."
+    },
+    {
+      "name": "firewall_rule_listing",
+      "file": "negative/case_03_firewall_rule_listing.jsonl",
+      "expected": "no_match",
+      "scenario": "Existing firewall rules listed for reporting.",
+      "rationale": "The add rule selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

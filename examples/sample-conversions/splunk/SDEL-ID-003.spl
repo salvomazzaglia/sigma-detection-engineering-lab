@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-003
+status=converted
+
+EventID IN (4728, 4732, 4756) TargetUserName IN ("Domain Admins", "Enterprise Admins", "Schema Admins", "Administrators")

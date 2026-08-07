@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-012",
+  "sigma_rule_id": "b1cd7602-1dcb-556e-8fef-617fe9c56499",
+  "rule_file": "rules/identity/active_directory/laps_password_attribute_read.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "legacy_attribute_read",
+      "file": "positive/case_01_legacy_attribute_read.jsonl",
+      "expected": "match",
+      "scenario": "Legacy managed password attribute read on a computer object.",
+      "rationale": "Object access and password attribute selections both match."
+    },
+    {
+      "name": "current_attribute_read",
+      "file": "positive/case_02_current_attribute_read.jsonl",
+      "expected": "match",
+      "scenario": "Current managed password attribute read on a computer object.",
+      "rationale": "Object access and password attribute selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "computer_description_read",
+      "file": "negative/case_01_computer_description_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Computer object description read during inventory.",
+      "rationale": "The password attribute selection does not match."
+    },
+    {
+      "name": "password_attribute_written",
+      "file": "negative/case_02_password_attribute_written.jsonl",
+      "expected": "no_match",
+      "scenario": "Managed password attribute written by the endpoint during rotation.",
+      "rationale": "The event identifier selection covers reads, not directory changes."
+    },
+    {
+      "name": "group_object_read",
+      "file": "negative/case_03_group_object_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Group object read during an access review.",
+      "rationale": "The password attribute selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-005",
+  "sigma_rule_id": "e71ee4b9-44f1-51ff-a044-9688211034b5",
+  "rule_file": "rules/linux/persistence/ssh_authorized_keys_modified.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "file_event",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "user_key_file_written",
+      "file": "positive/case_01_user_key_file_written.jsonl",
+      "expected": "match",
+      "scenario": "Authorized keys file written for a standard user.",
+      "rationale": "Path selection matches and the configuration agent filter does not apply."
+    },
+    {
+      "name": "service_key_file_written",
+      "file": "positive/case_02_service_key_file_written.jsonl",
+      "expected": "match",
+      "scenario": "Authorized keys file written for a service account.",
+      "rationale": "Path selection matches and the configuration agent filter does not apply."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "configuration_agent_distribution",
+      "file": "negative/case_01_configuration_agent_distribution.jsonl",
+      "expected": "no_match",
+      "scenario": "Configuration agent distributes operator keys.",
+      "rationale": "Path matches but the configuration agent filter removes the event."
+    },
+    {
+      "name": "client_configuration_written",
+      "file": "negative/case_02_client_configuration_written.jsonl",
+      "expected": "no_match",
+      "scenario": "Client configuration file written.",
+      "rationale": "The path selection does not match."
+    },
+    {
+      "name": "known_hosts_updated",
+      "file": "negative/case_03_known_hosts_updated.jsonl",
+      "expected": "no_match",
+      "scenario": "Known hosts file updated after a first connection.",
+      "rationale": "The path selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

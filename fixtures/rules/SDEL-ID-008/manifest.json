@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-008",
+  "sigma_rule_id": "227fce09-9019-5b3c-9c0e-37a1dafab68a",
+  "rule_file": "rules/identity/active_directory/directory_replication_rights_granted.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "get_changes_granted",
+      "file": "positive/case_01_get_changes_granted.jsonl",
+      "expected": "match",
+      "scenario": "Replication read right granted to a synthetic principal.",
+      "rationale": "All three selections match."
+    },
+    {
+      "name": "get_changes_all_granted",
+      "file": "positive/case_02_get_changes_all_granted.jsonl",
+      "expected": "match",
+      "scenario": "Extended replication right granted to a synthetic principal.",
+      "rationale": "All three selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "descriptor_change_without_replication_right",
+      "file": "negative/case_01_descriptor_change_without_replication_right.jsonl",
+      "expected": "no_match",
+      "scenario": "Domain object descriptor updated with an unrelated right.",
+      "rationale": "The replication right selection does not match."
+    },
+    {
+      "name": "organisational_unit_attribute_change",
+      "file": "negative/case_02_organisational_unit_attribute_change.jsonl",
+      "expected": "no_match",
+      "scenario": "Organisational unit description updated.",
+      "rationale": "The security descriptor attribute selection does not match."
+    },
+    {
+      "name": "descriptor_read",
+      "file": "negative/case_03_descriptor_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Domain object security descriptor read during an audit.",
+      "rationale": "The event identifier selection does not match a read operation."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

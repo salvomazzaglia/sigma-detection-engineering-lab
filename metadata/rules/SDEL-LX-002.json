@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-002",
+  "sigma_rule_id": "06345aa3-0469-5fd9-9ebd-f2651f850181",
+  "title": "Sudoers Configuration File Modified",
+  "detection_hypothesis": "If persistent privilege escalation is configured, a file write will be recorded against the sudoers file or its include directory.",
+  "platform": "linux",
+  "rule_family": "linux",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Linux file integrity auditing"
+  ],
+  "required_channels": [
+    "auditd"
+  ],
+  "required_fields": [
+    "TargetFilename",
+    "Image"
+  ],
+  "optional_fields": [
+    "Image",
+    "ProcessId",
+    "Mode"
+  ],
+  "field_semantics": {
+    "TargetFilename": "Absolute path of the file that was created or modified.",
+    "Image": "Absolute path of the executable backing the created process."
+  },
+  "collection_prerequisites": [
+    "Audit watch rules cover the sensitive directories referenced by the rule.",
+    "The audit daemon is running and its rules survive reboot."
+  ],
+  "expected_collection_gaps": [
+    "Directories without an explicit watch rule produce no events.",
+    "Bind-mounted paths inside containers may bypass host watches."
+  ],
+  "normalization_assumptions": [
+    "TargetFilename is an absolute POSIX path.",
+    "Image identifies the writing process where the producer supplies it."
+  ],
+  "ingestion_differences": [
+    "Path reconstruction from auditd PATH records varies between agents.",
+    "Relative paths may appear when the working directory record is missing."
+  ],
+  "retention_considerations": "File watch telemetry is moderate volume; 90 days is a reasonable target.",
+  "expected_volume": "Very low.",
+  "false_positive_strategy": "Benign writes come from configuration management and packaging. Tune on the writing process image and require that the resulting content is reviewed, not just the write event.",
+  "tuning_guidance": "Exclude the configuration management agent by absolute path if needed. Never exclude the include directory, which is where ad hoc grants are usually placed.",
+  "test_strategy": "Positive cases write the main file and an include fragment. Negative cases write an unrelated configuration file, use the package manager, and write a backup outside the directory.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1548.003",
+      "name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    },
+    {
+      "id": "TA0005",
+      "name": "Defense Evasion"
+    }
+  ],
+  "attack_detection_strategies": [],
+  "attack_analytics": [],
+  "attack_data_components": [],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1548.003.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-LX-001",
+    "SDEL-LX-008"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/linux/persistence/sudoers_configuration_modified.yml",
+  "fixture_directory": "fixtures/rules/SDEL-LX-002"
+}

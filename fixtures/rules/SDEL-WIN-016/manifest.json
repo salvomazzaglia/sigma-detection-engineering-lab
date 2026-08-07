@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-016",
+  "sigma_rule_id": "aec1db38-0987-5bd7-8b04-ab2dba8f4a94",
+  "rule_file": "rules/windows/system/system_utility_uncommon_remote_pattern.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "background_transfer_job",
+      "file": "positive/case_01_background_transfer_job.jsonl",
+      "expected": "match",
+      "scenario": "Background transfer utility creating a download job.",
+      "rationale": "Utility and transfer switch selections satisfy the condition."
+    },
+    {
+      "name": "installer_remote_package",
+      "file": "positive/case_02_installer_remote_package.jsonl",
+      "expected": "match",
+      "scenario": "Installer utility pointed at a synthetic remote package.",
+      "rationale": "Utility and remote scheme selections satisfy the condition."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "local_package_install",
+      "file": "negative/case_01_local_package_install.jsonl",
+      "expected": "no_match",
+      "scenario": "Installer utility installing a local package.",
+      "rationale": "Utility matches but neither branch of the condition does."
+    },
+    {
+      "name": "download_manager_with_url",
+      "file": "negative/case_02_download_manager_with_url.jsonl",
+      "expected": "no_match",
+      "scenario": "Dedicated download manager retrieving a synthetic file.",
+      "rationale": "Remote scheme matches but the image is not in the utility list."
+    },
+    {
+      "name": "transfer_utility_job_listing",
+      "file": "negative/case_03_transfer_utility_job_listing.jsonl",
+      "expected": "no_match",
+      "scenario": "Background transfer utility listing existing jobs.",
+      "rationale": "Utility matches but there is no remote scheme or transfer switch."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

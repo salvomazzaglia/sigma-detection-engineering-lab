@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-LX-002",
+  "sigma_rule_id": "06345aa3-0469-5fd9-9ebd-f2651f850181",
+  "rule_file": "rules/linux/persistence/sudoers_configuration_modified.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "linux",
+  "logsource": {
+    "category": "file_event",
+    "product": "linux"
+  },
+  "channels": [
+    "auditd"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "main_sudoers_written",
+      "file": "positive/case_01_main_sudoers_written.jsonl",
+      "expected": "match",
+      "scenario": "Main privilege configuration file written by an editor.",
+      "rationale": "Path selection matches and the package manager filter does not apply."
+    },
+    {
+      "name": "include_fragment_written",
+      "file": "positive/case_02_include_fragment_written.jsonl",
+      "expected": "match",
+      "scenario": "Privilege fragment written into the include directory.",
+      "rationale": "Path selection matches and the package manager filter does not apply."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "unrelated_configuration_file",
+      "file": "negative/case_01_unrelated_configuration_file.jsonl",
+      "expected": "no_match",
+      "scenario": "Unrelated system configuration file written.",
+      "rationale": "The path selection does not match."
+    },
+    {
+      "name": "package_manager_fragment",
+      "file": "negative/case_02_package_manager_fragment.jsonl",
+      "expected": "no_match",
+      "scenario": "Package manager installs its own privilege fragment.",
+      "rationale": "Path matches but the package manager filter removes the event."
+    },
+    {
+      "name": "backup_copy_outside_directory",
+      "file": "negative/case_03_backup_copy_outside_directory.jsonl",
+      "expected": "no_match",
+      "scenario": "Backup copy of the configuration written elsewhere.",
+      "rationale": "The startswith path selection does not match a backup directory."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

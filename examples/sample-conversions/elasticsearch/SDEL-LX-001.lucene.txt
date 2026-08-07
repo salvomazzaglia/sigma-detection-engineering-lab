@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-001
+status=converted
+
+(ProcessName:(useradd OR adduser)) AND (Message:(*new\ user\:* OR *new\ group\:*))

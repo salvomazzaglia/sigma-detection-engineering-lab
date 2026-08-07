@@ -1,0 +1,488 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Telemetry profiles referenced by rule sidecars. Each profile documents the logsource, channels, fields, prerequisites, and known collection gaps for a family of rules.",
+  "synthetic_only": true,
+  "profiles": {
+    "win_process_creation": {
+      "platform": "windows",
+      "logsource": {
+        "category": "process_creation",
+        "product": "windows"
+      },
+      "required_logs": [
+        "Windows process creation telemetry"
+      ],
+      "channels": [
+        "Microsoft-Windows-Sysmon/Operational",
+        "Security"
+      ],
+      "providers": [
+        "Microsoft-Windows-Sysmon",
+        "Microsoft-Windows-Security-Auditing"
+      ],
+      "optional_fields": [
+        "OriginalFileName",
+        "IntegrityLevel",
+        "CurrentDirectory",
+        "Hashes"
+      ],
+      "collection_prerequisites": [
+        "A process creation source is enabled (Sysmon Event ID 1 or Security Event ID 4688).",
+        "Command-line auditing is enabled when Security 4688 is the only available source."
+      ],
+      "expected_collection_gaps": [
+        "Security 4688 without command-line auditing provides no CommandLine value.",
+        "Short-lived processes may be lost if the agent is restarted during collection."
+      ],
+      "normalization_assumptions": [
+        "Image and ParentImage are absolute paths using backslash separators.",
+        "CommandLine retains the original argument order and spacing."
+      ],
+      "ingestion_differences": [
+        "Some pipelines lowercase paths; the lab matcher is case-insensitive by default.",
+        "Sysmon and 4688 differ in parent process fidelity and in User field formatting."
+      ],
+      "retention_considerations": "Process creation is high volume; 30 to 90 days of hot retention is typical."
+    },
+    "win_registry_set": {
+      "platform": "windows",
+      "logsource": {
+        "category": "registry_set",
+        "product": "windows"
+      },
+      "required_logs": [
+        "Windows registry value modification telemetry"
+      ],
+      "channels": [
+        "Microsoft-Windows-Sysmon/Operational"
+      ],
+      "providers": [
+        "Microsoft-Windows-Sysmon"
+      ],
+      "optional_fields": [
+        "Image",
+        "User",
+        "ProcessGuid"
+      ],
+      "collection_prerequisites": [
+        "Registry value-set auditing is enabled (Sysmon Event ID 13 or equivalent).",
+        "The autostart hives of interest are included in the collection filter."
+      ],
+      "expected_collection_gaps": [
+        "Registry auditing is frequently filtered to a small key allowlist.",
+        "Values written by offline hive edits are not observed."
+      ],
+      "normalization_assumptions": [
+        "TargetObject uses the full registry path with HKLM or HKU prefixes.",
+        "Details contains the written value rendered as text."
+      ],
+      "ingestion_differences": [
+        "Some pipelines split TargetObject into key and value name fields.",
+        "REG_BINARY values may be rendered differently between agents."
+      ],
+      "retention_considerations": "Registry value telemetry is moderate volume; 90 days is usually affordable."
+    },
+    "win_file_event": {
+      "platform": "windows",
+      "logsource": {
+        "category": "file_event",
+        "product": "windows"
+      },
+      "required_logs": [
+        "Windows file creation telemetry"
+      ],
+      "channels": [
+        "Microsoft-Windows-Sysmon/Operational"
+      ],
+      "providers": [
+        "Microsoft-Windows-Sysmon"
+      ],
+      "optional_fields": [
+        "CreationUtcTime",
+        "User",
+        "ProcessGuid"
+      ],
+      "collection_prerequisites": [
+        "File creation auditing is enabled (Sysmon Event ID 11 or equivalent).",
+        "User-writable directories are not globally excluded from collection."
+      ],
+      "expected_collection_gaps": [
+        "File modification without creation may not raise an event.",
+        "Aggressive exclusion lists commonly remove temporary directories."
+      ],
+      "normalization_assumptions": [
+        "TargetFilename is an absolute path including the file extension.",
+        "Image identifies the writing process."
+      ],
+      "ingestion_differences": [
+        "Some agents report short paths or device paths instead of drive letters.",
+        "Extension casing varies between producers."
+      ],
+      "retention_considerations": "File creation telemetry is high volume; 30 days of hot retention is typical."
+    },
+    "win_process_access": {
+      "platform": "windows",
+      "logsource": {
+        "category": "process_access",
+        "product": "windows"
+      },
+      "required_logs": [
+        "Windows process access telemetry"
+      ],
+      "channels": [
+        "Microsoft-Windows-Sysmon/Operational"
+      ],
+      "providers": [
+        "Microsoft-Windows-Sysmon"
+      ],
+      "optional_fields": [
+        "CallTrace",
+        "SourceUser",
+        "TargetUser"
+      ],
+      "collection_prerequisites": [
+        "Process access auditing is enabled (Sysmon Event ID 10 or an EDR equivalent).",
+        "The sensitive authentication process is included in the monitored target list."
+      ],
+      "expected_collection_gaps": [
+        "Process access auditing is often disabled because of its volume.",
+        "Kernel-mode access paths are not represented in this event class."
+      ],
+      "normalization_assumptions": [
+        "GrantedAccess is a hexadecimal string such as 0x1010.",
+        "SourceImage and TargetImage are absolute paths."
+      ],
+      "ingestion_differences": [
+        "Some producers emit GrantedAccess as a decimal integer.",
+        "CallTrace availability depends on symbol resolution settings."
+      ],
+      "retention_considerations": "Process access telemetry is very high volume; scope filters are required."
+    },
+    "win_wmi_event": {
+      "platform": "windows",
+      "logsource": {
+        "category": "wmi_event",
+        "product": "windows"
+      },
+      "required_logs": [
+        "Windows WMI subscription telemetry"
+      ],
+      "channels": [
+        "Microsoft-Windows-Sysmon/Operational"
+      ],
+      "providers": [
+        "Microsoft-Windows-Sysmon"
+      ],
+      "optional_fields": [
+        "Query",
+        "Destination",
+        "Consumer",
+        "Filter"
+      ],
+      "collection_prerequisites": [
+        "WMI subscription auditing is enabled (Sysmon Event IDs 19, 20 and 21).",
+        "The agent configuration does not exclude WMI activity generated by management tools."
+      ],
+      "expected_collection_gaps": [
+        "Subscriptions created before agent deployment are not observed.",
+        "Remote subscription creation may be attributed to the target host only."
+      ],
+      "normalization_assumptions": [
+        "EventType distinguishes filter, consumer, and binding records.",
+        "Operation is either Created or Deleted."
+      ],
+      "ingestion_differences": [
+        "Field names differ between Sysmon and WMI-Activity operational logs.",
+        "Query text may be truncated by some pipelines."
+      ],
+      "retention_considerations": "WMI subscription telemetry is low volume and inexpensive to retain for a year."
+    },
+    "win_security": {
+      "platform": "windows",
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "required_logs": [
+        "Windows Security event log"
+      ],
+      "channels": [
+        "Security"
+      ],
+      "providers": [
+        "Microsoft-Windows-Security-Auditing"
+      ],
+      "optional_fields": [
+        "SubjectDomainName",
+        "TargetDomainName",
+        "IpAddress",
+        "LogonType"
+      ],
+      "collection_prerequisites": [
+        "The relevant advanced audit policy subcategory is enabled for success events.",
+        "Domain controller Security logs are forwarded for directory-scoped events."
+      ],
+      "expected_collection_gaps": [
+        "Events raised on a domain controller that is not forwarding logs are invisible.",
+        "Security log wrapping on busy controllers can drop events before forwarding."
+      ],
+      "normalization_assumptions": [
+        "EventID is an integer and Channel is the literal string Security.",
+        "Account names are provided without the domain prefix in TargetUserName."
+      ],
+      "ingestion_differences": [
+        "Some pipelines rename EventID to event.code or similar.",
+        "Directory attribute events may arrive with XML-encoded values."
+      ],
+      "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events."
+    },
+    "win_system": {
+      "platform": "windows",
+      "logsource": {
+        "product": "windows",
+        "service": "system"
+      },
+      "required_logs": [
+        "Windows System event log"
+      ],
+      "channels": [
+        "System"
+      ],
+      "providers": [
+        "Service Control Manager"
+      ],
+      "optional_fields": [
+        "ServiceType",
+        "StartType",
+        "AccountName"
+      ],
+      "collection_prerequisites": [
+        "The System event log is collected from endpoints and servers.",
+        "Service Control Manager events are not filtered out by the forwarder subscription."
+      ],
+      "expected_collection_gaps": [
+        "Service installation performed by driver loading is not represented here.",
+        "Servers with aggressive System log filters may drop Event ID 7045."
+      ],
+      "normalization_assumptions": [
+        "ImagePath contains the full service binary path including any arguments.",
+        "Provider_Name identifies Service Control Manager."
+      ],
+      "ingestion_differences": [
+        "Quoted service paths may or may not retain surrounding quotation marks.",
+        "Some pipelines rename ImagePath to service.executable."
+      ],
+      "retention_considerations": "System log volume is low; 365 days of retention is generally affordable."
+    },
+    "win_ps_script": {
+      "platform": "windows",
+      "logsource": {
+        "product": "windows",
+        "category": "ps_script"
+      },
+      "required_logs": [
+        "Windows PowerShell script block logging"
+      ],
+      "channels": [
+        "Microsoft-Windows-PowerShell/Operational"
+      ],
+      "providers": [
+        "Microsoft-Windows-PowerShell"
+      ],
+      "optional_fields": [
+        "Path",
+        "ScriptBlockId",
+        "MessageNumber",
+        "MessageTotal"
+      ],
+      "collection_prerequisites": [
+        "Script block logging is enabled through Group Policy or registry configuration.",
+        "PowerShell operational log collection is enabled on the endpoint."
+      ],
+      "expected_collection_gaps": [
+        "PowerShell version 2 engines do not emit script block logs.",
+        "Very large script blocks are split across multiple events."
+      ],
+      "normalization_assumptions": [
+        "ScriptBlockText contains the decoded script text as executed.",
+        "EventID 4104 identifies script block execution."
+      ],
+      "ingestion_differences": [
+        "Multi-part script blocks may need reassembly before matching.",
+        "Some pipelines strip newlines from ScriptBlockText."
+      ],
+      "retention_considerations": "Script block logging is moderate to high volume; 90 days is a common target."
+    },
+    "linux_process_creation": {
+      "platform": "linux",
+      "logsource": {
+        "category": "process_creation",
+        "product": "linux"
+      },
+      "required_logs": [
+        "Linux execve auditing"
+      ],
+      "channels": [
+        "auditd"
+      ],
+      "providers": [
+        "auditd"
+      ],
+      "optional_fields": [
+        "CurrentDirectory",
+        "ParentCommandLine",
+        "ProcessId"
+      ],
+      "collection_prerequisites": [
+        "An execve audit rule or equivalent process telemetry agent is deployed.",
+        "Audit rules are not limited to a narrow allowlist of binaries."
+      ],
+      "expected_collection_gaps": [
+        "Containers without a shared audit namespace may not report execve records.",
+        "Audit backlog limits can drop records under load."
+      ],
+      "normalization_assumptions": [
+        "Image is the absolute executable path and CommandLine is the joined argument vector.",
+        "ParentImage identifies the parent executable path."
+      ],
+      "ingestion_differences": [
+        "auditd argument vectors may be hex-encoded before normalization.",
+        "Some agents report the argv array instead of a joined string."
+      ],
+      "retention_considerations": "Execve telemetry is high volume; 30 to 60 days of hot retention is typical."
+    },
+    "linux_file_event": {
+      "platform": "linux",
+      "logsource": {
+        "category": "file_event",
+        "product": "linux"
+      },
+      "required_logs": [
+        "Linux file integrity auditing"
+      ],
+      "channels": [
+        "auditd"
+      ],
+      "providers": [
+        "auditd"
+      ],
+      "optional_fields": [
+        "Image",
+        "ProcessId",
+        "Mode"
+      ],
+      "collection_prerequisites": [
+        "Audit watch rules cover the sensitive directories referenced by the rule.",
+        "The audit daemon is running and its rules survive reboot."
+      ],
+      "expected_collection_gaps": [
+        "Directories without an explicit watch rule produce no events.",
+        "Bind-mounted paths inside containers may bypass host watches."
+      ],
+      "normalization_assumptions": [
+        "TargetFilename is an absolute POSIX path.",
+        "Image identifies the writing process where the producer supplies it."
+      ],
+      "ingestion_differences": [
+        "Path reconstruction from auditd PATH records varies between agents.",
+        "Relative paths may appear when the working directory record is missing."
+      ],
+      "retention_considerations": "File watch telemetry is moderate volume; 90 days is a reasonable target."
+    },
+    "linux_auth": {
+      "platform": "linux",
+      "logsource": {
+        "product": "linux",
+        "service": "auth"
+      },
+      "required_logs": [
+        "Linux authentication log"
+      ],
+      "channels": [
+        "/var/log/auth.log",
+        "/var/log/secure"
+      ],
+      "providers": [
+        "sshd",
+        "sudo",
+        "useradd"
+      ],
+      "optional_fields": [
+        "SourceIp",
+        "SourcePort",
+        "User"
+      ],
+      "collection_prerequisites": [
+        "The authentication facility is forwarded from the host to the collector.",
+        "The syslog message body is preserved rather than truncated."
+      ],
+      "expected_collection_gaps": [
+        "Hosts using journald without syslog forwarding require a different collector.",
+        "Rate-limited syslog can drop bursts of failures."
+      ],
+      "normalization_assumptions": [
+        "ProcessName holds the syslog program name and Message holds the free-text body.",
+        "SourceIp is populated only for network authentication attempts."
+      ],
+      "ingestion_differences": [
+        "Distribution-specific message wording differs between sshd builds.",
+        "Some pipelines pre-parse the message into structured fields."
+      ],
+      "retention_considerations": "Authentication logs are low volume; 365 days of retention is common."
+    }
+  },
+  "field_semantics": {
+    "Image": "Absolute path of the executable backing the created process.",
+    "OriginalFileName": "Original file name recorded in the binary version resource.",
+    "CommandLine": "Full command line including arguments as supplied to the process.",
+    "ParentImage": "Absolute path of the executable that created the process.",
+    "ParentCommandLine": "Command line of the creating process.",
+    "CurrentDirectory": "Working directory of the created process.",
+    "User": "Account context in which the event was produced.",
+    "Computer": "Host on which the event was produced.",
+    "Channel": "Windows event log channel that carried the record.",
+    "EventID": "Numeric identifier of the Windows event record.",
+    "Provider_Name": "Name of the event provider that raised the record.",
+    "TargetObject": "Full registry path of the value that was written.",
+    "Details": "Rendered data written to the registry value.",
+    "EventType": "Sub-type of the telemetry record, such as SetValue or WmiBindingEvent.",
+    "TargetFilename": "Absolute path of the file that was created or modified.",
+    "SourceImage": "Absolute path of the process requesting access.",
+    "TargetImage": "Absolute path of the process being accessed.",
+    "GrantedAccess": "Hexadecimal access mask granted for the process handle.",
+    "CallTrace": "Call stack recorded for the access request where available.",
+    "Operation": "Lifecycle operation applied to the subscription component.",
+    "Name": "Name of the subscription component.",
+    "Query": "Query text associated with the event filter.",
+    "Consumer": "Name of the subscription consumer.",
+    "Filter": "Name of the subscription filter.",
+    "ServiceName": "Name of the service registered with the service control manager.",
+    "ImagePath": "Executable path configured for the service, including arguments.",
+    "ServiceType": "Service type reported at installation time.",
+    "StartType": "Configured start type of the service.",
+    "AccountName": "Account under which the service is configured to run.",
+    "ScriptBlockText": "Decoded PowerShell script block text as executed.",
+    "ScriptBlockId": "Identifier grouping the parts of a single script block.",
+    "Path": "Script file path when the script block originates from a file.",
+    "SubjectUserName": "Account that performed the audited action.",
+    "SubjectDomainName": "Domain of the account that performed the audited action.",
+    "TargetUserName": "Account or group that was the object of the audited action.",
+    "TargetDomainName": "Domain of the object of the audited action.",
+    "MemberName": "Distinguished name or account name of the affected group member.",
+    "IpAddress": "Network address associated with the authentication attempt.",
+    "TaskName": "Full path of the scheduled task in the task library.",
+    "TaskContent": "Serialised task definition including trigger and action elements.",
+    "ObjectDN": "Distinguished name of the directory object involved in the operation.",
+    "AttributeLDAPDisplayName": "Directory attribute affected by the change.",
+    "AttributeValue": "Value written to the directory attribute.",
+    "OperationType": "Type of directory modification, such as value added or deleted.",
+    "Properties": "Directory attributes or property sets touched by the access request.",
+    "AuditPolicyChanges": "Description of the audit subcategory settings that changed.",
+    "CategoryId": "Audit policy category affected by the change.",
+    "SubcategoryId": "Audit policy subcategory affected by the change.",
+    "ProcessName": "Program name recorded by the system logger.",
+    "Message": "Free-text message body recorded by the system logger.",
+    "SourceIp": "Network address of the remote authentication client.",
+    "Mode": "File permission mode recorded for the affected path."
+  }
+}

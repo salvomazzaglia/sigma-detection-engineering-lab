@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-ID-011
+status=converted
+
+EventID:4719 AND (AuditPolicyChanges:(*Success\ removed* OR *Failure\ removed* OR *%%8448* OR *%%8450*))

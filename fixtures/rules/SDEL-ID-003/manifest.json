@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-003",
+  "sigma_rule_id": "9b418dc1-af43-51ba-be4a-e9957da43053",
+  "rule_file": "rules/identity/active_directory/privileged_group_member_added.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "security"
+  },
+  "channels": [
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "domain_admins_addition",
+      "file": "positive/case_01_domain_admins_addition.jsonl",
+      "expected": "match",
+      "scenario": "Member added to a privileged domain group.",
+      "rationale": "Both the event identifier and the group selections match."
+    },
+    {
+      "name": "local_administrators_addition",
+      "file": "positive/case_02_local_administrators_addition.jsonl",
+      "expected": "match",
+      "scenario": "Member added to the local administrators group.",
+      "rationale": "Both the event identifier and the group selections match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "application_group_addition",
+      "file": "negative/case_01_application_group_addition.jsonl",
+      "expected": "no_match",
+      "scenario": "Member added to an application access group.",
+      "rationale": "The privileged group selection does not match."
+    },
+    {
+      "name": "privileged_group_removal",
+      "file": "negative/case_02_privileged_group_removal.jsonl",
+      "expected": "no_match",
+      "scenario": "Member removed from a privileged group.",
+      "rationale": "The event identifier selection covers additions only."
+    },
+    {
+      "name": "security_group_created",
+      "file": "negative/case_03_security_group_created.jsonl",
+      "expected": "no_match",
+      "scenario": "New security group created.",
+      "rationale": "The event identifier selection does not match."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

@@ -1,0 +1,57 @@
+catalog_id,sigma_id,title,level,status,platform,correlation
+SDEL-COR-001,0f097239-cd26-5f9d-b6a5-d091141f6a15,Authentication Failures Followed By A Successful Logon,medium,experimental,,True
+SDEL-COR-002,f8b36c85-1472-5835-9efe-dcedabfe6966,Authentication Failures Across Multiple Accounts From One Source,high,experimental,,True
+SDEL-COR-003,e830b713-fdc0-5542-9d1a-5e885675473c,Repeated Kerberos Pre-Authentication Failures For One Account,medium,experimental,,True
+SDEL-COR-004,ae231f02-7a3b-5623-901f-780b32202ee5,Burst Of Privileged Group Membership Changes By One Subject,high,experimental,,True
+SDEL-COR-005,f525f1d0-6aae-5b68-b3ba-6542da9cfe5f,Service Creation Followed By Execution Of The Same Binary,medium,experimental,,True
+SDEL-COR-006,c162ff7a-b81d-5a1f-847d-1690a4412562,Executable Written To A Temporary Path And Then Executed,high,experimental,,True
+SDEL-ID-001,16e551df-c267-5b7e-af52-e3c5666bcf43,User Account Created,low,experimental,windows,False
+SDEL-ID-002,a5cd1895-7830-5d02-af6f-a884bfe55602,Disabled User Account Enabled,informational,experimental,windows,False
+SDEL-ID-003,9b418dc1-af43-51ba-be4a-e9957da43053,Member Added To A Privileged Directory Or Local Group,high,experimental,windows,False
+SDEL-ID-004,f33cdb9a-15f7-5da7-a825-918283fd0dbd,Member Removed From A Privileged Group Outside Governance Automation,medium,experimental,windows,False
+SDEL-ID-005,20ce2978-8a1f-5689-9ff6-a10725dbc9c5,Administrative Password Reset Targeting A Privileged Account,high,experimental,windows,False
+SDEL-ID-006,45d034fb-0b98-56f8-84bc-61cc1270e8e2,Service Principal Name Attribute Changed On A Directory Object,medium,experimental,windows,False
+SDEL-ID-007,ddec2ee5-4b82-5c9b-9e78-77dae29a9f9b,Kerberos Delegation Attribute Modified On A Directory Object,high,experimental,windows,False
+SDEL-ID-008,227fce09-9019-5b3c-9c0e-37a1dafab68a,Directory Replication Rights Granted On The Domain Object,critical,experimental,windows,False
+SDEL-ID-009,7260ce80-c072-5dcd-982b-9d4954116da6,Group Policy Object Modified In The Policies Container,medium,experimental,windows,False
+SDEL-ID-010,fb90cf45-01de-5e3f-b180-9a817ae4e8a4,Domain Trust Relationship Created Or Modified,high,experimental,windows,False
+SDEL-ID-011,ad5d9a8a-b009-5eea-b9ac-6341f2ef29bd,Audit Policy Subcategory Weakened,high,experimental,windows,False
+SDEL-ID-012,b1cd7602-1dcb-556e-8fef-617fe9c56499,Local Administrator Password Solution Attribute Read,low,experimental,windows,False
+SDEL-LX-001,9547416f-4dd6-5c1c-8dea-d12502262b16,Local User Account Created On A Linux Host,low,experimental,linux,False
+SDEL-LX-002,06345aa3-0469-5fd9-9ebd-f2651f850181,Sudoers Configuration File Modified,high,experimental,linux,False
+SDEL-LX-003,009fd073-a1b0-5381-b241-4ed8dafeaf94,Cron Persistence Entry Created,medium,experimental,linux,False
+SDEL-LX-004,a5816635-5d16-58ee-a32d-86aca9cec68f,Systemd Service Unit Created In An Unusual Location,medium,experimental,linux,False
+SDEL-LX-005,e71ee4b9-44f1-51ff-a044-9688211034b5,SSH Authorized Keys File Modified,medium,experimental,linux,False
+SDEL-LX-006,f6a911f9-dfb2-5dfa-b2af-d42a23fc1bb1,Interactive Shell Spawned By A Web Service Process,critical,experimental,linux,False
+SDEL-LX-007,b823f46c-f765-50b0-91a9-1f6f9fb9627a,Network Retrieval Command Piped Directly To A Shell,high,experimental,linux,False
+SDEL-LX-008,07d8d224-48da-5bc3-979c-87e4101a6962,Broad Or Setuid Permission Change Applied To A File,medium,experimental,linux,False
+SDEL-LX-009,aba24a11-1713-521c-ba1d-7a65159b7ee4,Audit Or Authentication Log Clearing Attempt,high,experimental,linux,False
+SDEL-LX-010,998af6f0-bc2a-59e1-9d75-e81d45ae37c9,Kernel Module Loaded From An Unusual Path,high,experimental,linux,False
+SDEL-LX-011,749ba788-d06e-5f25-a7d0-8de293c1a545,Process Executed From A World-Writable Directory,medium,experimental,linux,False
+SDEL-LX-012,2d481fd4-d45b-5c9e-a733-e6e70628baa6,SSH Password Authentication Failure,low,experimental,linux,False
+SDEL-PS-001,268dffb9-a796-5282-a024-9242475c744a,PowerShell Invoked With An Encoded Command Option,medium,experimental,windows,False
+SDEL-PS-002,d4eb081f-70f2-5b5b-b94e-31e2ff355f36,PowerShell Hidden Window Combined With Policy Or Profile Bypass Options,medium,experimental,windows,False
+SDEL-PS-003,25a9f459-02b5-5988-b364-6ef7e6bd5e52,PowerShell Script Block Containing A Download Command Pattern,medium,experimental,windows,False
+SDEL-PS-004,5edcf133-b8ab-5525-a437-6f73dfcaa113,PowerShell Script Block Containing Reflective Loading Terminology,high,experimental,windows,False
+SDEL-PS-005,345650f1-ffdc-5b0a-81bd-8ee8cb2f2932,PowerShell Script Block Referencing Scanning Interface Internals,high,experimental,windows,False
+SDEL-PS-006,f5b39ef4-4574-5740-821f-1659abfa1049,PowerShell Command Adding An Endpoint Protection Exclusion,medium,experimental,windows,False
+SDEL-PS-007,7daee763-200c-5c3f-b0c5-71873e19f969,PowerShell Command Modifying Privileged Group Membership,medium,experimental,windows,False
+SDEL-PS-008,2854095f-8a13-5914-ab66-405fc0f40aec,Scheduled Task Created Through PowerShell,low,experimental,windows,False
+SDEL-PS-009,9672b977-5075-5c56-8221-15bdedffe472,PowerShell Script Block Combining Base64 Decoding With Dynamic Execution,high,experimental,windows,False
+SDEL-PS-010,2ecd1048-dfa2-5cd9-8485-688defae0198,PowerShell Launched By An Office-Like Application,high,experimental,windows,False
+SDEL-WIN-001,a58d909c-bd70-51cc-8190-c6a67744b6bf,Process Launched From Synthetic User-Writable Temporary Path,medium,experimental,windows,False
+SDEL-WIN-002,e20f88a0-26ab-508e-90a0-2adefc415c67,Office-Like Application Spawning A Command Interpreter,high,experimental,windows,False
+SDEL-WIN-003,1cddc525-08c8-50ff-8a43-46c19ee18341,Signed Windows Utility Referencing A Script Protocol Handler,high,experimental,windows,False
+SDEL-WIN-004,b39d0736-cd9f-533f-be89-f7946124699a,Script-Capable Windows Utility Referencing Remote Content,high,experimental,windows,False
+SDEL-WIN-005,837a9c37-9648-519e-9336-ba36b0c52370,Certificate Utility Invoked With Transfer Or Decoding Options,medium,experimental,windows,False
+SDEL-WIN-006,41555143-60c1-50f1-b395-227cdcb164cc,Windows Service Created Referencing A User-Writable Path,high,experimental,windows,False
+SDEL-WIN-007,d21a2313-2e83-5064-b110-b2074e792ec5,Scheduled Task Created With An Action In A Temporary Path,medium,experimental,windows,False
+SDEL-WIN-008,1185b733-f53c-50a6-be8f-2cb38e0a0b08,Run Or RunOnce Value Referencing A User-Writable Path,medium,experimental,windows,False
+SDEL-WIN-009,fc1e2daf-8ce2-5915-aec2-4f4cc05f60ee,Permanent WMI Event Subscription Component Created,medium,experimental,windows,False
+SDEL-WIN-010,a199c7a5-5180-57eb-a2aa-d4e438960195,Windows Security Event Log Cleared,high,experimental,windows,False
+SDEL-WIN-011,6a181ee8-8db3-5c0d-9f2d-7e747bacacf2,Command Line Weakening Endpoint Security Product Configuration,high,experimental,windows,False
+SDEL-WIN-012,7cc062a2-81b9-50fb-b588-0676ca7a3f08,Process Access Request Against The Sensitive Authentication Process,critical,experimental,windows,False
+SDEL-WIN-013,91583148-1958-5122-a3f2-5a60d3c33155,Host Firewall Rule Created With A Broad Allow Scope,medium,experimental,windows,False
+SDEL-WIN-014,94c78e2e-2aab-5c13-8db5-3b538cf592b0,Executable File Created In A Public Or Temporary Directory,low,experimental,windows,False
+SDEL-WIN-015,d0b9890d-9eb2-53c0-92e2-5d9c1c4fae22,Document Viewer Spawning A Script Or Command Child Process,high,experimental,windows,False
+SDEL-WIN-016,aec1db38-0987-5bd7-8b04-ab2dba8f4a94,System Utility Invoked With An Uncommon Remote Or Transfer Pattern,medium,experimental,windows,False

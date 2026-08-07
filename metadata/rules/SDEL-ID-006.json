@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-006",
+  "sigma_rule_id": "45d034fb-0b98-56f8-84bc-61cc1270e8e2",
+  "title": "Service Principal Name Attribute Changed On A Directory Object",
+  "detection_hypothesis": "If an account is prepared for credential harvesting from service tickets, the directory service change audit will record a service principal name attribute write.",
+  "platform": "windows",
+  "rule_family": "identity",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "AttributeLDAPDisplayName",
+    "OperationType"
+  ],
+  "optional_fields": [
+    "SubjectDomainName",
+    "TargetDomainName",
+    "IpAddress",
+    "LogonType"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "AttributeLDAPDisplayName": "Directory attribute affected by the change.",
+    "OperationType": "Type of directory modification, such as value added or deleted."
+  },
+  "collection_prerequisites": [
+    "The relevant advanced audit policy subcategory is enabled for success events.",
+    "Domain controller Security logs are forwarded for directory-scoped events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "EventID is an integer and Channel is the literal string Security.",
+    "Account names are provided without the domain prefix in TargetUserName."
+  ],
+  "ingestion_differences": [
+    "Some pipelines rename EventID to event.code or similar.",
+    "Directory attribute events may arrive with XML-encoded values."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low.",
+  "false_positive_strategy": "Benign writes target dedicated service accounts and coincide with deployments. The high-value case is a service principal name written onto an interactive user account, so tune on the object class of the target.",
+  "tuning_guidance": "Enrich with the target object type and suppress only writes against known service accounts in the service account organisational unit.",
+  "test_strategy": "Positive cases write the attribute on a user object and on an administrative account. Negative cases delete the value, write a different attribute, and use a different event identifier.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1098",
+      "name": "Account Manipulation"
+    },
+    {
+      "id": "T1558.003",
+      "name": "Steal or Forge Kerberos Tickets: Kerberoasting"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    },
+    {
+      "id": "TA0006",
+      "name": "Credential Access"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0096",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0265",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0010",
+      "technique_id": "T1098"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "No Detection Strategy, Analytic, or Data Component identifier for this technique was present in the pinned ATT&CK extraction used by this lab. Defensive arrays are left empty rather than populated with unverified identifiers. Unmapped techniques: T1558.003.",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-ID-007",
+    "SDEL-ID-008"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/identity/active_directory/service_principal_name_attribute_changed.yml",
+  "fixture_directory": "fixtures/rules/SDEL-ID-006"
+}

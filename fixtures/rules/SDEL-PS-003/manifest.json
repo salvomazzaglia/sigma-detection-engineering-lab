@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-003",
+  "sigma_rule_id": "25a9f459-02b5-5988-b364-6ef7e6bd5e52",
+  "rule_file": "rules/powershell/powershell_download_oriented_command_pattern.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "category": "ps_script"
+  },
+  "channels": [
+    "Microsoft-Windows-PowerShell/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "webclient_download_string",
+      "file": "positive/case_01_webclient_download_string.jsonl",
+      "expected": "match",
+      "scenario": "Script block using the web client download method.",
+      "rationale": "Download method and remote scheme selections both match."
+    },
+    {
+      "name": "invoke_web_request",
+      "file": "positive/case_02_invoke_web_request.jsonl",
+      "expected": "match",
+      "scenario": "Script block using the web request cmdlet.",
+      "rationale": "Download method and remote scheme selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "local_file_read",
+      "file": "negative/case_01_local_file_read.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block reading a local manifest file.",
+      "rationale": "Neither selection matches."
+    },
+    {
+      "name": "download_method_local_path",
+      "file": "negative/case_02_download_method_local_path.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block copying a file from an internal file share path.",
+      "rationale": "Download method matches but there is no URL scheme."
+    },
+    {
+      "name": "url_in_comment",
+      "file": "negative/case_03_url_in_comment.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block containing a documentation URL in a comment.",
+      "rationale": "Remote scheme matches but no download method is present."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

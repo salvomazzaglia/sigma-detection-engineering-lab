@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-PS-005
+status=converted
+
+(ScriptBlockText:(*AmsiUtils* OR *amsiInitFailed* OR *amsiContext* OR *EnableScriptBlockLogging*)) AND (ScriptBlockText:(*SetValue* OR *GetField* OR *NonPublic* OR *\:\:Static*))

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-PS-004
+status=converted
+
+ScriptBlockText IN ("*[Reflection.Assembly]::Load*", "*System.Reflection.Assembly]::Load*", "*Reflection.Emit*", "*GetDelegateForFunctionPointer*")

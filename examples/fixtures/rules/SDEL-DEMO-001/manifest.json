@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-DEMO-001",
+  "sigma_rule_id": "6f1a2b3c-4d5e-4f60-9a71-2b3c4d5e6f70",
+  "rule_file": "rules/windows/process_creation/demo_staging_path_execution.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "staged_binary",
+      "file": "positive/case_01_staged_binary.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from the synthetic staging directory."
+    },
+    {
+      "name": "staged_script_host",
+      "file": "positive/case_02_staged_script_host.jsonl",
+      "expected": "match",
+      "scenario": "Binary executed from a subdirectory of the staging directory."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "managed_program_files",
+      "file": "negative/case_01_managed_program_files.jsonl",
+      "expected": "no_match",
+      "scenario": "Application executed from a managed installation directory."
+    },
+    {
+      "name": "system_directory",
+      "file": "negative/case_02_system_directory.jsonl",
+      "expected": "no_match",
+      "scenario": "System utility executed from the system directory."
+    },
+    {
+      "name": "similarly_named_path",
+      "file": "negative/case_03_similarly_named_path.jsonl",
+      "expected": "no_match",
+      "scenario": "Binary executed from a managed directory with a similar name."
+    }
+  ]
+}

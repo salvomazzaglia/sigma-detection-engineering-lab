@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-006",
+  "sigma_rule_id": "41555143-60c1-50f1-b395-227cdcb164cc",
+  "rule_file": "rules/windows/persistence/service_created_referencing_user_writable_path.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "service": "system"
+  },
+  "channels": [
+    "System"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "service_from_windows_temp",
+      "file": "positive/case_01_service_from_windows_temp.jsonl",
+      "expected": "match",
+      "scenario": "Service installed from the machine temporary directory.",
+      "rationale": "Installation event and writable path selections both match."
+    },
+    {
+      "name": "service_from_public_directory",
+      "file": "positive/case_02_service_from_public_directory.jsonl",
+      "expected": "match",
+      "scenario": "Service installed from the public profile directory.",
+      "rationale": "Installation event and writable path selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "managed_service_path",
+      "file": "negative/case_01_managed_service_path.jsonl",
+      "expected": "no_match",
+      "scenario": "Service installed from a managed program directory.",
+      "rationale": "Installation event matches but the path is not user writable."
+    },
+    {
+      "name": "service_start_failure_event",
+      "file": "negative/case_02_service_start_failure_event.jsonl",
+      "expected": "no_match",
+      "scenario": "Service failed to start.",
+      "rationale": "Path fragment matches but the event identifier is not a service installation."
+    },
+    {
+      "name": "driver_load_other_provider",
+      "file": "negative/case_03_driver_load_other_provider.jsonl",
+      "expected": "no_match",
+      "scenario": "Kernel filter driver reported by another provider.",
+      "rationale": "Path fragment matches but the provider is not Service Control Manager."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

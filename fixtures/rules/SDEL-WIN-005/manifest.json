@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-005",
+  "sigma_rule_id": "837a9c37-9648-519e-9336-ba36b0c52370",
+  "rule_file": "rules/windows/defense_evasion/certificate_utility_transfer_or_decode_options.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "url_cache_transfer",
+      "file": "positive/case_01_url_cache_transfer.jsonl",
+      "expected": "match",
+      "scenario": "Certificate utility used to retrieve a synthetic remote file.",
+      "rationale": "Image and transfer option selections both match."
+    },
+    {
+      "name": "base64_decode",
+      "file": "positive/case_02_base64_decode.jsonl",
+      "expected": "match",
+      "scenario": "Certificate utility used to decode a synthetic placeholder file.",
+      "rationale": "Image and decode option selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "certificate_store_listing",
+      "file": "negative/case_01_certificate_store_listing.jsonl",
+      "expected": "no_match",
+      "scenario": "Certificate utility listing the personal certificate store.",
+      "rationale": "Image matches but no transfer or decoding option is present."
+    },
+    {
+      "name": "other_tool_decode_switch",
+      "file": "negative/case_02_other_tool_decode_switch.jsonl",
+      "expected": "no_match",
+      "scenario": "Unrelated helper using a similarly named switch.",
+      "rationale": "Option text matches but the image is not the certificate utility."
+    },
+    {
+      "name": "certificate_template_query",
+      "file": "negative/case_03_certificate_template_query.jsonl",
+      "expected": "no_match",
+      "scenario": "Certificate utility queried for template information.",
+      "rationale": "Image matches but the option list does not."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

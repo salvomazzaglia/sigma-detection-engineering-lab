@@ -1,0 +1,41 @@
+title: 'Run Or RunOnce Value Referencing A User-Writable Path'
+id: 1185b733-f53c-50a6-be8f-2cb38e0a0b08
+status: experimental
+description: >-
+    Detects a Run or RunOnce autostart value being written with data that points into a
+    user-writable temporary or public directory. Legitimate autostart entries normally
+    reference managed installation directories.
+references:
+    - 'https://attack.mitre.org/techniques/T1547/001/'
+    - 'https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys'
+    - 'https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1547.001
+    - attack.t1112
+logsource:
+    category: registry_set
+    product: windows
+detection:
+    selection_autostart_key:
+        TargetObject|contains:
+            - '\Software\Microsoft\Windows\CurrentVersion\Run\'
+            - '\Software\Microsoft\Windows\CurrentVersion\RunOnce\'
+    selection_writable_value:
+        Details|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+            - '\Users\Public\'
+    condition: 'selection_autostart_key and selection_writable_value'
+falsepositives:
+    - >-
+        Installer bootstrappers that write a RunOnce value pointing at their extraction
+        directory so that setup resumes after a reboot.
+    - >-
+        Driver update packages that stage a post-reboot finalisation binary in the Windows
+        temporary directory and register it under RunOnce.
+level: medium
+license: MIT

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-LX-003
+status=converted
+
+(TargetFilename:(\/etc\/cron.d\/* OR \/var\/spool\/cron\/* OR \/etc\/crontab* OR \/etc\/cron.daily\/*)) AND (NOT (Image:(\/usr\/bin\/dpkg OR \/usr\/bin\/rpm)))

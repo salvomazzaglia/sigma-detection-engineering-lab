@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-002",
+  "sigma_rule_id": "f8b36c85-1472-5835-9efe-dcedabfe6966",
+  "rule_file": "rules/correlation/authentication_failures_across_accounts_from_one_source.yml",
+  "rule_type": "correlation",
+  "correlation_type": "value_count",
+  "timespan": "15m",
+  "group_by": [
+    "IpAddress"
+  ],
+  "synthetic": true,
+  "minimum_positive_sequences": 2,
+  "minimum_negative_sequences": 2,
+  "positive_sequences": [
+    {
+      "name": "five_distinct_accounts_one_source",
+      "file": "positive/sequence_01_five_distinct_accounts_one_source.jsonl",
+      "expected": "match",
+      "event_count": 5,
+      "scenario": "Five distinct accounts fail from a single documentation address.",
+      "rationale": "The distinct account count reaches the configured threshold within the window."
+    },
+    {
+      "name": "six_distinct_accounts_one_source",
+      "file": "positive/sequence_02_six_distinct_accounts_one_source.jsonl",
+      "expected": "match",
+      "event_count": 6,
+      "scenario": "Six distinct accounts fail from a single documentation address.",
+      "rationale": "The distinct account count exceeds the configured threshold within the window."
+    }
+  ],
+  "negative_sequences": [
+    {
+      "name": "repeated_failures_single_account",
+      "file": "negative/sequence_01_repeated_failures_single_account.jsonl",
+      "expected": "no_match",
+      "event_count": 6,
+      "scenario": "Six failures against a single account from one address.",
+      "rationale": "The distinct account count stays at one, below the threshold."
+    },
+    {
+      "name": "distinct_accounts_split_across_sources",
+      "file": "negative/sequence_02_distinct_accounts_split_across_sources.jsonl",
+      "expected": "no_match",
+      "event_count": 6,
+      "scenario": "Six distinct accounts fail, split evenly across two addresses.",
+      "rationale": "No single source address reaches the distinct account threshold."
+    },
+    {
+      "name": "four_distinct_accounts_below_threshold",
+      "file": "negative/sequence_03_four_distinct_accounts_below_threshold.jsonl",
+      "expected": "no_match",
+      "event_count": 4,
+      "scenario": "Four distinct accounts fail from one address.",
+      "rationale": "The distinct account count remains below the threshold."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All sequences are synthetic and deterministic. Negative sequences break exactly one correlation requirement each: ordering, grouping, threshold, or timespan."
+}

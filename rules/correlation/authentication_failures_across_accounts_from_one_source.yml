@@ -1,0 +1,68 @@
+title: 'Windows Logon Failure With Source Address (Correlation Input)'
+id: e3f31a8f-32ec-53e5-9151-12c8cc6a7982
+name: sdel_cor_002_windows_logon_failure
+status: experimental
+description: >-
+    Base rule that selects Windows logon failure records including the source network
+    address, for use by the spraying correlation rule.
+references:
+    - 'https://attack.mitre.org/techniques/T1110/003/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4625'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1110.003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_logon_failure:
+        EventID: 4625
+    condition: selection_logon_failure
+falsepositives:
+    - >-
+        Users failing authentication from behind a shared remote access gateway that
+        presents a single source address for many people.
+    - >-
+        Automation retrying with an expired credential from a fixed management address on
+        every polling interval.
+level: informational
+license: MIT
+---
+title: 'Authentication Failures Across Multiple Accounts From One Source'
+id: f8b36c85-1472-5835-9efe-dcedabfe6966
+status: experimental
+description: >-
+    Counts the number of distinct accounts that fail authentication from a single source
+    address within fifteen minutes. Spreading a small number of attempts across many
+    accounts is the defining shape of password spraying.
+references:
+    - 'https://attack.mitre.org/techniques/T1110/003/'
+    - 'https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10-security-auditing/event-4625'
+    - 'https://sigmahq.io/sigma-specification/specification/sigma-correlation-rules-specification.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.credential-access
+    - attack.t1110.003
+correlation:
+    type: value_count
+    rules:
+        - sdel_cor_002_windows_logon_failure
+    group-by:
+        - IpAddress
+    timespan: 15m
+    condition:
+        gte: 5
+        field: TargetUserName
+falsepositives:
+    - >-
+        A shared network address translation gateway behind which many users fail after a
+        directory outage or a password policy change.
+    - >-
+        A misconfigured application server holding stale credentials for several service
+        accounts and retrying all of them from one address.
+level: high
+license: MIT

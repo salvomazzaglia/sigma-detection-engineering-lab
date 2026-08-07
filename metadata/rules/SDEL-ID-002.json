@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-ID-002",
+  "sigma_rule_id": "a5cd1895-7830-5d02-af6f-a884bfe55602",
+  "title": "Disabled User Account Enabled",
+  "detection_hypothesis": "If a dormant identity is revived for access, the directory will record an account enabled audit event naming the enabling subject.",
+  "platform": "windows",
+  "rule_family": "identity",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID"
+  ],
+  "optional_fields": [
+    "SubjectDomainName",
+    "TargetDomainName",
+    "IpAddress",
+    "LogonType"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record."
+  },
+  "collection_prerequisites": [
+    "The relevant advanced audit policy subcategory is enabled for success events.",
+    "Domain controller Security logs are forwarded for directory-scoped events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "EventID is an integer and Channel is the literal string Security.",
+    "Account names are provided without the domain prefix in TargetUserName."
+  ],
+  "ingestion_differences": [
+    "Some pipelines rename EventID to event.code or similar.",
+    "Directory attribute events may arrive with XML-encoded values."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low.",
+  "false_positive_strategy": "Most matches are legitimate lifecycle events. The signal comes from enabling accounts that have been dormant for a long period or that hold privileged group membership.",
+  "tuning_guidance": "Enrich with the account last logon timestamp and privileged group membership rather than excluding subjects. Keep the rule informational and use it for correlation.",
+  "test_strategy": "Positive cases enable a dormant standard account and a dormant service account. Negative cases disable an account, unlock an account, and create an account.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 3,
+  "attack_techniques": [
+    {
+      "id": "T1098",
+      "name": "Account Manipulation"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0003",
+      "name": "Persistence"
+    },
+    {
+      "id": "TA0004",
+      "name": "Privilege Escalation"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0096",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN0265",
+      "technique_id": "T1098"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0010",
+      "technique_id": "T1098"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [
+    "splunk",
+    "elasticsearch-lucene"
+  ],
+  "unsupported_backend_reasons": {},
+  "related_rules": [
+    "SDEL-ID-001",
+    "SDEL-ID-005"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/identity/windows_security/user_account_enabled.yml",
+  "fixture_directory": "fixtures/rules/SDEL-ID-002"
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-001",
+  "sigma_rule_id": "268dffb9-a796-5282-a024-9242475c744a",
+  "rule_file": "rules/powershell/powershell_encoded_command_option.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "long_form_encoded_switch",
+      "file": "positive/case_01_long_form_encoded_switch.jsonl",
+      "expected": "match",
+      "scenario": "PowerShell started with the long encoded command switch.",
+      "rationale": "Interpreter and encoded option selections both match."
+    },
+    {
+      "name": "short_form_encoded_switch",
+      "file": "positive/case_02_short_form_encoded_switch.jsonl",
+      "expected": "match",
+      "scenario": "PowerShell started with the short encoded command switch.",
+      "rationale": "Interpreter and encoded option selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "plain_command",
+      "file": "negative/case_01_plain_command.jsonl",
+      "expected": "no_match",
+      "scenario": "PowerShell started with a readable command.",
+      "rationale": "Interpreter matches but no encoded option is present."
+    },
+    {
+      "name": "script_file_execution",
+      "file": "negative/case_02_script_file_execution.jsonl",
+      "expected": "no_match",
+      "scenario": "PowerShell executing an approved script file.",
+      "rationale": "Interpreter matches but the argument is a file path."
+    },
+    {
+      "name": "other_tool_encoded_argument",
+      "file": "negative/case_03_other_tool_encoded_argument.jsonl",
+      "expected": "no_match",
+      "scenario": "Unrelated utility using a similarly named argument.",
+      "rationale": "The option text matches but the image is not PowerShell."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

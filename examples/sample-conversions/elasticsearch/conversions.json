@@ -1,0 +1,743 @@
+{
+  "backends": [
+    {
+      "available": true,
+      "backend_class": "sigma.backends.elasticsearch.LuceneBackend",
+      "dialect": "lucene",
+      "error": null,
+      "key": "elasticsearch-lucene",
+      "package": "pysigma-backend-elasticsearch",
+      "version": "2.1.0"
+    }
+  ],
+  "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+  "correlation_conversion_supported": false,
+  "counts": {
+    "backend_unavailable": 0,
+    "converted": 50,
+    "error": 0,
+    "skipped": 0,
+    "unsupported": 6
+  },
+  "disclaimer": "This artefact makes no claim of production readiness. Queries, mappings, and metrics require environment-specific validation before operational use.",
+  "generated_at": "2026-08-07T00:24:00.726Z",
+  "production_ready": false,
+  "results": [
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-001",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-002",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-003",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-004",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-005",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-COR-006",
+      "dialect": "lucene",
+      "message": "correlation conversion is not supported in v1.0 and the backend declined the rule: NotImplementedError: Backend does not support correlation rules.",
+      "production_ready": false,
+      "queries": [],
+      "status": "unsupported"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-001",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4720 AND (NOT SubjectUserName:synthetic\\-service\\-provisioning)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-002",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4722"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-003",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(EventID:(4728 OR 4732 OR 4756)) AND (TargetUserName:(Domain\\ Admins OR Enterprise\\ Admins OR Schema\\ Admins OR Administrators))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-004",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(EventID:(4729 OR 4733 OR 4757)) AND (TargetUserName:(Domain\\ Admins OR Enterprise\\ Admins OR Schema\\ Admins OR Administrators)) AND (NOT SubjectUserName:synthetic\\-service\\-iam)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-005",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4724 AND (TargetUserName:(synthetic\\-admin OR synthetic\\-da\\-admin OR synthetic\\-breakglass))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-006",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:5136 AND AttributeLDAPDisplayName:servicePrincipalName AND (OperationType:(Value\\ Added OR %%14674))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-007",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:5136 AND (AttributeLDAPDisplayName:(msDS\\-AllowedToDelegateTo OR msDS\\-AllowedToActOnBehalfOfOtherIdentity))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-008",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:5136 AND AttributeLDAPDisplayName:nTSecurityDescriptor AND (AttributeValue:(*1131f6aa\\-9c07\\-11d1\\-f79f\\-00c04fc2dcd2* OR *1131f6ad\\-9c07\\-11d1\\-f79f\\-00c04fc2dcd2* OR *DS\\-Replication\\-Get\\-Changes*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-009",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:5136 AND ObjectDN:*CN\\=Policies,CN\\=System* AND (OperationType:(Value\\ Added OR %%14674))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-010",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:(4706 OR 4707 OR 4716 OR 4865 OR 4866 OR 4867)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-011",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4719 AND (AuditPolicyChanges:(*Success\\ removed* OR *Failure\\ removed* OR *%%8448* OR *%%8450*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-ID-012",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4662 AND (Properties:(*ms\\-Mcs\\-AdmPwd* OR *msLAPS\\-Password* OR *msLAPS\\-EncryptedPassword*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-001",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ProcessName:(useradd OR adduser)) AND (Message:(*new\\ user\\:* OR *new\\ group\\:*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-002",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(TargetFilename:(\\/etc\\/sudoers* OR \\/etc\\/sudoers.d\\/*)) AND (NOT (Image:(\\/usr\\/bin\\/dpkg OR \\/usr\\/bin\\/rpm)))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-003",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(TargetFilename:(\\/etc\\/cron.d\\/* OR \\/var\\/spool\\/cron\\/* OR \\/etc\\/crontab* OR \\/etc\\/cron.daily\\/*)) AND (NOT (Image:(\\/usr\\/bin\\/dpkg OR \\/usr\\/bin\\/rpm)))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-004",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(TargetFilename:(*.service OR *.timer)) AND (TargetFilename:(\\/tmp\\/* OR \\/var\\/tmp\\/* OR \\/dev\\/shm\\/* OR \\/home\\/*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-005",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetFilename:*\\/.ssh\\/authorized_keys AND (NOT Image:\\/usr\\/bin\\/synthetic\\-config\\-agent)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-006",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ParentImage:(*\\/nginx OR *\\/httpd OR *\\/apache2 OR *\\/php\\-fpm OR *\\/synthetic\\-appserver)) AND (Image:(*\\/bash OR *\\/sh OR *\\/dash OR *\\/zsh OR *\\/ksh))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-007",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(CommandLine:(*curl\\ * OR *wget\\ * OR *fetch\\ *)) AND (CommandLine:(*\\|\\ sh* OR *\\|sh* OR *\\|\\ bash* OR *\\|bash* OR *\\|\\ zsh*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-008",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\/chmod OR *\\/setfacl)) AND (CommandLine:(*u\\+s* OR *g\\+s* OR *\\ 4755* OR *\\ 2755* OR *\\ 777* OR *a\\+rwx*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-009",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\/rm OR *\\/shred OR *\\/truncate OR *\\/unlink)) AND (CommandLine:(*\\/var\\/log\\/auth.log* OR *\\/var\\/log\\/secure* OR *\\/var\\/log\\/audit\\/audit.log* OR *\\/var\\/log\\/wtmp*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-010",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\/insmod OR *\\/modprobe)) AND (CommandLine:(*\\/tmp\\/* OR *\\/var\\/tmp\\/* OR *\\/dev\\/shm\\/* OR *\\/home\\/*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-011",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(\\/tmp\\/* OR \\/var\\/tmp\\/* OR \\/dev\\/shm\\/*)) AND (NOT Image:\\/tmp\\/synthetic\\-example\\/approved\\-build\\/*)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-LX-012",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ProcessName:sshd AND (Message:(*Failed\\ password\\ for* OR *Failed\\ publickey\\ for*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-001",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\\\powershell.exe OR *\\\\pwsh.exe)) AND (CommandLine:(*\\-EncodedCommand* OR *\\-enc\\ * OR *\\-ec\\ * OR *\\/EncodedCommand*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-002",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\\\powershell.exe OR *\\\\pwsh.exe)) AND (CommandLine:(*\\-WindowStyle\\ Hidden* OR *\\-w\\ hidden* OR *\\-windowstyle\\ hidden*)) AND (CommandLine:(*\\-ExecutionPolicy\\ Bypass* OR *\\-ep\\ bypass* OR *\\-NoProfile* OR *\\-nop\\ *))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-003",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ScriptBlockText:(*DownloadString* OR *DownloadFile* OR *Invoke\\-WebRequest* OR *Invoke\\-RestMethod* OR *Start\\-BitsTransfer*)) AND (ScriptBlockText:(*http\\:\\/\\/* OR *https\\:\\/\\/*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-004",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "ScriptBlockText:(*\\[Reflection.Assembly\\]\\:\\:Load* OR *System.Reflection.Assembly\\]\\:\\:Load* OR *Reflection.Emit* OR *GetDelegateForFunctionPointer*)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-005",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ScriptBlockText:(*AmsiUtils* OR *amsiInitFailed* OR *amsiContext* OR *EnableScriptBlockLogging*)) AND (ScriptBlockText:(*SetValue* OR *GetField* OR *NonPublic* OR *\\:\\:Static*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-006",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(CommandLine:(*Add\\-MpPreference* OR *Set\\-MpPreference*)) AND (CommandLine:(*\\-ExclusionPath* OR *\\-ExclusionProcess* OR *\\-ExclusionExtension*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-007",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(CommandLine:(*Add\\-LocalGroupMember* OR *Add\\-ADGroupMember* OR *net\\ localgroup* OR *net\\ group*)) AND (CommandLine:(*Domain\\ Admins* OR *Enterprise\\ Admins* OR *Schema\\ Admins* OR *Administrators*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-008",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ScriptBlockText:(*Register\\-ScheduledTask* OR *New\\-ScheduledTask* OR *Set\\-ScheduledTask*)) AND (ScriptBlockText:(*New\\-ScheduledTaskAction* OR *\\-Action\\ *))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-009",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ScriptBlockText:(*FromBase64String* OR *Convert\\]\\:\\:FromBase64* OR *System.Convert\\:\\:FromBase64*)) AND (ScriptBlockText:(*Invoke\\-Expression* OR *IEX\\ * OR *IEX\\(* OR *.Invoke\\(\\)* OR *ScriptBlock\\]\\:\\:Create*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-PS-010",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ParentImage:(*\\\\synthetic_word.exe OR *\\\\synthetic_excel.exe OR *\\\\synthetic_powerpoint.exe OR *\\\\synthetic_outlook.exe)) AND (Image:(*\\\\powershell.exe OR *\\\\pwsh.exe))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-001",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(C\\:\\\\Synthetic\\\\Users\\\\synthetic\\-user\\\\AppData\\\\Local\\\\Temp\\\\* OR C\\:\\\\Synthetic\\\\Windows\\\\Temp\\\\* OR C\\:\\\\Synthetic\\\\Users\\\\Public\\\\*)) AND (NOT Image:*\\\\synthetic_patch_installer.exe)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-002",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ParentImage:(*\\\\synthetic_word.exe OR *\\\\synthetic_excel.exe OR *\\\\synthetic_powerpoint.exe OR *\\\\synthetic_outlook.exe)) AND (Image:(*\\\\cmd.exe OR *\\\\powershell.exe OR *\\\\pwsh.exe OR *\\\\wscript.exe OR *\\\\cscript.exe OR *\\\\mshta.exe))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-003",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image:*\\\\mshta.exe AND (CommandLine:(*javascript\\:* OR *vbscript\\:* OR *about\\:*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-004",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\\\mshta.exe OR *\\\\wscript.exe OR *\\\\cscript.exe OR *\\\\regsvr32.exe OR *\\\\rundll32.exe)) AND (CommandLine:(*http\\:\\/\\/* OR *https\\:\\/\\/*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-005",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image:*\\\\certutil.exe AND (CommandLine:(*\\-urlcache* OR *\\-decode* OR *\\-encode* OR *\\-verifyctl*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-006",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(EventID:7045 AND Provider_Name:Service\\ Control\\ Manager) AND (ImagePath:(*\\\\AppData\\\\Local\\\\Temp\\\\* OR *\\\\Windows\\\\Temp\\\\* OR *\\\\Users\\\\Public\\\\*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-007",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:4698 AND (TaskContent:(*\\\\AppData\\\\Local\\\\Temp\\\\* OR *\\\\Windows\\\\Temp\\\\* OR *\\\\Users\\\\Public\\\\*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-008",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(TargetObject:(*\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\\\\* OR *\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\RunOnce\\\\*)) AND (Details:(*\\\\AppData\\\\Local\\\\Temp\\\\* OR *\\\\Windows\\\\Temp\\\\* OR *\\\\Users\\\\Public\\\\*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-009",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(EventType:(WmiFilterEvent OR WmiConsumerEvent OR WmiBindingEvent)) AND Operation:Created"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-010",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "EventID:1102 AND Channel:Security"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-011",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\\\powershell.exe OR *\\\\pwsh.exe OR *\\\\cmd.exe OR *\\\\reg.exe OR *\\\\sc.exe)) AND (CommandLine:(*DisableRealtimeMonitoring* OR *DisableBehaviorMonitoring* OR *DisableIOAVProtection* OR *DisableScriptScanning* OR *DisableAntiSpyware*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-012",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "TargetImage:*\\\\lsass.exe AND (GrantedAccess:(0x1010 OR 0x1410 OR 0x1438 OR 0x143a OR 0x1fffff)) AND (NOT (SourceImage:(*\\\\synthetic_edr_agent.exe OR *\\\\synthetic_backup_agent.exe)))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-013",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "Image:*\\\\netsh.exe AND CommandLine:*advfirewall\\ firewall\\ add\\ rule* AND CommandLine:*action\\=allow* AND (CommandLine:(*remoteip\\=any* OR *localip\\=any* OR *profile\\=any*))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-014",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(TargetFilename:(*\\\\AppData\\\\Local\\\\Temp\\\\* OR *\\\\Windows\\\\Temp\\\\* OR *\\\\Users\\\\Public\\\\*)) AND (TargetFilename:(*.exe OR *.dll OR *.scr)) AND (NOT Image:*\\\\synthetic_update_agent.exe)"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-015",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(ParentImage:(*\\\\synthetic_pdf_viewer.exe OR *\\\\synthetic_docviewer.exe)) AND (Image:(*\\\\cmd.exe OR *\\\\powershell.exe OR *\\\\pwsh.exe OR *\\\\mshta.exe OR *\\\\wscript.exe OR *\\\\rundll32.exe OR *\\\\regsvr32.exe))"
+      ],
+      "status": "converted"
+    },
+    {
+      "backend": "elasticsearch-lucene",
+      "backend_version": "2.1.0",
+      "banner": "DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED",
+      "catalog_id": "SDEL-WIN-016",
+      "dialect": "lucene",
+      "message": "converted by pysigma-backend-elasticsearch==2.1.0 (lucene); requires environment-specific validation",
+      "production_ready": false,
+      "queries": [
+        "(Image:(*\\\\bitsadmin.exe OR *\\\\msiexec.exe OR *\\\\odbcconf.exe OR *\\\\installutil.exe)) AND ((CommandLine:(*http\\:\\/\\/* OR *https\\:\\/\\/*)) OR (CommandLine:(*\\/transfer\\ * OR *\\/download\\ * OR *\\-transfer\\ *)))"
+      ],
+      "status": "converted"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-LX-006
+status=converted
+
+ParentImage IN ("*/nginx", "*/httpd", "*/apache2", "*/php-fpm", "*/synthetic-appserver") Image IN ("*/bash", "*/sh", "*/dash", "*/zsh", "*/ksh")

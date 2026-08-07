@@ -1,0 +1,156 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigma-detection-engineering-lab"
+version = "1.0.0"
+description = "Offline Sigma detection-engineering laboratory for authoring, validating, testing, mapping, and converting original detection rules."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Salvatore Mazzaglia" }]
+maintainers = [{ name = "Salvatore Mazzaglia" }]
+keywords = [
+    "sigma",
+    "detection-engineering",
+    "detection-as-code",
+    "mitre-attack",
+    "security",
+    "offline",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Typing :: Typed",
+]
+
+# PyYAML arrives transitively via pysigma but is imported directly by the
+# hardened loader, so it is declared explicitly rather than relied upon.
+dependencies = [
+    "pysigma==1.5.0",
+    "pysigma-backend-splunk==2.1.0",
+    "pysigma-backend-elasticsearch==2.1.0",
+    "jsonschema>=4.23,<5",
+    "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "build>=1.2",
+    "types-PyYAML>=6.0",
+    "types-jsonschema>=4.23",
+]
+
+[project.urls]
+Homepage = "https://github.com/salvomazzaglia/sigma-detection-engineering-lab"
+Repository = "https://github.com/salvomazzaglia/sigma-detection-engineering-lab"
+Issues = "https://github.com/salvomazzaglia/sigma-detection-engineering-lab/issues"
+
+[project.scripts]
+sigma-detection-lab = "sigma_detection_engineering_lab.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sigma_detection_engineering_lab*"]
+
+[tool.setuptools.package-data]
+sigma_detection_engineering_lab = ["py.typed"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+branch = true
+source = ["sigma_detection_engineering_lab"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "N",
+    "UP",
+    "B",
+    "C4",
+    "SIM",
+    "PTH",
+    "RUF",
+    "S",
+    "TID",
+    "BLE",
+    "DTZ",
+]
+ignore = [
+    # `str, Enum` keeps members JSON-serialisable and comparable to plain strings,
+    # which the report writers rely on. StrEnum would change __format__ behaviour.
+    "UP042",
+    # Assertions are used in tests only.
+    "S101",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# S314: the JUnit tests parse XML this package generated moments earlier, so the
+# untrusted-input concern that motivates defusedxml does not apply.
+"tests/*" = ["S101", "S105", "S106", "PLR2004", "S314"]
+"src/sigma_detection_engineering_lab/html_report.py" = ["E501"]
+# S603: developer scripts shell out to fixed, literal argument lists (never shell=True
+# and never user-supplied strings). The package runtime itself imports no subprocess.
+"scripts/*" = ["S603"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["sigma_detection_engineering_lab"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src"]
+strict = true
+warn_unreachable = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+no_implicit_reexport = false
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+# pySigma and its backends are optional at runtime and ship partial stubs.
+module = [
+    "sigma.*",
+    "sigma.backends.*",
+    "sigma.collection",
+    "sigma.rule",
+]
+ignore_missing_imports = true

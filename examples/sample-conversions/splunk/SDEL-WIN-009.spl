@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-009
+status=converted
+
+EventType IN ("WmiFilterEvent", "WmiConsumerEvent", "WmiBindingEvent") Operation="Created"

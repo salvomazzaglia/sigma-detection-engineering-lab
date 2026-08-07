@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-WIN-003",
+  "sigma_rule_id": "1cddc525-08c8-50ff-8a43-46c19ee18341",
+  "rule_file": "rules/windows/defense_evasion/signed_utility_script_protocol_reference.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "category": "process_creation",
+    "product": "windows"
+  },
+  "channels": [
+    "Microsoft-Windows-Sysmon/Operational",
+    "Security"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "javascript_protocol",
+      "file": "positive/case_01_javascript_protocol.jsonl",
+      "expected": "match",
+      "scenario": "HTML application host invoked with an inline javascript protocol placeholder.",
+      "rationale": "Image and protocol selections both match."
+    },
+    {
+      "name": "vbscript_protocol",
+      "file": "positive/case_02_vbscript_protocol.jsonl",
+      "expected": "match",
+      "scenario": "HTML application host invoked with an inline vbscript protocol placeholder.",
+      "rationale": "Image and protocol selections both match."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "local_hta_file",
+      "file": "negative/case_01_local_hta_file.jsonl",
+      "expected": "no_match",
+      "scenario": "HTML application host opening a local application file.",
+      "rationale": "Image matches but no inline script protocol is present."
+    },
+    {
+      "name": "browser_protocol_argument",
+      "file": "negative/case_02_browser_protocol_argument.jsonl",
+      "expected": "no_match",
+      "scenario": "Browser started with a protocol argument.",
+      "rationale": "Protocol text matches but the image is not the script host."
+    },
+    {
+      "name": "unrelated_system_binary",
+      "file": "negative/case_03_unrelated_system_binary.jsonl",
+      "expected": "no_match",
+      "scenario": "System utility executed with ordinary arguments.",
+      "rationale": "Neither selection matches."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}

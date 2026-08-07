@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-003
+status=converted
+
+Image="*\\mshta.exe" CommandLine IN ("*javascript:*", "*vbscript:*", "*about:*")

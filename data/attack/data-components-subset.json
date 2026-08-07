@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "attack_version": "19.1",
+  "provenance": "Identifiers verified against the pinned ATT&CK extraction. Official object names are not vendored offline and are therefore null rather than invented.",
+  "legacy_data_sources_note": "Legacy ATT&CK Data Sources are deprecated and are not used as primary mappings by this project.",
+  "data_components": [
+    {
+      "id": "DC0001",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1053.003",
+        "T1053.005"
+      ]
+    },
+    {
+      "id": "DC0002",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1110.001",
+        "T1110.003"
+      ]
+    },
+    {
+      "id": "DC0008",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1546.003"
+      ]
+    },
+    {
+      "id": "DC0010",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1098"
+      ]
+    },
+    {
+      "id": "DC0014",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1136.001"
+      ]
+    },
+    {
+      "id": "DC0032",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1059.001",
+        "T1059.004"
+      ]
+    },
+    {
+      "id": "DC0035",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1003.001"
+      ]
+    },
+    {
+      "id": "DC0038",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1685.005"
+      ]
+    },
+    {
+      "id": "DC0039",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1543.002"
+      ]
+    },
+    {
+      "id": "DC0040",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1685.006"
+      ]
+    },
+    {
+      "id": "DC0051",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1686"
+      ]
+    },
+    {
+      "id": "DC0059",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1222.002"
+      ]
+    },
+    {
+      "id": "DC0060",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1543.003"
+      ]
+    },
+    {
+      "id": "DC0061",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1098.004"
+      ]
+    },
+    {
+      "id": "DC0063",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1547.001"
+      ]
+    },
+    {
+      "id": "DC0064",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1059.001"
+      ]
+    },
+    {
+      "id": "DC0066",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1484.001"
+      ]
+    },
+    {
+      "id": "DC0082",
+      "name": null,
+      "name_verification": "not_vendored",
+      "referenced_by_techniques": [
+        "T1105"
+      ]
+    }
+  ]
+}

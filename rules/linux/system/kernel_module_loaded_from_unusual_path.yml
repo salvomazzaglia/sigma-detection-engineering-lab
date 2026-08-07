@@ -1,0 +1,40 @@
+title: 'Kernel Module Loaded From An Unusual Path'
+id: 998af6f0-bc2a-59e1-9d75-e81d45ae37c9
+status: experimental
+description: >-
+    Detects a kernel module being inserted from a writable directory rather than from the
+    managed module tree. Kernel modules run with the highest privilege available on the
+    host.
+references:
+    - 'https://attack.mitre.org/techniques/T1547/006/'
+    - 'https://man7.org/linux/man-pages/man8/insmod.8.html'
+author: 'Salvatore Mazzaglia'
+date: 2026-08-01
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1547.006
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_module_tool:
+        Image|endswith:
+            - '/insmod'
+            - '/modprobe'
+    selection_unusual_path:
+        CommandLine|contains:
+            - '/tmp/'
+            - '/var/tmp/'
+            - '/dev/shm/'
+            - '/home/'
+    condition: 'selection_module_tool and selection_unusual_path'
+falsepositives:
+    - >-
+        Driver development and hardware enablement testing on engineering hosts where
+        modules are built and inserted from a working directory.
+    - >-
+        Vendor support procedures that provide a debug module to be loaded from a temporary
+        directory during a diagnostic session.
+level: high
+license: MIT

@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-003",
+  "sigma_rule_id": "e830b713-fdc0-5542-9d1a-5e885675473c",
+  "title": "Repeated Kerberos Pre-Authentication Failures For One Account",
+  "detection_hypothesis": "If an account is targeted by online guessing against the ticket service, the pre-authentication failure count for that account will exceed normal user error levels.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "TargetUserName"
+  ],
+  "optional_fields": [
+    "IpAddress",
+    "LogonType",
+    "SubjectDomainName",
+    "TargetDomainName"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "TargetUserName": "Account or group that was the object of the audited action."
+  },
+  "collection_prerequisites": [
+    "Domain controller Security logs are forwarded for directory-scoped events.",
+    "The relevant advanced audit policy subcategory is enabled for success events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "Account names are provided without the domain prefix in TargetUserName.",
+    "EventID is an integer and Channel is the literal string Security."
+  ],
+  "ingestion_differences": [
+    "Directory attribute events may arrive with XML-encoded values.",
+    "Some pipelines rename EventID to event.code or similar."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low after threshold tuning.",
+  "false_positive_strategy": "Automated retry loops from a single client device produce most benign bursts. Tune by enriching with the client address and by treating repeated bursts from the same device as a configuration issue rather than an attack.",
+  "tuning_guidance": "Adjust the threshold to the observed baseline before excluding accounts. Service accounts should be investigated instead of excluded.",
+  "test_strategy": "Positive sequences produce ten or more failures for one account inside the window. Negative sequences stay under the threshold, spread across accounts, and exceed the window.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1110.001",
+      "name": "Brute Force: Password Guessing"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0006",
+      "name": "Credential Access"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0551",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1521",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0002",
+      "technique_id": "T1110.001"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-COR-001",
+    "SDEL-COR-002"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/repeated_kerberos_preauthentication_failures.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-003",
+  "correlation": {
+    "type": "event_count",
+    "timespan": "10m",
+    "group_by": [
+      "TargetUserName"
+    ],
+    "base_rules": [
+      "sdel_cor_003_kerberos_preauth_failure"
+    ],
+    "aliases": {},
+    "threshold": 10,
+    "count_field": null,
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

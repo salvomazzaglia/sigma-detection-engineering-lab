@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-WIN-016
+status=converted
+
+Image IN ("*\\bitsadmin.exe", "*\\msiexec.exe", "*\\odbcconf.exe", "*\\installutil.exe") CommandLine IN ("*http://*", "*https://*") OR CommandLine IN ("*/transfer *", "*/download *", "*-transfer *")

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-013
+status=converted
+
+Image:*\\netsh.exe AND CommandLine:*advfirewall\ firewall\ add\ rule* AND CommandLine:*action\=allow* AND (CommandLine:(*remoteip\=any* OR *localip\=any* OR *profile\=any*))

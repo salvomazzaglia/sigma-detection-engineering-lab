@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "attack_version": "19.1",
+  "provenance": "Identifiers verified against the pinned ATT&CK extraction. Official object names are not vendored offline and are therefore null rather than invented.",
+  "analytics": [
+    {
+      "id": "AN1030",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1003.001",
+      "detection_strategy_id": "DET0363"
+    },
+    {
+      "id": "AN0805",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1053.003",
+      "detection_strategy_id": "DET0290"
+    },
+    {
+      "id": "AN1221",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1053.005",
+      "detection_strategy_id": "DET0441"
+    },
+    {
+      "id": "AN1252",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1059.001",
+      "detection_strategy_id": "DET0455"
+    },
+    {
+      "id": "AN1081",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1059.004",
+      "detection_strategy_id": "DET0384"
+    },
+    {
+      "id": "AN0265",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1098",
+      "detection_strategy_id": "DET0096"
+    },
+    {
+      "id": "AN0350",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1098.004",
+      "detection_strategy_id": "DET0126"
+    },
+    {
+      "id": "AN0165",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1105",
+      "detection_strategy_id": "DET0060"
+    },
+    {
+      "id": "AN1521",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1110.001",
+      "detection_strategy_id": "DET0551"
+    },
+    {
+      "id": "AN1336",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1110.003",
+      "detection_strategy_id": "DET0487"
+    },
+    {
+      "id": "AN1235",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1136.001",
+      "detection_strategy_id": "DET0447"
+    },
+    {
+      "id": "AN0998",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1222.002",
+      "detection_strategy_id": "DET0351"
+    },
+    {
+      "id": "AN0854",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1484.001",
+      "detection_strategy_id": "DET0305"
+    },
+    {
+      "id": "AN0701",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1543.002",
+      "detection_strategy_id": "DET0253"
+    },
+    {
+      "id": "AN1527",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1543.003",
+      "detection_strategy_id": "DET0552"
+    },
+    {
+      "id": "AN0236",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1546.003",
+      "detection_strategy_id": "DET0086"
+    },
+    {
+      "id": "AN1032",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1547.001",
+      "detection_strategy_id": "DET0365"
+    },
+    {
+      "id": "AN1472",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1685.005",
+      "detection_strategy_id": "DET0532"
+    },
+    {
+      "id": "AN1438",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1685.006",
+      "detection_strategy_id": "DET0520"
+    },
+    {
+      "id": "AN0406",
+      "name": null,
+      "name_verification": "not_vendored",
+      "technique_id": "T1686",
+      "detection_strategy_id": "DET0145"
+    }
+  ]
+}

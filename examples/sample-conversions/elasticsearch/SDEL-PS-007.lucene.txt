@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-PS-007
+status=converted
+
+(CommandLine:(*Add\-LocalGroupMember* OR *Add\-ADGroupMember* OR *net\ localgroup* OR *net\ group*)) AND (CommandLine:(*Domain\ Admins* OR *Enterprise\ Admins* OR *Schema\ Admins* OR *Administrators*))

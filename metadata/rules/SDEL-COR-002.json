@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-COR-002",
+  "sigma_rule_id": "f8b36c85-1472-5835-9efe-dcedabfe6966",
+  "title": "Authentication Failures Across Multiple Accounts From One Source",
+  "detection_hypothesis": "If a single source sprays credentials, the number of distinct target accounts failing from that source will rise sharply while per-account failure counts stay low.",
+  "platform": "multi",
+  "rule_family": "correlation",
+  "maturity": "tested-synthetic",
+  "required_logs": [
+    "Windows Security event log"
+  ],
+  "required_channels": [
+    "Security"
+  ],
+  "required_fields": [
+    "EventID",
+    "IpAddress"
+  ],
+  "optional_fields": [
+    "IpAddress",
+    "LogonType",
+    "SubjectDomainName",
+    "TargetDomainName"
+  ],
+  "field_semantics": {
+    "EventID": "Numeric identifier of the Windows event record.",
+    "IpAddress": "Network address associated with the authentication attempt."
+  },
+  "collection_prerequisites": [
+    "Domain controller Security logs are forwarded for directory-scoped events.",
+    "The relevant advanced audit policy subcategory is enabled for success events."
+  ],
+  "expected_collection_gaps": [
+    "Events raised on a domain controller that is not forwarding logs are invisible.",
+    "Security log wrapping on busy controllers can drop events before forwarding."
+  ],
+  "normalization_assumptions": [
+    "Account names are provided without the domain prefix in TargetUserName.",
+    "EventID is an integer and Channel is the literal string Security."
+  ],
+  "ingestion_differences": [
+    "Directory attribute events may arrive with XML-encoded values.",
+    "Some pipelines rename EventID to event.code or similar."
+  ],
+  "retention_considerations": "Security log volume varies widely; 180 to 365 days is common for identity events.",
+  "expected_volume": "Low; sensitive to the distinct account threshold.",
+  "false_positive_strategy": "Shared egress addresses are the main source of benign matches. Tune by excluding documented gateway addresses from the group key and by raising the distinct account threshold for those sources.",
+  "tuning_guidance": "Prefer raising the threshold for known gateways over removing the source entirely, so that a genuine spray from behind the gateway is still visible.",
+  "test_strategy": "Positive sequences fail five or more distinct accounts from one address. Negative sequences repeat one account, spread across two addresses, and stay under the threshold.",
+  "minimum_positive_tests": 2,
+  "minimum_negative_tests": 2,
+  "attack_techniques": [
+    {
+      "id": "T1110.003",
+      "name": "Brute Force: Password Spraying"
+    }
+  ],
+  "attack_tactics": [
+    {
+      "id": "TA0006",
+      "name": "Credential Access"
+    }
+  ],
+  "attack_detection_strategies": [
+    {
+      "id": "DET0487",
+      "technique_id": "T1110.003"
+    }
+  ],
+  "attack_analytics": [
+    {
+      "id": "AN1336",
+      "technique_id": "T1110.003"
+    }
+  ],
+  "attack_data_components": [
+    {
+      "id": "DC0002",
+      "technique_id": "T1110.003"
+    }
+  ],
+  "unmapped_defensive_objects_reason": "",
+  "attack_version": "19.1",
+  "supported_backends": [],
+  "unsupported_backend_reasons": {
+    "splunk": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only.",
+    "elasticsearch-lucene": "Correlation rule conversion is out of scope for version 1.0 of this lab; the rule is validated by the local correlation evaluator only."
+  },
+  "related_rules": [
+    "SDEL-COR-001",
+    "SDEL-COR-003"
+  ],
+  "author": "Salvatore Mazzaglia",
+  "license": "MIT",
+  "created_at": "2026-08-01T00:00:00Z",
+  "modified_at": "2026-08-01T00:00:00Z",
+  "version": "1.0.0",
+  "synthetic_fixtures_only": true,
+  "rule_file": "rules/correlation/authentication_failures_across_accounts_from_one_source.yml",
+  "fixture_directory": "fixtures/correlation/SDEL-COR-002",
+  "correlation": {
+    "type": "value_count",
+    "timespan": "15m",
+    "group_by": [
+      "IpAddress"
+    ],
+    "base_rules": [
+      "sdel_cor_002_windows_logon_failure"
+    ],
+    "aliases": {},
+    "threshold": 5,
+    "count_field": "TargetUserName",
+    "evaluator_support": "Implemented by the documented lab correlation subset; full Sigma correlation semantics are not claimed."
+  }
+}

@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=splunk
+catalog_id=SDEL-ID-009
+status=converted
+
+EventID=5136 ObjectDN="*CN=Policies,CN=System*" OperationType IN ("Value Added", "%%14674")

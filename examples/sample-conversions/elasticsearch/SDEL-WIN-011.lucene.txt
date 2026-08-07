@@ -1,0 +1,6 @@
+DEMONSTRATION CONVERSION — ENVIRONMENT-SPECIFIC VALIDATION REQUIRED
+backend=elasticsearch-lucene
+catalog_id=SDEL-WIN-011
+status=converted
+
+(Image:(*\\powershell.exe OR *\\pwsh.exe OR *\\cmd.exe OR *\\reg.exe OR *\\sc.exe)) AND (CommandLine:(*DisableRealtimeMonitoring* OR *DisableBehaviorMonitoring* OR *DisableIOAVProtection* OR *DisableScriptScanning* OR *DisableAntiSpyware*))

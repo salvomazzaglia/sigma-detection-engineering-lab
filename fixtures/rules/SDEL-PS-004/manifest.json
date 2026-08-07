@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "SDEL-PS-004",
+  "sigma_rule_id": "5edcf133-b8ab-5525-a437-6f73dfcaa113",
+  "rule_file": "rules/powershell/powershell_reflective_loading_terminology.yml",
+  "rule_type": "standard",
+  "synthetic": true,
+  "platform": "windows",
+  "logsource": {
+    "product": "windows",
+    "category": "ps_script"
+  },
+  "channels": [
+    "Microsoft-Windows-PowerShell/Operational"
+  ],
+  "minimum_positive_cases": 2,
+  "minimum_negative_cases": 3,
+  "positive_cases": [
+    {
+      "name": "assembly_load_from_bytes",
+      "file": "positive/case_01_assembly_load_from_bytes.jsonl",
+      "expected": "match",
+      "scenario": "Script block loading an assembly from a synthetic placeholder byte array.",
+      "rationale": "The reflection terminology selection matches."
+    },
+    {
+      "name": "dynamic_delegate_creation",
+      "file": "positive/case_02_dynamic_delegate_creation.jsonl",
+      "expected": "match",
+      "scenario": "Script block creating a delegate from a function pointer.",
+      "rationale": "The reflection terminology selection matches."
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "ordinary_type_usage",
+      "file": "negative/case_01_ordinary_type_usage.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block using a framework type without reflection.",
+      "rationale": "No reflection terminology is present."
+    },
+    {
+      "name": "module_import",
+      "file": "negative/case_02_module_import.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block importing an approved module.",
+      "rationale": "No reflection terminology is present."
+    },
+    {
+      "name": "comment_mentions_reflection",
+      "file": "negative/case_03_comment_mentions_reflection.jsonl",
+      "expected": "no_match",
+      "scenario": "Script block whose comment mentions reflection in prose.",
+      "rationale": "The prose does not contain any of the matched construct strings."
+    }
+  ],
+  "generated_by": "tools/generate_all_rules.py",
+  "notes": "All events are synthetic. Negative cases are deliberate near misses that exercise one failing selection each."
+}
