@@ -37,7 +37,7 @@ classifiers = [
 dependencies = [
     "pysigma==1.5.0",
     "pysigma-backend-splunk==2.1.0",
-    "pysigma-backend-elasticsearch==2.1.0",
+    "pysigma-backend-elasticsearch==2.1.1",
     "jsonschema>=4.23,<5",
     "PyYAML>=6.0,<7",
 ]
